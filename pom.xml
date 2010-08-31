@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2009 - 2010 Under Dusken
+
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>no.dusken.annonseweb</groupId>
+    <version>0.1-SNAPSHOT</version>
+    <artifactId>annonseweb</artifactId>
+    <packaging>pom</packaging>
+    <name>Annonseweb</name>
+    <inceptionYear>2010</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <modules>
+        <module>api</module>
+        <module>core</module>
+        <module>plugins</module>
+        <module>web</module>
+    </modules>
+
+    <scm>
+        <connection>scm:svn:https://underdusken.no:88/svn/intern/annonse</connection>
+        <developerConnection>scm:svn:https://underdusken.no:88/svn/intern/annonse</developerConnection>
+    </scm>
+
+    <properties>
+        <application.name>${project.artifactId}</application.name>
+        <application.version>${project.version}</application.version>
+        <spring.version>3.0.0.RELEASE</spring.version>
+        <springSecurity.version>2.0.4</springSecurity.version>
+        <jexmec.version>1.25</jexmec.version>
+        <duskencommon.version>0.6</duskencommon.version>
+    </properties>
+    <developers>
+        <developer>
+            <id>magnuskiro</id>
+            <email>magnuskiro@underdusken.no</email>
+            <name>Magnus Kirø</name>
+            <roles>
+                 <role>Project Manager</role>
+                 <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+            <organization>Under Dusken</organization>
+            <organizationUrl>http://www.underdusken.no/</organizationUrl>
+        </developer>
+
+
+    </developers>
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>public</name>
+            <url>http://underdusken.no:8080/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>public-snapshots</id>
+            <name>public-snapshot</name>
+            <url>http://underdusken.no:8080/nexus/content/groups/public-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>dusken</id>
+            <name>dusken</name>
+            <url>http://underdusken.no:8080/nexus/content/repositories/dusken</url>
+        </repository>
+    </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <url>http://underdusken.no:8080/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>public-snapshots</id>
+            <url>http://underdusken.no:8080/nexus/content/groups/public-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>     
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <finalName>${artifactId}</finalName>
+    </build>
+</project>
+
