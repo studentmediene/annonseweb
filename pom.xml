@@ -37,8 +37,8 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:https://underdusken.no:88/svn/intern/annonse</connection>
-        <developerConnection>scm:svn:https://underdusken.no:88/svn/intern/annonse</developerConnection>
+        <connection>scm:svn:https://underdusken.no:88/svn/intern</connection>
+        <developerConnection>scm:svn:https://underdusken.no:88/svn/intern</developerConnection>
     </scm>
 
     <properties>
