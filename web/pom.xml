@@ -18,14 +18,14 @@
     <parent>
         <artifactId>annonseweb</artifactId>
         <groupId>no.dusken.annonseweb</groupId>
-        <version>0.1</version>
+        <version>0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.dusken.annonseweb</groupId>
     <artifactId>web</artifactId>
     <packaging>war</packaging>
     <name>Web</name>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
