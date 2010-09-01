@@ -36,7 +36,7 @@
         </dependency>
         <dependency>
             <groupId>no.dusken.common</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>dusken-common-core</artifactId>
             <version>${duskencommon.version}</version>
             <scope>compile</scope>
         </dependency>

@@ -30,7 +30,7 @@
     <dependencies>
         <dependency>
             <groupId>no.dusken.common</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>dusken-common-api</artifactId>
             <version>${duskencommon.version}</version>
             <scope>compile</scope>
         </dependency>

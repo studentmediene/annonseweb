@@ -33,14 +33,8 @@
     <bean id="roleHiarchy" class="org.springframework.security.userdetails.hierarchicalroles.RoleHierarchyImpl">
         <property name="hierarchy">
             <value>
-                ROLE_MASKINIST > ROLE_ANSVARLIG_REDAKTØR
+                ROLE_MASKINIST > ROLE_ANNONSEANSVARLIG
                 ROLE_ANNONSEANSVARLIG > ROLE_ANSVARLIG_REDAKTØR
-                ROLE_ANSVARLIG_REDAKTØR > ROLE_KULTURREDAKTØR
-                ROLE_ANSVARLIG_REDAKTØR > ROLE_NYHETSREDAKTØR
-                ROLE_ANSVARLIG_REDAKTØR > ROLE_REPORTASJEREDAKTØR
-                ROLE_ANSVARLIG_REDAKTØR > ROLE_FOTOREDAKTØR
-                ROLE_ANSVARLIG_REDAKTØR > ROLE_NETTREDAKTØR
-                ROLE_ANSVARLIG_REDAKTØR > ROLE_ANNONSEANSVARLIG
                 ROLE_ANNONSE > ROLE_JOURNALIST
                 ROLE_ANNONSE > ROLE_LAYOUT
                 ROLE_ANNONSE > ROLE_FOTOGRAF
