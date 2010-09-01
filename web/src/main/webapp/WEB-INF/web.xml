@@ -98,7 +98,7 @@
 
     <servlet>
         <display-name>Annonseweb</display-name>
-        <servlet-name>Annonseweb</servlet-name>
+        <servlet-name>annonseweb</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -115,7 +115,7 @@
     </servlet-mapping>
     
     <servlet-mapping>
-        <servlet-name>Annonseweb</servlet-name>
+        <servlet-name>annonseweb</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
