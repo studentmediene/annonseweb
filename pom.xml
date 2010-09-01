@@ -18,7 +18,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.dusken.annonseweb</groupId>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
     <artifactId>annonseweb</artifactId>
     <packaging>pom</packaging>
     <name>Annonseweb</name>
@@ -37,8 +37,8 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:https://underdusken.no:88/svn/intern/annonse/tags/annonseweb-0.1</connection>
-        <developerConnection>scm:svn:https://underdusken.no:88/svn/intern/annonse/tags/annonseweb-0.1</developerConnection>
+        <connection>scm:svn:https://underdusken.no:88/svn/intern/annonse</connection>
+        <developerConnection>scm:svn:https://underdusken.no:88/svn/intern/annonse</developerConnection>
     </scm>
 
     <properties>
