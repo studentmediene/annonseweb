@@ -23,4 +23,8 @@
         <pattern>/*</pattern>
     </decorator>
 
+    <decorator name="blank" page="public/blank.jsp">
+        <pattern>*</pattern>
+    </decorator>
+
 </decorators>

@@ -26,6 +26,16 @@
         <property name="filename" value="annonseweb.conf" />
     </bean>
 
+    <bean id="welcomeController" class="no.annonseweb.control.WelcomeController"/>
+
+    <bean id="quickChoiceController" class="no.annonseweb.control.QuickChoiceController"/>
+
+    <bean id="viewSalesController" class="no.annonseweb.control.SalesController" />
+
+    <bean id="viewCustomerController" class="no.annonseweb.control.CustomerController"/>
+
+    <bean id="viewBillController" class="no.annonseweb.control.BillController" />
+
     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
         <property name="mailAddress" value="${mailadress}"/>
         <property name="mailSender" ref="mailController"/>
@@ -45,6 +55,6 @@
             </props>
         </property>
     </bean>
-    
+
     <context:component-scan base-package="no.dusken.annonseweb.web"/>
 </beans>

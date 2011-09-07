@@ -1,0 +1,13 @@
+datasource.username=sa
+datasource.password=
+datasource.driver=org.hsqldb.jdbcDriver
+#datasource.driver=org.postgresql.Driver
+#datasource.driver=com.mysql.jdbc.Driver
+datasource.url=jdbc:hsqldb:file:${dataDir}/database
+#datasource.url=jdbc:postgresql://localhost/annonse
+#datasource.url=jdbc:mysql://localhost/bar
+# One of: DEFAULT,DB2,DERBY,H2,HSQL,INFORMIX,MYSQL,ORACLE,POSTGRESQL,SQL_SERVER,SYBASE
+datasource.databasetype=HSQL
+
+sendExceptionMail=false
+mailadress=

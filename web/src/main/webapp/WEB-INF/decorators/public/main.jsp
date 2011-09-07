@@ -23,24 +23,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="no" xml:lang="no">
 
 <head>
-    <title><decorator:title/> | Under Dusken</title>
+    <title><decorator:title/>Annonseweb - Under Dusken - </title>
 </head>
-
 <body>
-<div id="header">
-       <a href="<%=request.getContextPath() %>/welcome.do"><h1>Annonseweb</h1></a>
-       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
-   </div>
-
-   <ul id="menu">
-         <li><a href="<%=request.getContextPath() %>/">Hjem</a></li>
-         <li><a href="<%=request.getContextPath() %>/annonseweb_logout">Logg ut</a></li>
-    </ul>
-
-    <div id="content">
-        <h2><decorator:title/></h2>
-        <decorator:body/>
+<div id="wrapper">
+	<div id="header">
+	    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
+		<div id="logo">
+			<h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
+			<p><a href="https://underdusken.no/redmine/">et Under Dusken-Data produkt!</a></p>
+		</div>
+		<div id="search">
+			<form method="get" action="">
+				<fieldset>
+				<input type="text" name="s" id="search-text" size="15" />
+				<input type="submit" id="search-submit" value="GO" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="menu">
+		<ul>
+            <li><a href="<%=request.getContextPath() %>/">Home</a></li>
+            <li><a href="<%=request.getContextPath() %>/viewSales.do">Salg</a></li>
+            <li><a href="<%=request.getContextPath() %>/viewCustomers.do">Kunder</a></li>
+            <li><a href="<%=request.getContextPath() %>/viewBills.do">Fakturaer</a></li>
+            <li><a href="<%=request.getContextPath() %>/annonseweb_logout">Logg ut</a></li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="page">
+	<div id="page-bgtop">
+	<div id="page-bgbtm">
+            <decorator:body/>
+            <page:apply-decorator name="blank" page="/quickChoice.do"/>
+	</div>
     </div>
-
+	</div>
+	<!-- end #page -->
+</div>
+	<div id="footer">
+		<p>
+            Powered by <a href="https://underdusken.no/redmine/">Dusken - Annonseweb</a> - ($text.version) alpha minus
+		</p>
+	</div>
+	<!-- end #footer -->
 </body>
 </html>

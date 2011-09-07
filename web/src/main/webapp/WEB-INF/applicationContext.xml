@@ -121,7 +121,7 @@
     </bean>
 
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-        <property name="resourceLoaderPath" value="no/dusken/annonseweb/"/>
+        <property name="resourceLoaderPath" value="no/dusken/annonseweb/web/"/>
         <property name="configLocation" value="/WEB-INF/velocity.properties"/>
     </bean>
 

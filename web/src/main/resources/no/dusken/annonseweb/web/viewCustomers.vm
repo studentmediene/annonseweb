@@ -1,0 +1,11 @@
+<div id="content">
+    <div class="post">
+        <h2 class="title"><a href="#">Customer List</a></h2>
+        <div class="entry">
+            #foreach( $customer in $customerList)
+                <p class="meta">$customer.meta</p>  end
+                <p>$customer.info</p>
+            #end
+        </div>
+    </div>
+</div>
