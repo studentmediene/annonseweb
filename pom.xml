@@ -44,10 +44,10 @@
     <properties>
         <application.name>${project.artifactId}</application.name>
         <application.version>${project.version}</application.version>
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>3.0.0.RELEASE</spring.version>
         <springSecurity.version>2.0.4</springSecurity.version>
         <jexmec.version>1.25</jexmec.version>
-        <duskencommon.version>0.9</duskencommon.version>
+        <duskencommon.version>0.7</duskencommon.version>
     </properties>
     <developers>
         <developer>

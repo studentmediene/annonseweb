@@ -1,0 +1,23 @@
+package no.annonseweb.control;
+
+/**
+ * Author: magnuskiro@underdusken.no
+ * Date: Nov 8, 2010
+ */
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Controller
+public class WelcomeController{
+
+    @RequestMapping("/welcome")
+    public String welcome(){
+        return "no/dusken/annonseweb/web/welcome";
+    }
+    
+}

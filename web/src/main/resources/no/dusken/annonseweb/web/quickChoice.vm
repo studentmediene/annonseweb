@@ -1,0 +1,15 @@
+<div id="sidebar">
+    <ul>
+        <li>
+            <h2>Hurtig valg:</h2>
+            <ul>
+                <li><a href="/newSale.do"">Nytt Salg</a></li>
+                <li><a href="/newCustomer.do">Ny Kunde / Bedrift</a></li>
+                <li><a href="/printBills.do">Skriv ut Faktura</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
