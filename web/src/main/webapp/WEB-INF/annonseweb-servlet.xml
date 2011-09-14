@@ -28,13 +28,11 @@
 
     <bean id="welcomeController" class="no.annonseweb.control.WelcomeController"/>
 
-    <bean id="quickChoiceController" class="no.annonseweb.control.QuickChoiceController"/>
-
     <bean id="viewSalesController" class="no.annonseweb.control.SalesController" />
 
     <bean id="viewCustomerController" class="no.annonseweb.control.CustomerController"/>
 
-    <bean id="viewBillController" class="no.annonseweb.control.BillController" />
+    <bean id="viewBillController" class="no.annonseweb.control.InvoiceController" />
 
     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
         <property name="mailAddress" value="${mailadress}"/>

@@ -7,5 +7,5 @@ package no.dusken.annonseweb.models;
  * Time: 10:07:54 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Bill {
+public class Invoice {
 }

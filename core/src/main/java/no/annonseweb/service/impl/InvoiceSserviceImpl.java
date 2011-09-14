@@ -1,7 +1,7 @@
 package no.annonseweb.service.impl;
 
 import no.dusken.annonseweb.models.*;
-import no.dusken.annonseweb.service.BillService;
+import no.dusken.annonseweb.service.InvoiceService;
 import no.dusken.common.service.impl.GenericServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -17,9 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("BillService")
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.DEFAULT, readOnly = true)
-public class BillSserviceImpl extends GenericServiceImpl implements BillService {
+public class InvoiceSserviceImpl extends GenericServiceImpl implements InvoiceService {
 
-    public BillSserviceImpl(){
-        super(Bill.class);
+    public InvoiceSserviceImpl(){
+        super(Invoice.class);
     }
 }

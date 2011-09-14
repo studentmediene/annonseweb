@@ -7,5 +7,5 @@ package no.dusken.annonseweb.service;
  * Time: 23:30
  * To change this template use File | Settings | File Templates.
  */
-public interface BillService {
+public interface InvoiceService {
 }

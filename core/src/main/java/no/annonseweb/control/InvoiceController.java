@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-public class BillController{
+public class InvoiceController {
 
     @RequestMapping("/viewBills")
     public String viewBills(){
