@@ -1,4 +1,4 @@
-package no.dusken.annonseweb.serviceimpl;
+package no.dusken.annonseweb.service.impl;
 
 import no.dusken.annonseweb.service.CustomerService;
 
