@@ -5,13 +5,6 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: kiro
- * Date: Nov 8, 2010
- * Time: 10:07:32 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Customer {
 
     @Id
@@ -40,6 +33,10 @@ public class Customer {
         this.invoice_adress = invoice_adress;
         this.abonnent_adress = abonnent_adress;
     }
+
+    /*public String getInfo(){    //What is needed here, organized differently in web development?
+        return "Customer name: " + customerName + "\n"
+    }  */
 
     public void addIndustry_tags(String industry_tag){
         this.industry_tags.add(industry_tag);
