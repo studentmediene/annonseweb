@@ -22,6 +22,8 @@ public class Address {
         this.zip_county = zip_county;
     }
 
+
+
     public long getID() {
         return ID;
     }

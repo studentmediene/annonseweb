@@ -21,6 +21,14 @@ public class ContactPerson {
 
     private Boolean active;
 
+    public void setLast_contacted_time(Date last_contacted_time) { //Only class ContactNote should be able to edit
+        this.last_contacted_time = last_contacted_time;
+    }
+
+    public void setLast_contacted_user(Date last_contacted_user) { //Only class ContactNote should be able to edit
+        this.last_contacted_user = last_contacted_user;
+    }
+
 
     public ContactPerson(String person_name, String email, String telephone_number, String company_position, Customer customer) {
         this.person_name = person_name;

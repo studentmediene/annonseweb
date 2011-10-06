@@ -8,7 +8,7 @@ public class Comment {
 
     @Id
     @GeneratedValue
-    long ID;
+    private long ID;
 
     String text;
 

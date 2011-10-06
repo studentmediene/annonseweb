@@ -1,11 +1,24 @@
 package no.dusken.annonseweb.models;
 
-/**
- * Created by IntelliJ IDEA.
- * User: kiro
- * Date: Nov 8, 2010
- * Time: 10:07:54 PM
- * To change this template use File | Settings | File Templates.
- */
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.Date;
+
 public class Invoice {
+
+    @Id
+    @GeneratedValue
+    private long ID;
+
+    private Sale sale;
+    private String invoice_label;
+    private long invoice_nr;
+
+    private Date invoice_date;
+    private Date created_date;
+    private String created_user;
+    private Date lastedited_date;
+    private String lastedited_user;
+
+
 }
