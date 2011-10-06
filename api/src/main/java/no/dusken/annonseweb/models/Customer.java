@@ -9,7 +9,7 @@ public class Customer {
 
     @Id
     @GeneratedValue
-    long customerNumber;
+    private long customerNumber;
 
     private String customerName;
     private String central_email;
