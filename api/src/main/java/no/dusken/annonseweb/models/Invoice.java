@@ -1,37 +1,24 @@
 package no.dusken.annonseweb.models;
 
-import no.dusken.common.model.DuskenObject;
-
-import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
-/**
- * Created by IntelliJ IDEA.
- * User: kiro
- * Date: Nov 8, 2010
- * Time: 10:07:54 PM
- * To change this template use File | Settings | File Templates.
- */
-@Entity
-public class Invoice extends DuskenObject {
-
-    public Invoice(Long id){
-        this.ID = id;
-    }
+public class Invoice {
 
     @Id
-    long ID;
+    @GeneratedValue
+    private long ID;
 
-    public Long getID() {
-        return ID;
-    }
+    private Sale sale;
+    private String invoice_label;
+    private long invoice_nr;
 
-    public void setID(long ID) {
-        this.ID = ID;
-    }
+    private Date invoice_date;
+    private Date created_date;
+    private String created_user;
+    private Date lastedited_date;
+    private String lastedited_user;
 
-    @Override
-    public String toString() {
-        return null;
-    }
+
 }
