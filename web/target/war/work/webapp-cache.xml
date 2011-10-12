@@ -26,6 +26,7 @@
           <string>WEB-INF/classes/no/dusken/annonseweb/web/viewCustomers.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/quickChoice.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/leftColumn.vm</string>
+          <string>WEB-INF/classes/no/dusken/annonseweb/web/invoiceList.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/showBill.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/showBills.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/sales.vm</string>
@@ -33,6 +34,7 @@
           <string>WEB-INF/classes/no/dusken/annonseweb/web/welcome.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/showSales.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/viewSales.vm</string>
+          <string>WEB-INF/classes/no/dusken/annonseweb/web/showInvoice.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/newCustomer.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/editSales.vm</string>
           <string>WEB-INF/classes/no/dusken/annonseweb/web/viewBills.vm</string>
