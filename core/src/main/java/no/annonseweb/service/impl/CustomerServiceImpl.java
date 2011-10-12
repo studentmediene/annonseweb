@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: maskinist
@@ -23,4 +25,8 @@ public class CustomerServiceImpl extends GenericServiceImpl implements CustomerS
         super(Customer.class);
     }
 
+    @Override
+    public List<Customer> getCustomers() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
