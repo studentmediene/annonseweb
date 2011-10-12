@@ -48,7 +48,7 @@
             <li><a href="<%=request.getContextPath() %>/">Home</a></li>
             <li><a href="<%=request.getContextPath() %>/viewSales.do">Salg</a></li>
             <li><a href="<%=request.getContextPath() %>/viewCustomers.do">Kunder</a></li>
-            <li><a href="<%=request.getContextPath() %>/viewBills.do">Fakturaer</a></li>
+            <li><a href="<%=request.getContextPath() %>/invoiceList.do">Fakturaer</a></li>
             <li><a href="<%=request.getContextPath() %>/annonseweb_logout">Logg ut</a></li>
 		</ul>
 	</div>
@@ -57,7 +57,6 @@
 	<div id="page-bgtop">
 	<div id="page-bgbtm">
             <decorator:body/>
-            <page:apply-decorator name="blank" page="/quickChoice.do"/>
 	</div>
     </div>
 	</div>
