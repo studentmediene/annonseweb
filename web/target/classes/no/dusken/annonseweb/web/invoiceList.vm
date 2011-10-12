@@ -1,1 +1,6 @@
-$Invoice.id
+Invoices <br />
+$InvoiceList.id
+$InvoiceList
+#foreach($a in $InvoiceList)
+    <p>$a.id</p>
+#end

@@ -1,5 +1,6 @@
 package no.annonseweb.control;
 
+import no.dusken.annonseweb.models.Invoice;
 import no.dusken.annonseweb.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,9 @@ public class InvoiceController {
 
     @RequestMapping("/invoiceList")
     public String listInvoices(Model model){
-        model.addAttribute("Invoice", invoiceService.getInvoices());
+        Invoice invoice = new Invoice(253L);
+        model.addAttribute("InvoiceList", invoice);
+        System.out.println(invoice);
         return "no/dusken/annonseweb/web/invoiceList";
     }
 

@@ -1,10 +1,12 @@
 package no.dusken.annonseweb.models;
 
+import no.dusken.common.model.DuskenObject;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-public class Invoice {
+public class Invoice extends DuskenObject{
 
     @Id
     @GeneratedValue
@@ -20,5 +22,12 @@ public class Invoice {
     private Date lastedited_date;
     private String lastedited_user;
 
+    public Invoice(long ID) {
+        this.ID = ID;
+    }
 
+    @Override
+    public String toString() {
+        return String.valueOf(this.ID);
+    }
 }

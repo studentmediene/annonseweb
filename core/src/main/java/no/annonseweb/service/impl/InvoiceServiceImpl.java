@@ -36,6 +36,6 @@ public class InvoiceServiceImpl extends GenericServiceImpl<Invoice> implements I
 
     @Override
     public Invoice getInvoice(Long id) {
-        return new Invoice(1L);
+        return new Invoice(1298L);
     }
 }
