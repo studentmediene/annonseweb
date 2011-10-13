@@ -46,15 +46,16 @@
 	<div id="menu">
 		<ul>
             <li><a href="<%=request.getContextPath() %>/">Hjem</a></li>
-            <li><a href="<%=request.getContextPath() %>/viewCustomers.do">Kunder</a></li>
-            <li><a href="<%=request.getContextPath() %>/ContactsHome.do">Kontakter</a></li>
-            <li><a href="<%=request.getContextPath() %>/viewSales.do">Annonser</a></li>
-            <li><a href="<%=request.getContextPath() %>/viewSales.do">Salg</a></li>
-            <li><a href="<%=request.getContextPath() %>/invoiceList.do">Fakturaer</a></li>
-            <li><a href="<%=request.getContextPath() %>/viewSales.do">Statistikk</a></li>
+            <li><a href="<%=request.getContextPath() %>/customerHome.do">Kunder</a></li>
+            <li><a href="<%=request.getContextPath() %>/contactsHome.do">Kontakter</a></li>
+            <li><a href="<%=request.getContextPath() %>/adHome.do">Annonser</a></li>
+            <li><a href="<%=request.getContextPath() %>/saleHome.do">Salg</a></li>
+            <li><a href="<%=request.getContextPath() %>/invoiceHome.do">Fakturaer</a></li>
+            <li><a href="<%=request.getContextPath() %>/statisticsHome.do">Statistikk</a></li>
             <li><a href="<%=request.getContextPath() %>/annonseweb_logout">Logg ut</a></li>
 		</ul>
 	</div>
+
 	<!-- end #menu -->
 	<div id="page">
 	<div id="page-bgtop">

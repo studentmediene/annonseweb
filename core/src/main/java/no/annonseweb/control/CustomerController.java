@@ -19,5 +19,9 @@ public class CustomerController{
         return "no/dusken/annonseweb/web/customers/viewCustomers";
     }
 
+    @RequestMapping("/customerHome")
+    public String viewCustomerHome(){
+        return "no/dusken/annonseweb/web/customers/customerHome";
+    }
 }
 
