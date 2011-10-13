@@ -16,7 +16,7 @@ public class SalesController{
 
     @RequestMapping("/viewSales")
     public String viewSales(){
-        return "no/dusken/annonseweb/web/viewSales";
+        return "no/dusken/annonseweb/web/sales/viewSales";
     }
 
     /*

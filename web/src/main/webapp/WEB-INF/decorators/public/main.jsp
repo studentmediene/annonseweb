@@ -45,10 +45,13 @@
 	<!-- end #header -->
 	<div id="menu">
 		<ul>
-            <li><a href="<%=request.getContextPath() %>/">Home</a></li>
-            <li><a href="<%=request.getContextPath() %>/viewSales.do">Salg</a></li>
+            <li><a href="<%=request.getContextPath() %>/">Hjem</a></li>
             <li><a href="<%=request.getContextPath() %>/viewCustomers.do">Kunder</a></li>
+            <li><a href="<%=request.getContextPath() %>/ContactsHome.do">Kontakter</a></li>
+            <li><a href="<%=request.getContextPath() %>/viewSales.do">Annonser</a></li>
+            <li><a href="<%=request.getContextPath() %>/viewSales.do">Salg</a></li>
             <li><a href="<%=request.getContextPath() %>/invoiceList.do">Fakturaer</a></li>
+            <li><a href="<%=request.getContextPath() %>/viewSales.do">Statistikk</a></li>
             <li><a href="<%=request.getContextPath() %>/annonseweb_logout">Logg ut</a></li>
 		</ul>
 	</div>

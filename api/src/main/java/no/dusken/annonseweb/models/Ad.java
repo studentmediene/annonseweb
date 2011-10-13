@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Ad extends DuskenObject {       //Parent class, should not be used alone
 
     private long price;
-    private long discount;  //Automatically from customer?
+    private long discount;  //Automatically from customers?
 
     private String fileLocation;   //for the ad image
 

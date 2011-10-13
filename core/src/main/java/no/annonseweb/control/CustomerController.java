@@ -16,7 +16,7 @@ public class CustomerController{
 
     @RequestMapping("/viewCustomers")
     public String viewCustomers(){
-        return "no/dusken/annonseweb/web/viewCustomers";
+        return "no/dusken/annonseweb/web/customers/viewCustomers";
     }
 
 }
