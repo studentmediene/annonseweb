@@ -282,11 +282,17 @@ a:hover {
 	width: 240px;
 	padding: 0px;
 	color: #787878;
+    background: #FFFFFF;
 }
 
 #sidebar ul {
-	padding: 0;
 	list-style: none;
+    background: #FFFFFF;
+    margin: 0px 0px 20px 0px;
+	padding: 10px 20px 20px 20px;
+	text-align: justify;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 #sidebar li {

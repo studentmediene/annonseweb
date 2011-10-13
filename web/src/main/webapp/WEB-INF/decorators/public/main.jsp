@@ -57,12 +57,15 @@
 	</div>
 
 	<!-- end #menu -->
+    <!--<div id="sidebar">
+    <!--    <!--page:applyDecorator name="blank" page="/sidebar.do"/>   -->
+    <!--</div>    -->
 	<div id="page">
-	<div id="page-bgtop">
-	<div id="page-bgbtm">
-            <decorator:body/>
-	</div>
-    </div>
+	    <div id="page-bgtop">
+	        <div id="page-bgbtm">
+                <decorator:body/>
+	        </div>
+        </div>
 	</div>
 	<!-- end #page -->
 </div>

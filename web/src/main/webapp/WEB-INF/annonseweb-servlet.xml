@@ -38,7 +38,9 @@
 
     <bean id="viewAdController" class="no.annonseweb.control.AdController" />               <!-- added 13.okt -->
 
-    <bean id="viewStatisticsController" class="no.annonseweb.control.StatisticsController" />
+    <bean id="viewStatisticsController" class="no.annonseweb.control.StatisticsController" />    <!-- added 13.okt -->
+
+    <bean id="viewSidebarController" class="no.annonseweb.control.SidebarController" />    <!-- added 13.okt -->
 
 
     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
