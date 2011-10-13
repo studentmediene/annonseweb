@@ -2,27 +2,23 @@ package no.dusken.annonseweb.models;
 
 public class Ad_UDprint extends Ad {
 
-    public enum Print_format {VERTICAL,HORIZONTAL}
+    public enum PrintFormat {VERTICAL,HORIZONTAL}
 
     private long udNr;
-    private Print_format print_format;     //Updates price accordingly, or manually when created
+    private PrintFormat printFormat;     //Updates price accordingly, or manually when created
 
-    private Boolean placed_right;
-    private Boolean placed_early;
-    private long page_number;
+    private Boolean placedRight;
+    private Boolean placedEarly;
+    private long pageNumber;
 
-
-
-
-    public Ad_UDprint(long udNr, Print_format print_format, Boolean placed_right, Boolean placed_early, long page_number,
-                      long price, long discount, String file_location)    {
-        super(price, discount, file_location);
-
+    public Ad_UDprint(long price, long discount, String fileLocation, long udNr, PrintFormat printFormat,
+                      Boolean placedRight, Boolean placedEarly, long pageNumber) {
+        super(price, discount, fileLocation);
         this.udNr = udNr;
-        this.print_format = print_format;
-        this.placed_right = placed_right;
-        this.placed_early = placed_early;
-        this.page_number = page_number;
+        this.printFormat = printFormat;
+        this.placedRight = placedRight;
+        this.placedEarly = placedEarly;
+        this.pageNumber = pageNumber;
     }
 
     public long getUdNr() {
@@ -33,35 +29,35 @@ public class Ad_UDprint extends Ad {
         this.udNr = udNr;
     }
 
-    public Print_format getPrint_format() {
-        return print_format;
+    public PrintFormat getPrintFormat() {
+        return printFormat;
     }
 
-    public void setPrint_format(Print_format print_format) {
-        this.print_format = print_format;
+    public void setPrintFormat(PrintFormat printFormat) {
+        this.printFormat = printFormat;
     }
 
-    public Boolean getPlaced_right() {
-        return placed_right;
+    public Boolean getPlacedRight() {
+        return placedRight;
     }
 
-    public void setPlaced_right(Boolean placed_right) {
-        this.placed_right = placed_right;
+    public void setPlacedRight(Boolean placedRight) {
+        this.placedRight = placedRight;
     }
 
-    public Boolean getPlaced_early() {
-        return placed_early;
+    public Boolean getPlacedEarly() {
+        return placedEarly;
     }
 
-    public void setPlaced_early(Boolean placed_early) {
-        this.placed_early = placed_early;
+    public void setPlacedEarly(Boolean placedEarly) {
+        this.placedEarly = placedEarly;
     }
 
-    public long getPage_number() {
-        return page_number;
+    public long getPageNumber() {
+        return pageNumber;
     }
 
-    public void setPage_number(long page_number) {
-        this.page_number = page_number;
+    public void setPageNumber(long pageNumber) {
+        this.pageNumber = pageNumber;
     }
 }

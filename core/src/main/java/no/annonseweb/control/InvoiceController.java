@@ -23,15 +23,15 @@ public class InvoiceController {
 
     @RequestMapping("/invoiceList")
     public String listInvoices(Model model){
-        Invoice invoice = new Invoice(253L);
+        /*Invoice invoice = new Invoice(253L);
         model.addAttribute("InvoiceList", invoice);
-        System.out.println(invoice);
+        System.out.println(invoice);        */
         return "no/dusken/annonseweb/web/invoiceList";
     }
-
+    /*
     @Required
     public void setInvoiceService(InvoiceService invoiceService){
         this.invoiceService = invoiceService;
-    }
+    }  */
 
 }
