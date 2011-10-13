@@ -1,43 +1,43 @@
 package no.dusken.annonseweb.models;
 
+import no.dusken.common.model.DuskenObject;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-public class Comment {
+public class Comment extends DuskenObject {
 
-    @Id
-    @GeneratedValue
-    private long ID;
+    private String text;
 
-    String text;
-
-    Date created_date;
-    String created_user;
-    Date lastedited_date;
+    private Date createdDate;
+    private String createdUser;
+    private Date lastEditedDate;
+    private String lastEditedUser;
 
     public Comment(String text) {
         this.text = text;
     }
 
-    public long getID() {
-        return ID;
+    @Override
+    public String toString() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public Date getCreated_date() {
-        return created_date;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public String getCreated_user() {
-        return created_user;
+    public String getCreatedUser() {
+        return createdUser;
     }
 
-    public Date getLastedited_date() {
-        return lastedited_date;
+    public Date getLastEditedDate() {
+        return lastEditedDate;
     }
 
-    public String getLastedited_user() {
-        return lastedited_user;
+    public String getLastEditedUser() {
+        return lastEditedUser;
     }
 
     public String getText() {
@@ -49,5 +49,4 @@ public class Comment {
         this.text = text;
     }
 
-    String lastedited_user;
 }

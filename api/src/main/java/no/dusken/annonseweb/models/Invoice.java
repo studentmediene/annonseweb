@@ -13,14 +13,14 @@ public class Invoice extends DuskenObject{
     private long ID;
 
     private Sale sale;
-    private String invoice_label;
-    private long invoice_nr;
+    private String invoiceLabel;
+    private long invoiceNr;
 
-    private Date invoice_date;
-    private Date created_date;
-    private String created_user;
-    private Date lastedited_date;
-    private String lastedited_user;
+    private Date invoiceDate;
+    private Date createdDate;
+    private String createdUser;
+    private Date lastEditedDate;
+    private String lastEditedUser;
 
     public Invoice(long ID) {
         this.ID = ID;

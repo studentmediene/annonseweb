@@ -1,17 +1,16 @@
 package no.dusken.annonseweb.models;
 
+import no.dusken.common.model.DuskenObject;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class ContactNote {
-    @Id
-    @GeneratedValue
-    private long ID;
+public class ContactNote extends DuskenObject{
 
     private Customer customer;
     private ContactPerson contactPerson;
 
-    private String Method; //email,telephonenumber or in person
+    private String method; //email,telephonenumber or in person
     private String text;
 
     //should update ContactPerson last_contacted_time and last_contacted_user
@@ -19,14 +18,16 @@ public class ContactNote {
 
     public ContactNote(String text, String method, ContactPerson contactPerson, Customer customer) {
         this.text = text;
-        Method = method;
+        this.method = method;
         this.contactPerson = contactPerson;
         this.customer = customer;
     }
 
-    public long getID() {
-        return ID;
+    @Override
+    public String toString() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
+
 
     public Customer getCustomer() {
         return customer;
@@ -45,11 +46,11 @@ public class ContactNote {
     }
 
     public String getMethod() {
-        return Method;
+        return this.method;
     }
 
     public void setMethod(String method) {
-        Method = method;
+        this.method = method;
     }
 
     public String getText() {

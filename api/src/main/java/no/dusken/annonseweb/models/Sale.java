@@ -11,17 +11,16 @@ public class Sale {
     @GeneratedValue
     private long ID;
 
-    private String appointment_name;
+    private String appointmentName;
     private List<Ad>  ads;
     private Customer customer;
-    private long total_revenue;              //Automatically from the list of ads
 
-    private Date created_date;
-    private String created_user;
-    private Date lastedited_date;
-    private String lastedited_user;
+    private Date createdDate;
+    private String createdUser;
+    private Date lastEditedDate;
+    private String lastEditedUser;
 
-    private Boolean ad_delivered;
+    private Boolean adDelivered;
 
     //faktura
 }

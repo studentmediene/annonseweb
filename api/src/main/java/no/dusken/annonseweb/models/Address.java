@@ -1,63 +1,58 @@
 package no.dusken.annonseweb.models;
 
+import no.dusken.common.model.DuskenObject;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class Address {
+public class Address extends DuskenObject{
 
-    @Id
-    @GeneratedValue
-    private long ID;
+    private String personName;
+    private String streetName;
+    private String zipCode;
+    private String zipCounty;
 
-    private String person_name;
-    private String street_name;
-    private String zip_code;
-    private String zip_county;
-
-
-    public Address(String person_name, String street_name, String zip_code, String zip_county) {
-        this.person_name = person_name;
-        this.street_name = street_name;
-        this.zip_code = zip_code;
-        this.zip_county = zip_county;
+    public Address(String personName, String streetName, String zipCode, String zipCounty) {
+        this.personName = personName;
+        this.streetName = streetName;
+        this.zipCode = zipCode;
+        this.zipCounty = zipCounty;
     }
 
-
-
-    public long getID() {
-        return ID;
+    public String getPersonName() {
+        return personName;
     }
 
-
-    public String getPerson_name() {
-        return person_name;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setPerson_name(String person_name) {
-        this.person_name = person_name;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public String getStreet_name() {
-        return street_name;
+    public String getZipCounty() {
+        return zipCounty;
     }
 
-    public void setStreet_name(String street_name) {
-        this.street_name = street_name;
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 
-    public String getZip_code() {
-        return zip_code;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
-    public void setZip_code(String zip_code) {
-        this.zip_code = zip_code;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public String getZip_county() {
-        return zip_county;
+    public void setZipCounty(String zipCounty) {
+        this.zipCounty = zipCounty;
     }
 
-    public void setZip_county(String zip_county) {
-        this.zip_county = zip_county;
+    @Override
+    public String toString() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -1,119 +1,127 @@
 package no.dusken.annonseweb.models;
 
+import no.dusken.common.model.DuskenObject;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
-public class Customer {
+public class Customer extends DuskenObject{
 
     @Id
     @GeneratedValue
     private long customerNumber;
 
     private String customerName;
-    private String central_email;
-    private String central_tlf;
-    private String invoice_adress;
-    private String abonnent_adress;
+    private String centralEmail;
+    private String centralTlf;
+    private String invoiceAddress;
+    private String subscriberAddress;
 
 
     private int discount;
-    private List<String> industry_tags;
+    private List<String> industryTags;
 
-    private Date created_date;
-    private String created_user;
-    private Date lastedited_date;
-    private String lastedited_user;
+    private Date createdDate;
+    private String createdUser;
+    private Date lasteditedDate;
+    private String lasteditedUser;
 
-    public Customer(String customerName, String central_email, String central_tlf, String invoice_adress, String abonnent_adress) {
-        this.customerName = customerName;
-        this.central_email = central_email;
-        this.central_tlf = central_tlf;
-        this.invoice_adress = invoice_adress;
-        this.abonnent_adress = abonnent_adress;
-    }
 
     /*public String getInfo(){    //What is needed here, organized differently in web development?
         return "Customer name: " + customerName + "\n"
     }  */
 
-    public void addIndustry_tags(String industry_tag){
-        this.industry_tags.add(industry_tag);
+    public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
+                    String subscriberAddress, int discount, List<String> industryTags) {
+        this.customerName = customerName;
+        this.centralEmail = centralEmail;
+        this.centralTlf = centralTlf;
+        this.invoiceAddress = invoiceAddress;
+        this.subscriberAddress = subscriberAddress;
+        this.discount = discount;
+        this.industryTags = industryTags;
     }
 
-    public void removeIndustry_tags(String industry_tag){
-        this.industry_tags.remove(industry_tag);
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setCentralEmail(String centralEmail) {
+        this.centralEmail = centralEmail;
+    }
+
+    public void setCentralTlf(String centralTlf) {
+        this.centralTlf = centralTlf;
+    }
+
+    public void setInvoiceAddress(String invoiceAddress) {
+        this.invoiceAddress = invoiceAddress;
+    }
+
+    public void setSubscriberAddress(String subscriberAddress) {
+        this.subscriberAddress = subscriberAddress;
     }
 
     public void setDiscount(int discount) {
         this.discount = discount;
     }
 
-    public void setCentral_email(String central_email) {
-        this.central_email = central_email;
-    }
-
-    public void setCentral_tlf(String central_tlf) {
-        this.central_tlf = central_tlf;
-    }
-
-    public void setInvoice_adress(String invoice_adress) {
-        this.invoice_adress = invoice_adress;
-    }
-
-    public void setAbonnent_adress(String abonnent_adress) {
-        this.abonnent_adress = abonnent_adress;
-    }
-
-    public String getCustomerName() {
-
-        return customerName;
-    }
-
-    public String getCentral_email() {
-        return central_email;
-    }
-
-    public String getCentral_tlf() {
-        return central_tlf;
-    }
-
-    public String getInvoice_adress() {
-        return invoice_adress;
-    }
-
-    public String getAbonnent_adress() {
-        return abonnent_adress;
-    }
-
-    public List getIndustry_tags() {
-        return industry_tags;
-    }
-
-    public Date getCreated_date() {
-        return created_date;
-    }
-
-    public String getCreated_user() {
-        return created_user;
-    }
-
-    public Date getLastedited_date() {
-        return lastedited_date;
-    }
-
-    public String getLastedited_user() {
-        return lastedited_user;
+    public void setIndustryTags(List<String> industryTags) {
+        this.industryTags = industryTags;
     }
 
     public long getCustomerNumber() {
-
         return customerNumber;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCentralEmail() {
+        return centralEmail;
+    }
+
+    public String getCentralTlf() {
+        return centralTlf;
+    }
+
+    public String getInvoiceAddress() {
+        return invoiceAddress;
+    }
+
+    public String getSubscriberAddress() {
+        return subscriberAddress;
     }
 
     public int getDiscount() {
         return discount;
     }
 
+    public List<String> getIndustryTags() {
+        return industryTags;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public String getCreatedUser() {
+        return createdUser;
+    }
+
+    public Date getLasteditedDate() {
+        return lasteditedDate;
+    }
+
+    public String getLasteditedUser() {
+        return lasteditedUser;
+    }
+
+    @Override
+    public String toString() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
