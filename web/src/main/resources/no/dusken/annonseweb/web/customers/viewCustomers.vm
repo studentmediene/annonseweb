@@ -8,4 +8,8 @@
             #end
         </div>
     </div>
+
+    <div id="sidebar">
+        <page:applyDecorator name="blank" page="/sidebar.do"/>
+    </div>
 </div>

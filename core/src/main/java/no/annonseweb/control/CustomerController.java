@@ -14,14 +14,22 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 @Controller
 public class CustomerController{
 
+    @RequestMapping("/customerHome")
+    public String viewCustomerHome(){
+        return "no/dusken/annonseweb/web/customers/customerHome";
+    }
+
+    @RequestMapping("/newCustomer")
+    public String viewNewCustomer(){
+        return "no/dusken/annonseweb/web/customers/newCustomer";
+    }
+
+
     @RequestMapping("/viewCustomers")
     public String viewCustomers(){
         return "no/dusken/annonseweb/web/customers/viewCustomers";
     }
 
-    @RequestMapping("/customerHome")
-    public String viewCustomerHome(){
-        return "no/dusken/annonseweb/web/customers/customerHome";
-    }
+
 }
 

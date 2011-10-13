@@ -1,0 +1,12 @@
+<div id="sidebar">
+    <h2>Valg</h2>     <!--     <h2 class="title"><a href="#">Valg</a></h2> -->
+    <p>
+        <a href="/customerHome.do">Kunder</a>
+        <br> <br>
+        WORK IN PROGRESS
+        <br>
+        <br>
+        Logget inn som: <br>
+        //oppdateres automatisk//
+    </p>
+</div>
