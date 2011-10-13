@@ -26,7 +26,7 @@ public class InvoiceController {
         /*Invoice invoice = new Invoice(253L);
         model.addAttribute("InvoiceList", invoice);
         System.out.println(invoice);        */
-        return "no/dusken/annonseweb/web/invoiceList";
+        return "no/dusken/annonseweb/web/invoices/invoiceList";
     }
     /*
     @Required
