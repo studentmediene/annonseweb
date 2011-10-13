@@ -28,6 +28,11 @@ public class InvoiceController {
         System.out.println(invoice);        */
         return "no/dusken/annonseweb/web/invoices/invoiceList";
     }
+
+    @RequestMapping("/invoiceHome")
+    public String viewInvoiceHome(Model model){
+        return "no/dusken/annonseweb/web/invoices/invoiceHome";
+    }
     /*
     @Required
     public void setInvoiceService(InvoiceService invoiceService){

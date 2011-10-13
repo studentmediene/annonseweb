@@ -19,6 +19,12 @@ public class SalesController{
         return "no/dusken/annonseweb/web/sales/viewSales";
     }
 
+
+    @RequestMapping("/saleHome")
+    public String viewSaleHome(){
+        return "no/dusken/annonseweb/web/sales/saleHome";
+    }
+
     /*
     map.put(Sales, salesList);
     return new ModelAndView(ARTICLEVIEW, map);

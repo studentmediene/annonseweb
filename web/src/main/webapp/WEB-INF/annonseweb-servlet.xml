@@ -36,6 +36,11 @@
 
     <bean id="viewContactController" class="no.annonseweb.control.ContactController" />      <!-- added 13.okt -->
 
+    <bean id="viewAdController" class="no.annonseweb.control.AdController" />               <!-- added 13.okt -->
+
+    <bean id="viewStatisticsController" class="no.annonseweb.control.StatisticsController" />
+
+
     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
         <property name="mailAddress" value="${mailadress}"/>
         <property name="mailSender" ref="mailController"/>

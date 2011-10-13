@@ -18,8 +18,8 @@ public class ContactController {
         return "no/dusken/annonseweb/web/contacts/viewContact";
     }
 
-    @RequestMapping("/ContactsHome")
+    @RequestMapping("/contactsHome")
     public String viewContactsHome(){
-        return "no/dusken/annonseweb/web/contacts/ContactHome";
+        return "no/dusken/annonseweb/web/contacts/contactHome";
     }
 }
