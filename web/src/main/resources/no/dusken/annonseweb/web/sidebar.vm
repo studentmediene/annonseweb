@@ -1,12 +1,13 @@
-<div id="sidebar">
-    <h2>Valg</h2>     <!--     <h2 class="title"><a href="#">Valg</a></h2> -->
+<nav id="sidebar">
+    <h2>Kunder</h2>
+    <ul>
+        <li><a href="/newCustomer.do">Ny kunde</a></li>
+        <li><a href="/viewCustomers.do">Kundeliste</a></li>
+        <li><a href="/viewCustomers.do">Søk etter kunde</a></li>
+        <li><a href="/viewCustomers.do">Email til alle</a></li>
+    </ul>
     <p>
-        <a href="/customerHome.do">Kunder</a>
-        <br> <br>
-        WORK IN PROGRESS
-        <br>
-        <br>
-        Logget inn som: <br>
+        Logget inn som:    <br>
         //oppdateres automatisk//
     </p>
-</div>
+</nav>
