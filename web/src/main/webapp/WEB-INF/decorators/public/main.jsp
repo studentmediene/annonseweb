@@ -56,10 +56,11 @@
 		</ul>
 	</div>
 
+
+
 	<!-- end #menu -->
-    <!--<div id="sidebar">
-    <!--    <!--page:applyDecorator name="blank" page="/sidebar.do"/>   -->
-    <!--</div>    -->
+
+
 	<div id="page">
 	    <div id="page-bgtop">
 	        <div id="page-bgbtm">
@@ -67,6 +68,9 @@
 	        </div>
         </div>
 	</div>
+    <nav id="sidebar">
+        <page:applyDecorator name="blank" page="/sidebar.do"/>
+    </nav>
 	<!-- end #page -->
 </div>
 	<div id="footer">

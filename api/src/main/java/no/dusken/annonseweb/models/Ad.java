@@ -5,7 +5,7 @@ import no.dusken.common.model.DuskenObject;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class Ad extends DuskenObject {       //Parent class, should not be used alone
+public class Ad extends DuskenObject {
 
     private long price;
     private long discount;  //Automatically from customers?
