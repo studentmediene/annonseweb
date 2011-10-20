@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
+@RequestMapping("/customers")
 public class CustomerController{
 
     @RequestMapping("/customerHome")
@@ -27,10 +28,19 @@ public class CustomerController{
 
 
     @RequestMapping("/viewCustomers")
-    public String viewCustomers(){
+    public String viewCustomerList(){
         return "no/dusken/annonseweb/web/customers/viewCustomers";
     }
 
+    @RequestMapping("/searchCustomer")
+    public String viewSearchCustomer(){
+        return "no/dusken/annonseweb/web/customers/searchCustomer";
+    }
+
+    @RequestMapping("/emailCustomers")
+    public String viewEmailsCustomers(){
+        return "no/dusken/annonseweb/web/customers/emailCustomers";
+    }
 
 }
 

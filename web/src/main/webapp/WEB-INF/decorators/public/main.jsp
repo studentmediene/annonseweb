@@ -46,8 +46,8 @@
 	<div id="menu">
 		<ul>
             <li><a href="<%=request.getContextPath() %>/">Hjem</a></li>
-            <li><a href="<%=request.getContextPath() %>/customerHome.do">Kunder</a></li>
-            <li><a href="<%=request.getContextPath() %>/contactsHome.do">Kontakter</a></li>
+            <li><a href="<%=request.getContextPath() %>/customers/customerHome.do">Kunder</a></li>
+            <li><a href="<%=request.getContextPath() %>/contacts/contactsHome.do">Kontakter</a></li>
             <li><a href="<%=request.getContextPath() %>/adHome.do">Annonser</a></li>
             <li><a href="<%=request.getContextPath() %>/saleHome.do">Salg</a></li>
             <li><a href="<%=request.getContextPath() %>/invoiceHome.do">Fakturaer</a></li>
