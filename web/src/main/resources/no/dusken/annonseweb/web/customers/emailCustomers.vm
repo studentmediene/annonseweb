@@ -1,9 +1,9 @@
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Customer List</a></h2>
+        <h2 class="title"><a href="#">Email-liste til alle kunder</a></h2>
         <div class="entry">
             <p>
-                Gui for ny kunde...
+                Liste over emailer til alle kundene
             </p>
         </div>
     </div>
