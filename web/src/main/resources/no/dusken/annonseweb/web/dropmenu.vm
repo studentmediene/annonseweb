@@ -26,7 +26,7 @@
                 <a href="#">Søk etter kontaktperson</a>
             </div>
         </li>
-        <li><a href="/adHome.do"
+        <li><a href="/ads/adHome.do"
                onmouseover="openMenu('dropmenu3')"
                onmouseout="setClosing()">Annonser</a>
             <div id="dropmenu3"
