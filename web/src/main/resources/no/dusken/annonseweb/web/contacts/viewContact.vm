@@ -8,3 +8,19 @@
         </div>
     </div>
 </div>
+
+
+
+<nav id="sidebar">
+    <h2>Kontakter</h2>
+        <ul>
+            <li><a href="/contacts/newContact.do">Ny kontakt</a></li>
+            <li><a href="/contacts/newContactPerson.do">Ny kontaktperson</a></li>
+            <li><a href="/contacts/viewContactPersons.do">Kontaktpersonliste</a></li>
+            <li><a href="/contacts/searchContact.do">Søk etter kontaktperson</a></li>
+        </ul>
+     <p>
+        Logget inn som:    <br>
+        //oppdateres automatisk//
+    </p>
+</nav>

@@ -2,7 +2,6 @@ package no.annonseweb.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +11,24 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
+@RequestMapping("/sales")
 public class SalesController{
+
+    @RequestMapping("/saleHome")
+    public String viewSaleHome(){
+        return "no/dusken/annonseweb/web/sales/saleHome";
+    }
+
+    @RequestMapping("/searchSale")
+    public String viewSearchSales(){
+        return "no/dusken/annonseweb/web/sales/searchSale";
+    }
+
+
+    @RequestMapping("/newSale")
+    public String viewNewSales(){
+        return "no/dusken/annonseweb/web/sales/newSale";
+    }
 
     @RequestMapping("/viewSales")
     public String viewSales(){
@@ -20,9 +36,9 @@ public class SalesController{
     }
 
 
-    @RequestMapping("/saleHome")
-    public String viewSaleHome(){
-        return "no/dusken/annonseweb/web/sales/saleHome";
+    @RequestMapping("/editSales")
+    public String viewEditSales(){
+        return "no/dusken/annonseweb/web/sales/editSales";
     }
 
     /*
