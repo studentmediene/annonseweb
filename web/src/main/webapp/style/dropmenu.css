@@ -1,0 +1,54 @@
+#menu
+{
+    margin: 0px;
+    padding: 0px 0px 30px 0px;
+}
+
+#menu li
+{
+	list-style: none;
+	float: left;
+    width: 107px;
+    border: 2px solid #1E1E1E;
+}
+
+#menu li a
+{
+    display: block;
+	margin: 2px 2px 2px 2px;
+	padding: 10px 16px;
+	width: 10px;
+	background: #1E1E1E;
+	color: #FFFFFF;
+	text-align: center;
+    font: 30px Times New Roman;
+}
+
+#menu li a:hover
+{
+    background: #A5A5A5
+}
+
+#menu li div
+{
+    position: absolute;
+    visibility: hidden;
+	background: #A5A5A5;
+	border: 2px solid #1E1E1E
+}
+
+	#menu div a
+	{
+		padding: 10px 12px;
+		width: auto;
+		text-align: left;
+		background: #1E1E1E;
+		color: #FFFFFF;
+		font: 14px Times New Roman
+    }
+
+	#menu div a:hover
+	{
+        background: #A5A5A5;
+		color: #FFFFFF
+    }

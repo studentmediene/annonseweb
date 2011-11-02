@@ -28,7 +28,9 @@
 <body>
 <div id="wrapper">
 	<div id="header">
+        <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
 	    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/dropmenu.css">       
 		<div id="logo">
 			<h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
 			<p><a href="https://underdusken.no/redmine/">et Under Dusken-Data produkt!</a></p>
@@ -43,18 +45,11 @@
 		</div>
 	</div>
 	<!-- end #header -->
-	<div id="menu">
-		<ul>
-            <li><a href="<%=request.getContextPath() %>/">Hjem</a></li>
-            <li><a href="<%=request.getContextPath() %>/customers/customerHome.do">Kunder</a></li>
-            <li><a href="<%=request.getContextPath() %>/contacts/contactsHome.do">Kontakter</a></li>
-            <li><a href="<%=request.getContextPath() %>/ads/adHome.do">Annonser</a></li>
-            <li><a href="<%=request.getContextPath() %>/sales/saleHome.do">Salg</a></li>
-            <li><a href="<%=request.getContextPath() %>/invoiceHome.do">Fakturaer</a></li>
-            <li><a href="<%=request.getContextPath() %>/statisticsHome.do">Statistikk</a></li>
-            <li><a href="<%=request.getContextPath() %>/annonseweb_logout">Logg ut</a></li>
-		</ul>
-	</div>
+
+    <nav id="menu">
+        <page:applyDecorator name="blank" page="/menu.do"/>    
+    </nav>
+
 
 
 

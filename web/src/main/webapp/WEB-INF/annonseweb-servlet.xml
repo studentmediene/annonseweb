@@ -42,6 +42,8 @@
     <bean id="viewStatisticsController" class="no.annonseweb.control.StatisticsController" />
 
     <bean id="viewSidebarController" class="no.annonseweb.control.SidebarController" />
+    
+    <bean id="viewMenuController" class="no.annonseweb.control.MenuController" />
 
 
     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
