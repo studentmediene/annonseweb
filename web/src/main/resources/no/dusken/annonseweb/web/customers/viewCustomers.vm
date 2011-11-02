@@ -1,6 +1,6 @@
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Customer List</a></h2>
+        <h2 class="title"><a href="#">Kundeliste</a></h2>
         <div class="entry">
             #foreach( $customer in $customerList)
                 <p class="meta">$customer.meta</p>  end
@@ -9,3 +9,18 @@
         </div>
     </div>
 </div>
+
+
+<nav id="sidebar">
+    <h2>Kunder</h2>
+    <ul>
+        <li><a href="/customers/newCustomer.do">Ny kunde</a></li>
+        <li><a href="/customers/viewCustomers.do">Kundeliste</a></li>
+        <li><a href="/customers/searchCustomer.do">Søk etter kunde</a></li>
+        <li><a href="/customers/emailCustomers.do">Email til alle</a></li>
+    </ul>
+    <p>
+        Logget inn som:    <br>
+        //oppdateres automatisk//
+    </p>
+</nav>

@@ -8,3 +8,17 @@
         </div>
     </div>
 </div>
+
+<nav id="sidebar">
+    <h2>Kunder</h2>
+    <ul>
+        <li><a href="/customers/newCustomer.do">Ny kunde</a></li>
+        <li><a href="/customers/viewCustomers.do">Kundeliste</a></li>
+        <li><a href="/customers/searchCustomer.do">Søk etter kunde</a></li>
+        <li><a href="/customers/emailCustomers.do">Email til alle</a></li>
+    </ul>
+    <p>
+        Logget inn som:    <br>
+        //oppdateres automatisk//
+    </p>
+</nav>

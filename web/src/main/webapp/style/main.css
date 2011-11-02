@@ -301,18 +301,12 @@ a:hover {
 }
 
 #sidebar li ul {
-	margin-bottom: 30px;
-	padding: 0px 20px 20px 20px;
+	padding: 0px 0px 0px 0px;
 	background: #FFFFFF;
-	border-left: 1px solid #D6E6CC;
-	border-right: 1px solid #D6E6CC;
-	border-bottom: 1px solid #D6E6CC;
 }
 
 #sidebar li li {
-	line-height: 35px;
-	border-bottom: 1px dashed #D1D1D1;
-	padding-left: 3px;
+	padding-left: 15px;
 }
 
 #sidebar li li span {
