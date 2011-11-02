@@ -1,0 +1,76 @@
+<div id="menu">
+    <ul>
+        <li><a href="/">Hjem</a>
+        </li>
+        <li><a href="/customers/customerHome.do"
+               onmouseover="openMenu('dropmenu1')"
+               onmouseout="setClosing()">Kunder</a>
+            <div id="dropmenu1"
+                 onmouseover="stayOpen('dropmenu1')"
+                 onmouseout="setClosing()">
+                <a href="/customers/newCustomer.do">Ny kunde</a>
+                <a href="/customers/viewCustomers.do">Kundeliste</a>
+                <a href="/customers/searchCustomer.do">Søk etter kunde</a>
+                <a href="/customers/emailCustomers.do">Email for alle</a>
+            </div>
+        </li>
+        <li><a href="/contacts/contactsHome.do"
+               onmouseover="openMenu('dropmenu2')"
+               onmouseout="setClosing()">Kontakter</a>
+            <div id="dropmenu2"
+                 onmouseover="stayOpen('dropmenu2')"
+                 onmouseout="setClosing()">
+                <a href="#">Ny kontakt</a>
+                <a href="#">Ny kontaktperson</a>
+                <a href="#">Kontaktpersonliste</a>
+                <a href="#">Søk etter kontaktperson</a>
+            </div>
+        </li>
+        <li><a href="/adHome.do"
+               onmouseover="openMenu('dropmenu3')"
+               onmouseout="setClosing()">Annonser</a>
+            <div id="dropmenu3"
+                 onmouseover="stayOpen('dropmenu3')"
+                 onmouseout="setClosing()">
+                <a href="#">Ny annonse</a>
+                <a href="#">Annonseoversikt</a>
+                <a href="#">Søk etter annonse</a>
+            </div>
+        </li>
+        <li><a href="/saleHome.do"
+               onmouseover="openMenu('dropmenu4')"
+               onmouseout="setClosing()">Salg</a>
+            <div id="dropmenu4"
+                 onmouseover="stayOpen('dropmenu4')"
+                 onmouseout="setClosing()">
+                <a href="#">Nytt salg</a>
+                <a href="#">Salgsliste</a>
+                <a href="#">Søk etter salg</a>
+            </div>
+        </li>
+        <li><a href="/invoiceHome.do"
+               onmouseover="openMenu('dropmenu5')"
+               onmouseout="setClosing()">Faktura</a>
+            <div id="dropmenu5"
+                 onmouseover="stayOpen('dropmenu5')"
+                 onmouseout="setClosing()">
+                <a href="#">Ny faktura</a>
+                <a href="#">Fakturaliste</a>
+                <a href="#">Søk etter faktura</a>
+            </div>
+        </li>
+        <li><a href="/statisticsHome.do"
+               onmouseover="openMenu('dropmenu6')"
+               onmouseout="setClosing()">Statistikk</a>
+            <div id="dropmenu6"
+                 onmouseover="stayOpen('dropmenu6')"
+                 onmouseout="setClosing()">
+                <a href="#">Omsetning</a>
+                <a href="#">Antall annonsesider</a>
+                <a href="#">Aktive nettannonser</a>
+            </div>
+        </li>
+        <li><a href="/annonseweb_logout">Logg ut</a>
+        </li>
+    </ul>
+</div>
