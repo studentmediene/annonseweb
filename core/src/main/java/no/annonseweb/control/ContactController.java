@@ -14,35 +14,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/contacts")
 public class ContactController {
 
-
-
     @RequestMapping("/contactsHome")
     public String viewContactsHome(){
-        return "no/dusken/annonseweb/web/contacts/contactHome";
+        return "contacts/contactHome";
     }
 
     @RequestMapping("/viewContacts")
     public String viewContacts(){
-        return "no/dusken/annonseweb/web/contacts/viewContact";
+        return "contacts/viewContact";
     }
 
     @RequestMapping("/newContact")
     public String viewNewContacts(){
-        return "no/dusken/annonseweb/web/contacts/newContact";
+        return "contacts/newContact";
     }
 
     @RequestMapping("/newContactPerson")
     public String viewNewContactPerson(){
-        return "no/dusken/annonseweb/web/contacts/newContactPerson";
+        return "contacts/newContactPerson";
     }
 
     @RequestMapping("/searchContact")
     public String viewSearchContacts(){
-        return "no/dusken/annonseweb/web/contacts/searchContact";
+        return "contacts/searchContact";
     }
 
     @RequestMapping("/viewContactPersons")
     public String viewContactPersons(){
-        return "no/dusken/annonseweb/web/contacts/viewContactPersons";
+        return "contacts/viewContactPersons";
     }
 }

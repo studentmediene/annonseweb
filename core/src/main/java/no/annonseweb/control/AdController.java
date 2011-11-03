@@ -16,37 +16,37 @@ public class AdController {
 
     @RequestMapping("/adHome")
     public String viewAdHome(){
-        return "no/dusken/annonseweb/web/ads/adHome";
+        return "ads/adHome";
     }
 
     @RequestMapping("/newAdGeneral")
     public String viewNewAdGeneral(){
-        return "no/dusken/annonseweb/web/ads/newAdGeneral";
+        return "ads/newAdGeneral";
     }
 
     @RequestMapping("/newAdDuskenPaper")
     public String viewNewAdDuskenPaper(){
-        return "no/dusken/annonseweb/web/ads/newAdDuskenPaper";
+        return "ads/newAdDuskenPaper";
     }
 
     @RequestMapping("/newAdDuskenNett")
     public String viewNewAdDuskenNett(){
-        return "no/dusken/annonseweb/web/ads/newAdDuskenNett";
+        return "ads/newAdDuskenNett";
     }
 
     @RequestMapping("/newAdRadioRevolt")
     public String viewNewAdRadioRevolt(){
-        return "no/dusken/annonseweb/web/ads/newAdRadioRevolt";
+        return "ads/newAdRadioRevolt";
     }
 
     @RequestMapping("/newAdStudentTV")
     public String viewNewAdStudentTV(){
-        return "no/dusken/annonseweb/web/ads/newAdStudentTV";
+        return "ads/newAdStudentTV";
     }
 
     @RequestMapping("/viewActiveAds")
     public String viewActiveAds(){
-        return "no/dusken/annonseweb/web/ads/viewActiveAds";
+        return "ads/viewActiveAds";
     }
 }
 

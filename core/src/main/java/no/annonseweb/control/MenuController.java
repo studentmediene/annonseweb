@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MenuController {
     @RequestMapping("/menu")
     public String ViewMenu(){
-        return "no/dusken/annonseweb/web/dropmenu";
+        return "dropmenu";
     }
 
 }

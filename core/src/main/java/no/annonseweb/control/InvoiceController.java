@@ -1,12 +1,9 @@
 package no.annonseweb.control;
 
-import no.dusken.annonseweb.models.Invoice;
 import no.dusken.annonseweb.service.InvoiceService;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,12 +23,12 @@ public class InvoiceController {
         /*Invoice invoice = new Invoice(253L);
         model.addAttribute("InvoiceList", invoice);
         System.out.println(invoice);        */
-        return "no/dusken/annonseweb/web/invoices/invoiceList";
+        return "invoices/invoiceList";
     }
 
     @RequestMapping("/invoiceHome")
     public String viewInvoiceHome(Model model){
-        return "no/dusken/annonseweb/web/invoices/invoiceHome";
+        return "invoices/invoiceHome";
     }
     /*
     @Required

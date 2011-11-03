@@ -37,7 +37,7 @@
                 <a href="#">Søk etter annonse</a>
             </div>
         </li>
-        <li><a href="/saleHome.do"
+        <li><a href="/sales/saleHome.do"
                onmouseover="openMenu('dropmenu4')"
                onmouseout="setClosing()">Salg</a>
             <div id="dropmenu4"

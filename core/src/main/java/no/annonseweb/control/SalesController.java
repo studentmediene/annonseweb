@@ -16,29 +16,29 @@ public class SalesController{
 
     @RequestMapping("/saleHome")
     public String viewSaleHome(){
-        return "no/dusken/annonseweb/web/sales/saleHome";
+        return "sales/saleHome";
     }
 
     @RequestMapping("/searchSale")
     public String viewSearchSales(){
-        return "no/dusken/annonseweb/web/sales/searchSale";
+        return "sales/searchSale";
     }
 
 
     @RequestMapping("/newSale")
     public String viewNewSales(){
-        return "no/dusken/annonseweb/web/sales/newSale";
+        return "sales/newSale";
     }
 
     @RequestMapping("/viewSales")
     public String viewSales(){
-        return "no/dusken/annonseweb/web/sales/viewSales";
+        return "sales/viewSales";
     }
 
 
     @RequestMapping("/editSales")
     public String viewEditSales(){
-        return "no/dusken/annonseweb/web/sales/editSales";
+        return "sales/editSales";
     }
 
     /*
