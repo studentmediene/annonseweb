@@ -2,7 +2,6 @@ package no.annonseweb.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,29 +16,29 @@ public class CustomerController{
 
     @RequestMapping("/customerHome")
     public String viewCustomerHome(){
-        return "no/dusken/annonseweb/web/customers/customerHome";
+        return "customers/customerHome";
     }
 
 
     @RequestMapping("/newCustomer")
     public String viewNewCustomer(){
-        return "no/dusken/annonseweb/web/customers/newCustomer";
+        return "customers/newCustomer";
     }
 
 
     @RequestMapping("/viewCustomers")
     public String viewCustomerList(){
-        return "no/dusken/annonseweb/web/customers/viewCustomers";
+        return "customers/viewCustomers";
     }
 
     @RequestMapping("/searchCustomer")
     public String viewSearchCustomer(){
-        return "no/dusken/annonseweb/web/customers/searchCustomer";
+        return "customers/searchCustomer";
     }
 
     @RequestMapping("/emailCustomers")
     public String viewEmailsCustomers(){
-        return "no/dusken/annonseweb/web/customers/emailCustomers";
+        return "customers/emailCustomers";
     }
 
 }

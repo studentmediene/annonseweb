@@ -15,6 +15,6 @@ public class SidebarController {
 
     @RequestMapping("/sidebar")
     public String viewSidebar(){
-        return "no/dusken/annonseweb/web/sidebar";
+        return "sidebar";
     }
 }

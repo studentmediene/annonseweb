@@ -67,4 +67,15 @@
     </bean>
 
     <context:component-scan base-package="no.dusken.annonseweb.web"/>
+
+    <!--<bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="no/dusken/annonseweb/web/"/>
+        <property name="suffix" value=".vm"/>
+    </bean>
+    -->
+
+
+
 </beans>

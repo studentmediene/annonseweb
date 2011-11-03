@@ -15,6 +15,6 @@ public class StatisticsController {
 
     @RequestMapping("/statisticsHome")
     public String viewStatisticsHome(){
-        return "no/dusken/annonseweb/web/statistics/statisticsHome";
+        return "statistics/statisticsHome";
     }
 }
