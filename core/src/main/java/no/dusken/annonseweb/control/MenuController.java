@@ -1,4 +1,4 @@
-package no.annonseweb.control;
+package no.dusken.annonseweb.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MenuController {
     @RequestMapping("/menu")
     public String ViewMenu(){
-        return "dropmenu";
+        return "menu";
     }
 
 }

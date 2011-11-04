@@ -27,35 +27,16 @@
         <property name="filename" value="annonseweb.conf" />
     </bean>
 
-    <bean id="welcomeController" class="no.annonseweb.control.WelcomeController"/>
-
-    <bean id="viewSalesController" class="no.annonseweb.control.SalesController" />
-
-    <bean id="viewCustomerController" class="no.annonseweb.control.CustomerController"/>
-
-    <bean id="viewInvoiceController" class="no.annonseweb.control.InvoiceController" />
-
-    <bean id="viewContactController" class="no.annonseweb.control.ContactController" />
-
-    <bean id="viewAdController" class="no.annonseweb.control.AdController" />
-
-    <bean id="viewStatisticsController" class="no.annonseweb.control.StatisticsController" />
-
-    <bean id="viewSidebarController" class="no.annonseweb.control.SidebarController" />
-    
-    <bean id="viewMenuController" class="no.annonseweb.control.MenuController" />
-
-
     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
         <property name="mailAddress" value="${mailadress}"/>
         <property name="mailSender" ref="mailController"/>
-        <property name="defaultErrorView" value="no/dusken/annonseweb/common/exception"/>
+        <property name="defaultErrorView" value="exception"/>
         <property name="fromAddress" value="www@underdusken.no"/>
         <property name="fromName" value="The AraneaMonster"/>
         <property name="exceptionMailTemplate" value="no/dusken/annonseweb/mail/exception.vm"/>
         <property name="exceptionMappings">
             <props>
-                <prop key="java.lang.Exception">no/dusken/annonseweb/common/exception</prop>
+                <prop key="java.lang.Exception">exception</prop>
             </props>
         </property>
         <property name="sendMail" value="${sendExceptionMail}"/>
@@ -66,16 +47,6 @@
         </property>
     </bean>
 
-    <context:component-scan base-package="no.dusken.annonseweb.web"/>
-
-    <!--<bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="no/dusken/annonseweb/web/"/>
-        <property name="suffix" value=".vm"/>
-    </bean>
-    -->
-
-
-
+    <context:component-scan base-package="no.dusken.annonseweb"/>
+    <mvc:annotation-driven/>
 </beans>

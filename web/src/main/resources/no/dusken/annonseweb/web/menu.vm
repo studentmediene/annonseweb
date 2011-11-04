@@ -55,7 +55,7 @@
                  onmouseover="stayOpen('dropmenu5')"
                  onmouseout="setClosing()">
                 <a href="#">Ny faktura</a>
-                <a href="#">Fakturaliste</a>
+                <a href="/invoiceList">Fakturaliste</a>
                 <a href="#">Søk etter faktura</a>
             </div>
         </li>
