@@ -1,4 +1,4 @@
-package no.annonseweb.control;
+package no.dusken.annonseweb.control;
 
 /**
  * Author: magnuskiro@underdusken.no

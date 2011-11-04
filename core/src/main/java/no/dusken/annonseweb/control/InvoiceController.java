@@ -1,17 +1,13 @@
-package no.annonseweb.control;
+package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.Invoice;
 import no.dusken.annonseweb.service.InvoiceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Created by IntelliJ IDEA.
- * User: kiro
- * Date: Nov 8, 2010
- * Time: 10:25:00 PM
- * To change this template use File | Settings | File Templates.
- */
+import java.util.List;
 
 @Controller
 public class InvoiceController {
@@ -20,9 +16,8 @@ public class InvoiceController {
 
     @RequestMapping("/invoiceList")
     public String listInvoices(Model model){
-        /*Invoice invoice = new Invoice(253L);
-        model.addAttribute("InvoiceList", invoice);
-        System.out.println(invoice);        */
+        List<Invoice> invoiceList = invoiceService.getInvoices();
+        model.addAttribute("InvoiceList", invoiceList);
         return "invoices/invoiceList";
     }
 
@@ -30,10 +25,10 @@ public class InvoiceController {
     public String viewInvoiceHome(Model model){
         return "invoices/invoiceHome";
     }
-    /*
-    @Required
+
+    @Autowired
     public void setInvoiceService(InvoiceService invoiceService){
         this.invoiceService = invoiceService;
-    }  */
+    }
 
 }

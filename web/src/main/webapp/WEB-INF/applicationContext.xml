@@ -149,7 +149,7 @@
     <aop:aspectj-autoproxy/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <context:component-scan base-package="no.dusken.common.dao,no.dusken.annonseweb.service"/>
+    <context:component-scan base-package="no.dusken.common.dao,no.dusken.annonseweb.service,no.dusken.annonseweb.service"/>
     
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
     

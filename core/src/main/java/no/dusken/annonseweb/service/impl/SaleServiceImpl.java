@@ -1,4 +1,4 @@
-package no.annonseweb.service.impl;
+package no.dusken.annonseweb.service.impl;
 
 import no.dusken.annonseweb.models.*;
 import no.dusken.annonseweb.service.SaleService;
