@@ -1,35 +1,31 @@
 package no.dusken.annonseweb.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Ad_UDprint extends Ad {
 
     public enum PrintFormat {VERTICAL,HORIZONTAL}
 
-    private long udNr;
+    @ManyToOne
+    private Issue issue;
+
     private PrintFormat printFormat;     //Updates price accordingly, or manually when created
 
     private Boolean placedRight;
     private Boolean placedEarly;
-    private long pageNumber;
+    private Integer pageNumber;
 
-    public Ad_UDprint(long price, long discount, String fileLocation, long udNr, PrintFormat printFormat,
-                      Boolean placedRight, Boolean placedEarly, long pageNumber) {
-        super(price, discount, fileLocation);
-        this.udNr = udNr;
-        this.printFormat = printFormat;
-        this.placedRight = placedRight;
-        this.placedEarly = placedEarly;
-        this.pageNumber = pageNumber;
+
+    public Ad_UDprint() {}
+
+    public Issue getIssue() {
+        return issue;
     }
 
-    public long getUdNr() {
-        return udNr;
-    }
-
-    public void setUdNr(long udNr) {
-        this.udNr = udNr;
+    public void setIssue(Issue issue) {
+        this.issue = issue;
     }
 
     public PrintFormat getPrintFormat() {
@@ -56,11 +52,11 @@ public class Ad_UDprint extends Ad {
         this.placedEarly = placedEarly;
     }
 
-    public long getPageNumber() {
+    public Integer getPageNumber() {
         return pageNumber;
     }
 
-    public void setPageNumber(long pageNumber) {
+    public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
     }
 }

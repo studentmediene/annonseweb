@@ -3,18 +3,21 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ContactNote extends DuskenObject{
 
+    @ManyToOne
     private Customer customer;
+
+    @ManyToOne
     private ContactPerson contactPerson;
 
     private String method; //email,telephonenumber or in person
     private String text;
 
-    //should update ContactPerson last_contacted_time and last_contacted_user
-
+    public ContactNote() {}
 
     public ContactNote(String text, String method, ContactPerson contactPerson, Customer customer) {
         this.text = text;
