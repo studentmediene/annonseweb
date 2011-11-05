@@ -2,9 +2,9 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 
+@Entity
 public class ContactNote extends DuskenObject{
 
     private Customer customer;
@@ -22,12 +22,6 @@ public class ContactNote extends DuskenObject{
         this.contactPerson = contactPerson;
         this.customer = customer;
     }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
 
     public Customer getCustomer() {
         return customer;

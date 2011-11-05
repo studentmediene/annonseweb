@@ -1,5 +1,8 @@
 package no.dusken.annonseweb.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Ad_UDprint extends Ad {
 
     public enum PrintFormat {VERTICAL,HORIZONTAL}

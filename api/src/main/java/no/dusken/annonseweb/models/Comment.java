@@ -2,10 +2,10 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
 public class Comment extends DuskenObject {
 
     private String text;
