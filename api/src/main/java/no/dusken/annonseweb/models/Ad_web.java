@@ -1,7 +1,9 @@
 package no.dusken.annonseweb.models;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
 public class Ad_web extends Ad {
 
     public enum Web_format {TOP_BANNER, MID_BANNER, SIDEBAR}

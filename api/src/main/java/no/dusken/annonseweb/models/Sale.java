@@ -1,15 +1,11 @@
 package no.dusken.annonseweb.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Sale {
-
-    @Id
-    @GeneratedValue
-    private long ID;
 
     private String appointmentName;
     private List<Ad>  ads;

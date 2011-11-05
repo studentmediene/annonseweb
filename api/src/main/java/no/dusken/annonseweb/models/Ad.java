@@ -2,13 +2,15 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Ad extends DuskenObject {
 
     private long price;
-    private long discount;  //Automatically from customers?
+    private long discount;
 
     private String fileLocation;   //for the ad image
 
@@ -17,11 +19,6 @@ public class Ad extends DuskenObject {
         this.price = price;
         this.discount = discount;
         this.fileLocation = fileLocation;
-    }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
 

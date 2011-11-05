@@ -2,9 +2,9 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 
+@Entity
 public class Address extends DuskenObject{
 
     private String personName;
@@ -49,10 +49,5 @@ public class Address extends DuskenObject{
 
     public void setZipCounty(String zipCounty) {
         this.zipCounty = zipCounty;
-    }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -2,16 +2,12 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Customer extends DuskenObject{
-
-    @Id
-    @GeneratedValue
-    private long customerNumber;
 
     private String customerName;
     private String centralEmail;
@@ -27,11 +23,6 @@ public class Customer extends DuskenObject{
     private String createdUser;
     private Date lasteditedDate;
     private String lasteditedUser;
-
-
-    /*public String getInfo(){    //What is needed here, organized differently in web development?
-        return "Customer name: " + customerName + "\n"
-    }  */
 
     public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
                     String subscriberAddress, int discount, List<String> industryTags) {
@@ -70,10 +61,6 @@ public class Customer extends DuskenObject{
 
     public void setIndustryTags(List<String> industryTags) {
         this.industryTags = industryTags;
-    }
-
-    public long getCustomerNumber() {
-        return customerNumber;
     }
 
     public String getCustomerName() {
@@ -118,10 +105,5 @@ public class Customer extends DuskenObject{
 
     public String getLasteditedUser() {
         return lasteditedUser;
-    }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

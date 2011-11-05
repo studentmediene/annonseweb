@@ -2,10 +2,10 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import java.util.Date;
 
+@Entity
 public class ContactPerson extends DuskenObject{
 
     private String personName;
@@ -83,11 +83,4 @@ public class ContactPerson extends DuskenObject{
     public void setActive(Boolean active) {
         this.active = active;
     }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-
 }
