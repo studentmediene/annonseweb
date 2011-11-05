@@ -3,7 +3,12 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 public class ContactPerson extends DuskenObject{
@@ -13,12 +18,15 @@ public class ContactPerson extends DuskenObject{
     private String telephoneNumber;
     private String companyPosition;
 
-    private Customer customer;
+    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
+    private List<Customer> customer;
 
     private Date lastContactedTime;
     private Date lastContactedUser;
 
     private Boolean active;
+
+    public ContactPerson() {}
 
     public ContactPerson(String personName, String email, String telephoneNumber, String companyPosition) {
         this.personName = personName;
@@ -42,10 +50,6 @@ public class ContactPerson extends DuskenObject{
 
     public String getCompanyPosition() {
         return companyPosition;
-    }
-
-    public Customer getCustomer() {
-        return customer;
     }
 
     public Date getLastContactedTime() {
@@ -76,11 +80,15 @@ public class ContactPerson extends DuskenObject{
         this.companyPosition = companyPosition;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public List<Customer> getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(List<Customer> customer) {
+        this.customer = customer;
     }
 }

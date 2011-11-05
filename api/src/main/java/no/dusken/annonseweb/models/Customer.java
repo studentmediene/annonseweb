@@ -3,8 +3,13 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 public class Customer extends DuskenObject{
@@ -18,6 +23,15 @@ public class Customer extends DuskenObject{
 
     private int discount;
     private List<String> industryTags;
+
+    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
+    private List<ContactNote> contactNotes;
+
+    @ManyToOne
+    private ContactPerson contactPerson;
+
+    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
+    private List<Sale> sales;
 
     private Date createdDate;
     private String createdUser;

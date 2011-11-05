@@ -12,6 +12,8 @@ public class Address extends DuskenObject{
     private String zipCode;
     private String zipCounty;
 
+    public Address() {}
+
     public Address(String personName, String streetName, String zipCode, String zipCounty) {
         this.personName = personName;
         this.streetName = streetName;

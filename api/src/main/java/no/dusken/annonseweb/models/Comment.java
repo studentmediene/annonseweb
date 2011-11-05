@@ -1,43 +1,24 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
+import no.dusken.common.model.Person;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Comment extends DuskenObject {
 
     private String text;
 
-    private Date createdDate;
-    private String createdUser;
-    private Date lastEditedDate;
-    private String lastEditedUser;
+    @ManyToOne
+    private Person createdBy;
 
-    public Comment(String text) {
+    public Comment() {}
+
+    public Comment(Person createdBy, String text) {
+        this.createdBy = createdBy;
         this.text = text;
-    }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public Date getLastEditedDate() {
-        return lastEditedDate;
-    }
-
-    public String getLastEditedUser() {
-        return lastEditedUser;
     }
 
     public String getText() {
@@ -49,4 +30,11 @@ public class Comment extends DuskenObject {
         this.text = text;
     }
 
+    public Person getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Person createdBy) {
+        this.createdBy = createdBy;
+    }
 }
