@@ -4,7 +4,9 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Calendar;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -18,9 +20,12 @@ public class Issue extends DuskenObject {
 
     private Integer issueNumber;
 
-    private Date fromDate;
-    private Date toDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar fromDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar toDate;
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "issue")
-    private List<Ad> ads;
+    private List<Ad_UDprint> ads;
 }

@@ -3,12 +3,14 @@ package no.dusken.annonseweb.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 public class Ad_UDprint extends Ad {
 
     public enum PrintFormat {VERTICAL,HORIZONTAL}
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL)
     private Issue issue;
 
     private PrintFormat printFormat;     //Updates price accordingly, or manually when created

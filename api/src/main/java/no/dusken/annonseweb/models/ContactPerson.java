@@ -3,12 +3,12 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Calendar;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 public class ContactPerson extends DuskenObject{
@@ -18,11 +18,14 @@ public class ContactPerson extends DuskenObject{
     private String telephoneNumber;
     private String companyPosition;
 
-    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
-    private List<Customer> customer;
+    @OneToOne(cascade = ALL)
+    private Customer customer;
 
-    private Date lastContactedTime;
-    private Date lastContactedUser;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lastContactedTime;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lastContactedUser;
 
     private Boolean active;
 
@@ -52,12 +55,20 @@ public class ContactPerson extends DuskenObject{
         return companyPosition;
     }
 
-    public Date getLastContactedTime() {
+    public Calendar getLastContactedTime() {
         return lastContactedTime;
     }
 
-    public Date getLastContactedUser() {
+    public void setLastContactedTime(Calendar lastContactedTime) {
+        this.lastContactedTime = lastContactedTime;
+    }
+
+    public Calendar getLastContactedUser() {
         return lastContactedUser;
+    }
+
+    public void setLastContactedUser(Calendar lastContactedUser) {
+        this.lastContactedUser = lastContactedUser;
     }
 
     public Boolean getActive() {
@@ -84,11 +95,11 @@ public class ContactPerson extends DuskenObject{
         this.active = active;
     }
 
-    public List<Customer> getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(List<Customer> customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 }

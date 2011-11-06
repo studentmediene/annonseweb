@@ -16,7 +16,7 @@ public class InvoiceController {
 
     @RequestMapping("/invoiceList")
     public String listInvoices(Model model){
-        List<Invoice> invoiceList = invoiceService.getInvoices();
+        List<Invoice> invoiceList = invoiceService.findAll();
         model.addAttribute("InvoiceList", invoiceList);
         return "invoices/invoiceList";
     }

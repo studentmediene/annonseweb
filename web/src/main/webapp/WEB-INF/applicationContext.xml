@@ -26,8 +26,8 @@
        default-autowire="byName">
 
     <bean id="pluginManagerAnnonsewebPlugin" class="no.dusken.common.plugin.spring.PluginManagerFactory">
-        <property name="servicesClass" value="no.dusken.annonseweb.plugin.AnnonsewebServices"/>
-        <property name="pluginClass" value="no.dusken.annonseweb.plugin.AnnonsewebPlugin"/>
+        <property name="servicesClass" value="AnnonsewebServices"/>
+        <property name="pluginClass" value="AnnonsewebPlugin"/>
         <property name="postProcessors">
                 <bean class="no.dusken.common.spring.AdditionalBeansExposingPostProcessor">
                     <property name="exposedBeanNames">
@@ -45,7 +45,7 @@
     </bean>
     
     <bean id="pluginManagerDuskenPlugin" class="no.dusken.common.plugin.spring.PluginManagerFactory">
-        <property name="servicesClass" value="no.dusken.annonseweb.plugin.AnnonsewebServices"/>
+        <property name="servicesClass" value="AnnonsewebServices"/>
         <property name="pluginClass" value="no.dusken.common.plugin.DuskenPlugin"/>
         <property name="postProcessors">
                 <bean class="no.dusken.common.spring.AdditionalBeansExposingPostProcessor">

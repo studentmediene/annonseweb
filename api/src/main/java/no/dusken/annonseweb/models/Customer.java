@@ -1,11 +1,11 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
+import no.dusken.common.model.Person;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.Date;
+import javax.persistence.*;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -20,26 +20,32 @@ public class Customer extends DuskenObject{
     private String invoiceAddress;
     private String subscriberAddress;
 
-
-    private int discount;
+    private BigInteger discount;
     private List<String> industryTags;
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<ContactNote> contactNotes;
 
-    @ManyToOne
+    @OneToOne(cascade = ALL)
     private ContactPerson contactPerson;
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales;
 
-    private Date createdDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar createdDate;
+
     private String createdUser;
-    private Date lasteditedDate;
-    private String lasteditedUser;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lasteditedDate;
+
+    private Person lasteditedUser;
+
+    public Customer() {}
 
     public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
-                    String subscriberAddress, int discount, List<String> industryTags) {
+                    String subscriberAddress, BigInteger discount, List<String> industryTags) {
         this.customerName = customerName;
         this.centralEmail = centralEmail;
         this.centralTlf = centralTlf;
@@ -69,7 +75,7 @@ public class Customer extends DuskenObject{
         this.subscriberAddress = subscriberAddress;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(BigInteger discount) {
         this.discount = discount;
     }
 
@@ -97,7 +103,7 @@ public class Customer extends DuskenObject{
         return subscriberAddress;
     }
 
-    public int getDiscount() {
+    public BigInteger getDiscount() {
         return discount;
     }
 
@@ -105,7 +111,7 @@ public class Customer extends DuskenObject{
         return industryTags;
     }
 
-    public Date getCreatedDate() {
+    public Calendar getCreatedDate() {
         return createdDate;
     }
 
@@ -113,11 +119,41 @@ public class Customer extends DuskenObject{
         return createdUser;
     }
 
-    public Date getLasteditedDate() {
+    public Calendar getLasteditedDate() {
         return lasteditedDate;
     }
 
-    public String getLasteditedUser() {
+    public List<ContactNote> getContactNotes() {
+        return contactNotes;
+    }
+
+    public void setContactNotes(List<ContactNote> contactNotes) {
+        this.contactNotes = contactNotes;
+    }
+
+    public ContactPerson getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(ContactPerson contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
+    }
+
+    public Person getLasteditedUser() {
         return lasteditedUser;
     }
+
+    public void setLasteditedUser(Person lasteditedUser) {
+        this.lasteditedUser = lasteditedUser;
+    }
+
+
 }

@@ -5,13 +5,15 @@ import no.dusken.common.model.DuskenObject;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 public class ContactNote extends DuskenObject{
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL)
     private Customer customer;
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL)
     private ContactPerson contactPerson;
 
     private String method; //email,telephonenumber or in person

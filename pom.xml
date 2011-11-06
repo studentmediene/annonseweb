@@ -34,6 +34,7 @@
         <module>core</module>
         <module>plugins</module>
         <module>web</module>
+        <module>plugin-api</module>
     </modules>
 
     <scm>

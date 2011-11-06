@@ -3,11 +3,9 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table
 public class Ad extends DuskenObject {
 
     private BigDecimal price;
