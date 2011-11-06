@@ -17,6 +17,7 @@ import java.math.BigInteger;
 import java.util.Collections;
 import java.util.LinkedList;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 
 /**
@@ -43,6 +44,8 @@ public class ServiceIntegrationTest {
         Sale sale = saleService.saveAndFlush(s);
         assertNotNull(sale);
         assertNotNull(sale.getId());
+        assertEquals(ad, sale.getAds().get(0));
+        assertEquals(customer, sale.getCustomer());
 
     }
 
