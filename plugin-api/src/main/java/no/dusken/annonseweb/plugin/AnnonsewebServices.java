@@ -1,7 +1,5 @@
 package no.dusken.annonseweb.plugin;
 
-import no.dusken.common.dao.GenericDao;
-import no.dusken.common.service.MailService;
 import org.kantega.jexmec.Services;
 import org.kantega.jexmec.store.PluginStoreProvider;
 
@@ -16,10 +14,4 @@ public interface AnnonsewebServices extends Services{
      * @return the PluginStoreProvider
      */
     PluginStoreProvider getPluginStoreProvider();
-
-    /**
-     * Provides access to the generic dao that can handle <T extends AraneaObject>
-     * @return the {@link GenericDao} dao
-     */
-    GenericDao getGenericDao();
 }
