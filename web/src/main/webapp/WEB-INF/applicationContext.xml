@@ -26,10 +26,10 @@
        default-autowire="byName">
 
     <bean id="pluginManagerAnnonsewebPlugin" class="no.dusken.common.plugin.spring.PluginManagerFactory">
-        <property name="servicesClass" value="AnnonsewebServices"/>
-        <property name="pluginClass" value="AnnonsewebPlugin"/>
+        <property name="servicesClass" value="no.dusken.annonseweb.plugin.AnnonsewebServices"/>
+        <property name="pluginClass" value="no.dusken.annonseweb.plugin.AnnonsewebPlugin"/>
         <property name="postProcessors">
-                <bean class="no.dusken.common.spring.AdditionalBeansExposingPostProcessor">
+                <bean class="no.dusken.common.plugin.spring.AdditionalBeansExposingPostProcessor">
                     <property name="exposedBeanNames">
                         <list>
                             <value>transactionManager</value>
@@ -45,10 +45,10 @@
     </bean>
     
     <bean id="pluginManagerDuskenPlugin" class="no.dusken.common.plugin.spring.PluginManagerFactory">
-        <property name="servicesClass" value="AnnonsewebServices"/>
+        <property name="servicesClass" value="no.dusken.annonseweb.plugin.AnnonsewebServices"/>
         <property name="pluginClass" value="no.dusken.common.plugin.DuskenPlugin"/>
         <property name="postProcessors">
-                <bean class="no.dusken.common.spring.AdditionalBeansExposingPostProcessor">
+                <bean class="no.dusken.common.plugin.spring.AdditionalBeansExposingPostProcessor">
                     <property name="exposedBeanNames">
                         <list>
                             <value>transactionManager</value>
@@ -149,7 +149,7 @@
     <aop:aspectj-autoproxy/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <context:component-scan base-package="no.dusken.common.dao,no.dusken.annonseweb.service,no.dusken.annonseweb.service"/>
+    <context:component-scan base-package="no.dusken.annonseweb.service"/>
     
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
     
