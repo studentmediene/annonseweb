@@ -2,10 +2,7 @@
     <div class="post">
         <h2 class="title"><a href="#">Kundeliste</a></h2>
         <div class="entry">
-            #foreach( $customer in $customerList)
-                <p class="meta">$customer.meta</p>  end
-                <p>$customer.info</p>
-            #end
+            <p>$customer.customerName</p>
         </div>
     </div>
 </div>

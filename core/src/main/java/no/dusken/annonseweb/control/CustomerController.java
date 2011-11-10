@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/customers")
 public class CustomerController{
 
-    @RequestMapping("/customerHome")
+    @RequestMapping("")
     public String viewCustomerHome(){
         return "customers/customerHome";
     }
 
 
-    @RequestMapping("/newCustomer")
+    @RequestMapping("/new")
     public String viewNewCustomer(){
         return "customers/newCustomer";
     }
 
 
-    @RequestMapping("/viewCustomers")
+    @RequestMapping("/all")
     public String viewCustomerList(){
         return "customers/viewCustomers";
     }
 
-    @RequestMapping("/searchCustomer")
+    @RequestMapping("/search")
     public String viewSearchCustomer(){
         return "customers/searchCustomer";
     }
 
-    @RequestMapping("/emailCustomers")
+    @RequestMapping("/emailList")
     public String viewEmailsCustomers(){
         return "customers/emailCustomers";
     }

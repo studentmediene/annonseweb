@@ -2,16 +2,16 @@
     <ul>
         <li><a href="/">Hjem</a>
         </li>
-        <li><a href="/customers/customerHome.do"
+        <li><a href="/customers.do"
                onmouseover="openMenu('dropmenu1')"
                onmouseout="setClosing()">Kunder</a>
             <div id="dropmenu1"
                  onmouseover="stayOpen('dropmenu1')"
                  onmouseout="setClosing()">
-                <a href="/customers/newCustomer.do">Ny kunde</a>
-                <a href="/customers/viewCustomers.do">Kundeliste</a>
-                <a href="/customers/searchCustomer.do">Søk etter kunde</a>
-                <a href="/customers/emailCustomers.do">Email for alle</a>
+                <a href="/customers/new.do">Ny kunde</a>
+                <a href="/customers/all.do">Kundeliste</a>
+                <a href="/customers/search.do">Søk etter kunde</a>
+                <a href="/customers/emailList.do">Email for alle</a>
             </div>
         </li>
         <li><a href="/contacts/contactsHome.do"
