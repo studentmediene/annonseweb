@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SidebarController {
 
-    @RequestMapping("/sidebar.do")
+    @RequestMapping("/sidebar")
     public String viewSidebar(){
         return "sidebar";
     }

@@ -47,6 +47,8 @@
         </property>
     </bean>
 
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
     <context:component-scan base-package="no.dusken.annonseweb"/>
     <mvc:annotation-driven/>
 </beans>

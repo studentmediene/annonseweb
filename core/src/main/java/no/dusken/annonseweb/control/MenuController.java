@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MenuController {
+
     @RequestMapping("/menu")
-    public String ViewMenu(){
+    public String viewMenu(){
         return "menu";
     }
 
