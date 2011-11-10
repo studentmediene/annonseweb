@@ -46,7 +46,7 @@
     </div>
 
     <nav id="menu">
-        <page:applyDecorator name="blank" page="/menu"/>
+        <page:applyDecorator name="blank" page="/annonse/menu"/>
     </nav>
 
     <div id="page">
@@ -58,7 +58,7 @@
     </div>
 
     <nav id="sidebar">
-        <page:applyDecorator name="blank" page="/sidebar"/>
+        <page:applyDecorator name="blank" page="/annonse/sidebar"/>
     </nav>
 
 </div>
