@@ -37,7 +37,7 @@ public class AdController {
         return "ads/newAdStudentTV";
     }
 
-    @RequestMapping("/viewActiveAds")
+    @RequestMapping("/viewActiveAds.d")
     public String viewActiveAds(){
         return "ads/viewActiveAds";
     }
