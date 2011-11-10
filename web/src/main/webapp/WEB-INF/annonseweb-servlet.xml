@@ -47,10 +47,6 @@
         </property>
     </bean>
 
-
-    <mvc:default-servlet-handler/>
-
-    <mvc:view-controller path="/" view-name="welcome"/>
     <context:component-scan base-package="no.dusken.annonseweb"/>
     <mvc:annotation-driven/>
 </beans>
