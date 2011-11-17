@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ads")
 public class AdController {
 
-    @RequestMapping("/adHome")
+    @RequestMapping("")
     public String viewAdHome(){
         return "ads/adHome";
     }
@@ -40,6 +40,11 @@ public class AdController {
     @RequestMapping("/viewActiveAds.d")
     public String viewActiveAds(){
         return "ads/viewActiveAds";
+    }
+
+    @RequestMapping("/searchAd")
+    public String searchAd(){
+        return "ads/searchAd";
     }
 }
 
