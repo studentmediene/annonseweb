@@ -1,14 +1,18 @@
 #menu
 {
     margin: 0px;
-    padding: 0px 0px 30px 0px;
+    padding: 0px 0px 20px 0px;
+}
+
+#menu div{
+
 }
 
 #menu li
 {
-	list-style: none;
+    list-style: none;
 	float: left;
-    width: 107px;
+    width: 116px;
     border: 2px solid #1E1E1E;
 }
 
@@ -16,12 +20,12 @@
 {
     display: block;
 	margin: 2px 2px 2px 2px;
-	padding: 10px 16px;
+	padding: 10px 12px;
 	width: 10px;
 	background: #1E1E1E;
 	color: #FFFFFF;
-	text-align: center;
-    font: 30px Times New Roman;
+    text-align: center;
+    font: 40px Times New Roman;
 }
 
 #menu li a:hover
@@ -34,7 +38,7 @@
     position: absolute;
     visibility: hidden;
 	background: #A5A5A5;
-	border: 2px solid #1E1E1E
+	border: 2px solid #1E1E1E;
 }
 
 	#menu div a
@@ -44,7 +48,7 @@
 		text-align: left;
 		background: #1E1E1E;
 		color: #FFFFFF;
-		font: 14px Times New Roman
+		font: 20px Times New Roman
     }
 
 	#menu div a:hover

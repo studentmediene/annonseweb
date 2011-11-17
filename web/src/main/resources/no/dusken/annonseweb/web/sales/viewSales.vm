@@ -9,3 +9,16 @@
         </div>
     </div>
 </div>
+
+<nav id="sidebar">
+    <h2>Salg</h2>
+    <ul>
+        <li><a href="/sales/newSale.do">Nytt salg</a></li>
+        <li><a href="/sales/viewSales.do">Salgsliste</a></li>
+        <li><a href="/sales/searchSale.do">Søk etter salg</a></li>
+    </ul>
+    <p>
+        Logget inn som:     <br>
+        // oppdateres automatisk //
+    </p>
+</nav>

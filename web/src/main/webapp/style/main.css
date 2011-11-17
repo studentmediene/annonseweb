@@ -66,7 +66,7 @@ a:hover {
 }
 
 #wrapper {
-	width: 960px;
+	width: 1040px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -245,7 +245,7 @@ a:hover {
 	list-style: none;
     background: #FFFFFF;
     margin: 0px 0px 20px 0px;
-	padding: 10px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
 	text-align: justify;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -262,7 +262,7 @@ a:hover {
 }
 
 #sidebar li li {
-	padding-left: 15px;
+    padding-left: 15px;
 }
 
 #sidebar li li span {
@@ -279,6 +279,7 @@ a:hover {
 	background: #1E1E1E;
 	letter-spacing: -.5px;
 	color: #FFFFFF;
+    font: 20px;
 }
 
 #sidebar p {

@@ -23,6 +23,7 @@
             </ul>
         </li>
         <li><a href="/ads/viewActiveAds.do">Annonseoversikt</a></li>
+        <li><a href="/ads/searchAd.do">Søk etter annonse</a></li>
     </ul>
     <p>
         Logget inn som:    <br>

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/contacts")
 public class ContactController {
 
-    @RequestMapping("/contactsHome")
+    @RequestMapping("")
     public String viewContactsHome(){
-        return "contacts/contactHome";
+        return "contacts/ContactHome";
     }
 
     @RequestMapping("/viewContacts")
