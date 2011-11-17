@@ -14,67 +14,56 @@
   limitations under the License.
   --%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="no" xml:lang="no">
+<!DOCTYPE html>
+<html lang="no">
 
 <head>
     <title><decorator:title/>Annonseweb - Under Dusken - </title>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/dropmenu.css">
+    <link rel="shortcut icon" type="image/png" href="/images/logo/ud-transparentbg.png" />
 </head>
 <body>
 <div id="wrapper">
-	<div id="header">
-        <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
-	    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
-        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/dropmenu.css">       
-		<div id="logo">
-			<h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
-			<p><a href="https://underdusken.no/redmine/">et Under Dusken-Data produkt!</a></p>
-		</div>
-		<div id="search">
-			<form method="get" action="">
-				<fieldset>
-				<input type="text" name="s" id="search-text" size="15" />
-				<input type="submit" id="search-submit" value="GO" />
-				</fieldset>
-			</form>
-		</div>
-	</div>
-	<!-- end #header -->
+    <div id="header">
+        <div id="logo">
+            <h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
+            <p><a href="https://underdusken.no/redmine/">et Under Dusken-Data produkt!</a></p>
+        </div>
+        <div id="search">
+            <form method="get" action="">
+                <fieldset>
+                    <input type="text" name="s" placeholder="Søk" id="search-text" size="15" />
+                    <input type="submit" id="search-submit" value="GO" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
 
     <nav id="menu">
-        <page:applyDecorator name="blank" page="/menu.do"/>    
+        <page:applyDecorator name="blank" page="/annonse/menu"/>
     </nav>
 
-
-
-
-	<!-- end #menu -->
-
-
-	<div id="page">
-	    <div id="page-bgtop">
-	        <div id="page-bgbtm">
+    <div id="page">
+        <div id="page-bgtop">
+            <div id="page-bgbtm">
                 <decorator:body/>
-	        </div>
+            </div>
         </div>
-	</div>
-    <!--
+    </div>
+
     <nav id="sidebar">
-        <page:applyDecorator name="blank" page="/sidebar.do"/>
+        <page:applyDecorator name="blank" page="/annonse/sidebar"/>
     </nav>
 
-	<!-- end #page -->
 </div>
-	<div id="footer">
-		<p>
-            Powered by <a href="https://underdusken.no/redmine/">Dusken - Annonseweb</a> - ($text.version) alpha minus
-		</p>
-	</div>
-	<!-- end #footer -->
+<footer id="footer">
+    <p>Powered by <a href="https://underdusken.no/redmine/">Dusken - Annonseweb</a> - ($text.version)</p>
+</footer>
 </body>
 </html>

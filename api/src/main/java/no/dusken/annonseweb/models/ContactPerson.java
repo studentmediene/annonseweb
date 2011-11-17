@@ -2,10 +2,15 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Calendar;
 
+import static javax.persistence.CascadeType.ALL;
+
+@Entity
 public class ContactPerson extends DuskenObject{
 
     private String personName;
@@ -13,12 +18,18 @@ public class ContactPerson extends DuskenObject{
     private String telephoneNumber;
     private String companyPosition;
 
+    @OneToOne(cascade = ALL)
     private Customer customer;
 
-    private Date lastContactedTime;
-    private Date lastContactedUser;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lastContactedTime;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lastContactedUser;
 
     private Boolean active;
+
+    public ContactPerson() {}
 
     public ContactPerson(String personName, String email, String telephoneNumber, String companyPosition) {
         this.personName = personName;
@@ -44,16 +55,20 @@ public class ContactPerson extends DuskenObject{
         return companyPosition;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public Date getLastContactedTime() {
+    public Calendar getLastContactedTime() {
         return lastContactedTime;
     }
 
-    public Date getLastContactedUser() {
+    public void setLastContactedTime(Calendar lastContactedTime) {
+        this.lastContactedTime = lastContactedTime;
+    }
+
+    public Calendar getLastContactedUser() {
         return lastContactedUser;
+    }
+
+    public void setLastContactedUser(Calendar lastContactedUser) {
+        this.lastContactedUser = lastContactedUser;
     }
 
     public Boolean getActive() {
@@ -76,18 +91,15 @@ public class ContactPerson extends DuskenObject{
         this.companyPosition = companyPosition;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public void setActive(Boolean active) {
         this.active = active;
     }
 
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Customer getCustomer() {
+        return customer;
     }
 
-
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

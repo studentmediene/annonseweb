@@ -25,7 +25,7 @@
         <append>true</append>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>annonseweb.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+			<FileNamePattern>${loggingDirectory}/annonseweb.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
 			<MaxHistory>30</MaxHistory>
 		</rollingPolicy>
     </appender>

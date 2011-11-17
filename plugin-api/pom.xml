@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>annonseweb</artifactId>
+        <groupId>no.dusken.annonseweb</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>plugin-api</artifactId>
+    <name>Plugin Api</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>no.dusken.annonseweb</groupId>
+            <artifactId>annonseweb-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>no.dusken.common</groupId>
+            <artifactId>plugin-api</artifactId>
+            <version>${duskencommon.version}</version>
+        </dependency>
+    </dependencies>
+</project>

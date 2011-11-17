@@ -1,33 +1,79 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
+import no.dusken.common.model.Person;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.Calendar;
+import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
+
+@Entity
 public class Invoice extends DuskenObject{
 
-    @Id
-    @GeneratedValue
-    private long ID;
+    @OneToMany(fetch = LAZY, cascade = ALL)
+    private List<Sale> sales;
 
-    private Sale sale;
     private String invoiceLabel;
-    private long invoiceNr;
 
-    private Date invoiceDate;
-    private Date createdDate;
-    private String createdUser;
-    private Date lastEditedDate;
-    private String lastEditedUser;
+    private Long invoiceNr;
 
-    public Invoice(long ID) {
-        this.ID = ID;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar invoiceDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar createdDate;
+
+    @ManyToOne(cascade = ALL)
+    private Person createdUser;
+
+    public List<Sale> getSales() {
+        return sales;
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(this.ID);
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
+    }
+
+    public String getInvoiceLabel() {
+        return invoiceLabel;
+    }
+
+    public void setInvoiceLabel(String invoiceLabel) {
+        this.invoiceLabel = invoiceLabel;
+    }
+
+    public Long getInvoiceNr() {
+        return invoiceNr;
+    }
+
+    public void setInvoiceNr(Long invoiceNr) {
+        this.invoiceNr = invoiceNr;
+    }
+
+    public Calendar getInvoiceDate() {
+        return invoiceDate;
+    }
+
+    public void setInvoiceDate(Calendar invoiceDate) {
+        this.invoiceDate = invoiceDate;
+    }
+
+    public Calendar getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Calendar createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Person getCreatedUser() {
+        return createdUser;
+    }
+
+    public void setCreatedUser(Person createdUser) {
+        this.createdUser = createdUser;
     }
 }
