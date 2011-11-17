@@ -2,50 +2,36 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
+import java.math.BigDecimal;
 
+@Entity
 public class Ad extends DuskenObject {
 
-    private long price;
-    private long discount;  //Automatically from customers?
-
-    private String fileLocation;   //for the ad image
+    private BigDecimal price;
+    private BigDecimal discount;
 
 
-    public Ad(long price, long discount, String fileLocation) {
+    public Ad() {}
+
+    public Ad(BigDecimal price, BigDecimal discount) {
         this.price = price;
         this.discount = discount;
-        this.fileLocation = fileLocation;
     }
 
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-
-    public long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public long getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(long discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
-    }
-
-    public String getFileLocation() {
-        return fileLocation;
-    }
-
-    public void setFile_location(String fileLocation) {
-        this.fileLocation = fileLocation;
     }
 }

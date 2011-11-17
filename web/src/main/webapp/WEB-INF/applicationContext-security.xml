@@ -20,17 +20,17 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd"
+              http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd"
        default-autowire="byName">
 
     <security:http realm="Annonseweb" access-decision-manager-ref="roleHiearchyAccessDecisionManager" access-denied-page="/jsp/admin/accessdenied.jsp">
 
         <security:anonymous/>
-        <security:form-login login-processing-url="/admin/j_spring_security_check" login-page="/jsp/admin/login.jsp"/>
-        <security:logout logout-url="/admin/annonseweb_logout"/>
+        <security:form-login login-processing-url="/admin/j_spring_security_check" login-page="/jsp/login.jsp"/>
+        <security:logout logout-url="/annonseweb_logout"/>
     </security:http>
 
-    <bean id="roleHiarchy" class="org.springframework.security.userdetails.hierarchicalroles.RoleHierarchyImpl">
+    <bean id="roleHiarchy" class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
         <property name="hierarchy">
             <value>
                 ROLE_MASKINIST > ROLE_ANNONSEANSVARLIG
@@ -54,11 +54,11 @@
     </bean>
 
     <!-- An access decision voter that reads ROLE_* configuration settings -->
-    <bean id="roleHiearchyVoter" class="org.springframework.security.vote.RoleHierarchyVoter">
+    <bean id="roleHiearchyVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
         <constructor-arg ref="roleHiarchy" />
     </bean>
 
-    <bean id="roleHiearchyAccessDecisionManager" class="org.springframework.security.vote.AffirmativeBased">
+    <bean id="roleHiearchyAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
         <property name="allowIfAllAbstainDecisions" value="false"/>
         <property name="decisionVoters">
             <list>

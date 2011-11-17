@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head><title>Simple jsp page</title></head>
+<body>
 <div id="content">
     <div class="post">
         <h2 class="title"><a href="#">Velkommen til Annonseweb</a></h2>
@@ -10,4 +14,5 @@
             <p>WORK IN PROGRESS</p>
         </div>
     </div>
-</div>
+</div></body>
+</html>

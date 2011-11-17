@@ -1,17 +1,18 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
+import no.dusken.common.model.Person;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.List;
 
-public class Customer extends DuskenObject{
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 
-    @Id
-    @GeneratedValue
-    private long customerNumber;
+@Entity
+public class Customer extends DuskenObject{
 
     private String customerName;
     private String centralEmail;
@@ -19,22 +20,32 @@ public class Customer extends DuskenObject{
     private String invoiceAddress;
     private String subscriberAddress;
 
-
-    private int discount;
+    private BigInteger discount;
     private List<String> industryTags;
 
-    private Date createdDate;
+    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
+    private List<ContactNote> contactNotes;
+
+    @OneToOne(cascade = ALL)
+    private ContactPerson contactPerson;
+
+    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
+    private List<Sale> sales;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar createdDate;
+
     private String createdUser;
-    private Date lasteditedDate;
-    private String lasteditedUser;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lasteditedDate;
 
-    /*public String getInfo(){    //What is needed here, organized differently in web development?
-        return "Customer name: " + customerName + "\n"
-    }  */
+    private Person lasteditedUser;
+
+    public Customer() {}
 
     public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
-                    String subscriberAddress, int discount, List<String> industryTags) {
+                    String subscriberAddress, BigInteger discount, List<String> industryTags) {
         this.customerName = customerName;
         this.centralEmail = centralEmail;
         this.centralTlf = centralTlf;
@@ -64,16 +75,12 @@ public class Customer extends DuskenObject{
         this.subscriberAddress = subscriberAddress;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(BigInteger discount) {
         this.discount = discount;
     }
 
     public void setIndustryTags(List<String> industryTags) {
         this.industryTags = industryTags;
-    }
-
-    public long getCustomerNumber() {
-        return customerNumber;
     }
 
     public String getCustomerName() {
@@ -96,7 +103,7 @@ public class Customer extends DuskenObject{
         return subscriberAddress;
     }
 
-    public int getDiscount() {
+    public BigInteger getDiscount() {
         return discount;
     }
 
@@ -104,7 +111,7 @@ public class Customer extends DuskenObject{
         return industryTags;
     }
 
-    public Date getCreatedDate() {
+    public Calendar getCreatedDate() {
         return createdDate;
     }
 
@@ -112,16 +119,41 @@ public class Customer extends DuskenObject{
         return createdUser;
     }
 
-    public Date getLasteditedDate() {
+    public Calendar getLasteditedDate() {
         return lasteditedDate;
     }
 
-    public String getLasteditedUser() {
+    public List<ContactNote> getContactNotes() {
+        return contactNotes;
+    }
+
+    public void setContactNotes(List<ContactNote> contactNotes) {
+        this.contactNotes = contactNotes;
+    }
+
+    public ContactPerson getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(ContactPerson contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
+    }
+
+    public Person getLasteditedUser() {
         return lasteditedUser;
     }
 
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public void setLasteditedUser(Person lasteditedUser) {
+        this.lasteditedUser = lasteditedUser;
     }
+
+
 }

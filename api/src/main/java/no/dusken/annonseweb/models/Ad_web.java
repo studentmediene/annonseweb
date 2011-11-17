@@ -1,35 +1,42 @@
 package no.dusken.annonseweb.models;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.util.Calendar;
 
+import static javax.persistence.CascadeType.ALL;
+
+@Entity
 public class Ad_web extends Ad {
 
     public enum Web_format {TOP_BANNER, MID_BANNER, SIDEBAR}
 
-    private Date onlineFrom;
-    private Date onlineTo;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar onlineFrom;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar onlineTo;
+
     private Web_format webFormat;      //Updates price accordingly, or manually when created
 
-    public Ad_web(long price, long discount, String file_location, Date onlineFrom, Date onlineTo, Web_format webFormat) {
-        super(price, discount, file_location);
-        this.onlineFrom = onlineFrom;
-        this.onlineTo = onlineTo;
-        this.webFormat = webFormat;
-    }
+    @ManyToOne(cascade = ALL)
+    private Issue issue;
 
-    public Date getOnlineFrom() {
+    public Calendar getOnlineFrom() {
         return onlineFrom;
     }
 
-    public void setOnlineFrom(Date onlineFrom) {
+    public void setOnlineFrom(Calendar onlineFrom) {
         this.onlineFrom = onlineFrom;
     }
 
-    public Date getOnlineTo() {
+    public Calendar getOnlineTo() {
         return onlineTo;
     }
 
-    public void setOnlineTo(Date onlineTo) {
+    public void setOnlineTo(Calendar onlineTo) {
         this.onlineTo = onlineTo;
     }
 

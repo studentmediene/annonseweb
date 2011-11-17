@@ -18,19 +18,18 @@
     <parent>
         <artifactId>annonseweb</artifactId>
         <groupId>no.dusken.annonseweb</groupId>
-        <version>0.2-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.dusken.annonseweb</groupId>
     <artifactId>core</artifactId>
     <packaging>jar</packaging>
     <name>Core</name>
-    <version>0.2-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>annonseweb-api</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
@@ -40,109 +39,26 @@
             <version>${duskencommon.version}</version>
             <scope>compile</scope>
         </dependency>
-         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
+            <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
-            <scope>compile</scope>
+            <scope>test</scope>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.6.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.6.2</version>
-            <scope>runtime</scope>
-        </dependency>    -->
-        <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.2.2</version>
-            <scope>runtime</scope>
-        </dependency>
-     <!--   <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-            <scope>runtime</scope>
-        </dependency>   -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-           <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.simplericity.datadirlocator</groupId>
-            <artifactId>datadirlocator</artifactId>
-            <version>1.7</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.kantega.jexmec</groupId>
-            <artifactId>jexmec-api</artifactId>
-            <version>${jexmec.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.kantega.jexmec</groupId>
-            <artifactId>jexmec-spring</artifactId>
-            <version>${jexmec.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-     <!--   <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>8.3-603.jdbc4</version>
-            <scope>runtime</scope>
-        </dependency>   -->
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>1.8.0.7</version>
-            <scope>runtime</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.6</version>
-            <scope>runtime</scope>
-        </dependency>
-         <dependency>
-            <groupId>toplink.essentials</groupId>
-            <artifactId>toplink-essentials</artifactId>
-            <version>2.0.1-03</version>
-            <scope>runtime</scope>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>${groupId}.${artifactId}</finalName>
-
-
-    </build>
 
 </project>
 

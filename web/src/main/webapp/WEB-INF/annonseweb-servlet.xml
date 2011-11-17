@@ -47,6 +47,11 @@
         </property>
     </bean>
 
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+
     <context:component-scan base-package="no.dusken.annonseweb"/>
     <mvc:annotation-driven/>
+
+    <mvc:view-controller path="/menu" view-name="menu"/>
+    <mvc:view-controller path="/sidebar" view-name="sidebar"/>
 </beans>

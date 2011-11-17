@@ -17,37 +17,33 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.dusken.common</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.1</version>
+    </parent>
+
     <groupId>no.dusken.annonseweb</groupId>
-    <version>0.2-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <artifactId>annonseweb</artifactId>
     <packaging>pom</packaging>
     <name>Annonseweb</name>
     <inceptionYear>2010</inceptionYear>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
     <modules>
         <module>api</module>
         <module>core</module>
         <module>plugins</module>
         <module>web</module>
+        <module>plugin-api</module>
     </modules>
 
     <scm>
-        <connection>scm:svn:https://underdusken.no:88/svn/intern</connection>
-        <developerConnection>scm:svn:https://underdusken.no:88/svn/intern</developerConnection>
+        <connection>scm:git:git@github.com:dusken/annonseweb.git</connection>
+        <developerConnection>scm:git:git@github.com:dusken/annonseweb.git</developerConnection>
     </scm>
 
     <properties>
-        <application.name>${project.artifactId}</application.name>
-        <application.version>${project.version}</application.version>
-        <spring.version>3.0.0.RELEASE</spring.version>
-        <springSecurity.version>2.0.4</springSecurity.version>
-        <jexmec.version>1.25</jexmec.version>
-        <duskencommon.version>0.7</duskencommon.version>
+        <duskencommon.version>1.0-SNAPSHOT</duskencommon.version>
     </properties>
     <developers>
         <developer>
@@ -76,77 +72,5 @@
         </developer>
 
     </developers>
-
-    <repositories>
-        <repository>
-            <id>public</id>
-            <name>public</name>
-            <url>http://underdusken.no:8080/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>public-snapshots</id>
-            <name>public-snapshot</name>
-            <url>http://underdusken.no:8080/nexus/content/groups/public-snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>dusken</id>
-            <name>dusken</name>
-            <url>http://underdusken.no:8080/nexus/content/repositories/dusken</url>
-        </repository>
-    </distributionManagement>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>public</id>
-            <url>http://underdusken.no:8080/nexus/content/groups/public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-        <pluginRepository>
-            <id>public-snapshots</id>
-            <url>http://underdusken.no:8080/nexus/content/groups/public-snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>     
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <finalName>${artifactId}</finalName>
-    </build>
 </project>
 

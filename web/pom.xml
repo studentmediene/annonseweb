@@ -18,14 +18,12 @@
     <parent>
         <artifactId>annonseweb</artifactId>
         <groupId>no.dusken.annonseweb</groupId>
-        <version>0.2-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>no.dusken.annonseweb</groupId>
     <artifactId>web</artifactId>
     <packaging>war</packaging>
     <name>Web</name>
-    <version>0.2-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -35,22 +33,49 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>plugin-api</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>no.dusken.common</groupId>
             <artifactId>ldap-plugin</artifactId>
-            <version>1.0</version>
+            <version>1.8</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>no.dusken.common</groupId>
             <artifactId>nullauth-plugin</artifactId>
-            <version>1.0</version>
+            <version>1.6</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>no.dusken.common</groupId>
+            <artifactId>plugin-api</artifactId>
+            <version>${duskencommon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>no.dusken.common</groupId>
+            <artifactId>plugin-core</artifactId>
+            <version>${duskencommon.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>2.0.4</version>
-            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-ldap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
         </dependency>
         <dependency>
             <groupId>opensymphony</groupId>
@@ -60,153 +85,20 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ldap</groupId>
-            <artifactId>spring-ldap</artifactId>
-            <version>1.2.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.4</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>1.6.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-tools</artifactId>
-            <version>2.0-beta4</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.0.2.GA</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.6.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.6.2</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.tuckey</groupId>
-            <artifactId>urlrewritefilter</artifactId>
-            <version>3.2.0</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>fop</groupId>
-            <artifactId>fop</artifactId>
-            <version>0.93</version>
-            <classifier>jdk15</classifier>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>fop</artifactId>
-                    <groupId>fop</groupId>
-                </exclusion>
-            </exclusions>
+            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.1</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.4</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
-          <version>0.9.17</version>
-          <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.5.8</version>
+            <version>1.2.2</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -216,27 +108,54 @@
         <plugins>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.18</version>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.0.1.v20110908</version>
                 <configuration>
                     <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>8080</port>
                         </connector>
                     </connectors>
                     <systemProperties>
-
+                        <systemProperty>
+                            <name>developermode</name>
+                            <value>true</value>
+                        </systemProperty>
                     </systemProperties>
-                    <webAppConfig>
-                        <contextPath>/</contextPath>
-
-                    </webAppConfig>
-                    <reload>manual</reload>
                 </configuration>
             </plugin>
         </plugins>
 
     </build>
 
+
+    <profiles>
+        <profile>
+            <id>Development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <version>1.8.0.7</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>release</id>
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>5.1.6</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
 

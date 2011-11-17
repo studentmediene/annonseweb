@@ -2,19 +2,24 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
+import static javax.persistence.CascadeType.ALL;
+
+@Entity
 public class ContactNote extends DuskenObject{
 
+    @ManyToOne(cascade = ALL)
     private Customer customer;
+
+    @ManyToOne(cascade = ALL)
     private ContactPerson contactPerson;
 
     private String method; //email,telephonenumber or in person
     private String text;
 
-    //should update ContactPerson last_contacted_time and last_contacted_user
-
+    public ContactNote() {}
 
     public ContactNote(String text, String method, ContactPerson contactPerson, Customer customer) {
         this.text = text;
@@ -22,12 +27,6 @@ public class ContactNote extends DuskenObject{
         this.contactPerson = contactPerson;
         this.customer = customer;
     }
-
-    @Override
-    public String toString() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
 
     public Customer getCustomer() {
         return customer;

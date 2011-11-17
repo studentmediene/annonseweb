@@ -2,14 +2,8 @@ package no.dusken.annonseweb.service;
 
 
 import no.dusken.annonseweb.models.Customer;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
+import no.dusken.common.service.GenericService;
 
 
-public interface CustomerService{
-
-    public List<Customer> getCustomers();
-
-
+public interface CustomerService extends GenericService<Customer>{
 }

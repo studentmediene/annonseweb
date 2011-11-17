@@ -16,9 +16,10 @@
   had to do some changes
   -->
 
-<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+      version="3.0">
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -48,20 +49,8 @@
         </init-param>
     </filter>
     <filter>
-        <filter-name>UrlRewriteFilter</filter-name>
-        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
-        <init-param>
-            <param-name>confReloadCheckInterval</param-name>
-            <param-value>3600</param-value>
-        </init-param>
-        <init-param>
-            <param-name>logLevel</param-name>
-            <param-value>WARN</param-value>
-        </init-param>
-    </filter>
-    <filter>
         <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
     </filter>
 
     <filter>
@@ -75,10 +64,6 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>UrlRewriteFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
@@ -116,7 +101,7 @@
     
     <servlet-mapping>
         <servlet-name>annonseweb</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/annonse/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
