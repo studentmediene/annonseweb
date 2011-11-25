@@ -7,44 +7,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ads")
 public class AdController {
 
-    @RequestMapping("")
+    @RequestMapping("/home")
     public String viewAdHome(){
-        return "ads/adHome";
+        return "ads/home";
     }
 
-    @RequestMapping("/newAdGeneral")
+    @RequestMapping("/new")
     public String viewNewAdGeneral(){
-        return "ads/newAdGeneral";
+        return "ads/new";
     }
 
-    @RequestMapping("/newAdDuskenPaper")
-    public String viewNewAdDuskenPaper(){
-        return "ads/newAdDuskenPaper";
+    @RequestMapping("/overview")
+    public String overview(){
+        return "ads/overview";
     }
 
-    @RequestMapping("/newAdDuskenNett")
-    public String viewNewAdDuskenNett(){
-        return "ads/newAdDuskenNett";
-    }
-
-    @RequestMapping("/newAdRadioRevolt")
-    public String viewNewAdRadioRevolt(){
-        return "ads/newAdRadioRevolt";
-    }
-
-    @RequestMapping("/newAdStudentTV")
-    public String viewNewAdStudentTV(){
-        return "ads/newAdStudentTV";
-    }
-
-    @RequestMapping("/viewActiveAds.d")
+    @RequestMapping("/all")
     public String viewActiveAds(){
-        return "ads/viewActiveAds";
+        return "ads/all";
     }
 
-    @RequestMapping("/searchAd")
+    @RequestMapping("/search")
     public String searchAd(){
-        return "ads/searchAd";
+        return "ads/search";
     }
 }
 
