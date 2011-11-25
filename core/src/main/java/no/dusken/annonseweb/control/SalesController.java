@@ -14,35 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sales")
 public class SalesController{
 
-    @RequestMapping("")
+    @RequestMapping("/home")
     public String viewSaleHome(){
-        return "sales/SaleHome";
+        return "sales/home";
     }
 
-    @RequestMapping("/searchSale")
-    public String viewSearchSales(){
-        return "sales/searchSale";
-    }
-
-
-    @RequestMapping("/newSale")
+    @RequestMapping("/new")
     public String viewNewSales(){
-        return "sales/newSale";
+        return "sales/new";
     }
 
-    @RequestMapping("/viewSales")
+    @RequestMapping("/all")
     public String viewSales(){
-        return "sales/viewSales";
+        return "sales/all";
     }
 
-
-    @RequestMapping("/editSales")
+    @RequestMapping("/edit")
     public String viewEditSales(){
-        return "sales/editSales";
+        return "sales/edit";
     }
 
-    /*
-    map.put(Sales, salesList);
-    return new ModelAndView(ARTICLEVIEW, map);
-    */
+    @RequestMapping("/search")
+    public String viewSearchSales(){
+        return "sales/search";
+    }
+
 }

@@ -2,72 +2,73 @@
     <ul>
         <li><a href="/">Hjem</a>
         </li>
-        <li><a href="/customers.do"
+        <li><a href="/annonse/customers/home"
                onmouseover="openMenu('dropmenu1')"
                onmouseout="setClosing()">Kunder</a>
             <div id="dropmenu1"
                  onmouseover="stayOpen('dropmenu1')"
                  onmouseout="setClosing()">
-                <a href="/customers/new.do">Ny kunde</a>
-                <a href="/customers/all.do">Kundeliste</a>
-                <a href="/customers/search.do">Søk etter kunde</a>
-                <a href="/customers/emailList.do">Email for alle</a>
+                <a href="/annonse/customers/new">Ny kunde</a>
+                <a href="/annonse/customers/all">Kundeliste</a>
+                <a href="/annonse/customers/emailList">Email for alle</a>
+                <a href="/annonse/customers/search">Søk: Kunde</a>
             </div>
         </li>
-        <li><a href="/contacts.do"
+        <li><a href="/annonse/contacts/home"
                onmouseover="openMenu('dropmenu2')"
                onmouseout="setClosing()">Kontakter</a>
             <div id="dropmenu2"
                  onmouseover="stayOpen('dropmenu2')"
                  onmouseout="setClosing()">
-                <a href="/contacts/newContact.do">Ny kontakt</a>
-                <a href="/contacts/newContactPerson.do">Ny kontaktperson</a>
-                <a href="/contacts/viewContactPersons.do">Kontaktpersonliste</a>
-                <a href="/contacts/searchContact.do">Søk etter kontaktperson</a>
+                <a href="/annonse/contacts/newContact   ">Ny kontakt</a>
+                <a href="/annonse/contacts/newPerson">Ny kontaktperson</a>
+                <a href="/annonse/contacts/all">Kontaktpersonliste</a>
+                <a href="/annonse/contacts/search">Søk: KontaktPerson</a>
             </div>
         </li>
-        <li><a href="/ads.do"
+        <li><a href="/annonse/ads/home"
                onmouseover="openMenu('dropmenu3')"
                onmouseout="setClosing()">Annonser</a>
             <div id="dropmenu3"
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
-                <a href="/ads/newAdGeneral.do">Ny annonse</a>
-                <a href="/ads/viewActiveAds.do">Annonseoversikt</a>
-                <a href="/ads/searchAd.do">Søk etter annonse</a>
+                <a href="/annonse/ads/new">Ny annonse</a>
+                <a href="/annonse/ads/overview">AnnonseOversikt</a>
+                <a href="/annonse/ads/all">AnnonseListe</a>
+                <a href="/annonse/ads/search">Søk: annonse</a>
             </div>
         </li>
-        <li><a href="/sales.do"
+        <li><a href="/annonse/sales/home"
                onmouseover="openMenu('dropmenu4')"
                onmouseout="setClosing()">Salg</a>
             <div id="dropmenu4"
                  onmouseover="stayOpen('dropmenu4')"
                  onmouseout="setClosing()">
-                <a href="/sales/newSale.do">Nytt salg</a>
-                <a href="/sales/viewSales.do">Salgsliste</a>
-                <a href="/sales/searchSale.do">Søk etter salg</a>
+                <a href="/annonse/sales/new">Nytt salg</a>
+                <a href="/annonse/sales/all">SalgsListe</a>
+                <a href="/annonse/sales/search">Søk: salg</a>
             </div>
         </li>
-        <li><a href="/invoiceHome.do"
+        <li><a href="/annonse/invoices/home"
                onmouseover="openMenu('dropmenu5')"
                onmouseout="setClosing()">Faktura</a>
             <div id="dropmenu5"
                  onmouseover="stayOpen('dropmenu5')"
                  onmouseout="setClosing()">
-                <a href="#">Ny faktura</a>
-                <a href="/invoiceList">Fakturaliste</a>
-                <a href="#">Søk etter faktura</a>
+                <a href="/annonse/invoices/new">Ny faktura</a>
+                <a href="/annonse/invoices/all">FakturaListe</a>
+                <a href="/annonse/invoices/search">SØK: faktura</a>
             </div>
         </li>
-        <li><a href="/statisticsHome.do"
+        <li><a href="/annonse/statistics/home"
                onmouseover="openMenu('dropmenu6')"
                onmouseout="setClosing()">Statistikk</a>
             <div id="dropmenu6"
                  onmouseover="stayOpen('dropmenu6')"
                  onmouseout="setClosing()">
-                <a href="#">Omsetning</a>
-                <a href="#">Antall annonsesider</a>
-                <a href="#">Aktive nettannonser</a>
+                <a href=/annonse/statistics/#">Omsetning</a>
+                <a href="/annonse/statistics/#">Antall annonsesider</a>
+                <a href="/annonse/statistics/#">Aktive nettannonser</a>
             </div>
         </li>
         <li><a href="/annonseweb_logout">Logg ut</a>
