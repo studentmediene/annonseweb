@@ -19,7 +19,6 @@ public class Customer extends DuskenObject{
     private String centralTlf;
     private String invoiceAddress;
     private String subscriberAddress;
-
     private BigInteger discount;
     private List<String> industryTags;
 

@@ -1,15 +1,19 @@
-<div id="content">
+<div id="content" >
     <div class="post">
         <h2 class="title"><a href="#">Kundeliste</a></h2>
         <div class="entry">
-            #foreach( $customer in $customerList)
-                <p class="meta">$customer.meta</p>  end
-                <p>$customer.info</p>
+            #foreach($customer in $customerList)
+                <p>Customer: $customer.customerName</p>
             #end
         </div>
     </div>
 </div>
 
+<!--
+<nav id="sidebar">
+    parse("/customers/sidebar.vm")  # in front.
+</nav>
+-->
 
 <nav id="sidebar">
     <h2>Kunder</h2>

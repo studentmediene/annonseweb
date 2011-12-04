@@ -57,9 +57,11 @@
         </div>
     </div>
 
+    <!-- each view group(customers/invoices etc) has it's own sidebar.
     <nav id="sidebar">
-        <page:applyDecorator name="blank" page="/annonse/sidebar"/>
+        <#page:applyDecorator name="blank" page="/annonse/sidebar"/>
     </nav>
+    -->
 
 </div>
 <footer id="footer">
