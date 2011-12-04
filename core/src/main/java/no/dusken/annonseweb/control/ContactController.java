@@ -1,6 +1,7 @@
 package no.dusken.annonseweb.control;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -20,7 +21,8 @@ public class ContactController {
     }
 
     @RequestMapping("/all")
-    public String all(){
+    public String all(Model model){
+
         return "contacts/all";
     }
 
