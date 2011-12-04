@@ -3,27 +3,20 @@
         <h2 class="title"><a href="#">Ny kunde</a></h2>
         <div class="entry">
             <p>
-            <form method="get">
-                First name: <input type="text" name="firstname" /><br />
-                Last name: <input type="text" name="lastname" />
+            <form method="get" action="/annonse/customers/addCustomer">
+                customerName: <input type="text" name="customerName"><br />
+                centralEmail: <input type="text" name="centralEmail"><br />
+                centralTlf: <input type="text" name="centralTlf"><br />
+                invoiceAddress: <input type="text" name="invoiceAddress"><br />
+                subscriberAddress: <input type="text" name="subscriberAddress"><br />
+                discount: <input type="text" name="discount"><br />
+                industryTags: <input type="text" name="industryTags">
+                <input type="submit" value="create">
             </form>
             </p>
         </div>
     </div>
 </div>
 
-
-
-<nav id="sidebar">
-    <h2>Kunder</h2>
-    <ul>
-        <li><a href="/customers/new.do">Ny kunde</a></li>
-        <li><a href="/customers/all.do">Kundeliste</a></li>
-        <li><a href="/customers/search.do">Søk etter kunde</a></li>
-        <li><a href="/customers/emailList.do">Email til alle</a></li>
-    </ul>
-    <p>
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
-</nav>
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/customers/sidebar.vm')

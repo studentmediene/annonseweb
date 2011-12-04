@@ -17,20 +17,12 @@ import java.util.List;
  * 04.12.11
  */
 @Controller
-@RequestMapping("/editCustomer")
+@RequestMapping("/customers")
 public class EditCustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/addCustomer")
-    public String addCustoemr(@RequestParam String name, @RequestParam String email,
-                              @RequestParam String tlf, @RequestParam String invoiceAddress,
-                              @RequestParam String subscriberAddress, @RequestParam BigInteger discount,
-                              @RequestParam List<String> tags, Model model){
-        Customer customer = new Customer(name, email, tlf, invoiceAddress, subscriberAddress, discount, tags);
-        customerService.save(customer);
-        return "customer/" + customer.getId();
-    }
+
 
 }
