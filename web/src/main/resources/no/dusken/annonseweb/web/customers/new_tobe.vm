@@ -6,8 +6,8 @@
     <h2 class="title">
         <a href="/annonse/customers/new">Ny kunde</a>
     </h2>
-    <form id="newCustomer" class="contentForm"  method="post" action="/annonse/customers/addCustomer">
-        <div class="form_description">
+    <form id="newCustomer" class="content"  method="post" action="/annonse/customers/addCustomer">
+        <div class="content_description">
             <p>Legg inn informasjonen om kunden og trykk lagre for å opprette en ny kunde.</p>
         </div>
         <ul>
@@ -16,18 +16,39 @@
                 <div>
                     <input id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
-                <p class="guidelines" id="guide_5">
+                <p class="guidelines">
                     <small>Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description" for="element_4">Epostadressen til firmaet </label>
+                <div>
+                    <input id="element_4" name="element_4" class="element text medium" type="text" maxlength="255" value=""/>
+                </div>
+                <p class="guidelines" id="guide_4">
+                    <small>Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Hjemmesiden til Firmaet </label>
+                <div>
+                    <input id="element_3" name="element_3" class="element text medium" type="text" maxlength="255" value="http://"/>
+                </div>
+                <p class="guidelines" id="guide_3">
+                    <small>Hjemmesiden til firmaet. ala Underdusken.no</small>
                 </p>
             </li>
             <li>
                 <label class="description" for="element_2">Telefon </label>
                 <div>
                     <input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""/>
-                </div><p class="guidelines" id="guide_2"><small>Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet. </small></p>
+                </div>
+                <p class="guidelines" id="guide_2">
+                    <small>Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet. </small>
+                </p>
             </li>
             <li>
-                <label class="description">Adresse </label>
+                <label class="description">Adresse (foreløpig bare en linje)</label>
 
                 <div>
                     <input id="element_1_1" name="element_1_1" class="element text large" value="" type="text">
@@ -44,10 +65,12 @@
                     <label>Postnummer</label>
                 </div>
 
-                <p class="guidelines" id="guide_1"><small>Adressen til firmaet, dette er hovedadressen eller besøksadressen.</small></p>
+                <p class="guidelines" id="guide_1">
+                    <small>Adressen til firmaet, dette er hovedadressen eller besøksadressen.</small>
+                </p>
             </li>
             <li>
-                <label class="description">Faktura-Adresse </label>
+                <label class="description">Faktura-Adresse (foreløpig bare en linje)</label>
 
                 <div>
                     <input id="element_6_1" name="element_6_1" class="element text large" value="" type="text">
@@ -66,24 +89,6 @@
 
                 <p class="guidelines" id="guide_6">
                     <small>Dette er adressen vi sender fakturaen til.</small>
-                </p>
-            </li>
-            <li>
-                <label class="description">Hjemmesiden til Firmaet </label>
-                <div>
-                    <input id="element_3" name="element_3" class="element text medium" type="text" maxlength="255" value="http://"/>
-                </div>
-                <p class="guidelines" id="guide_3">
-                    <small>Hjemmesiden til firmaet. ala Underdusken.no</small>
-                </p>
-            </li>
-            <li>
-                <label class="description" for="element_4">Epostadressen til firmaet </label>
-                <div>
-                    <input id="element_4" name="element_4" class="element text medium" type="text" maxlength="255" value=""/>
-                </div>
-                <p class="guidelines" id="guide_4">
-                    <small>Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.</small>
                 </p>
             </li>
             <li>

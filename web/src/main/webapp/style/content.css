@@ -13,7 +13,6 @@
 
 .post {
 	margin-bottom: 25px;
-	padding: 0px;
 	background: #FFFFFF;
 }
 
@@ -49,7 +48,7 @@
 }
 
 .post .entry {
-	padding: 0px 20px 20px 20px;
+	padding: 0 20px 20px 20px;
 	padding-bottom: 20px;
 	text-align: justify;
 }
@@ -66,24 +65,29 @@
 }
 
 /**** Form Section ****/
-form.contentForm
+.content
 {
 	margin:20px 20px 0;
 	padding:0 0 20px;
 }
 
-.contentForm
+.content
 {
 	font-family:Lucida Grande, Tahoma, Arial, Verdana, sans-serif;
 	font-size:small;
 }
 
-.contentForm li
+.content a
+{
+ text-decoration: underline;
+}
+
+.content li
 {
 	width:61%;
 }
 
-form ul
+.content ul
 {
 	list-style-type:none;
 	margin:0;
@@ -91,42 +95,27 @@ form ul
 	width:100%;
 }
 
-form li
+.content li
 {
 	padding:4px 5px 2px 9px;
 	position:relative;
 }
 
-.buttons
+.content.buttons
 {
 	clear:both;
 	display:block;
 	margin-top:10px;
 }
 
-* html form li
-{
-	height:1%;
-}
-
-* html .buttons
-{
-	height:1%;
-}
-
-* html form li div
-{
-	display:inline-block;
-}
-
-form li div
+.content li div
 {
 	color:#444;
 	margin:0 4px 0 0;
 	padding:0 0 8px;
 }
 
-form li span
+.content li span
 {
 	color:#444;
 	float:left;
@@ -134,31 +123,31 @@ form li span
 	padding:0 0 8px;
 }
 
-form li div.left
+.content li div.left
 {
 	display:inline;
 	float:left;
 	width:48%;
 }
 
-form li div.right
+.content li div.right
 {
 	display:inline;
 	float:right;
 	width:48%;
 }
 
-form li div.left .medium
+.content li div.left .medium
 {
 	width:100%;
 }
 
-form li div.right .medium
+.content li div.right .medium
 {
 	width:100%;
 }
 
-form li div label
+.content li div label
 {
 	clear:both;
 	color:#444;
@@ -168,7 +157,7 @@ form li div label
 	padding-top:3px;
 }
 
-form li span label
+.content li span label
 {
 	clear:both;
 	color:#444;
@@ -179,7 +168,7 @@ form li span label
 	padding-top:3px;
 }
 
-form li .datepicker
+.content li .datepicker
 {
 	cursor:pointer !important;
 	float:left;
@@ -189,7 +178,7 @@ form li .datepicker
 	width:16px;
 }
 
-.form_description
+.content_description
 {
 	border-bottom:1px dotted #ccc;
 	clear:both;
@@ -197,12 +186,12 @@ form li .datepicker
 	margin:0 0 1em;
 }
 
-.form_description[class]
+.content_description[class]
 {
 	display:block;
 }
 
-.form_description h2
+.content_description h2
 {
 	clear:left;
 	font-size:160%;
@@ -210,19 +199,19 @@ form li .datepicker
 	margin:0 0 3px;
 }
 
-.form_description p
+.content_description p
 {
 	font-size:95%;
 	line-height:130%;
 	margin:0 0 12px;
 }
 
-form hr
+.content hr
 {
 	display:none;
 }
 
-form li.section_break
+.content li.section_break
 {
 	border-top:1px dotted #ccc;
 	margin-top:9px;
@@ -232,14 +221,14 @@ form li.section_break
 	width:97% !important;
 }
 
-form ul li.first
+.content ul li.first
 {
 	border-top:none !important;
 	margin-top:0 !important;
 	padding-top:0 !important;
 }
 
-form .section_break h3
+.content .section_break h3
 {
 	font-size:110%;
 	font-weight:400;
@@ -247,28 +236,28 @@ form .section_break h3
 	margin:0 0 2px;
 }
 
-form .section_break p
+.content .section_break p
 {
 	font-size:85%;
 	margin:0 0 10px;
 }
 
 /**** Buttons ****/
-input.button_text
+.content.input.button_text
 {
 	overflow:visible;
 	padding:0 7px;
 	width:auto;
 }
 
-.buttons input
+.content.buttons input
 {
 	font-size:120%;
 	margin-right:5px;
 }
 
 /**** Inputs and Labels ****/
-label.description
+.content label.description
 {
 	border:none;
 	color:#222;
@@ -279,13 +268,13 @@ label.description
 	padding:0 0 1px;
 }
 
-span.symbol
+.content span.symbol
 {
 	font-size:115%;
 	line-height:130%;
 }
 
-input.text
+.content input.text
 {
 	background:#fff url(images/shadow.gif) repeat-x top;
 	border-bottom:1px solid #ddd;
@@ -298,7 +287,7 @@ input.text
 	padding:2px 0;
 }
 
-input.file
+.content input.file
 {
 	color:#333;
 	font-size:100%;
@@ -306,7 +295,7 @@ input.file
 	padding:2px 0;
 }
 
-textarea.textarea
+.content textarea.textarea
 {
 	background:#fff url(images/shadow.gif) repeat-x top;
 	border-bottom:1px solid #ddd;
@@ -320,7 +309,7 @@ textarea.textarea
 	width:99%;
 }
 
-select.select
+.content select.select
 {
 	color:#333;
 	font-size:100%;
@@ -333,13 +322,12 @@ select.select
 	border-top:1px solid #7c7c7c;
 }
 
-
-input.currency
+.content input.currency
 {
 	text-align:right;
 }
 
-input.checkbox
+.content input.checkbox
 {
 	display:block;
 	height:13px;
@@ -348,7 +336,7 @@ input.checkbox
 	width:13px;
 }
 
-input.radio
+.content input.radio
 {
 	display:block;
 	height:13px;
@@ -357,7 +345,7 @@ input.radio
 	width:13px;
 }
 
-label.choice
+.content label.choice
 {
 	color:#444;
 	display:block;
@@ -368,75 +356,64 @@ label.choice
 	width:90%;
 }
 
-select.select[class]
+.content select.select[class]
 {
 	margin:0;
 	padding:1px 0;
 }
 
-*:first-child+html select.select[class]
-{
-	margin:1px 0;
-}
-
-.safari select.select
-{
-	font-size:120% !important;
-	margin-bottom:1px;
-}
-
-input.small
+.content input.small
 {
 	width:25%;
 }
 
-select.small
+.content select.small
 {
 	width:25%;
 }
 
-input.medium
+.content input.medium
 {
 	width:50%;
 }
 
-select.medium
+.content select.medium
 {
 	width:50%;
 }
 
-input.large
+.content input.large
 {
 	width:99%;
 }
 
-select.large
+.content select.large
 {
 	width:100%;
 }
 
-textarea.small
+.content textarea.small
 {
 	height:5.5em;
 }
 
-textarea.medium
+.content textarea.medium
 {
 	height:10em;
 }
 
-textarea.large
+.content textarea.large
 {
 	height:20em;
 }
 
 /**** Guidelines ****/
-form li.highlighted
+.content li.highlighted
 {
 	background-color:#fff7c0;
 }
 
-form .guidelines
+.content .guidelines
 {
 	background:#f5f5f5;
 	border:1px solid #e6e6e6;
@@ -453,17 +430,17 @@ form .guidelines
 	z-index:1000;
 }
 
-form .guidelines small
+.content .guidelines small
 {
 	font-size:105%;
 }
 
-form li.highlighted .guidelines
+.content li.highlighted .guidelines
 {
 	visibility:visible;
 }
 
-form li:hover .guidelines
+.content li:hover .guidelines
 {
 	visibility:visible;
 }
@@ -484,23 +461,23 @@ form li:hover .guidelines
 }
 
 /*** Password ****/
-ul.password{
+.content ul.password{
     margin-top:60px;
     margin-bottom: 60px;
     text-align: center;
 }
-.password h2{
+.content.password h2{
     color:#DF0000;
     font-weight:bold;
-    margin:0pt auto 10px;
+    margin:0 auto 10px;
 }
 
-.password input.text {
+.content.password input.text {
    font-size:170% !important;
    width:380px;
    text-align: center;
 }
-.password label{
+.content.password label{
    display:block;
    font-size:120% !important;
    padding-top:10px;

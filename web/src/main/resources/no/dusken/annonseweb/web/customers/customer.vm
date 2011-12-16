@@ -1,12 +1,151 @@
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="#">Kunde - $customer.Id</a></h2>
-        <div class="entry">
-            <p>name: $customer.customerName</p>
-            <p>adderss: $customer.subscriberAddress</p>
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/customers/sidebar.vm')
+
+<div id="content" class="post">
+
+    <h2 class="title">
+        <a href="/annonse/customers/customer/$customer.Id">$customer.customerName - $customer.Id</a>
+    </h2>
+    <div class="content">
+        <div class="content_description">
+            <p>Kundeinformasjonen vi har lagret om denne kunden.</p>
         </div>
+        <ul>
+            <li>
+                <label class="description">Kundenummer</label>
+                <div>
+                    <lable class="element text medium">$customer.Id</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Automatisk generert identifikator for denne kunden i annonseweb.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Firmanavn</label>
+                <div>
+                    <lable class="element text medium">$customer.customerName</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">centralEmail</label>
+                <div>
+                    <lable class="element text medium">$customer.centralEmail</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Hjemmesiden til Firmaet </label>
+                <div>
+                    <lable class="element text medium">
+                        <a href="$customer.homepage">$customer.homepage</a>
+                    </lable>
+                </div>
+                <p class="guidelines">
+                    <small>Hjemmesiden til firmaet. ala Underdusken.no</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Telefon </label>
+                <div>
+                    <lable class="element text medium">$customer.centralTlf</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet. </small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Besøksadresse e.l - trenger korrekt navn </label>
+                <div>
+                    <lable class="element text medium">$customer.subscriberAddress</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Adressen til firmaet, dette er hovedadressen eller besøksadressen.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Fakturaadresse </label>
+                <div>
+                    <lable class="element text medium">$customer.invoiceAddress</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Dette er adressen vi sender fakturaen til.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Rabatt (i prosent) </label>
+                <div>
+                    <lable class="element text medium">$customer.discount</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Dette er rabattprosenten man vil at firmaet skal ha. </small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Kontaktperson </label>
+                <div>
+                    <lable class="element text medium">
+                        <a href="link til kontaktperson">$customer.contactPerson</a>
+                    </lable>
+                </div>
+                <p class="guidelines">
+                    <small>Personen man skal ta kontakt med hos denne kunden.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Kontakt notiser, siste to </label>
+                <div>
+                    #foreach( $note in $customer.contactNotes)
+                        <lable class="element text medium">$note</lable>
+                    #end
+                </div>
+                <p class="guidelines">
+                    <small>De siste to kommentarene(en slags rapport) om siste kontakt man hadde med kunden. Dette vil fungere som en slags log for å enklere holde oversikt over aktiviteten med denne kunden.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Siste to salg </label>
+                <div>
+                    #foreach( $sale in $customer.sales )
+                        <lable class="element text medium">$sale</lable>
+                    #end
+                </div>
+                <p class="guidelines">
+                    <small>De siste to annonsesalg til denne kunden.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Tags </label>
+                <div>
+                    <lable class="element text medium">$customer.industryTags</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Tags, ord som beskriver denne kunden. Så man kan sortere kunder på tags og finne kunder som er ganske like. OM man tagger kunder riktig vil det på sikt bli lettere å føre statistikk og markedsføre Dusken.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Opprettet (av - når)</label>
+                <div>
+                    <lable class="element text medium">$customer.createdUser - $customer.createdDate</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Hvem som opprettet denne kunden og når kunden ble opprettet i annonseweb</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Sist endret (av - når) </label>
+                <div>
+                    <lable class="element text medium">$customer.lastEditedUser - $customer.lastEditedDate</lable>
+                </div>
+                <p class="guidelines">
+                    <small>Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.</small>
+                </p>
+            </li>
+        </ul>
     </div>
 </div>
 
-<!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/customers/sidebar.vm')

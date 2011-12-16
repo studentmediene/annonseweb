@@ -53,8 +53,11 @@ public class CustomerController{
 
     @RequestMapping("/emailList")
     public String viewEmailsCustomers(){
-        return "customers/emailList";
+        //return "customers/emailList";
+        return "customers/new_tobe";     // to be changed back to the line above.
     }
+
+
 
 }
 
