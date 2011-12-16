@@ -8,5 +8,5 @@ import no.dusken.common.service.GenericService;
  * Magnus Kirø - magnuskiro@underdusken.no
  * 04.12.11
  */
-public interface ContactService extends GenericService<ContactPerson>{
+public interface ContactPersonService extends GenericService<ContactPerson>{
 }
