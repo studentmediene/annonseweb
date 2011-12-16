@@ -37,9 +37,9 @@ public class Customer extends DuskenObject{
     private String createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Calendar lasteditedDate;
+    private Calendar lastEditedDate;
 
-    private Person lasteditedUser;
+    private Person lastEditedUser;
 
     public Customer() {}
 
@@ -118,8 +118,8 @@ public class Customer extends DuskenObject{
         return createdUser;
     }
 
-    public Calendar getLasteditedDate() {
-        return lasteditedDate;
+    public Calendar getLastEditedDate() {
+        return lastEditedDate;
     }
 
     public List<ContactNote> getContactNotes() {
@@ -146,12 +146,12 @@ public class Customer extends DuskenObject{
         this.sales = sales;
     }
 
-    public Person getLasteditedUser() {
-        return lasteditedUser;
+    public Person getLastEditedUser() {
+        return lastEditedUser;
     }
 
-    public void setLasteditedUser(Person lasteditedUser) {
-        this.lasteditedUser = lasteditedUser;
+    public void setLastEditedUser(Person lastEditedUser) {
+        this.lastEditedUser = lastEditedUser;
     }
 
 

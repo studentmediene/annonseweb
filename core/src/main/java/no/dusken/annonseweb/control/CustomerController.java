@@ -24,9 +24,7 @@ public class CustomerController{
 
     @RequestMapping(value="/customer/{Id}")
     public String viewCustomer(@PathVariable Long Id, Model model){
-        Customer customer = customerService.findOne(Id);
-        customer.getId();
-        model.addAttribute("customer", customer);
+        model.addAttribute("customer", customerService.findOne(Id));
         return "customers/customer";
     }
 
