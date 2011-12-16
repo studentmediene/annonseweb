@@ -20,10 +20,16 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
 
+/* Css imports for other smaller parts of css*/
+@import url("menu.css");
+@import url("content.css");
+@import url("sidebar.css");
+
+
 body {
 	margin: 0;
 	padding: 0;
-	background: #A5A5A5 url(images/img03.jpg) no-repeat center top;
+	background: #A5A5A5;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #534616;
@@ -50,7 +56,6 @@ h3 {
 }
 
 p, ul, ol {
-	margin-top: 5px;
 	line-height: 180%;
 }
 
@@ -168,134 +173,7 @@ a:hover {
 #page-bgbtm {
 }
 
-/* Content */
 
-#content {
-	float: right;
-	width: 670px;
-	padding: 0;
-}
-
-.post {
-	margin-bottom: 25px;
-	padding: 0px;
-	background: #FFFFFF;
-}
-
-.post-bgtop {
-}
-
-.post-bgbtm {
-}
-
-.post .title {
-	height: 38px;
-	background: #1E1E1E url(images/img01.jpg) no-repeat left top;
-	padding: 12px 0 0 20px;
-	letter-spacing: -.5px;
-	color: #FFFFFF;
-}
-
-.post .title a {
-	border: none;
-	color: #FFFFFF;
-}
-
-.post .meta {
-	padding-top: 20px;
-	padding-bottom: 5px;
-	text-align: left;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	font-style: italic;
-}
-
-.post .meta a {
-}
-
-.post .entry {
-	background: url(images/img02.jpg) no-repeat left top;
-	padding: 0px 20px 20px 20px;
-	padding-bottom: 20px;
-	text-align: justify;
-}
-
-.links {
-	display: block;
-	width: 100px;
-	height: 20px;
-	margin-top: 20px;
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 10px;
-	font-weight:  bold;
-}
-
-/* Sidebar */
-
-#sidebar {
-	float: left;
-	width: 240px;
-	padding: 0px;
-	color: #787878;
-    background: #FFFFFF;
-}
-
-#sidebar ul {
-	list-style: none;
-    background: #FFFFFF;
-    margin: 0px 0px 20px 0px;
-    padding: 10px 20px 20px 20px;
-	text-align: justify;
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-
-#sidebar li {
-	margin: 0;
-	padding: 0;
-}
-
-#sidebar li ul {
-	padding: 0px 0px 0px 0px;
-	background: #FFFFFF;
-}
-
-#sidebar li li {
-    padding-left: 15px;
-}
-
-#sidebar li li span {
-	display: block;
-	margin-top: -20px;
-	padding: 0;
-	font-size: 11px;
-	font-style: italic;
-}
-
-#sidebar h2 {
-	height: 38px;
-	padding: 12px 0 0 20px;
-	background: #1E1E1E;
-	letter-spacing: -.5px;
-	color: #FFFFFF;
-    font: 20px;
-}
-
-#sidebar p {
-	margin: 0px 0px 20px 0px;
-	padding: 10px 20px 20px 20px;
-	background: #FFFFFF;
-	text-align: justify;
-}
-
-#sidebar a {
-	border: none;
-}
-
-#sidebar a:hover {
-	text-decoration: underline;
-}
 
 /* Calendar */
 

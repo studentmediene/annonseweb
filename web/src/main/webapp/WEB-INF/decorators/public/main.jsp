@@ -25,7 +25,6 @@
     <title><decorator:title/>Annonseweb - Under Dusken - </title>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/dropmenu.css">
     <link rel="shortcut icon" type="image/png" href="/images/logo/ud-transparentbg.png" />
 </head>
 <body>
@@ -50,11 +49,7 @@
     </nav>
 
     <div id="page">
-        <div id="page-bgtop">
-            <div id="page-bgbtm">
-                <decorator:body/>
-            </div>
-        </div>
+        <decorator:body/>
     </div>
 
 </div>
