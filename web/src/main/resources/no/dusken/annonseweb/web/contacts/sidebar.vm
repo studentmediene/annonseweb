@@ -1,0 +1,16 @@
+<nav id="sidebar">
+    <h2>Kunder</h2>
+    <ul>
+        <li><a href="/annonse/contacts/newContactNote">Ny kontakt</a></li>
+        <li><a href="/annonse/contacts/newContactPerson">Ny kontaktperson</a></li>
+        <li><a href="/annonse/contacts/allContactNotes">Kontaktliste</a></li>
+        <li><a href="/annonse/contacts/allActive">Kontaktpersonliste - aktive</a></li>
+        <li><a href="/annonse/contacts/allContactPersons">Kontaktpersonliste - alle</a></li>
+        <li><a href="/annonse/contacts/emailList">Epostliste - aktive</a></li>
+        <li><a href="/annonse/contacts/search">Søk: KontaktPerson</a></li>
+    </ul>
+    <p>
+        Logget inn som:    <br>
+        //oppdateres automatisk//
+    </p>
+</nav>
