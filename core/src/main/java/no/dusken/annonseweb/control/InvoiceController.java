@@ -15,16 +15,16 @@ public class InvoiceController {
 
     private InvoiceService invoiceService;
 
+    @RequestMapping()
+    public String viewInvoiceHome(){
+        return "invoices/home";
+    }
+
     @RequestMapping("/all")
     public String listInvoices(Model model){
         List<Invoice> invoiceList = invoiceService.findAll();
         model.addAttribute("InvoiceList", invoiceList);
         return "invoices/all";
-    }
-
-    @RequestMapping("/home")
-    public String viewInvoiceHome(){
-        return "invoices/home";
     }
 
     @RequestMapping("/invoice")

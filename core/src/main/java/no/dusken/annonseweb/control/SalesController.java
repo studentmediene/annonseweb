@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sales")
 public class SalesController{
 
-    @RequestMapping("/home")
+    @RequestMapping()
     public String viewSaleHome(){
         return "sales/home";
     }

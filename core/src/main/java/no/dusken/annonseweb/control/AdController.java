@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ads")
 public class AdController {
 
-    @RequestMapping("/home")
+    @RequestMapping()
     public String viewAdHome(){
         return "ads/home";
     }

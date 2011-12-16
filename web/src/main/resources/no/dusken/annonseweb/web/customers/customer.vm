@@ -1,9 +1,9 @@
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Kunde</a></h2>
+        <h2 class="title"><a href="#">Kunde - $customer.Id</a></h2>
         <div class="entry">
-            <p>$customer.customerName</p>
-            <p>$customer.subscriberAddress</p>
+            <p>name: $customer.customerName</p>
+            <p>adderss: $customer.subscriberAddress</p>
         </div>
     </div>
 </div>

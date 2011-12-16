@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/statistics")
 public class StatisticsController {
 
-    @RequestMapping("/home")
+    @RequestMapping()
     public String viewStatisticsHome(){
         return "statistics/Home";
     }
