@@ -2,16 +2,24 @@
     <div class="post">
         <h2 class="title"><a href="#">Ny kunde</a></h2>
         <div class="entry">
+            ${link.contextURL} = http://localhost:8080/ <br /> <-- have something to do with the path in springFormInput ?
             <p>
-            <form method="get" action="/annonse/customers/addCustomer">
-                customerName: <input type="text" name="customerName"><br />
-                centralEmail: <input type="text" name="centralEmail"><br />
-                centralTlf: <input type="text" name="centralTlf"><br />
-                invoiceAddress: <input type="text" name="invoiceAddress"><br />
-                subscriberAddress: <input type="text" name="subscriberAddress"><br />
-                discount: <input type="text" name="discount"><br />
-                industryTags: <input type="text" name="industryTags">
-                <input type="submit" value="create">
+            <form name="customer" method="post" action="/annonse/customers/addCustomer">
+                <label for="customerName">customerName:<input id="customerName" type="text" name="customerName"></label><br />
+                <label for="centralEmail">centralEmail:<input id="centralEmail" type="text" name="centralEmail"></label><br />
+                <label for="centralTlf">centralTlf:<input id="centralTlf" type="text" name="centralTlf"></label>     <br />
+                <label for="invoiceAddress">invoiceAddress:<input id="invoiceAddress" type="text" name="invoiceAddress"></label><br />
+                <label for="subscriberAddress">subscriberAddress:<input id="subscriberAddress" type="text" name="subscriberAddress"></label><br />
+                <label for="discount">discount<input id="discount" type="text" name="discount"></label><br />
+
+                <br />
+                <label><span>discount</span>
+                    springFormInput("no/dusken/annonseweb/models/Customer.discount", "")
+                    springShowErrors("<br />", "")
+                </label><br />
+
+                <label for="industryTags">industryTags:<input id="industryTags" type="text" name="industryTags"></label><br />
+                <input type="submit" value="create"><br />
             </form>
             </p>
         </div>

@@ -57,12 +57,6 @@
         </div>
     </div>
 
-    <!-- each view group(customers/invoices etc) has it's own sidebar.
-    <nav id="sidebar">
-        <#page:applyDecorator name="blank" page="/annonse/sidebar"/>
-    </nav>
-    -->
-
 </div>
 <footer id="footer">
     <p>Powered by <a href="https://underdusken.no/redmine/">Dusken - Annonseweb</a> - ($text.version)</p>

@@ -2,7 +2,7 @@
     <ul>
         <li><a href="/">Hjem</a>
         </li>
-        <li><a href="/annonse/customers/home"
+        <li><a href="/annonse/customers"
                onmouseover="openMenu('dropmenu1')"
                onmouseout="setClosing()">Kunder</a>
             <div id="dropmenu1"
@@ -14,7 +14,7 @@
                 <a href="/annonse/customers/search">Søk: Kunde</a>
             </div>
         </li>
-        <li><a href="/annonse/contacts/home"
+        <li><a href="/annonse/contacts"
                onmouseover="openMenu('dropmenu2')"
                onmouseout="setClosing()">Kontakter</a>
             <div id="dropmenu2"
@@ -26,7 +26,7 @@
                 <a href="/annonse/contacts/search">Søk: KontaktPerson</a>
             </div>
         </li>
-        <li><a href="/annonse/ads/home"
+        <li><a href="/annonse/ads"
                onmouseover="openMenu('dropmenu3')"
                onmouseout="setClosing()">Annonser</a>
             <div id="dropmenu3"
@@ -38,7 +38,7 @@
                 <a href="/annonse/ads/search">Søk: annonse</a>
             </div>
         </li>
-        <li><a href="/annonse/sales/home"
+        <li><a href="/annonse/sales"
                onmouseover="openMenu('dropmenu4')"
                onmouseout="setClosing()">Salg</a>
             <div id="dropmenu4"
@@ -49,7 +49,7 @@
                 <a href="/annonse/sales/search">Søk: salg</a>
             </div>
         </li>
-        <li><a href="/annonse/invoices/home"
+        <li><a href="/annonse/invoices"
                onmouseover="openMenu('dropmenu5')"
                onmouseout="setClosing()">Faktura</a>
             <div id="dropmenu5"
@@ -60,7 +60,7 @@
                 <a href="/annonse/invoices/search">SØK: faktura</a>
             </div>
         </li>
-        <li><a href="/annonse/statistics/home"
+        <li><a href="/annonse/statistics"
                onmouseover="openMenu('dropmenu6')"
                onmouseout="setClosing()">Statistikk</a>
             <div id="dropmenu6"

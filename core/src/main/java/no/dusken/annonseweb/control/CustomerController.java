@@ -5,12 +5,9 @@ import no.dusken.annonseweb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -20,7 +17,7 @@ public class CustomerController{
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/home")
+    @RequestMapping()
     public String viewCustomerHome(){
         return "customers/home";
     }
@@ -45,14 +42,10 @@ public class CustomerController{
         return "customers/new";
     }
 
-    @RequestMapping("/addCustomer")
-    public String addCustomer(@RequestParam String customerName, @RequestParam String centralEmail,
-                              @RequestParam String centralTlf, @RequestParam String invoiceAddress,
-                              @RequestParam String subscriberAddress, @RequestParam BigInteger discount,
-                              @RequestParam List<String> industryTags, Model model){
-        Customer customer = new Customer(customerName, centralEmail, centralTlf, invoiceAddress, subscriberAddress, discount, industryTags);
+    @RequestMapping(value="/addCustomer", method = RequestMethod.POST)
+    public String addCustomer(@Valid @ModelAttribute("customer") Customer customer, Model model){
         customerService.save(customer);
-        return "customers/customer/" + customer.getId();
+        return "customers/customer";
     }
 
     @RequestMapping("/search")
