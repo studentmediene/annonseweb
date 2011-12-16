@@ -56,11 +56,11 @@ public class ContactController {
         return "contacts/all";
     }
 
-    @RequestMapping("/all")
+    @RequestMapping("/allContactPersons")
     public String all(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         model.addAttribute("contactPersonList", contactPersonList);
-        return "contacts/all";
+        return "contacts/allContactPersons";
     }
 
     @RequestMapping(value="/contactNote/{Id}")
@@ -69,13 +69,13 @@ public class ContactController {
         return "contacts/contactNote";
     }
 
-    @RequestMapping("/newContact")
+    @RequestMapping("/newContactNote")
     public String newContact(){
-        return "contacts/newContact";
+        return "contacts/newContactNote";
     }
 
     @RequestMapping(value="/addContactNote", method = RequestMethod.POST)
-    public String addContactNote(@Valid @ModelAttribute("contactNote")ContactNote contactNote, Model model){
+    public String addContactNote(@Valid @ModelAttribute("contactNote")ContactNote contactNote){
         contactNoteService.save(contactNote);
         return "contacts/contactNote";
     }
@@ -93,7 +93,7 @@ public class ContactController {
     }
 
     @RequestMapping(value="/addContactPerson", method = RequestMethod.POST)
-    public String addContactPerson(@Valid @ModelAttribute("contactPerson")ContactPerson contactPerson, Model model){
+    public String addContactPerson(@Valid @ModelAttribute("contactPerson")ContactPerson contactPerson){
         contactPersonService.save(contactPerson);
         return "contacts/contactPerson";
     }
