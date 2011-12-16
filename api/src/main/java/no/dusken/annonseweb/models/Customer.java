@@ -21,6 +21,7 @@ public class Customer extends DuskenObject{
     private String subscriberAddress;
     private BigInteger discount;
     private List<String> industryTags;
+    private String homepage;
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<ContactNote> contactNotes;
@@ -155,4 +156,11 @@ public class Customer extends DuskenObject{
     }
 
 
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
 }

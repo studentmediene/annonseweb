@@ -35,7 +35,7 @@
             <p><a href="https://underdusken.no/redmine/">et Under Dusken-Data produkt!</a></p>
         </div>
         <div id="search">
-            <form method="get" action="">
+            <form method="get">
                 <fieldset>
                     <input type="text" name="s" placeholder="Søk" id="search-text" size="15" />
                     <input type="submit" id="search-submit" value="GO" />

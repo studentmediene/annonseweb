@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 @Entity
 public class Address extends DuskenObject{
 
+    //TODO: se issue on github.
     private String personName;
     private String streetName;
     private String zipCode;
