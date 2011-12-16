@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,16 +39,28 @@ public class ContactController {
         return "contacts/home";
     }
 
+    @RequestMapping("/allContactNotes")
+    public String allContacts(Model model){
+        List<ContactNote> contactNotes = contactNoteService.findAll();
+        model.addAttribute("contactPersonList", contactNotes);
+        return "contacts/allContactNotes";
+    }
+
+    @RequestMapping("/allActive")
+    public String allActive(Model model){
+        List<ContactPerson> contactPersonList = contactPersonService.findAll();
+        for(ContactPerson contactPerson: contactPersonList){
+            if(!contactPerson.getActive()) contactPersonList.remove(contactPerson);
+        }
+        model.addAttribute("contactPersonList", contactPersonList);
+        return "contacts/all";
+    }
+
     @RequestMapping("/all")
     public String all(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         model.addAttribute("contactPersonList", contactPersonList);
         return "contacts/all";
-    }
-
-    @RequestMapping("/search")
-    public String search(){
-        return "contacts/search";
     }
 
     @RequestMapping(value="/contactNote/{Id}")
@@ -83,6 +96,21 @@ public class ContactController {
     public String addContactPerson(@Valid @ModelAttribute("contactPerson")ContactPerson contactPerson, Model model){
         contactPersonService.save(contactPerson);
         return "contacts/contactPerson";
+    }
+
+    @RequestMapping("/emailList")
+    public String viewEmailsCustomersContact(Model model){
+        List<String> emailList = new ArrayList<String>();
+        for(ContactPerson contactPerson: contactPersonService.findAll()){
+            emailList.add(contactPerson.getEmail());
+        }
+        model.addAttribute("emailList", emailList);
+        return "customers/emailList";
+    }
+
+    @RequestMapping("/search")
+    public String search(){
+        return "contacts/search";
     }
 
 }

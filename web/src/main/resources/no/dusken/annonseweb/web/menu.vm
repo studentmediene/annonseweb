@@ -20,9 +20,12 @@
             <div id="dropmenu2"
                  onmouseover="stayOpen('dropmenu2')"
                  onmouseout="setClosing()">
-                <a href="/annonse/contacts/newContact   ">Ny kontakt</a>
-                <a href="/annonse/contacts/newPerson">Ny kontaktperson</a>
-                <a href="/annonse/contacts/all">Kontaktpersonliste</a>
+                <a href="/annonse/contacts/newContact">Ny kontakt</a>
+                <a href="/annonse/contacts/newContactPerson">Ny kontaktperson</a>
+                <a href="/annonse/contacts/allContactNotes">Kontaktliste</a>
+                <a href="/annonse/contacts/allActive">Kontaktpersonliste - aktive</a>
+                <a href="/annonse/contacts/all">Kontaktpersonliste - alle</a>
+                <a href="/annonse/contacts/emailList">Epostliste - aktive</a>
                 <a href="/annonse/contacts/search">Søk: KontaktPerson</a>
             </div>
         </li>

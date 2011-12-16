@@ -2,9 +2,12 @@
     <div class="post">
         <h2 class="title"><a href="#">Email-liste til alle kunder</a></h2>
         <div class="entry">
-            <p>
-                Liste over emailer til alle kundene
-            </p>
+            #foreach($email in $emailList)
+                <p>
+                    $email
+                </p>
+            #end
+
         </div>
     </div>
 </div>

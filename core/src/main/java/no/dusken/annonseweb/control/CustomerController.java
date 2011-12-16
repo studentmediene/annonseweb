@@ -1,6 +1,7 @@
 package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Customer;
+import no.dusken.annonseweb.service.ContactPersonService;
 import no.dusken.annonseweb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,6 +18,9 @@ public class CustomerController{
 
     @Autowired
     private CustomerService customerService;
+    
+    @Autowired
+    private ContactPersonService contactPersonService;
 
     @RequestMapping()
     public String viewCustomerHome(){
@@ -30,8 +35,7 @@ public class CustomerController{
 
     @RequestMapping("/all")
     public String viewCustomerList(Model model){
-        List<Customer> customerList = customerService.findAll();
-        model.addAttribute("customerList", customerList);
+        model.addAttribute("customerList", customerService.findAll());
         return "customers/all";
     }
 
@@ -46,18 +50,20 @@ public class CustomerController{
         return "customers/customer";
     }
 
+    @RequestMapping("/emailList")
+    public String viewEmailsCustomersMain(Model model){
+        List<String> emailList = new ArrayList<String>();
+        for(Customer customer: customerService.findAll()){
+            emailList.add(customer.getCentralEmail());
+        }
+        model.addAttribute("emailList", emailList);
+        return "customers/emailList";
+    }
+
     @RequestMapping("/search")
     public String viewSearchCustomer(){
-        return "customers/search";
+        return "customers/new_tobe";     // to be changed back to the line beneath.
+        //return "customers/search";
     }
-
-    @RequestMapping("/emailList")
-    public String viewEmailsCustomers(){
-        //return "customers/emailList";
-        return "customers/new_tobe";     // to be changed back to the line above.
-    }
-
-
-
 }
 
