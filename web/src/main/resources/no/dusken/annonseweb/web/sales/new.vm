@@ -48,9 +48,9 @@
             <li>
                 <label class="description">Beskrivelse</label>
                 <div>
-                    #if($lists.isEmpty($customerList))
+                    #if($customerList.size()==1)
                         <!-- When you get here som customers to add a sale to a specific customer. aka the customer i already decided when you get here. -->
-                        <input id="customer" name="customer" class="element text medium" type="text" value="$customerList"/>
+                        <input id="customer" name="customer" class="element text medium" type="text" value="$customerList.get(0)"/>
                     #else
                         <!-- TODO: add functionality for autocomplete. To find samfundet, enter Sa and Samfundet shows.-->
                         <select id="customerSelect" class="element select medium" id="customerSelect" name="customer">
