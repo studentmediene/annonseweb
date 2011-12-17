@@ -32,7 +32,12 @@
     <div id="header">
         <div id="logo">
             <h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
-            <p><a href="https://underdusken.no/redmine/">et Under Dusken-Data produkt!</a></p>
+            <p><a href="http://www.underdusken.no">Annonser for Under Dusken</a></p>
+            <lable>
+                <a href="https://github.com/dusken/annonseweb">Utviklet av Duskens Dataavdeling</a>
+                 -
+                <a href="https://github.com/dusken/annonseweb/issues">Feedback?(click me)</a>
+            </lable>
         </div>
         <div id="search">
             <form method="get">
@@ -53,8 +58,5 @@
     </div>
 
 </div>
-<footer id="footer">
-    <p>Powered by <a href="https://underdusken.no/redmine/">Dusken - Annonseweb</a> - ($text.version)</p>
-</footer>
 </body>
 </html>

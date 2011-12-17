@@ -103,14 +103,14 @@ a:hover {
 	float: left;
 	letter-spacing: -1px;
 	text-transform: lowercase;
-	font-size: 4.6em;
+	font-size: 4.5em;
 	color: #FFFFFF;
 }
 
 #logo p {
 	float: left;
 	margin: 0;
-	padding: 30px 0 0 10px;
+	padding: 30px 0 15px 10px;
 	font: normal 14px Georgia, "Times New Roman", Times, serif;
 	font-style: italic;
 }
@@ -120,6 +120,10 @@ a:hover {
 	background: none;
 	text-decoration: none;
 	color: #FFFFFF;
+}
+
+#logo lable{
+    font-size: 88%;
 }
 
 /* Search */
