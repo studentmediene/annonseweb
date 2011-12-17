@@ -30,7 +30,7 @@ import static junit.framework.Assert.assertNotNull;
 public class ServiceIntegrationTest {
 
     @Autowired
-    private SaleService saleService;
+    private SalesService salesService;
 
     @Test
     public void testSave(){
@@ -41,7 +41,7 @@ public class ServiceIntegrationTest {
 
         Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)), customer, createdUser, true);
 
-        Sale sale = saleService.saveAndFlush(s);
+        Sale sale = salesService.saveAndFlush(s);
         assertNotNull(sale);
         assertNotNull(sale.getId());
         assertEquals(ad, sale.getAds().get(0));

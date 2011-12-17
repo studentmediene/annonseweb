@@ -55,6 +55,10 @@ public class Customer extends DuskenObject{
         this.industryTags = industryTags;
     }
 
+    public void addSale(Sale sale){
+        sales.add(sale);
+    }
+    
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }

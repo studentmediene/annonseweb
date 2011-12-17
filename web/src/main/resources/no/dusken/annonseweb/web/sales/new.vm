@@ -1,23 +1,94 @@
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="#">Nytt salg</a></h2>
-        <div class="entry">
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/sales/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+    <h2 class="title">
+        <a href="/annonse/sales/new">Nytt salg</a>
+    </h2>
+    <form id="newSale" class="content" method="POST" action="/annonse/sales/addSale">
+        <div class="content_description">
+            <p>Legg inn informasjonen om salget og trykk lagre for å opprette et nytt salg.</p>
             <p>
+                store the company id as part of the sales model.
                 Nytt salg
             </p>
         </div>
-    </div>
-</div>
+        <ul>
+            <li>
+                <label class="description">Beskrivelse</label>
+                <div>
+                    <input id="description" name="description" class="element text medium" type="text" maxlength="255" value=""/>
+                </div>
+                <p class="guidelines">
+                    <small>Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Annonser</label>
+                <div>
+                    <input id="ads" name="ads" class="element text medium" type="hidden" value=""/>
+                    <label>
+                        Some funky shit to add multiple ads, and create models of them at save.
+                        <br />
+                        List all the ads in this sale
+                        <br />
+                        foreach( $ad in $ads)
+                            <label>some add</label>
+                        end
 
-<nav id="sidebar">
-    <h2>Salg</h2>
-    <ul>
-        <li><a href="/sales/newSale.do">Nytt salg</a></li>
-        <li><a href="/sales/viewSales.do">Salgsliste</a></li>
-        <li><a href="/sales/searchSale.do">Søk etter salg</a></li>
-    </ul>
-    <p>
-        Logget inn som:     <br>
-        // oppdateres automatisk //
-    </p>
-</nav>
+                        <br />
+                        Some javascript or jquery to show a new ad box. And then add that ad to a list of ads for this sale.
+                    </label>
+                </div>
+                <p class="guidelines">
+                    <small>Legg til flere annonser i det gitte salget. Har kan man for eksempel selge en helside i papiravisa og topbanneret på nettsida samtidig.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">Beskrivelse</label>
+                <div>
+                    #if($lists.isEmpty($customerList))
+                        <!-- When you get here som customers to add a sale to a specific customer. aka the customer i already decided when you get here. -->
+                        <input id="customer" name="customer" class="element text medium" type="text" value="$customerList"/>
+                    #else
+                        <!-- TODO: add functionality for autocomplete. To find samfundet, enter Sa and Samfundet shows.-->
+                        <select id="customerSelect" class="element select medium" id="customerSelect" name="customer">
+                            <option value="" selected="selected">Choose a customer</option>
+                            <!--list the customers in a selection list-->
+                            #foreach( $customer in $customerList)
+                                <option value="$customer" >$customer.customerName</option>
+                            #end
+                        </select>
+                    #end
+                </div>
+                <p class="guidelines">
+                    <small>
+                        Velg kunden som dette salget tilhører.
+                        eks: hvis det er Samfundet dette salget går til så skal feltet være samfundet.
+                        Om du kom hit fra en kunde, så er det den kunden som automatisk skal stå her.
+                        Typisk: er på kunden, og skal legge inn salg for denne -> nytt salg hvor kunden er satt fra før av.
+                    </small>
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Levert annonse
+                    <input id="adReceived" name="adReceived" class="element text medium" type="checkbox" value=""/>
+                </label>
+                <p class="guidelines">
+                    <small>Huket av(er true) om Dusken har mottatt annonsen fra kunden.</small>
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Selger
+                    <input id="createdUser" name="createdUser" class="element text medium" type="checkbox" value=""/>
+                </label>
+                <p class="guidelines">
+                    <small>Personen i Dusken som utfører salget. Brukeren som er logget inn i denne settingen.</small>
+                </p>
+            </li>
+        </ul>
+    </form>
+</div>

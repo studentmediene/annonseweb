@@ -4,6 +4,7 @@ import no.dusken.common.model.DuskenObject;
 import no.dusken.common.model.Person;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import static javax.persistence.FetchType.LAZY;
 public class Invoice extends DuskenObject{
 
     @OneToMany(fetch = LAZY, cascade = ALL)
+    @NotNull
     private List<Sale> sales;
 
     private String invoiceLabel;

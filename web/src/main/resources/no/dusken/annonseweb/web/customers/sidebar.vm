@@ -4,7 +4,7 @@
         <li><a href="/annonse/customers/new">Ny kunde</a></li>
         <li><a href="/annonse/customers/all">Kundeliste</a></li>
         <li><a href="/annonse/customers/search">Søk etter kunde</a></li>
-        <li><a href="/annonse/customers/contactEmailList">Email til alle Kunder</a></li>
+        <li><a href="/annonse/customers/emailList">Email til alle Kunder</a></li>
     </ul>
     <p>
         TODO: parse this the same way the sidebar is parsed.
