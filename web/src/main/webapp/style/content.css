@@ -374,7 +374,7 @@
 
 .content input.medium
 {
-	width:50%;
+	width:auto;
 }
 
 .content select.medium

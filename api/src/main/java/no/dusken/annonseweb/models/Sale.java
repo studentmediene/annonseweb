@@ -15,9 +15,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 public class Sale extends DuskenObject {
 
-
-    private String appointmentName;
-
+    private String description;
 
     @OneToMany(fetch = LAZY, cascade = ALL)
     private List<Ad>  ads = new LinkedList<Ad>();
@@ -35,26 +33,29 @@ public class Sale extends DuskenObject {
     @ManyToOne(cascade = ALL)
     private Person lastEditedUser;
 
-    private Boolean adDelivered;
+    private Boolean adReceived;
+
+    @ManyToOne(optional = true, cascade = ALL)
+    public Invoice invoice;
 
     public Sale() {}
 
-    public Sale(String appointmentName, List<Ad> ads, Customer customer, Person createdUser, Boolean adDelivered) {
-        this.appointmentName = appointmentName;
+    public Sale(String description, List<Ad> ads, Customer customer, Person createdUser, Boolean adReceived) {
+        this.description = description;
         this.ads = ads;
         this.customer = customer;
         this.createdUser = createdUser;
         this.lastEditedDate = Calendar.getInstance();
         this.lastEditedUser = createdUser;
-        this.adDelivered = adDelivered;
+        this.adReceived = adReceived;
     }
 
-    public String getAppointmentName() {
-        return appointmentName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAppointmentName(String appointmentName) {
-        this.appointmentName = appointmentName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Ad> getAds() {
@@ -97,11 +98,11 @@ public class Sale extends DuskenObject {
         this.lastEditedUser = lastEditedUser;
     }
 
-    public Boolean getAdDelivered() {
-        return adDelivered;
+    public Boolean getAdReceived() {
+        return adReceived;
     }
 
-    public void setAdDelivered(Boolean adDelivered) {
-        this.adDelivered = adDelivered;
+    public void setAdReceived(Boolean adReceived) {
+        this.adReceived = adReceived;
     }
 }
