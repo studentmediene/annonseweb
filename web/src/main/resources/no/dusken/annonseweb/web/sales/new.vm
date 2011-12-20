@@ -9,10 +9,6 @@
     <form id="newSale" class="content" method="POST" action="/annonse/sales/addSale">
         <div class="content_description">
             <p>Legg inn informasjonen om salget og trykk lagre for å opprette et nytt salg.</p>
-            <p>
-                store the company id as part of the sales model.
-                Nytt salg
-            </p>
         </div>
         <ul>
             <li>

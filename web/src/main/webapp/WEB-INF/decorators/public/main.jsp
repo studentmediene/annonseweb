@@ -32,12 +32,9 @@
     <div id="header">
         <div id="logo">
             <h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
-            <p><a href="http://www.underdusken.no">Annonser for Under Dusken</a></p>
-            <lable>
-                <a href="https://github.com/dusken/annonseweb">Utviklet av Duskens Dataavdeling</a>
-                 -
-                <a href="https://github.com/dusken/annonseweb/issues">Feedback?(click me)</a>
-            </lable>
+            <p>
+                <a href="http://www.underdusken.no">Annonser for Under Dusken</a>
+            </p>
         </div>
         <div id="search">
             <form method="get">
@@ -46,6 +43,14 @@
                     <input type="submit" id="search-submit" value="GO" />
                 </fieldset>
             </form>
+        </div>
+        <div id="feedback">
+            <p>
+                <a href="https://github.com/dusken/annonseweb">Utviklet av Duskens Dataavdeling</a>
+                -
+                <a href="https://github.com/dusken/annonseweb/issues">Feedback?(click me)</a>
+                <!-- add some javascript pop out for feedback -->
+            </p>
         </div>
     </div>
 
