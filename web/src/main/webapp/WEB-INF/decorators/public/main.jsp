@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="wrapper">
-    <div id="header">
+    <header>
         <div id="logo">
             <h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
             <p>
@@ -52,7 +52,7 @@
                 <!-- add some javascript pop out for feedback -->
             </p>
         </div>
-    </div>
+    </header>
 
     <nav id="menu">
         <page:applyDecorator name="blank" page="/annonse/menu"/>
