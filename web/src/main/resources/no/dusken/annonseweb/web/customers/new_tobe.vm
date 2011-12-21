@@ -1,12 +1,13 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/customers/sidebar.vm')
 
+<!-- content -->
 <div id="content" class="post">
 
     <h2 class="title">
         <a href="/annonse/customers/new">Ny kunde</a>
     </h2>
-    <form id="newCustomer" class="content"  method="post" action="/annonse/customers/addCustomer">
+    <form id="newCustomer" class="content"  method="post" action="/annonse/customers/add">
         <div class="content_description">
             <p>Legg inn informasjonen om kunden og trykk lagre for å opprette en ny kunde.</p>
         </div>
@@ -14,94 +15,96 @@
             <li>
                 <label class="description">Firmanavn</label>
                 <div>
-                    <input id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="customerName" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
-                    <small>Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.</small>
+                    Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
                 </p>
             </li>
             <li>
-                <label class="description" for="element_4">Epostadressen til firmaet </label>
+                <label class="description">Epostadressen til firmaet </label>
                 <div>
-                    <input id="element_4" name="element_4" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="centralEmail" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines" id="guide_4">
-                    <small>Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.</small>
+                    Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
                 </p>
             </li>
             <li>
                 <label class="description">Hjemmesiden til Firmaet </label>
                 <div>
-                    <input id="element_3" name="element_3" class="element text medium" type="text" maxlength="255" value="http://"/>
+                    <input name="homepage" class="element text medium" type="text" maxlength="255" value="http://"/>
                 </div>
                 <p class="guidelines" id="guide_3">
-                    <small>Hjemmesiden til firmaet. ala Underdusken.no</small>
+                    Hjemmesiden til firmaet. ala Underdusken.no
                 </p>
             </li>
             <li>
-                <label class="description" for="element_2">Telefon </label>
+                <label class="description">Telefon </label>
                 <div>
-                    <input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="centralTlf" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
-                <p class="guidelines" id="guide_2">
-                    <small>Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet. </small>
+                <p class="guidelines">
+                    Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.
                 </p>
             </li>
             <li>
                 <label class="description">Adresse (foreløpig bare en linje)</label>
-
                 <div>
-                    <input id="element_1_1" name="element_1_1" class="element text large" value="" type="text">
+                    <input name="subscriberAddress" class="element text medium" value="" type="text">
                     <label>Gateadresse</label>
                 </div>
 
+                <!-- TODO: to be implemented-->
                 <div class="right">
                     <input id="element_1_4" name="element_1_4" class="element text medium" value="" type="text">
                     <label>Poststed</label>
                 </div>
 
+                <!-- TODO: to be implemented -->
                 <div class="left">
                     <input id="element_1_5" name="element_1_5" class="element text medium" maxlength="15" value="" type="text">
                     <label>Postnummer</label>
                 </div>
 
-                <p class="guidelines" id="guide_1">
-                    <small>Adressen til firmaet, dette er hovedadressen eller besøksadressen.</small>
+                <p class="guidelines">
+                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
                 </p>
             </li>
             <li>
                 <label class="description">Faktura-Adresse (foreløpig bare en linje)</label>
-
                 <div>
-                    <input id="element_6_1" name="element_6_1" class="element text large" value="" type="text">
+                    <input name="invoiceAddress" class="element text medium" value="" type="text">
                     <label>Gateadresse</label>
                 </div>
 
+                <!-- TODO: to be implemented -->
                 <div class="right">
                     <input id="element_6_4" name="element_6_4" class="element text medium" value="" type="text">
                     <label>Poststed</label>
                 </div>
 
+                <!-- TODO: to be implemented -->
                 <div class="left">
                     <input id="element_6_5" name="element_6_5" class="element text medium" maxlength="15" value="" type="text">
                     <label>Postnummer</label>
                 </div>
 
-                <p class="guidelines" id="guide_6">
-                    <small>Dette er adressen vi sender fakturaen til.</small>
+                <p class="guidelines">
+                    Dette er adressen vi sender fakturaen til.
                 </p>
             </li>
             <li>
                 <label class="description">Rabatt </label>
                 <div>
-                    <input id="element_7" name="element_7" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="discount" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
-                <p class="guidelines" id="guide_7">
-                    <small>Dette er rabattprosenten man vil at firmaet skal ha. </small>
+                <p class="guidelines">
+                    Dette er rabattprosenten man vil at firmaet skal ha.
                 </p>
             </li>
             <li class="buttons">
-                <input id="saveForm" class="button_text" type="submit" name="submit" value="Lagre ny Kunde" />
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Customer" />
             </li>
         </ul>
     </form>

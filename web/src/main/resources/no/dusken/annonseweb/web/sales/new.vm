@@ -6,20 +6,21 @@
     <h2 class="title">
         <a href="/annonse/sales/new">Nytt salg</a>
     </h2>
-    <form id="newSale" class="content" method="POST" action="/annonse/sales/addSale">
+    <form id="newSale" class="content" method="POST" action="/annonse/sales/add">
         <div class="content_description">
             <p>Legg inn informasjonen om salget og trykk lagre for å opprette et nytt salg.</p>
         </div>
         <ul>
             <li>
-                <label class="description">Beskrivelse</label>
+                <label class="description">Description</label>
                 <div>
-                    <input id="description" name="description" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="description" class="element text medium" type="text" maxlength="255" value="$sale.description"/>
                 </div>
                 <p class="guidelines">
-                    <small>Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn</small>
+                    Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn
                 </p>
             </li>
+            <!--
             <li>
                 <label class="description">Annonser</label>
                 <div>
@@ -41,30 +42,38 @@
                     <small>Legg til flere annonser i det gitte salget. Har kan man for eksempel selge en helside i papiravisa og topbanneret på nettsida samtidig.</small>
                 </p>
             </li>
+            -->
             <li>
-                <label class="description">Beskrivelse</label>
+                <label class="description">Kunde</label>
                 <div>
-                    #if($customerList.size()==1)
-                        <!-- When you get here som customers to add a sale to a specific customer. aka the customer i already decided when you get here. -->
-                        <input id="customer" name="customer" class="element text medium" type="text" value="$customerList.get(0)"/>
-                    #else
-                        <!-- TODO: add functionality for autocomplete. To find samfundet, enter Sa and Samfundet shows.-->
-                        <select id="customerSelect" class="element select medium" id="customerSelect" name="customer">
-                            <option value="" selected="selected">Choose a customer</option>
-                            <!--list the customers in a selection list-->
-                            #foreach( $customer in $customerList)
-                                <option value="$customer" >$customer.customerName</option>
-                            #end
-                        </select>
-                    #end
+                    <select id="customerSelect" class="element select medium" name="customer">
+                        #if($selectedCustomer)
+                            <!-- this thing gets an exception I don't know how to fix. message here:
+                            org.springframework.validation.BindException: org.springframework.validation.BeanPropertyBindingResult: 1 errors
+
+                            Field error in object 'sale' on field 'customer': rejected value [1]; codes [typeMismatch.sale.customer,typeMismatch.customer,
+                            typeMismatch.no.dusken.annonseweb.models.Customer,typeMismatch];
+                            arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [sale.customer,customer]; arguments [];
+                            default message [customer]]; default message [Failed to convert property value of type 'java.lang.String' to required type
+                            'no.dusken.annonseweb.models.Customer' for property 'customer'; nested exception is java.lang.IllegalStateException:
+                            Cannot convert value of type [java.lang.String] to required type [no.dusken.annonseweb.models.Customer] for property
+                            'customer': no matching editors or conversion strategy found]
+
+                            -->
+                            <option value="$selectedCustomer">$selectedCustomer.Id - $selectedCustomer.customerName</option>
+                        #else
+                            <option>Select a Customer</option>
+                        #end
+                        #foreach( $customer in $customerList )
+                            <option value="$customer">$customer.Id - $customer.customerName</option>
+                        #end
+                    </select>
                 </div>
                 <p class="guidelines">
-                    <small>
-                        Velg kunden som dette salget tilhører.
-                        eks: hvis det er Samfundet dette salget går til så skal feltet være samfundet.
-                        Om du kom hit fra en kunde, så er det den kunden som automatisk skal stå her.
-                        Typisk: er på kunden, og skal legge inn salg for denne -> nytt salg hvor kunden er satt fra før av.
-                    </small>
+                    Velg kunden som dette salget tilhører.
+                    eks: hvis det er Samfundet dette salget går til så skal feltet være samfundet.
+                    Om du kom hit fra en kunde, så er det den kunden som automatisk skal stå her.
+                    Typisk: er på kunden, og skal legge inn salg for denne -> nytt salg hvor kunden er satt fra før av.
                 </p>
             </li>
             <li>
@@ -73,9 +82,10 @@
                     <input id="adReceived" name="adReceived" class="element text medium" type="checkbox" value=""/>
                 </label>
                 <p class="guidelines">
-                    <small>Huket av(er true) om Dusken har mottatt annonsen fra kunden.</small>
+                    Huket av(er true) om Dusken har mottatt annonsen fra kunden.
                 </p>
             </li>
+            <!--
             <li>
                 <label class="description">
                     Selger
@@ -84,6 +94,10 @@
                 <p class="guidelines">
                     <small>Personen i Dusken som utfører salget. Brukeren som er logget inn i denne settingen.</small>
                 </p>
+            </li>
+            -->
+            <li class="buttons">
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Sale" />
             </li>
         </ul>
     </form>
