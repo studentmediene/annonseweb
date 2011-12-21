@@ -4,41 +4,37 @@
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
-        <a href="/annonse/sales/edit">Edit Sale</a>
-        <label class="edit"><a href="/annonse/sales/sale/$sale.Id">Back</a></label>
+        <a href="/annonse/sales/new">Nytt salg</a>
     </h2>
-    <form id="newSale" class="content" method="POST" action="/annonse/sales/addSale">
+    <div class="content">
         <div class="content_description">
             <p>Informasjonen om dette salget</p>
             <label class="edit"><a href="/annonse/sales/edit/$sale.Id">Edit Sale</a></label>
         </div>
         <ul>
             <li>
-                <label class="description">Description</label>
+                <label class="description">Beskrivelse</label>
                 <div>
-                    <input name="description" class="element text medium" type="text" maxlength="255" value="$sale.description"/>
+                    <label class="element text medium">$sale.description</label>
                 </div>
                 <p class="guidelines">
-                    Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn.
+                    Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn
                 </p>
             </li>
             <li>
                 <label class="description">Annonser</label>
                 <div>
                     <label>
-                        #foreach( $ad in $sale.ads)
-                            <!-- needs some sort of list or block to adequately describe the ad -->
-                            <!-- remove ads that is unwanted in this sale -->
-                            <label>$ad</label>
-                        #end
-                        <!-- TODO: the adding of ads as in sales/new -->
+                    #foreach( $ad in $sale.ads)
+                        <!-- needs some sort of list or block to adequately describe the ad -->
+                        <label>$ad</label>
+                    #end
                     </label>
                 </div>
                 <p class="guidelines">
-                    Ads that this sale contains. Add or remove ads here.
+                    Liste over hvilke annonser dette salget inneholdet.
                 </p>
             </li>
-            <!-- editing of the cusomter shall not be available until the user complain about it not being possible!
             <li>
                 <label class="description">Kunde</label>
                 <div>
@@ -47,10 +43,9 @@
                     </label>
                 </div>
                 <p class="guidelines">
-                    <small>The customer should not be changed after the initial sale. If this is necessary the user needs better training!</small>
+                    The customer that has purchased the ads in the sale.
                 </p>
             </li>
-            -->
             <li>
                 <label class="description">
                     Levert annonse
@@ -65,9 +60,17 @@
                     Selger: $sale.createdUser
                 </label>
                 <p class="guidelines">
-                    The person that registered the sale. The user that owned the session(was logged in) at the time the sale was registered
+                    The person that registered the sale. The user that owned the session(was logged in) at the time the sale was registered.
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Sist redigert av: $sale.lasEditedUser
+                </label>
+                <p class="guidelines">
+                    The user that last edited this sale.
                 </p>
             </li>
         </ul>
-    </form>
+    </div>
 </div>

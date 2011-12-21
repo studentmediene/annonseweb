@@ -1,10 +1,15 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/customers/sidebar.vm')
+
+<!-- content -->
 <div id="content">
     <div class="post">
         <h2 class="title"><a href="#">Ny kunde</a></h2>
         <div class="entry">
             ${link.contextURL} = http://localhost:8080/ <br /> <-- have something to do with the path in springFormInput ?
-            <p>
-            <form name="customer" method="post" action="/annonse/customers/addCustomer">
+            path??=     no.dusken.annonseweb.models.Customer
+
+            <form name="customer" method="post" action="/annonse/customers/add">
                 <label for="customerName">customerName:<input id="customerName" type="text" name="customerName"></label><br />
                 <label for="centralEmail">centralEmail:<input id="centralEmail" type="text" name="centralEmail"></label><br />
                 <label for="centralTlf">centralTlf:<input id="centralTlf" type="text" name="centralTlf"></label>     <br />
@@ -21,10 +26,7 @@
                 <label for="industryTags">industryTags:<input id="industryTags" type="text" name="industryTags"></label><br />
                 <input type="submit" value="create"><br />
             </form>
-            </p>
         </div>
     </div>
 </div>
 
-<!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/customers/sidebar.vm')

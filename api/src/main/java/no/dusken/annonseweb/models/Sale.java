@@ -1,7 +1,9 @@
 package no.dusken.annonseweb.models;
 
+import no.dusken.annonseweb.service.CustomerService;
 import no.dusken.common.model.DuskenObject;
 import no.dusken.common.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -38,13 +40,24 @@ public class Sale extends DuskenObject {
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
 
-    public Sale() {}
+    @Autowired
+    private CustomerService customerService;
 
+    public Sale() {}
     public Sale(String description, List<Ad> ads, Customer customer, Person createdUser, Boolean adReceived) {
         this.description = description;
         this.ads = ads;
         this.customer = customer;
         this.createdUser = createdUser;
+        this.lastEditedDate = Calendar.getInstance();
+        this.lastEditedUser = createdUser;
+        this.adReceived = adReceived;
+    }
+    public Sale(String description, Long customer, Boolean adReceived) {
+        this.description = description;
+        this.customer = customerService.findOne(customer);
+        //TODO: Change the way the createdUser is set.
+        this.createdUser = new Person(); // this should be the person that currently is logged in.
         this.lastEditedDate = Calendar.getInstance();
         this.lastEditedUser = createdUser;
         this.adReceived = adReceived;
@@ -104,5 +117,12 @@ public class Sale extends DuskenObject {
 
     public void setAdReceived(Boolean adReceived) {
         this.adReceived = adReceived;
+    }
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 }
