@@ -5,6 +5,7 @@ import no.dusken.annonseweb.models.ContactPerson;
 import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.service.ContactNoteService;
 import no.dusken.annonseweb.service.ContactPersonService;
+import no.dusken.annonseweb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,19 +35,22 @@ public class ContactController {
     @Autowired
     private ContactNoteService contactNoteService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @RequestMapping("")
     public String viewContactsHome(){
         return "contacts/home";
     }
 
-    @RequestMapping("/allContactNotes")
+    @RequestMapping("/contactNotes/all")
     public String allContacts(Model model){
         List<ContactNote> contactNotes = contactNoteService.findAll();
         model.addAttribute("contactPersonList", contactNotes);
         return "contacts/allContactNotes";
     }
 
-    @RequestMapping("/allActive")
+    @RequestMapping("/contactPersons/active")
     public String allActive(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         for(ContactPerson contactPerson: contactPersonList){
@@ -56,7 +60,7 @@ public class ContactController {
         return "contacts/all";
     }
 
-    @RequestMapping("/allContactPersons")
+    @RequestMapping("/contactPerson/all")
     public String all(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         model.addAttribute("contactPersonList", contactPersonList);
@@ -65,16 +69,22 @@ public class ContactController {
 
     @RequestMapping(value="/contactNote/{Id}")
     public String viewContactNote(@PathVariable Long Id, Model model){
-        model.addAttribute("contactNote", contactNoteService.findOne(Id));
+        model.addAttribute("contact", contactNoteService.findOne(Id));
         return "contacts/contactNote";
     }
 
-    @RequestMapping("/newContactNote")
+    @RequestMapping("/contactNote/new")
     public String newContact(){
         return "contacts/newContactNote";
     }
 
-    @RequestMapping(value="/addContactNote", method = RequestMethod.POST)
+    @RequestMapping("/contactNote/new/{Id}")
+    public String newContactWithCustomerID(@PathVariable Long Id,Model model){
+        model.addAttribute("customer", customerService.findOne(Id));
+        return "contacts/newContactNote";
+    }
+
+    @RequestMapping(value="/contactNote/add", method = RequestMethod.POST)
     public String addContactNote(@Valid @ModelAttribute("contactNote")ContactNote contactNote){
         contactNoteService.save(contactNote);
         return "contacts/contactNote";
@@ -83,16 +93,16 @@ public class ContactController {
     @RequestMapping(value="/contactPerson/{Id}")
     public String viewContactPerson(@PathVariable Long Id, Model model){
         ContactPerson contactPerson = contactPersonService.findOne(Id);
-        model.addAttribute("contactPerson", contactPerson);
+        model.addAttribute("contact", contactPerson);
         return "contacts/contactPerson";
     }
 
-    @RequestMapping("/newContactPerson")
+    @RequestMapping("/contactPerson/new")
     public String newContactPerson(){
         return "contacts/newContactPerson";
     }
 
-    @RequestMapping(value="/addContactPerson", method = RequestMethod.POST)
+    @RequestMapping(value="/contactPerson/add", method = RequestMethod.POST)
     public String addContactPerson(@Valid @ModelAttribute("contactPerson")ContactPerson contactPerson){
         contactPersonService.save(contactPerson);
         return "contacts/contactPerson";
@@ -106,11 +116,6 @@ public class ContactController {
         }
         model.addAttribute("emailList", emailList);
         return "customers/emailList";
-    }
-
-    @RequestMapping("/search")
-    public String search(){
-        return "contacts/search";
     }
 
 }

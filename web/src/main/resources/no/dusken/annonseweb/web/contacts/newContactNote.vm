@@ -1,13 +1,15 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+
+<!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Ny kontakt</a></h2>
+        <h2 class="title"><a href="/annonse/contacts/contactNote/new">New Contact Note</a></h2>
         <div class="entry">
             <p>
-                Ny kontakt
+                New contact note
             </p>
         </div>
     </div>
 </div>
 
-<!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')

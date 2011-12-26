@@ -9,98 +9,102 @@
     </h2>
     <form id="newCustomer" class="content"  method="post" action="/annonse/customers/add">
         <div class="content_description">
-            <p>Legg inn informasjonen om kunden og trykk lagre for å opprette en ny kunde.</p>
+            <p>Add information about the customer you are about to create.</p>
         </div>
         <ul>
             <li>
-                <label class="description">Firmanavn</label>
+                <label class="description" for="customerName">Customer name</label>
                 <div>
-                    <input name="customerName" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input id="customerName" name="customerName" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
-                    Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
+                    The name of the customer. e.g: "Samfundet"
                 </p>
             </li>
             <li>
-                <label class="description">Epostadressen til firmaet </label>
+                <label class="description">Customer email</label>
                 <div>
                     <input name="centralEmail" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines" id="guide_4">
-                    Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
+                    The email address to the customer. This is not the direct email to the contact person.
                 </p>
             </li>
             <li>
-                <label class="description">Hjemmesiden til Firmaet </label>
+                <label class="description">Homepage</label>
                 <div>
                     <input name="homepage" class="element text medium" type="text" maxlength="255" value="http://"/>
                 </div>
                 <p class="guidelines" id="guide_3">
-                    Hjemmesiden til firmaet. ala Underdusken.no
+                    The homepage of the customer if any. e.g: www.underdusken.no
                 </p>
             </li>
             <li>
-                <label class="description">Telefon </label>
+                <label class="description">Phone</label>
                 <div>
                     <input name="centralTlf" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
-                    Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.
+                    The main phone number to this customer. Might not be the same as for the contact person.
                 </p>
             </li>
             <li>
-                <label class="description">Adresse (foreløpig bare en linje)</label>
+                <label class="description">Address <!-- One line, Temporary --></label>
                 <div>
                     <input name="subscriberAddress" class="element text medium" value="" type="text">
                     <label>Gateadresse</label>
                 </div>
 
-                <!-- TODO: to be implemented-->
+                <!-- TODO: to be implemented ->
                 <div class="right">
                     <input id="element_1_4" name="element_1_4" class="element text medium" value="" type="text">
                     <label>Poststed</label>
                 </div>
+                -->
 
-                <!-- TODO: to be implemented -->
+                <!-- TODO: to be implemented ->
                 <div class="left">
                     <input id="element_1_5" name="element_1_5" class="element text medium" maxlength="15" value="" type="text">
                     <label>Postnummer</label>
                 </div>
+                -->
 
                 <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                    The address of the customer. Visiting address or office address. Might not be the address the invoice is sent to.
                 </p>
             </li>
             <li>
-                <label class="description">Faktura-Adresse (foreløpig bare en linje)</label>
+                <label class="description">Invoice-Address<!-- One line, Temporary --></label>
                 <div>
                     <input name="invoiceAddress" class="element text medium" value="" type="text">
                     <label>Gateadresse</label>
                 </div>
 
-                <!-- TODO: to be implemented -->
+                <!-- TODO: to be implemented ->
                 <div class="right">
                     <input id="element_6_4" name="element_6_4" class="element text medium" value="" type="text">
                     <label>Poststed</label>
                 </div>
+                -->
 
-                <!-- TODO: to be implemented -->
+                <!-- TODO: to be implemented ->
                 <div class="left">
                     <input id="element_6_5" name="element_6_5" class="element text medium" maxlength="15" value="" type="text">
                     <label>Postnummer</label>
                 </div>
+                -->
 
                 <p class="guidelines">
-                    Dette er adressen vi sender fakturaen til.
+                    The address the invoice is sent to.
                 </p>
             </li>
             <li>
-                <label class="description">Rabatt </label>
+                <label class="description">Discount</label>
                 <div>
                     <input name="discount" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
-                    Dette er rabattprosenten man vil at firmaet skal ha.
+                    The discount the customer gets from us. The number is a percentage of the sum. e.g: 25%, then a sale of 10.000 will generate an invoice with 7.500 to be paid.
                 </p>
             </li>
             <li class="buttons">

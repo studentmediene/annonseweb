@@ -1,9 +1,9 @@
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Fakturasiden</a></h2>
+        <h2 class="title"><a href="#">Invoices</a></h2>
         <div class="entry">
             <p>
-                "Forsiden" til fakturaene, med praktisk informasjon.
+                This page should contain a summary of the latest actions and events of the invoice section.
             </p>
         </div>
     </div>

@@ -12,9 +12,9 @@
         </div>
         <ul>
             <li>
-                <label class="description">Description</label>
+                <label class="description" for="description">Description</label>
                 <div>
-                    <input name="description" class="element text medium" type="text" maxlength="255" value="$sale.description"/>
+                    <input id="description" name="description" class="element text medium" type="text" maxlength="255" value="$sale.description"/>
                 </div>
                 <p class="guidelines">
                     Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn
@@ -44,7 +44,7 @@
             </li>
             -->
             <li>
-                <label class="description">Kunde</label>
+                <label class="description" for="customerSelect">Kunde</label>
                 <div>
                     <select id="customerSelect" class="element select medium" name="customer">
                         #if($selectedCustomer)
@@ -77,7 +77,7 @@
                 </p>
             </li>
             <li>
-                <label class="description">
+                <label class="description" for="adReceived">
                     Levert annonse
                     <input id="adReceived" name="adReceived" class="element text medium" type="checkbox" value=""/>
                 </label>

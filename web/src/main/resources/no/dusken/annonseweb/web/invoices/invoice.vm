@@ -1,4 +1,3 @@
-<!-- this site needs to be rewritten to be an invoice. -->
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/customers/sidebar.vm')
 
@@ -6,153 +5,93 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customers/customer/$customer.Id">$customer.customerName - $customer.Id</a>
-        <label class="edit"><a href="/annonse/customers/edit/$customer.Id">Edit Customer</a></label>
+        <a href="/annonse/invoices/invoice/$invoice.Id">$invoice.description - $invoice.Id</a>
+        <label class="edit"><a href="/annonse/invoices/edit/$invoice.Id">Edit Invoice</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
-            <p>Kundeinformasjonen vi har lagret om denne kunden.</p>
+            <p>Invoice information about this invoice.</p>
         </div>
         <ul>
             <li>
-                <label class="description">Kundenummer</label>
+                <label class="description">Invoice Number</label>
                 <div>
-                    <label class="element text medium">$customer.Id</label>
+                    <label class="element text medium">$invoice.invoiceNumber</label>
                 </div>
                 <p class="guidelines">
-                    Automatisk generert identifikator for denne kunden i annonseweb.
+                    The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
                 </p>
             </li>
             <li>
-                <label class="description">Firmanavn</label>
+                <label class="description">Invoice Id</label>
                 <div>
-                    <label class="element text medium">$customer.customerName</label>
+                    <label class="element text medium">$invoice.Id</label>
                 </div>
                 <p class="guidelines">
-                    Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
+                    Automatically generated invoice id.
                 </p>
             </li>
             <li>
-                <label class="description">centralEmail</label>
+                <label class="description">Invoice Description</label>
                 <div>
-                    <label class="element text medium">$customer.centralEmail</label>
+                    <label class="element text medium">$invoice.description</label>
                 </div>
                 <p class="guidelines">
-                    Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
-                </p>
-            </li>
-            <li>
-                <label class="description">Hjemmesiden til Firmaet </label>
-                <div>
-                    <label class="element text medium">
-                        <a href="$customer.homepage">$customer.homepage</a>
-                    </label>
-                </div>
-                <p class="guidelines">
-                    Hjemmesiden til firmaet. ala Underdusken.no
-                </p>
-            </li>
-            <li>
-                <label class="description">Telefon </label>
-                <div>
-                    <label class="element text medium">$customer.centralTlf</label>
-                </div>
-                <p class="guidelines">
-                    Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.
-                </p>
-            </li>
-            <li>
-                <label class="description">Besøksadresse e.l - trenger korrekt navn </label>
-                <div>
-                    <label class="element text medium">$customer.subscriberAddress</label>
-                </div>
-                <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
-                </p>
-            </li>
-            <li>
-                <label class="description">Fakturaadresse </label>
-                <div>
-                    <label class="element text medium">$customer.invoiceAddress</label>
-                </div>
-                <p class="guidelines">
-                    Dette er adressen vi sender fakturaen til.
-                </p>
-            </li>
-            <li>
-                <label class="description">Rabatt (i prosent) </label>
-                <div>
-                    <label class="element text medium">$customer.discount</label>
-                </div>
-                <p class="guidelines">
-                    Dette er rabattprosenten man vil at firmaet skal ha.
-                </p>
-            </li>
-            <li>
-                <label class="description">Kontaktperson </label>
-                <div>
-                    <label class="element text medium">
-                        <a href="link til kontaktperson">$customer.contactPerson</a>
-                    </label>
-                </div>
-                <p class="guidelines">
-                    Personen man skal ta kontakt med hos denne kunden.
-                </p>
-            </li>
-            <li>
-                <label class="description">Kontakt notiser, siste to </label>
-                <div>
-                    #foreach( $note in $customer.contactNotes)
-                        <lable class="element text medium">$note</lable>
-                    #end
-                </div>
-                <p class="guidelines">
-                    De siste to kommentarene(en slags rapport) om siste kontakt man hadde med kunden.
-                    Dette vil fungere som en slags log for å enklere holde oversikt over aktiviteten med denne kunden.
+                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
                 </p>
             </li>
             <li>
                 <label class="description">
-                    Two last sales -
-                    <a href="/annonse/sales/new/$customer.Id">
-                        Register new sale for this customer
-                    </a>
+                    Due date: $invoice.invoiceDate
                 </label>
+                <p class="guidelines">
+                    The date the invoice should be paid.
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Created Date: $invoice.createdDate
+                </label>
+                <p class="guidelines">
+                    The date the invoice was created in this system.
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Created by: $invoice.createdUser
+                </label>
+                <p class="guidelines">
+                    The user that created this invoice.
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Laste edited date: $invoice.lastEditedDate
+                </label>
+                <p class="guidelines">
+                    The date the invoice was laste edited.
+                </p>
+            </li>
+            <li>
+                <label class="description">
+                    Last edited by: $invoice.lastEditedUser
+                </label>
+                <p class="guidelines">
+                    The user that last edited this invoice.
+                </p>
+            </li>
+            <li>
+                <label class="description">Sales</label>
                 <div>
-                    #foreach( $sale in $customer.sales )
-                        <lable class="element text medium">$sale</lable>
+                    <!-- the list of sales that this invoice contains. -->
+                    #foreach($sale in $invoice.sales)
+                        <label class="element text medium">
+                            $sale.Id - $sale.description
+                        </label>
                     #end
                 </div>
                 <p class="guidelines">
-                    The two latest sales made to this customer,
-                </p>
-            </li>
-            <li>
-                <label class="description">Tags </label>
-                <div>
-                    <label class="element text medium">$customer.industryTags</label>
-                </div>
-                <p class="guidelines">
-                    Tags, ord som beskriver denne kunden. Så man kan sortere kunder på tags og finne kunder som er ganske like.
-                    OM man tagger kunder riktig vil det på sikt bli lettere å føre statistikk og markedsføre Dusken.
-                </p>
-            </li>
-            <li>
-                <label class="description">Opprettet (av - når)</label>
-                <div>
-                    <label class="element text medium">$customer.createdUser - $customer.createdDate</label>
-                </div>
-                <p class="guidelines">
-                    Hvem som opprettet denne kunden og når kunden ble opprettet i annonseweb
-                </p>
-            </li>
-            <li>
-                <label class="description">Sist endret (av - når) </label>
-                <div>
-                    <label class="element text medium">$customer.lastEditedUser - $customer.lastEditedDate</label>
-                </div>
-                <p class="guidelines">
-                    Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.
+                    A list of all the sales that is in this invoice. The sales are listed here. Iften there might be only one sale in an invice, it is possible to have multiple sales in one invoice as it might be convenient for the customer or us.
                 </p>
             </li>
         </ul>

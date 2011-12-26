@@ -1,14 +1,9 @@
 <nav id="sidebar">
-    <h2>Kundbar</h2>
+    <h2>CustomerBar</h2>
     <ul>
-        <li><a href="/annonse/customers/new">Ny kunde</a></li>
-        <li><a href="/annonse/customers/all">Kundeliste</a></li>
-        <li><a href="/annonse/customers/search">Søk etter kunde</a></li>
-        <li><a href="/annonse/customers/emailList">Email til alle Kunder</a></li>
+        <li><a href="/annonse/customers/new">New Customer</a></li>
+        <li><a href="/annonse/customers/all">Custoemr List</a></li>
+        <li><a href="/annonse/customers/emailList">Email List</a></li>
     </ul>
-    <p>
-        TODO: parse this the same way the sidebar is parsed.
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
+    #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

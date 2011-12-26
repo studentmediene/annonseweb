@@ -1,13 +1,19 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+
+<!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Ny kunde</a></h2>
+        <h2 class="title"><a href="/annonse/contacts/contactPersons/all">Contact Person List</a></h2>
         <div class="entry">
             <p>
-                all contacts !
+                <!-- should be boxed as sales and invoices to display the most relevant information. -->
+                #foreach($contact in $contactList)
+                    <a href="/annonse/contacts/contactPerson/$contact.Id">$contact.Id - $contact.Name</a>
+                #end
             </p>
         </div>
     </div>
 </div>
 
-<!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+

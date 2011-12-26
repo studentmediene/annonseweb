@@ -6,25 +6,5 @@
         <li><a href="/customers/searchCustomer.do">Søk etter kunde</a></li>
         <li><a href="/customers/emailCustomers.do">Email til alle</a></li>
     </ul>
-    <p>
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
+    #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
-
- <!--
-<nav id="sidebar">
-    <h2>Kontakter</h2>
-        <ul>
-            <li><a href="/contacts/newContact.do">Ny kontakt</a></li>
-            <li><a href="/contacts/newContactPerson.do">Ny kontaktperson</a></li>
-            <li><a href="/contacts/viewContactPersons.do">Kontaktpersonliste</a></li>
-            <li><a href="/contacts/searchContact.do">Søk etter kontaktperson</a></li>
-        </ul>
-     <p>
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
-</nav>
-
-  -->

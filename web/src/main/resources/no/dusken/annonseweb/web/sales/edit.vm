@@ -14,16 +14,16 @@
         </div>
         <ul>
             <li>
-                <label class="description">Description</label>
+                <label class="description" for="description">Description</label>
                 <div>
-                    <input name="description" class="element text medium" type="text" maxlength="255" value="$sale.description"/>
+                    <input id="description" name="description" class="element text medium" type="text" maxlength="255" value="$sale.description"/>
                 </div>
                 <p class="guidelines">
                     Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn.
                 </p>
             </li>
             <li>
-                <label class="description">Annonser</label>
+                <label class="description" for="">Annonser</label>
                 <div>
                     <label>
                         #foreach( $ad in $sale.ads)
@@ -52,9 +52,9 @@
             </li>
             -->
             <li>
-                <label class="description">
+                <label class="description" for="adReceived">
                     Levert annonse
-                    <input class="element text medium" type="checkbox" value="$sale.adReceived"/>
+                    <input id="adReceived" name="adReceived" class="element text medium" type="checkbox" value="$sale.adReceived"/>
                 </label>
                 <p class="guidelines">
                     Huket av(true) om Dusken har mottatt annonsen fra kunden.
