@@ -1,13 +1,16 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+
+<!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Kontaktpersonliste</a></h2>
+        <h2 class="title"><a href="/annonse/contacts/contactPersons/all">Contact Person List</a></h2>
         <div class="entry">
             <p>
-                Kontaktpersonliste
+                <a href="/annonse/contacts/contactPerson/$contact.Id">$contact.Id - $contact.name</a>
             </p>
         </div>
     </div>
 </div>
 
-<!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+

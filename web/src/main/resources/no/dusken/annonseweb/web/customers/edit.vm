@@ -10,125 +10,111 @@
     </h2>
     <form id="newCustomer" class="content"  method="post" action="/annonse/customers/edit">
         <div class="content_description">
-            <p>Kundeinformasjonen vi har lagret om denne kunden.</p>
+            <p>The stored information about this customer. Make changes and save.</p>
         </div>
         <ul>
             <li>
-                <label class="description">Kundenummer</label>
+                <label class="description" for="customerName">Cutsomer name</label>
                 <div>
-                    <label class="element text medium">$customer.Id</label>
+                    <input id="customerName" name="customerName" class="element text medium" type="text" maxlength="255" value="$customer.customerName"/>
                 </div>
                 <p class="guidelines">
-                    Automatisk generert identifikator for denne kunden i annonseweb.
+                    The name of the custoemr. e.g: "Samfundet"
                 </p>
             </li>
             <li>
-                <label class="description">Firmanavn</label>
+                <label class="description" for="centralEmail">Central Email</label>
                 <div>
-                    <input name="customerName" class="element text medium" type="text" maxlength="255" value="$customer.customerName"/>
+                    <input id="centralEmail" name="centralEmail" class="element text medium" type="text" maxlength="255" value="$customer.centralEmail"/>
                 </div>
                 <p class="guidelines">
-                    Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
+                    This is typically post@ or ud@ as we have. The contact person might have another email address that will be used for contact about sales.
                 </p>
             </li>
             <li>
-                <label class="description">centralEmail</label>
+                <label class="description" for="homepage">Homepage</label>
                 <div>
-                    <input name="centralEmail" class="element text medium" type="text" maxlength="255" value="$customer.centralEmail"/>
+                    <input id="homepage" name="homepage" class="element text medium" type="text" maxlength="255" value="$customer.homepage"/>
                 </div>
                 <p class="guidelines">
-                    Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
+                    The homepage of the customer. e.g: www.samfundet.no
                 </p>
             </li>
             <li>
-                <label class="description">Hjemmesiden til Firmaet </label>
+                <label class="description" for="phone">Phone</label>
                 <div>
-                    <input name="homepage" class="element text medium" type="text" maxlength="255" value="$customer.homepage"/>
+                    <input id="phone" name="centralTlf" class="element text medium" type="text" maxlength="255" value="$customer.centralTlf"/>
                 </div>
                 <p class="guidelines">
-                    Hjemmesiden til firmaet. ala Underdusken.no
+                    The central phone number of this customer. This is not the direct number to the contact person.
                 </p>
             </li>
             <li>
-                <label class="description">Telefon </label>
+                <label class="description" for="customerAddress">Customer Address</label>
                 <div>
-                    <input name="centralTlf" class="element text medium" type="text" maxlength="255" value="$customer.centralTlf"/>
+                    <input id="customerAddress" name="subscriberAddress" class="element text medium" type="text" value="$customer.subscriberAddress">
                 </div>
                 <p class="guidelines">
-                    Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.
+                    The address to the customer. This is the visiting address or main office address. NOT necessarily where the invoice is sent.
                 </p>
             </li>
             <li>
-                <label class="description">Besøksadresse e.l - trenger korrekt navn </label>
+                <label class="description" for="invoiceAddress">Invoice address</label>
                 <div>
-                    <input name="subscriberAddress" class="element text medium" type="text" value="$customer.subscriberAddress">
+                    <input id="invoiceAddress" name="invoiceAddress" class="element text medium" type="text" value="$customer.invoiceAddress">
                 </div>
                 <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                    The address the invoice is sent to.
                 </p>
             </li>
             <li>
-                <label class="description">Fakturaadresse </label>
+                <label class="description" for="discount">Discount (%)</label>
                 <div>
-                    <input name="invoiceAddress" class="element text medium" type="text" value="$customer.invoiceAddress">
+                    <input id="discount" name="discount" class="element text medium" type="text" maxlength="255" value="$customer.discount"/>
                 </div>
                 <p class="guidelines">
-                    Dette er adressen vi sender fakturaen til.
+                    The discount the customer gets from us. The number is a percentage of the sum. e.g: 25%, then a sale of 10.000 will generate an invoice with 7.500 to be paid.
                 </p>
             </li>
             <li>
-                <label class="description">Rabatt (i prosent) </label>
-                <div>
-                    <input name="discount" class="element text medium" type="text" maxlength="255" value="$customer.discount"/>
-                </div>
-                <p class="guidelines">
-                    Dette er rabattprosenten man vil at firmaet skal ha.
-                </p>
-            </li>
-            <li>
-                <label class="description">Kontaktperson </label>
+                <label class="description" for="contactPersonSelect">Contact Person</label>
                 <div>
                     <!-- TODO: some way of changing the contactPerson. -->
                     <label class="element text medium">
                         <a href="link til kontaktperson">$customer.contactPerson</a>
                     </label>
-                    <select>
-                        <option>contactPerson</option>
+                    <select id="contactPersonSelect">
+                        <option selected="this" value="$customer.contactPerson">$customer.ContactPerson.Name</option>
+                        #foreach($person in $contactPersonList )
+                            <option value="$person">$person</option>
+                        #end
                     </select>
                     <a href="/annonse/contacts/newContactPerson">New contact person</a>
                 </div>
                 <p class="guidelines">
-                    Personen man skal ta kontakt med hos denne kunden.
+                    The person that is normally contacted at with this customer.
                 </p>
             </li>
             <li>
-                <label class="description">Kontakt notiser, siste to </label>
+                <label class="description">Contact notes (Last two) - <a href="/annonse/contacts/contactNote/new/$customer.Id">New Note</a> </label>
                 <div>
                     #foreach( $note in $customer.contactNotes )
                         <lable class="element text medium">$note</lable>
+                        <!-- It should be possible to delete notes also. -->
                     #end
                 </div>
                 <p class="guidelines">
-                    De siste to kommentarene(en slags rapport) om siste kontakt man hadde med kunden. Dette vil fungere som en slags log for å enklere holde oversikt over aktiviteten med denne kunden.
+                    The last two notes that has been made with this customer. This is to keep track of contact with the customer and easily see what kind of interaction happend last.
                 </p>
             </li>
             <li>
-                <label class="description">Tags </label>
+                <label class="description">Tags</label>
                 <div>
                     <label class="element text medium">$customer.industryTags</label>
                     <!-- TODO: fix tagging and add it to everywhere! -->
                 </div>
                 <p class="guidelines">
                     Tags
-                </p>
-            </li>
-            <li>
-                <label class="description">Sist endret (av - når) </label>
-                <div>
-                    <label class="element text medium">$customer.lastEditedUser - $customer.lastEditedDate</label>
-                </div>
-                <p class="guidelines">
-                    Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.
                 </p>
             </li>
             <li class="buttons">

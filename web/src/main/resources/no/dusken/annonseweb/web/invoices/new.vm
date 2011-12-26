@@ -1,0 +1,54 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/customers/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+
+    <h2 class="title">
+        <a href="/annonse/invoices/invoice/new">New Invoice</a>
+    </h2>
+    <div class="content">
+        <div class="content_description">
+            <p>Invoice information about this invoice.</p>
+        </div>
+        <ul>
+            <li>
+                <label class="description">Sales</label>
+                <div>
+                    #foreach($sale in $salesList)
+                        <!-- Should bee changed to a div with the most important information for this sale. Same as for the sales list -->
+                        <label class="element text medium">
+                            $sale.Id - $sale.description <input name="saleSelection" type="checkbox" value="$sale.Id"/>
+                        </label>
+                    #end
+                </div>
+                <p class="guidelines">
+                    A list of invoices, Check the ones you want to add to the new invoice.
+                </p>
+            </li>
+            <li>
+                <label class="description" for="invoiceDescription">Invoice Description</label>
+                <div>
+                    <label class="element text medium">$invoice.description</label>
+                    <input id="invoiceDescription" name="customerName" class="element text medium" type="text" maxlength="1000" value=""/>
+                </div>
+                <p class="guidelines">
+                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
+                </p>
+            </li>
+            <li>
+                <label class="description" for="invoiceNumber">Invoice Number</label>
+                <div>
+                    <label class="element text medium">$invoice.invoiceNumber</label>
+                    <input id="invoiceNumber" name="customerName" class="element text medium" type="text" maxlength="25" value=""/>
+                </div>
+                <p class="guidelines">
+                    The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
+                </p>
+            </li>
+            <li class="buttons">
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="New Invoice" />
+            </li>
+        </ul>
+    </div>
+</div>

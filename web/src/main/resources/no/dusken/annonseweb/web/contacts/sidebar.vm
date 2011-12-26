@@ -1,16 +1,12 @@
 <nav id="sidebar">
-    <h2>Kunder</h2>
+    <h2>ContactBar</h2>
     <ul>
-        <li><a href="/annonse/contacts/newContactNote">Ny kontakt</a></li>
-        <li><a href="/annonse/contacts/newContactPerson">Ny kontaktperson</a></li>
-        <li><a href="/annonse/contacts/allContactNotes">Kontaktliste</a></li>
-        <li><a href="/annonse/contacts/allActive">Kontaktpersonliste - aktive</a></li>
-        <li><a href="/annonse/contacts/allContactPersons">Kontaktpersonliste - alle</a></li>
-        <li><a href="/annonse/contacts/emailList">Epostliste - aktive</a></li>
-        <li><a href="/annonse/contacts/search">Søk: KontaktPerson</a></li>
+        <li><a href="/annonse/contacts/contactNote/new">New Note</a></li>
+        <li><a href="/annonse/contacts/contactPerson/new">New Person</a></li>
+        <li><a href="/annonse/contacts/contactNotes/all">Contact Note List</a></li>
+        <li><a href="/annonse/contacts/contactPersons/active">Contact Person List - active</a></li>
+        <li><a href="/annonse/contacts/contactPersons/active">Contact Person List - all</a></li>
+        <li><a href="/annonse/contacts/emailList">Email list - active</a></li>
     </ul>
-    <p>
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
+    #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

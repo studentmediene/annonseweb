@@ -5,7 +5,7 @@
 <div id="content">
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/sales/all">Salgslisten</a>
+            <a href="/annonse/sales/all">Sales List</a>
         </h2>
         <div class="entry">
             #foreach( $sale in $salesList)
@@ -18,7 +18,6 @@
                     </p>
                 </div>
             #end
-
         </div>
     </div>
 </div>

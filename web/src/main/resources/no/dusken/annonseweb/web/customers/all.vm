@@ -5,7 +5,7 @@
 <div id="content" >
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/customers/all">Kundeliste</a>
+            <a href="/annonse/customers/all">Customer List</a>
         </h2>
         <div class="entry">
             #foreach($customer in $customerList)

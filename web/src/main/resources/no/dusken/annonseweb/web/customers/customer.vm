@@ -10,103 +10,104 @@
     </h2>
     <div class="content">
         <div class="content_description">
-            <p>Kundeinformasjonen vi har lagret om denne kunden.</p>
+            <p>The stored information about this customer</p>
         </div>
         <ul>
             <li>
-                <label class="description">Kundenummer</label>
+                <label class="description">Customer ID</label>
                 <div>
                     <label class="element text medium">$customer.Id</label>
                 </div>
                 <p class="guidelines">
-                    Automatisk generert identifikator for denne kunden i annonseweb.
+                    Automatically generated Id number for this customer.
                 </p>
             </li>
             <li>
-                <label class="description">Firmanavn</label>
+                <label class="description">Customer name</label>
                 <div>
                     <label class="element text medium">$customer.customerName</label>
                 </div>
                 <p class="guidelines">
-                    Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
+                    This is the name of the customer. eg: "Samfundet"
                 </p>
             </li>
             <li>
-                <label class="description">centralEmail</label>
+                <label class="description">Customer Email</label>
                 <div>
                     <label class="element text medium">$customer.centralEmail</label>
                 </div>
                 <p class="guidelines">
-                    Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
+                    This is typically post@ or ud@ as we have. The contact person might have another email address that will be used for contact about sales.
                 </p>
             </li>
             <li>
-                <label class="description">Hjemmesiden til Firmaet </label>
+                <label class="description">Homepage</label>
                 <div>
                     <label class="element text medium">
                         <a href="$customer.homepage">$customer.homepage</a>
                     </label>
                 </div>
                 <p class="guidelines">
-                    Hjemmesiden til firmaet. ala Underdusken.no
+                    The homepage of the customer. e.g: www.samfundet.no
                 </p>
             </li>
             <li>
-                <label class="description">Telefon </label>
+                <label class="description">Phone</label>
                 <div>
                     <label class="element text medium">$customer.centralTlf</label>
                 </div>
                 <p class="guidelines">
-                    Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.
+                    The central phone number of this customer. This is not the direct number to the contact person.
                 </p>
             </li>
             <li>
-                <label class="description">Besøksadresse e.l - trenger korrekt navn </label>
+                <label class="description">Customer Address</label>
                 <div>
                     <label class="element text medium">$customer.subscriberAddress</label>
                 </div>
                 <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                    The address to the customer. This is the visiting address or main office address. NOT necessarily where the invoice is sent.
                 </p>
             </li>
             <li>
-                <label class="description">Fakturaadresse </label>
+                <label class="description">Invoice address</label>
                 <div>
                     <label class="element text medium">$customer.invoiceAddress</label>
                 </div>
                 <p class="guidelines">
-                    Dette er adressen vi sender fakturaen til.
+                    The address the invoice is sent to.
                 </p>
             </li>
             <li>
-                <label class="description">Rabatt (i prosent) </label>
+                <label class="description">Discount (%)</label>
                 <div>
                     <label class="element text medium">$customer.discount</label>
                 </div>
                 <p class="guidelines">
-                    Dette er rabattprosenten man vil at firmaet skal ha.
+                    The discount the customer gets from us. The number is a percentage of the sum. e.g: 25%, then a sale of 10.000 will generate an invoice with 7.500 to be paid.
                 </p>
             </li>
             <li>
-                <label class="description">Kontaktperson </label>
+                <label class="description">Contact Person</label>
                 <div>
                     <label class="element text medium">
                         <a href="link til kontaktperson">$customer.contactPerson</a>
                     </label>
                 </div>
                 <p class="guidelines">
-                    Personen man skal ta kontakt med hos denne kunden.
+                    The person that is normally contacted at with this customer.
                 </p>
             </li>
             <li>
-                <label class="description">Kontakt notiser, siste to </label>
+                <label class="description">Contact notes (Last two) - <a href="/annonse/contacts/contactNote/new/$customer.Id">New Note</a> </label>
                 <div>
                     #foreach( $note in $customer.contactNotes)
                         <lable class="element text medium">$note</lable>
+                        <!-- It should be possible to delete notes also. -->
                     #end
                 </div>
                 <p class="guidelines">
-                    De siste to kommentarene(en slags rapport) om siste kontakt man hadde med kunden. Dette vil fungere som en slags log for å enklere holde oversikt over aktiviteten med denne kunden.
+                    The last two notes that has been made with this customer. This is to keep track of contact with the customer and easily see what kind of interaction happend last.
                 </p>
             </li>
             <li>
@@ -131,25 +132,25 @@
                     <label class="element text medium">$customer.industryTags</label>
                 </div>
                 <p class="guidelines">
-                    Tags, ord som beskriver denne kunden. Så man kan sortere kunder på tags og finne kunder som er ganske like. OM man tagger kunder riktig vil det på sikt bli lettere å føre statistikk og markedsføre Dusken.
+                    Tags to better describe this customer.
                 </p>
             </li>
             <li>
-                <label class="description">Opprettet (av - når)</label>
+                <label class="description">Created (user - when)</label>
                 <div>
                     <label class="element text medium">$customer.createdUser - $customer.createdDate</label>
                 </div>
                 <p class="guidelines">
-                    Hvem som opprettet denne kunden og når kunden ble opprettet i annonseweb
+                    The user that created this customer and when the custoemr was created.
                 </p>
             </li>
             <li>
-                <label class="description">Sist endret (av - når) </label>
+                <label class="description">Last changed (user - when) </label>
                 <div>
                     <label class="element text medium">$customer.lastEditedUser - $customer.lastEditedDate</label>
                 </div>
                 <p class="guidelines">
-                    Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.
+                    When the customer was last changed and the user that did the change.
                 </p>
             </li>
         </ul>
