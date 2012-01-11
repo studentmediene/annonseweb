@@ -7,7 +7,7 @@
         <h2 class="title"><a href="/annonse/contacts/contactPersons/all">Contact Person List</a></h2>
         <div class="entry">
             <p>
-                <a href="/annonse/contacts/contactPerson/$contact.Id">$contact.Id - $contact.name</a>
+                <a href="/annonse/contacts/contactPerson/$contact.Id">$contact.name</a>
             </p>
         </div>
     </div>
