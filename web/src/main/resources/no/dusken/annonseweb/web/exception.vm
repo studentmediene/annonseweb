@@ -1,2 +1,17 @@
-Computer department messed this up nicely :P
-Now you have the right to complain. So do it!
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/sidebar.vm')
+
+<!-- content -->
+<div id="content" >
+    <div class="post">
+        <h2 class="title">
+            <a href="/">Exception</a>
+        </h2>
+        <div class="entry">
+            <p>
+            Computer department messed this up nicely :P
+            Now you have the right to complain. So do it!
+        </p>
+        </div>
+    </div>
+</div>

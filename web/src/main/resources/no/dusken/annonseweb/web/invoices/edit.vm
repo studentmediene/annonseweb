@@ -52,7 +52,7 @@
                     #foreach($sale in $invoice.sales)
                         <!-- Should be changed to a div with the most important information for this sale. Same as for the sales list -->
                         <label class="element text medium">
-                            $sale.Id - $sale.description <input name="saleSelection" type="checkbox" value="$sale.Id"/>
+                            $sale.Id - $sale.description
                         </label>
                     #end
                 </div>
