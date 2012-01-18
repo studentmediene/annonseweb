@@ -1,1 +1,15 @@
-list all ads
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/ads/sidebar.vm')
+
+<!-- content -->
+
+<div id="content">
+    <div class="post">
+        <h2 class="title"><a href="#">Alle annonser</a></h2>
+        <div class="entry">
+            <p>
+                list all ads
+            </p>
+        </div>
+    </div>
+</div>
