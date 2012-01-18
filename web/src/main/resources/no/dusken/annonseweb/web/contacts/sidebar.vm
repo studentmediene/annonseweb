@@ -3,10 +3,11 @@
     <ul>
         <li><a href="/annonse/contacts/contactNote/new">New Note</a></li>
         <li><a href="/annonse/contacts/contactPerson/new">New Person</a></li>
-        <li><a href="/annonse/contacts/contactNotes/all">Contact Note List</a></li>
-        <li><a href="/annonse/contacts/contactPersons/active">Contact Person List - active</a></li>
-        <li><a href="/annonse/contacts/contactPersons/active">Contact Person List - all</a></li>
+        <li><a href="/annonse/contacts/contactNote/all">Contact Note List</a></li>
+        <li><a href="/annonse/contacts/contactPerson/active">Contact Person List - active</a></li>
+        <li><a href="/annonse/contacts/contactPerson/all">Contact Person List - all</a></li>
         <li><a href="/annonse/contacts/emailList">Email list - active</a></li>
+        <li><a href="/annonse/contacts/search">Søk: KontaktPerson</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

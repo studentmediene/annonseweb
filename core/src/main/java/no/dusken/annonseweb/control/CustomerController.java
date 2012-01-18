@@ -37,7 +37,7 @@ public class CustomerController{
 
     @RequestMapping("/new")
     public String viewNewCustomer(){
-        return "customers/new";
+        return "customers/new_tobe";
     }
 
     //TODO: consider and find out whether or not edit and add can become the same method.
