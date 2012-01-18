@@ -12,7 +12,6 @@
                 <a href="/annonse/customers/new">Ny kunde</a>
                 <a href="/annonse/customers/all">Kundeliste</a>
                 <a href="/annonse/customers/emailList">Email for alle</a>
-                <a href="/annonse/customers/search">Søk: Kunde</a>
             </div>
         </li>
         <li><a href="/annonse/sales"
@@ -23,7 +22,6 @@
                  onmouseout="setClosing()">
                 <a href="/annonse/sales/new">Nytt salg</a>
                 <a href="/annonse/sales/all">SalgsListe</a>
-                <a href="/annonse/sales/search">Søk: salg</a>
             </div>
         </li>
         <li><a href="/annonse/invoices"
@@ -34,7 +32,6 @@
                  onmouseout="setClosing()">
                 <a href="/annonse/invoices/new">Ny faktura</a>
                 <a href="/annonse/invoices/all">FakturaListe</a>
-                <a href="/annonse/invoices/search">SØK: faktura</a>
             </div>
         </li>
         <li><a href="/annonse/contacts"
@@ -49,7 +46,6 @@
                 <a href="/annonse/contacts/contactPerson/active">Kontaktpersonliste - aktive</a>
                 <a href="/annonse/contacts/contactPerson/all">Kontaktpersonliste - alle</a>
                 <a href="/annonse/contacts/emailList">Epostliste - aktive</a>
-                <a href="/annonse/contacts/search">Søk: KontaktPerson</a>
             </div>
         </li>
         <li><a href="/annonse/ads"
@@ -59,9 +55,8 @@
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
                 <a href="/annonse/ads/new">Ny annonse</a>
-                <a href="/annonse/ads/overview">AnnonseOversikt</a>
-                <a href="/annonse/ads/all">AnnonseListe</a>
-                <a href="/annonse/ads/search">Søk: annonse</a>
+                <a href="/annonse/ads/overview">Aktive annonser</a>
+                <a href="/annonse/ads/all">Alle annonser</a>
             </div>
         </li>
         <li><a href="/annonse/statistics"

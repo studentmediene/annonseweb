@@ -4,7 +4,6 @@
         <li><a href="/annonse/sales/new">New Sale</a></li>
         <li><a href="/annonse/sales/all">Sales List</a></li>
         <!-- Should be a direct search box. -->
-        <li><a href="/annonse/sales/search">Search</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

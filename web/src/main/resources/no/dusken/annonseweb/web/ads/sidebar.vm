@@ -1,11 +1,12 @@
 <!-- fix linking and fit for ads. -->
 <nav id="sidebar">
-    <h2>Kunder</h2>
+    <h2>Annonse</h2>
     <ul>
-        <li><a href="/customers/newCustomer.do">Ny kunde</a></li>
-        <li><a href="/customers/viewCustomers.do">Kundeliste</a></li>
-        <li><a href="/customers/searchCustomer.do">Søk etter kunde</a></li>
-        <li><a href="/customers/emailCustomers.do">Email til alle</a></li>
+        <li><a href="/annonse/ads/new.do">Ny annonse</a></li>
+        <li><a href="/annonse/ads/overview">Aktive annonser</a></li>
+        <li><a href="/annonse/ads/all">Alle annonser</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
+
+

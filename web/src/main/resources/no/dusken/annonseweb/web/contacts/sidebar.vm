@@ -7,7 +7,6 @@
         <li><a href="/annonse/contacts/contactPerson/active">Contact Person List - active</a></li>
         <li><a href="/annonse/contacts/contactPerson/all">Contact Person List - all</a></li>
         <li><a href="/annonse/contacts/emailList">Email list - active</a></li>
-        <li><a href="/annonse/contacts/search">Søk: KontaktPerson</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

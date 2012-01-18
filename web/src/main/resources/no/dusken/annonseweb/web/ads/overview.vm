@@ -1,3 +1,7 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/ads/sidebar.vm')
+
+<!-- content -->
 <div id="content">
     <div class="post">
         <h2 class="title"><a href="#">Aktive annonser</a></h2>
@@ -10,7 +14,7 @@
     </div>
 </div>
 
-<nav id="sidebar">
+<!-- <nav id="sidebar">
     <h2>Annonser</h2>
     <ul>
         <li><a href="/ads/newAdGeneral.do">Ny annonse</a>
@@ -28,4 +32,4 @@
         Logget inn som:    <br>
         //oppdateres automatisk//
     </p>
-</nav>
+</nav> -->
