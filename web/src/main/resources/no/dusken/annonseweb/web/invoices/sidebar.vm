@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <h2>InvoiceBar</h2>
     <ul>
-        <li><input name="invoiceLookup" type="text" value="insert invoce ID to lookup an invoice"/> Field to open the invoice with the specific number(ID).</li>
+        <li><input name="invoiceLookup" type="text" value="insert invoice ID to lookup an invoice"/> Field to open the invoice with the specific number(ID).</li>
         <li><a href="/annonse/invoices/new">New Invoice</a></li>
         <li><a href="/annonse/invoices/all">Invoice List</a></li>
     </ul>

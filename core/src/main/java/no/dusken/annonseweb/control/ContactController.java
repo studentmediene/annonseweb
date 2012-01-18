@@ -43,14 +43,14 @@ public class ContactController {
         return "contacts/home";
     }
 
-    @RequestMapping("/contactNotes/all")
+    @RequestMapping("/contactNote/all")
     public String allContacts(Model model){
         List<ContactNote> contactNotes = contactNoteService.findAll();
         model.addAttribute("contactPersonList", contactNotes);
         return "contacts/allContactNotes";
     }
 
-    @RequestMapping("/contactPersons/active")
+    @RequestMapping("/contactPerson/active")
     public String allActive(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         for(ContactPerson contactPerson: contactPersonList){
