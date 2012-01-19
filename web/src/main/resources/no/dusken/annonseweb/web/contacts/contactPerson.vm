@@ -4,7 +4,7 @@
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonse/contacts/contactPersons/all">Contact Person List</a></h2>
+        <h2 class="title"><a href="/annonse/contacts/contactPersons/all">Contact Person</a></h2>
         <div class="entry">
             <p>
                 <a href="/annonse/contacts/contactPerson/$contact.Id">$contact.name</a>

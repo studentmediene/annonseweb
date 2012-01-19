@@ -14,12 +14,12 @@
         </div>
         <ul>
             <li>
-                <label class="description" for="customerName">Cutsomer name</label>
+                <label class="description" for="customerName">Customer name</label>
                 <div>
                     <input id="customerName" name="customerName" class="element text medium" type="text" maxlength="255" value="$customer.customerName"/>
                 </div>
                 <p class="guidelines">
-                    The name of the custoemr. e.g: "Samfundet"
+                    The name of the customer. e.g: "Samfundet"
                 </p>
             </li>
             <li>
