@@ -99,7 +99,7 @@
                 </p>
             </li>
             <li>
-                <label class="description">Discount</label>
+                <label class="description">Discount (%)</label>
                 <div>
                     <input name="discount" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>

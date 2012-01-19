@@ -91,7 +91,7 @@
                 <label class="description">Contact Person</label>
                 <div>
                     <label class="element text medium">
-                        <a href="link til kontaktperson">$customer.contactPerson</a>
+                        <a href="link til kontaktperson">$customer.contactPerson</a>    //Possible to list all active contactpersons??
                     </label>
                 </div>
                 <p class="guidelines">

@@ -2,14 +2,64 @@
 #parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
 
 <!-- content -->
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="/annonse/contacts/contactPerson/new">New Contact Person</a></h2>
-        <div class="entry">
-            <p>
-                New ContactPerson
-            </p>
+<div id="content" class="post">
+    <h2 class="title"><a href="/annonse/contacts/contactPerson/new">New Contact Person</a></h2>
+
+    <form id="newContactPerson" class="content"  method="post" action="/annonse/contacts/contactPerson/add">
+        <div class="content_description">
+            <p>Add information about the contactperson you are about to create.</p>
         </div>
-    </div>
+        <ul>
+            <li>
+                <label class="description" for="contactPersonName">Contactperson name</label>
+                <div>
+                    <input id="contactPersonName" name="contactPersonName" class="element text medium" type="text" maxlength="255" value=""/>
+                </div>
+                <p class="guidelines">
+                    The name of the contactperson for the customer.
+                </p>
+            </li>
+            <li>
+                <label class="description">Contactpersons email</label>
+                <div>
+                    <input name="centralEmail" class="element text medium" type="text" maxlength="255" value=""/>
+                </div>
+                <p class="guidelines" id="guide_4">
+                    The direct email address to the contact person.
+                </p>
+            </li>
+            <li>
+                <label class="description">Phone</label>
+                <div>
+                    <input name="centralTlf" class="element text medium" type="text" maxlength="255" value=""/>
+                </div>
+                <p class="guidelines">
+                    The main phone number to this customer. Might not be the same as for the contact person.
+                </p>
+            </li>
+            <li>
+                <label class="description">Company position</label>
+                <div>
+                    <input name="companyPosition" class="element text medium" value="" type="text">
+                </div>
+
+                <p class="guidelines">
+                    The company position of the contactperson.
+                </p>
+            </li>
+            <li>
+                <label class="description">Kunde</label>
+                 <!--
+                    Add popdown to choose from registered customers the contactperson is representing
+                    Can use form from new sale, when the problem is fixed
+                 -->
+            </li>
+
+
+            <li class="buttons">
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Contactperson" />
+            </li>
+        </ul>
+
 </div>
 
