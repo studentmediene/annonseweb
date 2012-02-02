@@ -1,14 +1,17 @@
-package no.dusken.annonseweb.models;
-
 /**
  * Created by IntelliJ IDEA.
  * User: stine
- * Date: 1/19/12
- * Time: 7:24 PM
+ * Date: 1/26/12
+ * Time: 7:37 PM
  * To change this template use File | Settings | File Templates.
  */
-public class dynamicAdMenu {
-    int value;
 
+
+
+
+var unique_id=1;
+
+function uniqueId(){
+     return unique_id ++;
 
 }
