@@ -101,16 +101,15 @@
                 <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Sale" />
             </li>
             <li>
-                <button id="dynamicAdButton" href="#" onclick="addNewAdElement(); return false;">Add element</button>
+                <button id="dynamicButton" href="#" onclick="addNewElement(); return false;">Add element</button>
             </li>
 
-            <input type="hidden" value="0" id="theValue"/>
-            <div id="myDiv"></div>
+
 
 
 
             <table>
-                <select name="adSelect" id="dynamicAdMenu">
+                <select name="addSelect" id="dynamicMenu">
                    <option>Valg 1</option>
                    <option>Valg 2</option>
                    <option>Valg 3</option>
@@ -118,7 +117,7 @@
                 </select>
 
             </table>
-
+            <div id="myDiv"></div>
         </ul>
     </form>
 </div>

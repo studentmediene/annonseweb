@@ -24,8 +24,9 @@
 <head>
     <title>Annonseweb - UD</title>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/js/addNewAdElement.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/js/removeAdElement.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/addNewElement.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/removeElement.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/uniqueId.js"></script>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
     <link rel="shortcut icon" type="image/png" href="/images/logo/ud-transparentbg.png" />
 </head>
