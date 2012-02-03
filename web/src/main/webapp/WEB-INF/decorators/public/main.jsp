@@ -22,7 +22,7 @@
 <html lang="no">
 
 <head>
-    <title>Annonseweb - UD</title>
+    <title><decorator:title/>Annonseweb - Under Dusken - </title>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/addNewElement.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/removeElement.js"></script>
@@ -42,7 +42,7 @@
         <div id="search">
             <form method="get">
                 <fieldset>
-                    <input type="text" name="s" placeholder="Søk" id="search-text" size="15">
+                    <input type="text" name="s" placeholder="Søk" id="search-text" size="15" />
                     <input type="submit" id="search-submit" value="GO" />
                 </fieldset>
             </form>

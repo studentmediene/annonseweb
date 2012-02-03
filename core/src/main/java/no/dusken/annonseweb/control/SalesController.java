@@ -1,5 +1,6 @@
 package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.CustomerService;
 import no.dusken.annonseweb.service.SalesService;
@@ -37,18 +38,11 @@ public class SalesController{
         //return a list fo all customers. The Id will be used to connect the sales and customers. 
         return "sales/new";
     }
-
-    @RequestMapping("/new/{Id}")
-    public String newSaleFromSpecificCustomer(@PathVariable Long Id, Model model){
-        model.addAttribute("customerList",  customerService.findAll());
-        model.addAttribute("selectedCustomer", customerService.findOne(Id));
-        return "sales/new";
-    }
     
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String addSale(@Valid @ModelAttribute("sale") Sale sale){
+    @RequestMapping(value="/addCustomer", method = RequestMethod.POST)
+    public String addSale(@Valid @ModelAttribute("sale") Sale sale, Model model){
         salesService.save(sale);
-            // take a sale model as input. Store it and change the customer of this sale to have this sale in its saleslist.
+            // take a sale model as input. Store it av change the customer of this sale to have this sale in its saleslist.
         customerService.findOne(sale.getCustomer().getId()).addSale(sale);
         return "sales/sale";                              
     }
