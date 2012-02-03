@@ -22,7 +22,7 @@
 <html lang="no">
 
 <head>
-    <title><decorator:title/>Annonseweb - Under Dusken - </title>
+    <title>Annonseweb - UD</title>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/dropmenu.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/addNewElement.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/removeElement.js"></script>
