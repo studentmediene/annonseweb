@@ -44,8 +44,9 @@ public class CustomerController{
         return "customers/new_tobe";
     }
 
-    @RequestMapping(value="/addCustomer", method = RequestMethod.POST)
-    public String addCustomer(@Valid @ModelAttribute("customer") Customer customer, Model model){
+    //TODO: consider and find out whether or not edit and add can become the same method.
+    @RequestMapping(value="/add", method = RequestMethod.POST)
+    public String addCustomer(@Valid @ModelAttribute("customer") Customer customer){
         customerService.save(customer);
         return "customers/customer";
     }
@@ -58,6 +59,19 @@ public class CustomerController{
         }
         model.addAttribute("emailList", emailList);
         return "customers/emailList";
+    }
+
+    @RequestMapping("/edit/{Id}")
+    public String viewEdit(@PathVariable Long Id, Model model){
+        model.addAttribute("customer", customerService.findOne(Id));
+        return "customers/edit";
+    }
+
+    //TODO: consider and find out whether or not edit and add can become the same method.
+    @RequestMapping(value="/edit", method = RequestMethod.POST)
+    public String edit(@Valid @ModelAttribute Customer customer){
+        customerService.save(customer);
+        return "customers/edit";
     }
 
     @RequestMapping("/search")
