@@ -35,19 +35,6 @@
 	color: #FFFFFF;
 }
 
-.post .title a:hover {
-    border: none;
-    color: #FFFFFF;
-    text-decoration: underline;
-}
-
-.post .edit{
-    float: right;
-    padding-right: 10px;
-    padding-right: 10px;
-    font-size: 14pt;
-}
-
 .post .meta {
 	padding-top: 20px;
 	padding-bottom: 5px;
@@ -387,12 +374,12 @@
 
 .content input.medium
 {
-	width:60%;
+	width:auto;
 }
 
 .content select.medium
 {
-	width:60%;
+	width:50%;
 }
 
 .content input.large
@@ -402,7 +389,7 @@
 
 .content select.large
 {
-	width:99%;
+	width:100%;
 }
 
 .content textarea.small
