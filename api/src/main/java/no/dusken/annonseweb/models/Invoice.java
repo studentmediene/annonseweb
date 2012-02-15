@@ -35,6 +35,11 @@ public class Invoice extends DuskenObject{
         return sales;
     }
 
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public void setSales(List<Sale> sales) {
         this.sales = sales;
     }

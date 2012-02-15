@@ -28,4 +28,9 @@ public class Issue extends DuskenObject {
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "issue")
     private List<Ad_UDprint> ads;
+
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

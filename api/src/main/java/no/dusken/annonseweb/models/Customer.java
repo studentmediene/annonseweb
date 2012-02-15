@@ -58,7 +58,12 @@ public class Customer extends DuskenObject{
     public void addSale(Sale sale){
         sales.add(sale);
     }
-    
+
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }

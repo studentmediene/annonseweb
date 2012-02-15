@@ -72,6 +72,11 @@ public class ContactPerson extends DuskenObject{
         return lastContactedUser;
     }
 
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public void setLastContactedUser(Calendar lastContactedUser) {
         this.lastContactedUser = lastContactedUser;
     }
