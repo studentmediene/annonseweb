@@ -20,6 +20,8 @@ public class Customer extends DuskenObject{
     private String invoiceAddress;
     private String subscriberAddress;
     private BigInteger discount;
+
+    @ElementCollection
     private List<String> industryTags;
     private String homepage;
 
@@ -40,6 +42,7 @@ public class Customer extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar lastEditedDate;
 
+    @ManyToOne
     private Person lastEditedUser;
 
     public Customer() {}
