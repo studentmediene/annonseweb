@@ -32,6 +32,11 @@ public class ContactNote extends DuskenObject{
         return customer;
     }
 
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }

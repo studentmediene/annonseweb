@@ -19,6 +19,11 @@ public class Ad extends DuskenObject {
         this.discount = discount;
     }
 
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public BigDecimal getPrice() {
         return price;
     }

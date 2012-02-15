@@ -26,6 +26,8 @@ public class Ad_UDprint extends Ad {
         return issue;
     }
 
+
+
     public void setIssue(Issue issue) {
         this.issue = issue;
     }

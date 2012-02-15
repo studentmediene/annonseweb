@@ -32,6 +32,11 @@ public class Comment extends DuskenObject {
         this.text = text;
     }
 
+    @Override
+    public String getTitle() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     public Person getCreatedBy() {
         return createdBy;
     }
