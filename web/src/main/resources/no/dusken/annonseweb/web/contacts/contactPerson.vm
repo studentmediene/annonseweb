@@ -2,14 +2,101 @@
 #parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
 
 <!-- content -->
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="/annonse/contacts/contactPersons/all">Contact Person</a></h2>
-        <div class="entry">
-            <p>
-                <a href="/annonse/contacts/contactPerson/$contact.Id">$contact.name</a>
-            </p>
+<div id="content" class="post">
+
+    <h2 class="title">
+        <a href="/annonse/contacts/contactPerson/$contactPerson.Id">$contactPerson.name</a>
+        <label class="edit"><a href="/annonse/contacts/contactPerson/edit/$contactPerson.Id">Endre kontaktperson</a></label>
+    </h2>
+    <div class="content">
+        <div class="content_description">
+            <p>Informasjon lagret om denne kontaktpersonen:</p>
         </div>
+        <ul>
+            <li>
+                <label class="description">Kontaktperson ID</label>
+                <div>
+                    <label class="element text medium">$contactPerson.Id</label>
+                </div>
+                <p class="guidelines">
+                    Automatisk generert ID nummer for denne kontaktpersonen
+                </p>
+            </li>
+            <li>
+                <label class="description">Navn</label>
+                <div>
+                    <label class="element text medium">$contactPerson.personName</label>
+                </div>
+                <p class="guidelines">
+                    Dette er navnet på kontaktpersonen
+                </p>
+            </li>
+            <li>
+                <label class="description">Email</label>
+                <div>
+                    <label class="element text medium">$contactPerson.email</label>
+                </div>
+                <p class="guidelines">
+                    Emailen til kontaktpersonen
+                </p>
+            </li>
+            <li>
+                <label class="description">Telefonnummer</label>
+                <div>
+                    <label class="element text medium">$contactPerson.telephoneNumber</label>
+                </div>
+                <p class="guidelines">
+                    Dette er direktenummeret til kontaktpersonen, ikke til kunden
+                </p>
+            </li>
+            <li>
+                <label class="description">Stilling hos kunden</label>
+                <div>
+                    <label class="element text medium">$contactPerson.companyPosition</label>
+                </div>
+                <p class="guidelines">
+                    Hvilken stilling kontaktpersonen innehar hos kunden vedkommende representerer
+                </p>
+            </li>
+            <li>
+                <label class="description">Status</label>
+                <div>
+                    <label class="element text medium">$contactPerson.active</label>
+                </div>
+                <p class="guidelines">
+                    Viser om kontaktpersonen er aktiv (gjeldende) eller inaktiv (at en annen har tatt over, forhåpentligvis)
+                </p>
+            </li>
+            <li>
+                <label class="description">Kunde</label>
+                <div>
+                    <label class="element text medium">
+                        <a href="link til kontaktperson">$contactPerson.customer</a>
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Kunden som kontaktpersonen representerer
+                </p>
+            </li>
+            <li>
+                <label class="description">Created (user - when)</label>
+                <div>
+                    <label class="element text medium">$contactPerson.createdUser - $contactPerson.createdDate</label>
+                </div>
+                <p class="guidelines">
+                    The user that created this customer and when the customer was created.
+                </p>
+            </li>
+            <li>
+                <label class="description">Last changed (user - when) </label>
+                <div>
+                    <label class="element text medium">$contactPerson.lastContactedUser - $contactPerson.lastContactedTime</label>
+                </div>
+                <p class="guidelines">
+                    When the customer was last changed and the user that did the change.
+                </p>
+            </li>
+        </ul>
     </div>
 </div>
 

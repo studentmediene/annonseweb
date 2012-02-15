@@ -11,9 +11,9 @@
         </div>
         <ul>
             <li>
-                <label class="description" for="contactPersonName">Contactperson name</label>
+                <label class="description" for="personName">Contactperson name</label>
                 <div>
-                    <input id="contactPersonName" name="contactPersonName" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
                     The name of the contactperson for the customer.
@@ -22,7 +22,7 @@
             <li>
                 <label class="description">Contactpersons email</label>
                 <div>
-                    <input name="centralEmail" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines" id="guide_4">
                     The direct email address to the contact person.
@@ -31,7 +31,7 @@
             <li>
                 <label class="description">Phone</label>
                 <div>
-                    <input name="centralTlf" class="element text medium" type="text" maxlength="255" value=""/>
+                    <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
                     The main phone number to this customer. Might not be the same as for the contact person.
