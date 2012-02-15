@@ -103,7 +103,7 @@ public class ContactController {
     }
 
     @RequestMapping(value="/contactPerson/add", method = RequestMethod.POST)
-    public String addContactPerson(@Valid @ModelAttribute("contactPerson")ContactPerson contactPerson){
+    public String addContactPerson(@Valid @ModelAttribute("newContactPerson")ContactPerson contactPerson){
         contactPersonService.save(contactPerson);
         return "contacts/contactPerson";
     }

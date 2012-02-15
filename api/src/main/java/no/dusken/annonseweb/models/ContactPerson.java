@@ -27,6 +27,11 @@ public class ContactPerson extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar lastContactedUser;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar createdDate;
+
+    private String createdUser;
+
     private Boolean active;
 
     public ContactPerson() {}
