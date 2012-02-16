@@ -16,6 +16,6 @@
         newElement.setAttribute('id', num);
         //alert(newElement.id);
 
-        newElement.innerHTML = '<table><select><option>Valg 1</option><option>Valg 2</option><option>Valg 3</option><option>Valg 4</option></select><button id="num" onclick="removeElement(\''+newElement.id+' \'); return false;">remove</button></table>';
+        newElement.innerHTML = '<div><select><option>Valg 1</option><option>Valg 2</option><option>Valg 3</option><option>Valg 4</option></select><button id="num" onclick="removeElement(\''+newElement.id+' \'); return false;">remove</button></div>';
         parent.appendChild(newElement);
 }

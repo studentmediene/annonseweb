@@ -10,16 +10,16 @@
         <div class="content_description">
             <p>Legg inn informasjonen om salget og trykk lagre for å opprette et nytt salg.</p>
         </div>
-        <ul>
-            <li>
-                <label class="description">Beskrivelse</label>
+        <div>
+            <div>
+                <label for="description" class="description">Beskrivelse</label>
                 <div>
                     <input id="description" name="description" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
                     Beskrivelsen på salget eller hva salget heter. eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn
                 </p>
-            </li>
+            </div>
             <!--
             <li>
                 <label class="description">Annonser</label>
@@ -43,8 +43,8 @@
                 </p>
             </li>
             -->
-            <li>
-                <label class="description" for="customerSelect">Kunde</label>
+            <div>
+                <label for="customerSelect" class="description" for="customerSelect">Kunde</label>
                 <div>
                     <select id="customerSelect" class="element select medium" name="customer">
                         #if($selectedCustomer)
@@ -60,12 +60,12 @@
                             'customer': no matching editors or conversion strategy found]
 
                             -->
-                            <option value="$selectedCustomer">$selectedCustomer.Id - $selectedCustomer.customerName</option>
+                            <option value="$selectedCustomer.Id">$selectedCustomer.customerName</option>
                         #else
-                            <option>Select a Customer</option>
+                            <option value="0">Select a Customer</option>
                         #end
                         #foreach( $customer in $customerList )
-                            <option value="$customer">$customer.Id - $customer.customerName</option>
+                            <option value="$customer.Id">$customer.customerName</option>
                         #end
                     </select>
                 </div>
@@ -75,16 +75,16 @@
                     Om du kom hit fra en kunde, så er det den kunden som automatisk skal stå her.
                     Typisk: er på kunden, og skal legge inn salg for denne -> nytt salg hvor kunden er satt fra før av.
                 </p>
-            </li>
-            <li>
-                <label class="description">
+            </div>
+            <div>
+                <label for="adReceived" class="description">
                     Levert annonse
                     <input id="adReceived" name="adReceived" class="element text medium" type="checkbox" value=""/>
                 </label>
                 <p class="guidelines">
                     Huket av(er true) om Dusken har mottatt annonsen fra kunden.
                 </p>
-            </li>
+            </div>
             <!--
             <li>
                 <label class="description">
@@ -96,9 +96,49 @@
                 </p>
             </li>
             -->
-            <li class="buttons">
-                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Sale" />
-            </li>
-        </ul>
+            <div class="buttons">
+                #if(${sale.new})
+                    <input id="saveForm" class="button_text" type="submit" name="submit" value="Opprett nytt salg" />
+                #else
+                    <input id="saveForm" class="button_text" type="submit" name="submit" value="Lagre salg" />
+                #end
+            </div>
+            <div>
+                <button id="dynamicButton" href="#" >Add element</button>
+            </div>
+            <script type="text/javascript">
+                 $('#dynamicButton').click(function(){
+
+                     var knapp = $('<a href="#">fjern meg! </a>');
+                     knapp.click(function(){
+                        this.remove();
+                         return false;
+                     });
+                     $('#myDiv').append(knapp);
+                     return false;
+                 });
+                function addNewElement(){
+                    var parent = document.getElementById('myDiv');
+                    var num = uniqueId();
+                    var newElement = document.createElement('addSelect');
+                    newElement.setAttribute('id', num);
+                    //alert(newElement.id);
+
+                    newElement.innerHTML = '<div><select><option>Valg 1</option><option>Valg 2</option><option>Valg 3</option><option>Valg 4</option></select><button id="num" onclick="removeElement(\''+newElement.id+' \'); return false;">remove</button></div>';
+                    parent.appendChild(newElement);
+                }
+            </script>
+
+            <div>
+                <select name="addSelect" id="dynamicMenu">
+                    <option>Velg annonsetype</option>
+                    <option>Enum1</option>
+                    <option>Enum2</option>
+                    <option>Enum3</option>
+                    <option>Enum4</option>
+                </select>
+            </div>
+            <div id="myDiv"></div>
+        </div>
     </form>
 </div>
