@@ -1,11 +1,14 @@
 package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.CustomerService;
 import no.dusken.annonseweb.service.SalesService;
+import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,6 +37,7 @@ public class SalesController{
     @RequestMapping("/new")
     public String newSales(Model model){
         model.addAttribute("customerList", customerService.findAll());
+        model.addAttribute("sale", new Sale());
         //return a list fo all customers. The Id will be used to connect the sales and customers. 
         return "sales/new";
     }
@@ -74,4 +78,8 @@ public class SalesController{
         return "sales/search";
     }
 
+    @InitBinder
+    public void initbinder(WebDataBinder binder){
+        binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
+    }
 }

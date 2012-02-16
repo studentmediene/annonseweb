@@ -9,8 +9,11 @@
 
 
     function removeElement(elementId){
-        //alert(elementId);
+        alert(elementId);
+        //var parent = document.getElementById('myDiv');
         var parent = document.getElementById('myDiv');
         var element = document.getElementById(elementId);
-        parent.removeChild(element);
+        //alert(parent.id);
+        //alert(element.id);
+        //parent.removeChild(element);
 }
