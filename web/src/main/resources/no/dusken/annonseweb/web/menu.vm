@@ -3,25 +3,25 @@
         <li>
             <a href="/">Hjem</a>
         </li>
-        <li><a href="/annonse/customers"
+        <li><a href="/annonse/customer"
                onmouseover="openMenu('dropmenu1')"
                onmouseout="setClosing()">Kunder</a>
             <div id="dropmenu1"
                  onmouseover="stayOpen('dropmenu1')"
                  onmouseout="setClosing()">
-                <a href="/annonse/customers/new">Ny kunde</a>
-                <a href="/annonse/customers/all">Kundeliste</a>
-                <a href="/annonse/customers/emailList">Email for alle</a>
+                <a href="/annonse/customer/new">Ny kunde</a>
+                <a href="/annonse/customer/all">Kundeliste</a>
+                <a href="/annonse/customer/emailList">Email for alle</a>
             </div>
         </li>
-        <li><a href="/annonse/sales"
+        <li><a href="/annonse/sale"
                onmouseover="openMenu('dropmenu4')"
                onmouseout="setClosing()">Salg</a>
             <div id="dropmenu4"
                  onmouseover="stayOpen('dropmenu4')"
                  onmouseout="setClosing()">
-                <a href="/annonse/sales/new">Nytt salg</a>
-                <a href="/annonse/sales/all">SalgsListe</a>
+                <a href="#springUrl("/annonse/sale/new")">Nytt salg</a>
+                <a href="#springUrl("/annonse/sale/all")">SalgsListe</a>
             </div>
         </li>
         <li><a href="/annonse/invoices"

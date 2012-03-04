@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 @Entity
-public class Ad extends DuskenObject {
+public abstract class Ad extends DuskenObject {
 
     private BigDecimal price;
     private BigDecimal discount;
@@ -20,11 +20,6 @@ public class Ad extends DuskenObject {
     public Ad(BigDecimal price, BigDecimal discount) {
         this.price = price;
         this.discount = discount;
-    }
-
-    @Override
-    public String getTitle() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public BigDecimal getPrice() {

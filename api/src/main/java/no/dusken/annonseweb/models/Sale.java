@@ -50,11 +50,6 @@ public class Sale extends DuskenObject {
         this.adReceived = adReceived;
     }
 
-    @Override
-    public String getTitle() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
     public String getDescription() {
         return description;
     }

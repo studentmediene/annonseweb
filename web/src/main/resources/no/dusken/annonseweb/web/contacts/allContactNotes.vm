@@ -7,7 +7,7 @@
         <h2 class="title"><a href="/annonse/contacts/contactNote/all">Contact Notes</a></h2>
         <div class="entry">
             <p>
-                <!-- should be boxed as sales and invoices to display the most relevant information. -->
+                <!-- should be boxed as sale and invoices to display the most relevant information. -->
                 #foreach($contact in $contactList)
                     <a href="/annonse/contacts/contactNote/$contact.Id">$contact.Id - $contact.description</a>
                 #end

@@ -16,7 +16,7 @@
         <dependency>
             <groupId>no.dusken.annonseweb</groupId>
             <artifactId>annonseweb-api</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>no.dusken.common</groupId>

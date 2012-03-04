@@ -50,7 +50,7 @@
                 <label class="description">Sales</label>
                 <div>
                     #foreach($sale in $invoice.sales)
-                        <!-- Should be changed to a div with the most important information for this sale. Same as for the sales list -->
+                        <!-- Should be changed to a div with the most important information for this sale. Same as for the sale list -->
                         <label class="element text medium">
                             $sale.Id - $sale.description
                         </label>

@@ -9,9 +9,9 @@ import java.util.Calendar;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-public class Ad_web extends Ad {
+public class WebAd extends Ad {
 
-    public enum Web_format {TOP_BANNER, MID_BANNER, SIDEBAR}
+    public enum WebFormat {TOP_BANNER, MID_BANNER, SIDEBAR}
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar onlineFrom;
@@ -19,7 +19,7 @@ public class Ad_web extends Ad {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar onlineTo;
 
-    private Web_format webFormat;      //Updates price accordingly, or manually when created
+    private WebFormat webFormat;      //Updates price accordingly, or manually when created
 
     @ManyToOne(cascade = ALL)
     private Issue issue;
@@ -40,11 +40,11 @@ public class Ad_web extends Ad {
         this.onlineTo = onlineTo;
     }
 
-    public Web_format getWebFormat() {
+    public WebFormat getWebFormat() {
         return webFormat;
     }
 
-    public void setWebFormat(Web_format webFormat) {
+    public void setWebFormat(WebFormat webFormat) {
         this.webFormat = webFormat;
     }
 }

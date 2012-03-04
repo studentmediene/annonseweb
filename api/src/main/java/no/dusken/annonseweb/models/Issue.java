@@ -27,10 +27,10 @@ public class Issue extends DuskenObject {
     private Calendar toDate;
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "issue")
-    private List<Ad_UDprint> ads;
+    private List<PrintedAd> printedAds;
 
     @Override
     public String getTitle() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 }

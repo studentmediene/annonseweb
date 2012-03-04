@@ -1,0 +1,22 @@
+#parse('no/dusken/annonseweb/web/sale/sidebar.vm')
+
+<div id="content" class="post">
+    <h2 class="title">
+        <label class="edit"><a href="#springUrl("/annonse/sale/sale/$sale.Id")">Back</a></label>
+    </h2>
+    <form id="editSale" class="content" method="POST" action="#springUrl("/annonse/sale/edit")" name="sale" enctype="multipart/form-data">
+        <div class="content_description">
+            <p>Informasjonen om dette salget</p>
+        </div>
+
+        <label for="description">Beskrivelse</label>
+        #springFormInput( "sale.description" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="customer">Kunde</label>
+        #springFormSingleSelect("sale.customer", $customers, "")
+        #springShowErrors("<br>" "error") <br/>
+
+        #saveAndDelete($sale)
+    </form>
+</div>
