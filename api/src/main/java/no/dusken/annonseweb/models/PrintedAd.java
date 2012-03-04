@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-public class Ad_UDprint extends Ad {
+public class PrintedAd extends Ad {
 
     public enum PrintFormat {VERTICAL,HORIZONTAL}
 
@@ -20,7 +20,7 @@ public class Ad_UDprint extends Ad {
     private Integer pageNumber;
 
 
-    public Ad_UDprint() {}
+    public PrintedAd() {}
 
     public Issue getIssue() {
         return issue;

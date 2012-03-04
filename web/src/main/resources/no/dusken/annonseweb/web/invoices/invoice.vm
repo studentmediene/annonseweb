@@ -83,7 +83,7 @@
             <li>
                 <label class="description">Sales</label>
                 <div>
-                    <!-- the list of sales that this invoice contains. -->
+                    <!-- the list of sale that this invoice contains. -->
                     #foreach($sale in $invoice.sales)
                         <label class="element text medium">
                             $sale.Id - $sale.description

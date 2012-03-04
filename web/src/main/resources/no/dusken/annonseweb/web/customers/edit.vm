@@ -1,126 +1,42 @@
-<!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/customers/sidebar.vm')
 
-<!-- content -->
 <div id="content" class="post">
 
     <h2 class="title">
         <a href="/annonse/customers/edit/$customer.Id">Edit customer: $customer.customerName - $customer.Id</a>
         <label class="edit"><a href="/annonse/customers/customer/$customer.Id">Back</a></label>
     </h2>
-    <form id="newCustomer" class="content"  method="post" action="/annonse/customers/edit">
-        <div class="content_description">
-            <p>The stored information about this customer. Make changes and save.</p>
-        </div>
-        <ul>
-            <li>
-                <label class="description" for="customerName">Customer name</label>
-                <div>
-                    <input id="customerName" name="customerName" class="element text medium" type="text" maxlength="255" value="$customer.customerName"/>
-                </div>
-                <p class="guidelines">
-                    The name of the customer. e.g: "Samfundet"
-                </p>
-            </li>
-            <li>
-                <label class="description" for="centralEmail">Central Email</label>
-                <div>
-                    <input id="centralEmail" name="centralEmail" class="element text medium" type="text" maxlength="255" value="$customer.centralEmail"/>
-                </div>
-                <p class="guidelines">
-                    This is typically post@ or ud@ as we have. The contact person might have another email address that will be used for contact about sales.
-                </p>
-            </li>
-            <li>
-                <label class="description" for="homepage">Homepage</label>
-                <div>
-                    <input id="homepage" name="homepage" class="element text medium" type="text" maxlength="255" value="$customer.homepage"/>
-                </div>
-                <p class="guidelines">
-                    The homepage of the customer. e.g: www.samfundet.no
-                </p>
-            </li>
-            <li>
-                <label class="description" for="phone">Phone</label>
-                <div>
-                    <input id="phone" name="centralTlf" class="element text medium" type="text" maxlength="255" value="$customer.centralTlf"/>
-                </div>
-                <p class="guidelines">
-                    The central phone number of this customer. This is not the direct number to the contact person.
-                </p>
-            </li>
-            <li>
-                <label class="description" for="customerAddress">Customer Address</label>
-                <div>
-                    <input id="customerAddress" name="subscriberAddress" class="element text medium" type="text" value="$customer.subscriberAddress">
-                </div>
-                <p class="guidelines">
-                    The address to the customer. This is the visiting address or main office address. NOT necessarily where the invoice is sent.
-                </p>
-            </li>
-            <li>
-                <label class="description" for="invoiceAddress">Invoice address</label>
-                <div>
-                    <input id="invoiceAddress" name="invoiceAddress" class="element text medium" type="text" value="$customer.invoiceAddress">
-                </div>
-                <p class="guidelines">
-                    The address the invoice is sent to.
-                </p>
-            </li>
-            <li>
-                <label class="description" for="discount">Discount (%)</label>
-                <div>
-                    <input id="discount" name="discount" class="element text medium" type="text" maxlength="255" value="$customer.discount"/>
-                </div>
-                <p class="guidelines">
-                    The discount the customer gets from us. The number is a percentage of the sum. e.g: 25%, then a sale of 10.000 will generate an invoice with 7.500 to be paid.
-                </p>
-            </li>
-            <li>
-                <label class="description" for="contactPersonSelect">Contact Person</label>
-                <div>
-                    <!-- TODO: some way of changing the contactPerson. -->
-                    <label class="element text medium">
-                        <a href="link til kontaktperson">$customer.contactPerson</a>
-                    </label>
-                    <select id="contactPersonSelect">
-                        <option selected="this" value="$customer.contactPerson">$customer.ContactPerson.Name</option>
-                        #foreach($person in $contactPersonList )
-                            <option value="$person">$person</option>
-                        #end
-                    </select>
-                    <a href="/annonse/contacts/newContactPerson">New contact person</a>
-                </div>
-                <p class="guidelines">
-                    The person that is normally contacted at with this customer.
-                </p>
-            </li>
-            <li>
-                <label class="description">Contact notes (Last two) - <a href="/annonse/contacts/contactNote/new/$customer.Id">New Note</a> </label>
-                <div>
-                    #foreach( $note in $customer.contactNotes )
-                        <lable class="element text medium">$note</lable>
-                        <!-- It should be possible to delete notes also. -->
-                    #end
-                </div>
-                <p class="guidelines">
-                    The last two notes that has been made with this customer. This is to keep track of contact with the customer and easily see what kind of interaction happend last.
-                </p>
-            </li>
-            <li>
-                <label class="description">Tags</label>
-                <div>
-                    <label class="element text medium">$customer.industryTags</label>
-                    <!-- TODO: fix tagging and add it to everywhere! -->
-                </div>
-                <p class="guidelines">
-                    Tags
-                </p>
-            </li>
-            <li class="buttons">
-                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Customer"/>
-            </li>
-        </ul>
+    <form name="customer" id="customer" class="content"  method="post" action="#springUrl("/annonse/customer/edit")">
+
+        <label for="customerName">Kundenavn</label>
+        #springFormInput( "customer.customerName" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="contactPerson">Kontaktperson</label>
+        #springFormInput( "customer.contactPerson" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="centralEmail">Epost</label>
+        #springFormInput( "customer.centralEmail" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="centralTlf">Telefon</label>
+        #springFormInput( "customer.centralTlf" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="invoiceAdress">Fakturaadresse</label>
+        #springFormInput( "customer.contactPerson" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="invoiceAdress">Fakturaadresse</label>
+        #springFormInput( "customer.invoiceAdress" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        <label for="contactPerson">Kontaktperson</label>
+        #springFormInput( "customer.contactPerson" 'size="30"')
+        #springShowErrors("<br>" "error") <br/>
+
+        #saveAndDelete($customer)
     </form>
 </div>
 

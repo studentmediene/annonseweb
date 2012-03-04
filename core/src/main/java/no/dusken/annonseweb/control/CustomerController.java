@@ -1,38 +1,33 @@
 package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Customer;
-import no.dusken.annonseweb.service.ContactPersonService;
 import no.dusken.annonseweb.service.CustomerService;
+import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/customers")
+@RequestMapping("/customer")
 public class CustomerController{
 
     @Autowired
     private CustomerService customerService;
-    
-    @Autowired
-    private ContactPersonService contactPersonService;
 
     @RequestMapping()
     public String viewCustomerHome(){
         return "customers/home";
     }
 
-    @RequestMapping(value="/customer/{Id}")
-    public String viewCustomer(@PathVariable Long Id, Model model){
-        model.addAttribute("customer", customerService.findOne(Id));
+    @RequestMapping("/{customer}")
+    public String viewCustomer(@PathVariable Customer customer, Model model){
+        model.addAttribute("customer", customer);
         return "customers/customer";
     }
 
@@ -43,15 +38,8 @@ public class CustomerController{
     }
 
     @RequestMapping("/new")
-    public String viewNewCustomer(){
-        return "customers/new_tobe";
-    }
-
-    //TODO: consider and find out whether or not edit and add can become the same method.
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String addCustomer(@Valid @ModelAttribute("customer") Customer customer){
-        customerService.save(customer);
-        return "customers/customer";
+    public String viewNewCustomer(Model model){
+        return viewEdit(new Customer(), model);
     }
 
     @RequestMapping("/emailList")
@@ -64,23 +52,21 @@ public class CustomerController{
         return "customers/emailList";
     }
 
-    @RequestMapping("/edit/{Id}")
-    public String viewEdit(@PathVariable Long Id, Model model){
-        model.addAttribute("customer", customerService.findOne(Id));
+    @RequestMapping("/edit/{customer}")
+    public String viewEdit(@PathVariable Customer customer, Model model){
+        model.addAttribute("customer", customer);
         return "customers/edit";
     }
 
-    //TODO: consider and find out whether or not edit and add can become the same method.
     @RequestMapping(value="/edit", method = RequestMethod.POST)
     public String edit(@Valid @ModelAttribute Customer customer){
-        customerService.save(customer);
-        return "customers/edit";
+        customer = customerService.save(customer);
+        return "redirect:/annonse/customer/" + customer.getId();
     }
 
-    @RequestMapping("/search")
-    public String viewSearchCustomer(){
-        return "customers/new_tobe";     // to be changed back to the line beneath.
-        //return "customers/search";
+    @InitBinder
+    public void initbinder(WebDataBinder binder){
+        binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
     }
 }
 

@@ -5,8 +5,8 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customers/customer/$customer.Id">$customer.customerName - $customer.Id</a>
-        <label class="edit"><a href="/annonse/customers/edit/$customer.Id">Edit Customer</a></label>
+        <a href="/annonse/customer/customer/$customer.Id">$customer.customerName - $customer.Id</a>
+        <label class="edit"><a href="/annonse/customer/edit/$customer.Id">Edit Customer</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
