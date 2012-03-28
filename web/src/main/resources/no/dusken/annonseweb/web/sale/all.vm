@@ -1,11 +1,11 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/sales/sidebar.vm')
+#parse('no/dusken/annonseweb/web/sale/sidebar.vm')
 
 <!-- content -->
 <div id="content">
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/sales/all">Salgsliste</a>
+            <a href="/annonse/sale/all">Salgsliste</a>
         </h2>
         <div class="entry">
             #foreach( $sale in $salesList)

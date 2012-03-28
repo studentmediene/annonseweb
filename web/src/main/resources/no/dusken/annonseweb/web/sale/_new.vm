@@ -6,7 +6,7 @@
     <h2 class="title">
         <a href="/annonse/sale/new">Nytt salg</a>
     </h2>
-    <form id="newSale" class="content" method="POST" action="/annonse/sales/add">
+    <form id="newSale" class="content" method="POST" action="/annonse/sale/add">
         <div class="content_description">
             <p>Legg inn informasjonen om salget og trykk lagre for å opprette et nytt salg.</p>
         </div>
@@ -60,7 +60,7 @@
                             'customer': no matching editors or conversion strategy found]
 
                             -->
-                            <option value="$selectedCustomer.Id">$selectedCustomer.customerName</option>
+                            <option value=0"$selectedCustomer.Id">$selectedCustomer.customerName</option>
                         #else
                             <option value="0">Select a Customer</option>
                         #end

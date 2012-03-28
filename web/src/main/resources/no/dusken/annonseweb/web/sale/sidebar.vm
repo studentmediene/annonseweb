@@ -1,8 +1,8 @@
 <nav id="sidebar">
     <h2>Sale</h2>
     <ul>
-        <li><a href="/annonse/sales/new">New Sale</a></li>
-        <li><a href="/annonse/sales/all">Sales List</a></li>
+        <li><a href="/annonse/sale/new">New Sale</a></li>
+        <li><a href="/annonse/sale/all">Sales List</a></li>
         <!-- Should be a direct search box. -->
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')

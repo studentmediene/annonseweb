@@ -9,57 +9,49 @@
         <div class="content_description">
             <p>Add information about the contactperson you are about to create.</p>
         </div>
-        <ul>
-            <li>
-                <label class="description" for="personName">Contactperson name</label>
-                <div>
-                    <input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>
-                </div>
-                <p class="guidelines">
-                    The name of the contactperson for the customer.
-                </p>
-            </li>
-            <li>
-                <label class="description">Contactpersons email</label>
-                <div>
-                    <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
-                </div>
-                <p class="guidelines" id="guide_4">
-                    The direct email address to the contact person.
-                </p>
-            </li>
-            <li>
-                <label class="description">Phone</label>
-                <div>
-                    <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
-                </div>
-                <p class="guidelines">
-                    The main phone number to this customer. Might not be the same as for the contact person.
-                </p>
-            </li>
-            <li>
-                <label class="description">Company position</label>
-                <div>
-                    <input name="companyPosition" class="element text medium" value="" type="text">
-                </div>
+        <fieldset>
+            <legend>Personalia</legend>
+            <label class="description" for="personName">Contactperson name</label>
+            <div>
+                <input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>
+            </div>
+            <p class="guidelines">
+                The name of the contactperson for the customer.
+            </p>
 
-                <p class="guidelines">
-                    The company position of the contactperson.
-                </p>
-            </li>
-            <li>
-                <label class="description">Kunde</label>
-                 <!--
-                    Add popdown to choose from registered customers the contactperson is representing
-                    Can use form from new sale, when the problem is fixed
-                 -->
-            </li>
+            <label class="description">Contactpersons email</label>
+            <div>
+                <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
+            </div>
+            <p class="guidelines" id="guide_4">
+                The direct email address to the contact person.
+            </p>
 
+            <label class="description">Phone</label>
+            <div>
+                <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
+            </div>
+            <p class="guidelines">
+                The main phone number to this customer. Might not be the same as for the contact person.
+            </p>
 
-            <li class="buttons">
-                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Contactperson" />
-            </li>
-        </ul>
+            <label class="description">Company position</label>
+            <div>
+                <input name="companyPosition" class="element text medium" value="" type="text">
+            </div>
+
+            <p class="guidelines">
+                The company position of the contactperson.
+            </p>
+            <label class="description">Kunde</label>
+             <!--
+                Add popdown to choose from registered customers the contactperson is representing
+                Can use form from new sale, when the problem is fixed
+             -->
+        </fieldset>
+        <p class="buttons">
+            <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Contactperson" />
+        </p>
 
 </div>
 
