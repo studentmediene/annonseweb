@@ -7,6 +7,13 @@ import javax.persistence.ManyToOne;
 
 import static javax.persistence.CascadeType.ALL;
 
+enum ContactMethod{
+    EMAIL,
+    TLFNUMBER,
+    INPERSON,
+    OTHER
+}
+
 @Entity
 public class ContactNote extends DuskenObject{
 
@@ -16,12 +23,13 @@ public class ContactNote extends DuskenObject{
     @ManyToOne(cascade = ALL)
     private ContactPerson contactPerson;
 
-    private String method; //email,telephonenumber or in person
+    //private String method; //email,telephonenumber or in person
+    private ContactMethod method;
     private String text;
 
     public ContactNote() {}
 
-    public ContactNote(String text, String method, ContactPerson contactPerson, Customer customer) {
+    public ContactNote(String text, ContactMethod method, ContactPerson contactPerson, Customer customer) {
         this.text = text;
         this.method = method;
         this.contactPerson = contactPerson;
@@ -30,11 +38,6 @@ public class ContactNote extends DuskenObject{
 
     public Customer getCustomer() {
         return customer;
-    }
-
-    @Override
-    public String getTitle() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void setCustomer(Customer customer) {
@@ -49,11 +52,11 @@ public class ContactNote extends DuskenObject{
         this.contactPerson = contactPerson;
     }
 
-    public String getMethod() {
+    public ContactMethod getMethod() {
         return this.method;
     }
 
-    public void setMethod(String method) {
+    public void setMethod(ContactMethod method) {
         this.method = method;
     }
 

@@ -2,14 +2,70 @@
 #parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
 
 <!-- content -->
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="/annonse/contacts/contactNote/new">New Contact Note</a></h2>
-        <div class="entry">
-            <p>
-                New contact note
-            </p>
+<div id="content" class="post">
+    <h2 class="title"><a href="/annonse/contacts/contactNote/new">New Contact Note</a></h2>
+
+    <form id="newContactNote" class="content"  method="post" action="/annonse/contacts/contactNote/add">
+        <div class="content_description">
+            <p>Add information about the contactnote you are about to create.</p>
         </div>
-    </div>
+        <ul>
+            <li>
+                <label class="description">Contact with which customer</label>
+                <div>
+                    <!--<input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>-->
+                    drop-down box
+                </div>
+                <p class="guidelines">
+                    Which customer you had contact with.
+                </p>
+            </li>
+            <li>
+                <label class="description">... through which contact person</label>
+                <div>
+                    <!--<input name="email" class="element text medium" type="text" maxlength="255" value=""/>-->
+                    drop-down box based on customer
+                </div>
+                <p class="guidelines" id="guide_4">
+                    On behalf of the customer.
+                </p>
+            </li>
+            <li>
+                <label class="description">Contact method</label>
+                <div>
+                    <!--<input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>-->
+                    drop-down box
+                </div>
+                <p class="guidelines">
+                    Did you have contact by email, phone or in person?
+                </p>
+            </li>
+            <li>
+                <label class="description">The outcome</label>
+                <div>
+                    <!--<input name="companyPosition" type="text" size="4000">      class="element text medium" value=""-->
+                    <textarea rows="5" cols="70"></textarea>
+                </div>
+
+                <p class="guidelines">
+                    What was discussed, agreed on etc.
+                </p>
+            </li>
+            <li>
+                <label class="description">Kunde</label>
+                 <!--
+                    Add popdown to choose from registered customers the contactperson is representing
+                    Can use form from new sale, when the problem is fixed
+                 -->
+            </li>
+
+
+            <li class="buttons">
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save ContactNote" />
+            </li>
+        </ul>
+
 </div>
+
+
 

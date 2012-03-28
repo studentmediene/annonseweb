@@ -37,11 +37,11 @@ public class SalesController{
     public String newSales(Model model){
         model.addAttribute("customers", customerService.findAll());
         model.addAttribute("sale", new Sale());
-        return "sale/edit";
+        return "sale/_new";
     }
 
     @RequestMapping(value="/edit", method = RequestMethod.POST)
-    public String addSale(@Valid @ModelAttribute Sale sale){
+    public String editSale(@Valid @ModelAttribute Sale sale){
         sale = salesService.save(sale);
         return "redirect:/sale" + sale.getId();
     }
@@ -62,5 +62,11 @@ public class SalesController{
         model.addAttribute("customerList", customerService.findAll());
         model.addAttribute("sale", new Sale());
         return "sale/edit";
+    }
+    
+    @RequestMapping(value="/add", method = RequestMethod.POST)
+    public String addSale(@Valid @ModelAttribute("sale")Sale sale){
+        salesService.save(sale);
+        return "sale";
     }
 }

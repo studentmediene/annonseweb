@@ -13,21 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Emilie Brunsgaard Ek
- * Email: embrek@underdusken.no
- * Date: 13.10.11
- * Time: 19:32
- */
+
 @Controller
 @RequestMapping("/contacts")
-public class ContactController {
+public class ContactController{
 
     @Autowired
     private ContactPersonService contactPersonService;
