@@ -8,6 +8,9 @@
         <div class="entry">
             <p>
                 Summary and mots used stuff goes here!
+
+                #foreach()
+                #end
             </p>
         </div>
     </div>
