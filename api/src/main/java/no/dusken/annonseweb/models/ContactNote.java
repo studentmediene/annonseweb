@@ -3,6 +3,8 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 import static javax.persistence.CascadeType.ALL;
@@ -24,7 +26,9 @@ public class ContactNote extends DuskenObject{
     private ContactPerson contactPerson;
 
     //private String method; //email,telephonenumber or in person
+    @Enumerated(EnumType.STRING)
     private ContactMethod method;
+
     private String text;
 
     public ContactNote() {}

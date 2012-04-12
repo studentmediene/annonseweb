@@ -16,7 +16,7 @@
             <li>
                 <label class="description">Kontaktperson ID</label>
                 <div>
-                    <label class="element text medium">$contactPerson.Id</label>
+                    <label class="element text medium">$!contactPerson.Id</label>
                 </div>
                 <p class="guidelines">
                     Automatisk generert ID nummer for denne kontaktpersonen
@@ -25,7 +25,7 @@
             <li>
                 <label class="description">Navn</label>
                 <div>
-                    <label class="element text medium">$contactPerson.personName</label>
+                    <label class="element text medium">$!contactPerson.personName</label>
                 </div>
                 <p class="guidelines">
                     Dette er navnet på kontaktpersonen
@@ -34,7 +34,7 @@
             <li>
                 <label class="description">Email</label>
                 <div>
-                    <label class="element text medium">$contactPerson.email</label>
+                    <label class="element text medium">$!contactPerson.email</label>
                 </div>
                 <p class="guidelines">
                     Emailen til kontaktpersonen
@@ -43,7 +43,7 @@
             <li>
                 <label class="description">Telefonnummer</label>
                 <div>
-                    <label class="element text medium">$contactPerson.telephoneNumber</label>
+                    <label class="element text medium">$!contactPerson.telephoneNumber</label>
                 </div>
                 <p class="guidelines">
                     Dette er direktenummeret til kontaktpersonen, ikke til kunden
@@ -52,7 +52,7 @@
             <li>
                 <label class="description">Stilling hos kunden</label>
                 <div>
-                    <label class="element text medium">$contactPerson.companyPosition</label>
+                    <label class="element text medium">$!contactPerson.companyPosition</label>
                 </div>
                 <p class="guidelines">
                     Hvilken stilling kontaktpersonen innehar hos kunden vedkommende representerer
@@ -61,7 +61,7 @@
             <li>
                 <label class="description">Status</label>
                 <div>
-                    <label class="element text medium">$contactPerson.active</label>
+                    <label class="element text medium">$!contactPerson.active</label>
                 </div>
                 <p class="guidelines">
                     Viser om kontaktpersonen er aktiv (gjeldende) eller inaktiv (at en annen har tatt over, forhåpentligvis)
@@ -71,7 +71,7 @@
                 <label class="description">Kunde</label>
                 <div>
                     <label class="element text medium">
-                        <a href="link til kontaktperson">$contactPerson.customer</a>
+                        <a href="link til kontaktperson">$!contactPerson.customer</a>
                     </label>
                 </div>
                 <p class="guidelines">
@@ -81,7 +81,7 @@
             <li>
                 <label class="description">Created (user - when)</label>
                 <div>
-                    <label class="element text medium">$contactPerson.createdUser - $contactPerson.createdDate</label>
+                    <label class="element text medium">$!contactPerson.createdUser - $!contactPerson.createdDate</label>
                 </div>
                 <p class="guidelines">
                     The user that created this customer and when the customer was created.
@@ -90,7 +90,7 @@
             <li>
                 <label class="description">Last changed (user - when) </label>
                 <div>
-                    <label class="element text medium">$contactPerson.lastContactedUser - $contactPerson.lastContactedTime</label>
+                    <label class="element text medium">$!contactPerson.lastContactedUser - $!contactPerson.lastContactedTime</label>
                 </div>
                 <p class="guidelines">
                     When the customer was last changed and the user that did the change.
