@@ -8,7 +8,7 @@ import org.junit.Test;
 public class CustomerControllerTest {
     @Test
     public void testViewCustomerHome() throws Exception {
-        // TODO:
+        // TODO: create test. 
     }
 
     @Test
