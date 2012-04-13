@@ -1,6 +1,7 @@
-package no.dusken.annonseweb.service;
+package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Invoice;
+import no.dusken.annonseweb.service.InvoiceService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
