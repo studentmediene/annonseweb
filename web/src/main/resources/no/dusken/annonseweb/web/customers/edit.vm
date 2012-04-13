@@ -24,12 +24,12 @@
         #springFormInput( "customer.centralTlf" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
-        <label for="invoiceAdress">Fakturaadresse</label>
+        <label for="invoiceAddress">Fakturaadresse</label>
         #springFormInput( "customer.contactPerson" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
-        <label for="invoiceAdress">Fakturaadresse</label>
-        #springFormInput( "customer.invoiceAdress" 'size="30"')
+        <label for="invoiceAddress">Fakturaadresse</label>
+        #springFormInput( "customer.invoiceAddress" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
         <label for="contactPerson">Kontaktperson</label>

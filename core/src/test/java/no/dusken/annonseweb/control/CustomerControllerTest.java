@@ -1,6 +1,10 @@
 package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.Customer;
 import org.junit.Test;
+
+import java.math.BigInteger;
+import java.util.Arrays;
 
 /**
  * @author Magnus Kirø - magnuskiro@ gmail.com/underdusken.no - 12/04/12
@@ -8,7 +12,7 @@ import org.junit.Test;
 public class CustomerControllerTest {
     @Test
     public void testViewCustomerHome() throws Exception {
-        // TODO: create test. 
+        // TODO: create test.
     }
 
     @Test
@@ -38,7 +42,10 @@ public class CustomerControllerTest {
 
     @Test
     public void testEdit() throws Exception {
-        // TODO:
+        // TODO: complete test.
+        Customer customer = new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress",
+                "subscriberAddress", new BigInteger("2"), Arrays.asList("Hello", "World!", "How", "Are", "You"));
+
     }
 
     @Test

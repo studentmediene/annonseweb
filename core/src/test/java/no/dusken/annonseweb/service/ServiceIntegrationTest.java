@@ -2,6 +2,7 @@ package no.dusken.annonseweb.service;
 
 import no.dusken.annonseweb.models.Ad;
 import no.dusken.annonseweb.models.Customer;
+import no.dusken.annonseweb.models.PrintedAd;
 import no.dusken.annonseweb.models.Sale;
 import no.dusken.common.model.Person;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class ServiceIntegrationTest {
     @Test
     public void testSave(){
 
-        Ad ad = new Ad(new BigDecimal("100"), new BigDecimal("10"));
+        Ad ad = new PrintedAd(new BigDecimal("100"), new BigDecimal("10"));
         Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "address", new BigInteger("10"), new LinkedList<String>(Collections.singleton("tag")));
         Person createdUser = getPerson();
 
