@@ -3,6 +3,8 @@ package no.dusken.annonseweb.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import java.math.BigDecimal;
+
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
@@ -22,11 +24,13 @@ public class PrintedAd extends Ad {
 
     public PrintedAd() {}
 
+    public PrintedAd(BigDecimal price, BigDecimal discount) {
+        super(price, discount);
+    }
+
     public Issue getIssue() {
         return issue;
     }
-
-
 
     public void setIssue(Issue issue) {
         this.issue = issue;

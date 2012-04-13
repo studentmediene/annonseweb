@@ -25,9 +25,9 @@ public class Customer extends DuskenObject{
     @NotNull
     private String centralTlf;
     @NotNull
-    private String invoiceAdress;
+    private String invoiceAddress;
 
-    private String subscriberAdress;
+    private String subscriberAddress;
 
     private BigInteger discount;
 
@@ -43,13 +43,13 @@ public class Customer extends DuskenObject{
 
     public Customer() {}
 
-    public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAdress,
-                    String subscriberAdress, BigInteger discount, List<String> industryTags) {
+    public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
+                    String subscriberAddress, BigInteger discount, List<String> industryTags) {
         this.customerName = customerName;
         this.centralEmail = centralEmail;
         this.centralTlf = centralTlf;
-        this.invoiceAdress = invoiceAdress;
-        this.subscriberAdress = subscriberAdress;
+        this.invoiceAddress = invoiceAddress;
+        this.subscriberAddress = subscriberAddress;
         this.discount = discount;
         this.industryTags = industryTags;
     }
@@ -70,12 +70,12 @@ public class Customer extends DuskenObject{
         this.centralTlf = centralTlf;
     }
 
-    public void setInvoiceAdress(String invoiceAdress) {
-        this.invoiceAdress = invoiceAdress;
+    public void setInvoiceAddress(String invoiceAddress) {
+        this.invoiceAddress = invoiceAddress;
     }
 
-    public void setSubscriberAdress(String subscriberAdress) {
-        this.subscriberAdress = subscriberAdress;
+    public void setSubscriberAddress(String subscriberAddress) {
+        this.subscriberAddress = subscriberAddress;
     }
 
     public void setDiscount(BigInteger discount) {
@@ -98,12 +98,12 @@ public class Customer extends DuskenObject{
         return centralTlf;
     }
 
-    public String getInvoiceAdress() {
-        return invoiceAdress;
+    public String getInvoiceAddress() {
+        return invoiceAddress;
     }
 
-    public String getSubscriberAdress() {
-        return subscriberAdress;
+    public String getSubscriberAddress() {
+        return subscriberAddress;
     }
 
     public BigInteger getDiscount() {
