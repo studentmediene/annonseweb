@@ -12,6 +12,8 @@ import java.util.LinkedList;
  * @author Magnus Kirø - magnuskiro@ gmail.com/underdusken.no - 12/04/12
  */
 public class CustomerControllerTest {
+
+
     private CustomerController customerController;
 
     @Before
@@ -54,7 +56,6 @@ public class CustomerControllerTest {
         // TODO: complete test.
         Customer customer = new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress",
                 "subscriberAddress", new BigInteger("2"), new LinkedList<String>(Collections.singleton("tag")));
-        customerController.edit(customer);
 
     }
 
