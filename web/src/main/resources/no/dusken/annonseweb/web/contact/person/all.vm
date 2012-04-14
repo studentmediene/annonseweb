@@ -1,5 +1,5 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+#parse('no/dusken/annonseweb/web/contact/sidebar.vm')
 
 <!-- content -->
 <div id="content">
@@ -9,7 +9,7 @@
             <p>
                 <!-- should be boxed as sale and invoice to display the most relevant information. -->
                 #foreach($contact in $contactList)
-                    <a href="/annonse/contact/contactPerson/$contact.Id">$contact.Id - $contact.Name</a>
+                    <a href="/annonse/contact/person/$contact.Id">$contact.Id - $contact.Name</a>
                 #end
             </p>
         </div>

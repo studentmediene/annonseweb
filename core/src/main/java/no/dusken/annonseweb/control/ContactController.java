@@ -102,13 +102,13 @@ public class ContactController{
     }
 
     @RequestMapping("/person/emailList")
-    public String viewEmailsCustomersContact(Model model){
+    public String viewEmailsForCustomersContactPersons(Model model){
         List<String> emailList = new ArrayList<String>();
         for(ContactPerson contactPerson: contactPersonService.findAll()){
             emailList.add(contactPerson.getEmail());
         }
         model.addAttribute("emailList", emailList);
-        return "customer/person/emailList";
+        return "contact/person/emailList";
     }
 
 }
