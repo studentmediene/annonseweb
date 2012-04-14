@@ -33,6 +33,7 @@ public class Customer extends DuskenObject{
 
     @ElementCollection
     private List<String> industryTags = new ArrayList<String>();
+
     private String homepage;
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
@@ -41,10 +42,18 @@ public class Customer extends DuskenObject{
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales = new ArrayList<Sale>();
 
-    public Customer() {}
+    public Customer(String customerName, String centralEmail, String centralTlf,
+                    String invoiceAddress, String subscriberAddress){
+        this.customerName =customerName;
+        this.centralEmail=centralEmail;
+        this.centralTlf=centralTlf;
+        this.invoiceAddress=invoiceAddress;
+        this.subscriberAddress=subscriberAddress;
+    }
 
     public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
-                    String subscriberAddress, BigInteger discount, List<String> industryTags) {
+                    String subscriberAddress, String homepage, BigInteger discount, List<String> industryTags,
+                    List<ContactNote> contactNotes, List<Sale> sales) {
         this.customerName = customerName;
         this.centralEmail = centralEmail;
         this.centralTlf = centralTlf;
@@ -52,6 +61,9 @@ public class Customer extends DuskenObject{
         this.subscriberAddress = subscriberAddress;
         this.discount = discount;
         this.industryTags = industryTags;
+        this.homepage = homepage;
+        this.contactNotes = contactNotes;
+        this.sales = sales;
     }
 
     public void addSale(Sale sale){

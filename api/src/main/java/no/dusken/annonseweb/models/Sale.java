@@ -38,7 +38,9 @@ public class Sale extends DuskenObject {
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
 
-    public Sale() {}
+    public Sale(Customer customer){
+        setCustomer(customer);
+    }
 
     public Sale(String description, List<Ad> ads, Customer customer, Person createdUser, Boolean adReceived) {
         this.description = description;

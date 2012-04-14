@@ -14,7 +14,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -37,7 +36,7 @@ public class ServiceIntegrationTest {
     public void testSave(){
 
         Ad ad = new PrintedAd(new BigDecimal("100"), new BigDecimal("10"));
-        Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "address", new BigInteger("10"), new LinkedList<String>(Collections.singleton("tag")));
+        Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "address");
         Person createdUser = getPerson();
 
         Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)), customer, createdUser, true);
