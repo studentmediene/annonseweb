@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/ads")
+@RequestMapping("/ad")
 public class AdController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class AdController {
     @RequestMapping(value = "/{ad}", method = RequestMethod.GET)
     public String viewAdHome(@ModelAttribute Ad ad, Model model){
         model.addAttribute("ad", ad);
-        return "ads/home";
+        return "ad/home";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -33,7 +33,7 @@ public class AdController {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String saveNewAdGeneral(@Valid @ModelAttribute Ad ad){
         ad = adService.save(ad);
-        return "redirect:/ads/" + ad.getId();
+        return "redirect:/ad/" + ad.getId();
     }
 }
 

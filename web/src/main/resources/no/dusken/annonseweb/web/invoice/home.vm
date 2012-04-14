@@ -1,5 +1,5 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/invoices/sidebar.vm')
+#parse('no/dusken/annonseweb/web/invoice/sidebar.vm')
 
 <!-- content -->
 <div id="content">

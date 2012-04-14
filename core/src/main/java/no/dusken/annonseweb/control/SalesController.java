@@ -35,9 +35,9 @@ public class SalesController{
 
     @RequestMapping("/new")
     public String newSales(Model model){
-        model.addAttribute("customers", customerService.findAll());
+        model.addAttribute("customer", customerService.findAll());
         model.addAttribute("sale", new Sale());
-        return "sale/_new";
+        return "sale/new";
     }
 
     @RequestMapping(value="/edit", method = RequestMethod.POST)

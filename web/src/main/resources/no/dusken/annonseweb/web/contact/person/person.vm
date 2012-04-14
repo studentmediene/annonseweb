@@ -1,12 +1,12 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+#parse('no/dusken/annonseweb/web/contact/sidebar.vm')
 
 <!-- content -->
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/contacts/contactPerson/$contactPerson.Id">$contactPerson.name</a>
-        <label class="edit"><a href="/annonse/contacts/contactPerson/edit/$contactPerson.Id">Endre kontaktperson</a></label>
+        <a href="/annonse/contact/contact/person/$contactPerson.Id">$contactPerson.name</a>
+        <label class="edit"><a href="/annonse/contact/contact/person/edit/$contactPerson.Id">Endre kontaktperson</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -71,7 +71,7 @@
                 <label class="description">Kunde</label>
                 <div>
                     <label class="element text medium">
-                        <a href="link til kontaktperson">$!contactPerson.customer</a>
+                        <a href="/annonse/contact/">$!contactPerson.customer</a>
                     </label>
                 </div>
                 <p class="guidelines">

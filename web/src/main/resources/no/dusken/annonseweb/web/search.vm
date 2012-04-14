@@ -12,16 +12,16 @@
 <!--<nav id="sidebar">
     <h2>Annonser</h2>
     <ul>
-        <li><a href="/ads/newAdGeneral.do">Ny annonse</a>
+        <li><a href="/ad/newAdGeneral.do">Ny annonse</a>
             <ul>
-                <li><a href="/ads/newAdDuskenPaper.do">Under Dusken - papirutgave</a></li>
-                <li><a href="/ads/newAdDuskenNett.do">underdusken.no</a></li>
-                <li><a href="/ads/newAdRadioRevolt.do">Radio Revolt</a></li>
-                <li><a href="/ads/newAdStudentTV.do">Student TV</a></li>
+                <li><a href="/ad/newAdDuskenPaper.do">Under Dusken - papirutgave</a></li>
+                <li><a href="/ad/newAdDuskenNett.do">underdusken.no</a></li>
+                <li><a href="/ad/newAdRadioRevolt.do">Radio Revolt</a></li>
+                <li><a href="/ad/newAdStudentTV.do">Student TV</a></li>
             </ul>
         </li>
-        <li><a href="/ads/viewActiveAds.do">Annonseoversikt</a></li>
-        <li><a href="/ads/searchAd.do">Søk etter annonse</a></li>
+        <li><a href="/ad/viewActiveAds.do">Annonseoversikt</a></li>
+        <li><a href="/ad/searchAd.do">Søk etter annonse</a></li>
     </ul>
     <p>
         Logget inn som:    <br>

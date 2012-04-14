@@ -24,39 +24,39 @@
                 <a href="#springUrl("/annonse/sale/all")">SalgsListe</a>
             </div>
         </li>
-        <li><a href="/annonse/invoices"
+        <li><a href="/annonse/invoice"
                onmouseover="openMenu('dropmenu5')"
                onmouseout="setClosing()">Faktura</a>
             <div id="dropmenu5"
                  onmouseover="stayOpen('dropmenu5')"
                  onmouseout="setClosing()">
-                <a href="/annonse/invoices/new">Ny faktura</a>
-                <a href="/annonse/invoices/all">FakturaListe</a>
+                <a href="/annonse/invoice/new">Ny faktura</a>
+                <a href="/annonse/invoice/all">FakturaListe</a>
             </div>
         </li>
-        <li><a href="/annonse/contacts"
+        <li><a href="/annonse/contact"
                onmouseover="openMenu('dropmenu2')"
                onmouseout="setClosing()">Kontakt</a>
             <div id="dropmenu2"
                  onmouseover="stayOpen('dropmenu2')"
                  onmouseout="setClosing()">
-                <a href="/annonse/contacts/contactNote/new">Ny kontakt</a>
-                <a href="/annonse/contacts/contactPerson/new">Ny kontaktperson</a>
-                <a href="/annonse/contacts/contactNote/all">Kontaktliste</a>
-                <a href="/annonse/contacts/contactPerson/active">Kontaktpersonliste - aktive</a>
-                <a href="/annonse/contacts/contactPerson/all">Kontaktpersonliste - alle</a>
-                <a href="/annonse/contacts/emailList">Epostliste - aktive</a>
+                <a href="/annonse/contact/contact/note/new">Ny kontakt</a>
+                <a href="/annonse/contact/contact/note/all">Kontaktliste</a>
+                <a href="/annonse/contact/contact/person/new">Ny kontaktperson</a>
+                <a href="/annonse/contact/contact/person/active">Kontaktpersonliste - aktive</a>
+                <a href="/annonse/contact/contact/person/all">Kontaktpersonliste - alle</a>
+                <a href="/annonse/contact/emailList">Epostliste - aktive</a>
             </div>
         </li>
-        <li><a href="/annonse/ads"
+        <li><a href="/annonse/ad/"
                onmouseover="openMenu('dropmenu3')"
                onmouseout="setClosing()">Annonser</a>
             <div id="dropmenu3"
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
-                <a href="/annonse/ads/new">Ny annonse</a>
-                <a href="/annonse/ads/overview">Aktive annonser</a>
-                <a href="/annonse/ads/all">Alle annonser</a>
+                <a href="/annonse/ad/new">Ny annonse</a>
+                <a href="/annonse/ad/overview">Aktive annonser</a>
+                <a href="/annonse/ad/all">Alle annonser</a>
             </div>
         </li>
         <li><a href="/annonse/statistics"
@@ -65,9 +65,9 @@
             <div id="dropmenu6"
                  onmouseover="stayOpen('dropmenu6')"
                  onmouseout="setClosing()">
-                <a href="/annonse/statistics/#">Omsetning</a>
-                <a href="/annonse/statistics/#">Antall annonsesider</a>
-                <a href="/annonse/statistics/#">Aktive nettannonser</a>
+                <a href="/annonse/statistics">Omsetning</a>
+                <a href="/annonse/statistics">Antall annonsesider</a>
+                <a href="/annonse/statistics">Aktive nettannonser</a>
             </div>
         </li>
         <li><a href="/annonseweb_logout">Logg ut</a>
