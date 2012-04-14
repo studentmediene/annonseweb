@@ -1,11 +1,11 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contacts/sidebar.vm')
+#parse('no/dusken/annonseweb/web/contact/sidebar.vm')
 
 <!-- content -->
 <div id="content" class="post">
-    <h2 class="title"><a href="/annonse/contacts/contactPerson/new">New Contact Person</a></h2>
+    <h2 class="title"><a href="/annonse/contact/contact/person/new">New Contact Person</a></h2>
 
-    <form id="newContactPerson" class="content"  method="post" action="/annonse/contacts/contactPerson/add">
+    <form id="newContactPerson" class="content"  method="post" action="/annonse/contact/contact/person/add">
         <div class="content_description">
             <p>Add information about the contactperson you are about to create.</p>
         </div>
@@ -21,7 +21,9 @@
 
             <label class="description">Contactpersons email</label>
             <div>
-                <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
+                <label>
+                    <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
+                </label>
             </div>
             <p class="guidelines" id="guide_4">
                 The direct email address to the contact person.
@@ -29,7 +31,9 @@
 
             <label class="description">Phone</label>
             <div>
-                <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
+                <label>
+                    <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
+                </label>
             </div>
             <p class="guidelines">
                 The main phone number to this customer. Might not be the same as for the contact person.
@@ -37,7 +41,9 @@
 
             <label class="description">Company position</label>
             <div>
-                <input name="companyPosition" class="element text medium" value="" type="text">
+                <label>
+                    <input name="companyPosition" class="element text medium" value="" type="text">
+                </label>
             </div>
 
             <p class="guidelines">
@@ -45,7 +51,7 @@
             </p>
             <label class="description">Kunde</label>
              <!--
-                Add popdown to choose from registered customers the contactperson is representing
+                Add popdown to choose from registered customer the contactperson is representing
                 Can use form from new sale, when the problem is fixed
              -->
         </fieldset>

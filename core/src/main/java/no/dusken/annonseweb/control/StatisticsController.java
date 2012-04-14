@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/statistics")
 public class StatisticsController {
 
-    @RequestMapping()
+    @RequestMapping("")
     public String viewStatisticsHome(){
-        return "statistics/Home";
+        return "statistics/home";
     }
 }

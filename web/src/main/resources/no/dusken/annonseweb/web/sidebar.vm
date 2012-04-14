@@ -1,10 +1,10 @@
 <nav id="sidebar">
     <h2>Innlogging</h2>
     <!--<ul>
-        <li><a href="/customers/newCustomer.do">Ny kunde</a></li>
-        <li><a href="/customers/viewCustomers.do">Kundeliste</a></li>
-        <li><a href="/customers/searchCustomer.do">Søk etter kunde</a></li>
-        <li><a href="/customers/emailCustomers.do">Email til alle</a></li>
+        <li><a href="/customer/newCustomer.do">Ny kunde</a></li>
+        <li><a href="/customer/viewCustomers.do">Kundeliste</a></li>
+        <li><a href="/customer/searchCustomer.do">Søk etter kunde</a></li>
+        <li><a href="/customer/emailCustomers.do">Email til alle</a></li>
     </ul>  -->
     <p>
         Logget inn som:    <br>

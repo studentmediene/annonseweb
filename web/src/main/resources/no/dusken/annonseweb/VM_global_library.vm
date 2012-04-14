@@ -18,7 +18,7 @@
     <input type="submit" class="submit" name="save" value="Lagre"/>
      #if( $entity.ID )
      <input type="submit" class="delete" name="delete"
-        onclick="javascript:return confirm('Are you sure you want to delete $entity?')"
+        onclick="return confirm('Are you sure you want to delete $entity?')"
         value="Delete"/>
      #end
      </span>

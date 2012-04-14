@@ -10,36 +10,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/invoices")
+@RequestMapping("/invoice")
 public class InvoiceController {
 
+    @Autowired
     private InvoiceService invoiceService;
 
-    @RequestMapping()
-    public String viewInvoiceHome(){
-        return "invoices/home";
+    @RequestMapping("/")
+    public String viewHome(){
+        return "invoice/home";
     }
 
     @RequestMapping("/all")
     public String listInvoices(Model model){
         List<Invoice> invoiceList = invoiceService.findAll();
         model.addAttribute("InvoiceList", invoiceList);
-        return "invoices/all";
+        return "invoice/all";
     }
 
     @RequestMapping("/invoice")
     public String viewInvoice(){
-        return "invoices/invoice";
+        return "invoice/invoice";
     }
 
     @RequestMapping("/new")
     public String newInvoice(){
-        return "invoices/new";
+        return "invoice/new";
     }
 
     @RequestMapping("/search")
     public String search(){
-        return "invoices/search";
+        return "invoice/search";
     }
 
     @Autowired

@@ -1,6 +1,10 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/customer/sidebar.vm')
+
+<!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonse/customers/emailList">Email-liste til alle kunder</a></h2>
+        <h2 class="title"><a href="/annonse/customer/emailList">Email-liste til alle kunder</a></h2>
         <div class="entry">
             #foreach($email in $emailList)
                 <p>
@@ -12,5 +16,3 @@
     </div>
 </div>
 
-<!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/customers/sidebar.vm')

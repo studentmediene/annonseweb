@@ -1,9 +1,0 @@
-<nav id="sidebar">
-    <h2>CustomerBar</h2>
-    <ul>
-        <li><a href="/annonse/customers/new">Ny kunde</a>
-        <li><a href="/annonse/customers/all">Kundeliste</a></li>
-        <li><a href="/annonse/customers/emailList">Email for alle</a></li>
-    </ul>
-    #parse('no/dusken/annonseweb/web/status.vm')
-</nav>

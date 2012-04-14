@@ -21,20 +21,20 @@ public class CustomerController{
     private CustomerService customerService;
 
     @RequestMapping()
-    public String viewCustomerHome(){
-        return "customers/home";
+    public String viewHome(){
+        return "customer/home";
     }
 
     @RequestMapping("/{customer}")
     public String viewCustomer(@PathVariable Customer customer, Model model){
         model.addAttribute("customer", customer);
-        return "customers/customer";
+        return "customer/customer";
     }
 
     @RequestMapping("/all")
     public String viewCustomerList(Model model){
         model.addAttribute("customerList", customerService.findAll());
-        return "customers/all";
+        return "customer/all";
     }
 
     @RequestMapping("/new")
@@ -49,13 +49,13 @@ public class CustomerController{
             emailList.add(customer.getCentralEmail());
         }
         model.addAttribute("emailList", emailList);
-        return "customers/emailList";
+        return "customer/emailList";
     }
 
     @RequestMapping("/edit/{customer}")
     public String viewEdit(@PathVariable Customer customer, Model model){
         model.addAttribute("customer", customer);
-        return "customers/edit";
+        return "customer/edit";
     }
 
     @RequestMapping(value="/edit", method = RequestMethod.POST)

@@ -2,7 +2,6 @@ package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.ContactNote;
 import no.dusken.annonseweb.models.ContactPerson;
-import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.service.ContactNoteService;
 import no.dusken.annonseweb.service.ContactPersonService;
 import no.dusken.annonseweb.service.CustomerService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/contacts")
+@RequestMapping("/contact")
 public class ContactController{
 
     @Autowired
@@ -35,82 +33,82 @@ public class ContactController{
 
     @RequestMapping("")
     public String viewContactsHome(){
-        return "contacts/home";
+        return "contact/home";
     }
 
-    @RequestMapping("/contactNote/all")
+    @RequestMapping("/note/all")
     public String allContacts(Model model){
         List<ContactNote> contactNotes = contactNoteService.findAll();
         model.addAttribute("contactPersonList", contactNotes);
-        return "contacts/allContactNotes";
+        return "contact/note/all";
     }
 
-    @RequestMapping("/contactPerson/active")
+    @RequestMapping("/person/active")
     public String allActive(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         for(ContactPerson contactPerson: contactPersonList){
             if(!contactPerson.getActive()) contactPersonList.remove(contactPerson);
         }
         model.addAttribute("contactPersonList", contactPersonList);
-        return "contacts/all";
+        return "contact/person/all";
     }
 
-    @RequestMapping("/contactPerson/all")
+    @RequestMapping("/person/all")
     public String all(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         model.addAttribute("contactPersonList", contactPersonList);
-        return "contacts/allContactPersons";
+        return "contact/person/all";
     }
 
-    @RequestMapping(value="/contactNote/{Id}")
+    @RequestMapping(value="/note/{Id}")
     public String viewContactNote(@PathVariable Long Id, Model model){
         model.addAttribute("contact", contactNoteService.findOne(Id));
-        return "contacts/contactNote";
+        return "contact/note/note";
     }
 
-    @RequestMapping("/contactNote/new")
+    @RequestMapping("/note/new")
     public String newContact(){
-        return "contacts/newContactNote";
+        return "contact/note/new";
     }
 
-    @RequestMapping("/contactNote/new/{Id}")
+    @RequestMapping("/note/new/{Id}")
     public String newContactWithCustomerID(@PathVariable Long Id,Model model){
         model.addAttribute("customer", customerService.findOne(Id));
-        return "contacts/newContactNote";
+        return "contact/note/new";
     }
 
-    @RequestMapping(value="/contactNote/add", method = RequestMethod.POST)
+    @RequestMapping(value="/note/add", method = RequestMethod.POST)
     public String addContactNote(@Valid @ModelAttribute("contactNote")ContactNote contactNote){
         contactNoteService.save(contactNote);
-        return "contacts/contactNote";
+        return "contact/note";
     }
 
-    @RequestMapping(value="/contactPerson/{Id}")
+    @RequestMapping(value="/person/{Id}")
     public String viewContactPerson(@PathVariable Long Id, Model model){
         ContactPerson contactPerson = contactPersonService.findOne(Id);
         model.addAttribute("contact", contactPerson);
-        return "contacts/contactPerson";
+        return "contact/person/person";
     }
 
-    @RequestMapping("/contactPerson/new")
+    @RequestMapping("/person/new")
     public String newContactPerson(){
-        return "contacts/newContactPerson";
+        return "contact/person/new";
     }
 
-    @RequestMapping(value="/contactPerson/add", method = RequestMethod.POST)
+    @RequestMapping(value="/person/add", method = RequestMethod.POST)
     public String addContactPerson(@Valid @ModelAttribute("newContactPerson")ContactPerson contactPerson){
         contactPersonService.save(contactPerson);
-        return "contacts/contactPerson";
+        return "contact/person/person";
     }
 
-    @RequestMapping("/emailList")
+    @RequestMapping("/person/emailList")
     public String viewEmailsCustomersContact(Model model){
         List<String> emailList = new ArrayList<String>();
         for(ContactPerson contactPerson: contactPersonService.findAll()){
             emailList.add(contactPerson.getEmail());
         }
         model.addAttribute("emailList", emailList);
-        return "customers/emailList";
+        return "customer/person/emailList";
     }
 
 }
