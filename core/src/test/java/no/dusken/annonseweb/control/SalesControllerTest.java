@@ -1,5 +1,6 @@
 package no.dusken.annonseweb.control;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -8,37 +9,36 @@ import org.junit.Test;
 public class SalesControllerTest {
     @Test
     public void testViewSaleHome() throws Exception {
-        // TODO:
+        Assert.fail();
     }
 
     @Test
     public void testNewSales() throws Exception {
-        // TODO:
-
+        Assert.fail();
     }
 
     @Test
     public void testEditSale() throws Exception {
-        // TODO:
+        Assert.fail();
     }
 
     @Test
     public void testSale() throws Exception {
-        // TODO:
+        Assert.fail();
     }
 
     @Test
     public void testViewSales() throws Exception {
-        // TODO:
+        Assert.fail();
     }
 
     @Test
     public void testEditSales() throws Exception {
-        // TODO:
+        Assert.fail();
     }
 
     @Test
     public void testAddSale() throws Exception {
-        // TODO:
+        Assert.fail();
     }
 }

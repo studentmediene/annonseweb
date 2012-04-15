@@ -1,5 +1,6 @@
 package no.dusken.annonseweb.control;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -8,6 +9,6 @@ import org.junit.Test;
 public class StatisticsControllerTest {
     @Test
     public void testViewStatisticsHome() throws Exception {
-        // TODO: create test
+        Assert.fail();
     }
 }
