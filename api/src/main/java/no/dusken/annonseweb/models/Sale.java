@@ -38,6 +38,8 @@ public class Sale extends DuskenObject {
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
 
+    public Sale(){}
+
     public Sale(Customer customer){
         setCustomer(customer);
     }

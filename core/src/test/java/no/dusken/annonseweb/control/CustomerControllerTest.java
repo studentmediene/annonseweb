@@ -4,14 +4,12 @@ import no.dusken.annonseweb.models.Customer;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author Magnus Kirø - magnuskiro@ gmail.com/underdusken.no - 12/04/12
  */
 public class CustomerControllerTest {
 
-    @Autowired
     private CustomerController customerController;
 
     @Before
