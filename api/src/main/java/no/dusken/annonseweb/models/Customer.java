@@ -42,6 +42,8 @@ public class Customer extends DuskenObject{
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales = new ArrayList<Sale>();
 
+    public Customer(){}
+
     public Customer(String customerName, String centralEmail, String centralTlf,
                     String invoiceAddress, String subscriberAddress){
         this.customerName =customerName;
