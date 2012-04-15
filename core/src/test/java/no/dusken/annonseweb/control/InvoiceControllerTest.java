@@ -1,7 +1,7 @@
 package no.dusken.annonseweb.control;
 
-import no.dusken.annonseweb.models.Invoice;
 import no.dusken.annonseweb.service.InvoiceService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,5 +18,6 @@ public class InvoiceControllerTest {
 
     @Test
     public void testNew(){
+        Assert.fail();
     }
 }

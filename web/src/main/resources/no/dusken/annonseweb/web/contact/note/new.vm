@@ -44,9 +44,7 @@
                 <label class="description">The outcome</label>
                 <div>
                     <!--<input name="companyPosition" type="text" size="4000">      class="element text medium" value=""-->
-                    <label>
-                        <textarea rows="5" cols="70"></textarea>
-                    </label>
+                    <textarea rows="5" cols="70"></textarea>
                 </div>
 
                 <p class="guidelines">

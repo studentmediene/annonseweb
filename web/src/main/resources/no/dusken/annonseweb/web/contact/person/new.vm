@@ -3,57 +3,51 @@
 
 <!-- content -->
 <div id="content" class="post">
-    <h2 class="title"><a href="/annonse/contact/contact/person/new">New Contact Person</a></h2>
+    <h2 class="title"><a href="/annonse/contact/person/new">Ny kontaktperson</a></h2>
 
-    <form id="newContactPerson" class="content"  method="post" action="/annonse/contact/contact/person/add">
+    <form id="newContactPerson" class="content"  method="post" action="/annonse/contact/person/add">
         <div class="content_description">
-            <p>Add information about the contactperson you are about to create.</p>
+            <p>Legg til informasjon om kontaktpersonen du holder på å opprette.</p>
         </div>
         <fieldset>
             <legend>Personalia</legend>
-            <label class="description" for="personName">Contactperson name</label>
+            <label class="description" for="personName">Navn</label>
             <div>
                 <input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>
             </div>
             <p class="guidelines">
-                The name of the contactperson for the customer.
+                Navnet på kontaktpersonen.
             </p>
 
-            <label class="description">Contactpersons email</label>
+            <label class="description">Epost</label>
             <div>
-                <label>
-                    <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
-                </label>
+                <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
             </div>
             <p class="guidelines" id="guide_4">
-                The direct email address to the contact person.
+                Epost til kontaktpersonen.
             </p>
 
-            <label class="description">Phone</label>
+            <label class="description">Telefonnummer</label>
             <div>
-                <label>
-                    <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
-                </label>
+                <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
             </div>
             <p class="guidelines">
-                The main phone number to this customer. Might not be the same as for the contact person.
+                Telefonnummeret til kontaktpersonen.
             </p>
 
-            <label class="description">Company position</label>
+            <label class="description">Stilling</label>
             <div>
-                <label>
-                    <input name="companyPosition" class="element text medium" value="" type="text">
-                </label>
+                <input name="companyPosition" class="element text medium" value="" type="text">
             </div>
 
             <p class="guidelines">
-                The company position of the contactperson.
+                Kontaktpersonens stilling hos kunden.
             </p>
             <label class="description">Kunde</label>
-             <!--
-                Add popdown to choose from registered customer the contactperson is representing
-                Can use form from new sale, when the problem is fixed
-             -->
+            <!--
+               Add popdown to choose from registered customers the contactperson is representing
+               Can use form from new sale, when the problem is fixed
+            -->
         </fieldset>
         <p class="buttons">
             <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Contactperson" />
