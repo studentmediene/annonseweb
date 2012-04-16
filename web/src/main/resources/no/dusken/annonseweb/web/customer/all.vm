@@ -11,7 +11,7 @@
             #foreach($customer in $customerList)
                 <p>
                     <a href="/annonse/customer/customer/$customer.Id">
-                        $customer.Id - $customer.customerName
+                        $customer.Id - $customer.name
                     </a>
                 </p>
             #end

@@ -39,7 +39,10 @@ public class ServiceIntegrationTest {
         Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "address");
         Person createdUser = getPerson();
 
-        Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)), customer, createdUser, true);
+        Sale sa = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)),
+                customer, createdUser, true);
+
+        Sale s = new Sale(customer);
 
         Sale sale = salesService.saveAndFlush(s);
         assertNotNull(sale);

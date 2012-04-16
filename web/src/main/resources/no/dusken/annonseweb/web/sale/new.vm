@@ -60,12 +60,12 @@
                             'customer': no matching editors or conversion strategy found]
 
                             -->
-                            <option value="$selectedCustomer.Id">$selectedCustomer.customerName</option>
+                            <option value="$selectedCustomer.Id">$selectedCustomer.name</option>
                         #else
                             <option value="0">Select a Customer</option>
                         #end
                         #foreach( $customer in $customerList )
-                            <option value="$customer.Id">$customer.customerName</option>
+                            <option value="$customer.Id">$customer.name</option>
                         #end
                     </select>
                 </div>

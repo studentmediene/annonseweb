@@ -5,25 +5,25 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customers/edit/$customer.Id">Edit customer: $customer.customerName - $customer.Id</a>
+        <a href="/annonse/customers/edit/$customer.Id">Edit customer: $customer.name - $customer.Id</a>
         <label class="edit"><a href="/annonse/customers/customer/$customer.Id">Back</a></label>
     </h2>
     <form name="customer" id="customer" class="content"  method="post" action="#springUrl("/annonse/customer/edit")">
 
-        <label for="customerName">Kundenavn</label>
-        #springFormInput( "customer.customerName" 'size="30"')
+        <label for="name">Kundenavn</label>
+        #springFormInput( "customer.name" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
         <label for="contactPerson">Kontaktperson</label>
         #springFormInput( "customer.contactPerson" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
-        <label for="centralEmail">Epost</label>
-        #springFormInput( "customer.centralEmail" 'size="30"')
+        <label for="email">Epost</label>
+        #springFormInput( "customer.email" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
-        <label for="centralTlf">Telefon</label>
-        #springFormInput( "customer.centralTlf" 'size="30"')
+        <label for="phoneNumber">Telefon</label>
+        #springFormInput( "customer.phoneNumber" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
         <label for="invoiceAddress">Fakturaadresse</label>

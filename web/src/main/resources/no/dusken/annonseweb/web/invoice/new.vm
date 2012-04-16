@@ -30,7 +30,7 @@
                 <label class="description" for="invoiceDescription">Invoice Description</label>
                 <div>
                     <label class="element text medium">$invoice.description</label>
-                    <input id="invoiceDescription" name="customerName" class="element text medium" type="text" maxlength="1000" value=""/>
+                    <input id="invoiceDescription" name="name" class="element text medium" type="text" maxlength="1000" value=""/>
                 </div>
                 <p class="guidelines">
                     This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
@@ -40,7 +40,7 @@
                 <label class="description" for="invoiceNumber">Invoice Number</label>
                 <div>
                     <label class="element text medium">$invoice.invoiceNumber</label>
-                    <input id="invoiceNumber" name="customerName" class="element text medium" type="text" maxlength="25" value=""/>
+                    <input id="invoiceNumber" name="name" class="element text medium" type="text" maxlength="25" value=""/>
                 </div>
                 <p class="guidelines">
                     The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
