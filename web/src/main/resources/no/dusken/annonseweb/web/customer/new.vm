@@ -16,7 +16,7 @@
                 <label class="description">Firmanavn</label>
                 <div>
                     <label>
-                        <input name="customerName" class="element text medium" type="text" maxlength="255" value=""/>
+                        <input name="name" class="element text medium" type="text" maxlength="255" value=""/>
                     </label>
                 </div>
                 <p class="guidelines">
@@ -26,7 +26,7 @@
             <li>
                 <label class="description">Epostadressen til firmaet </label>
                 <div>
-                        <input name="centralEmail" class="element text medium" type="text" maxlength="255" value=""/>
+                        <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines" id="guide_4">
                     Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
@@ -44,7 +44,7 @@
             <li>
                 <label class="description">Telefon </label>
                 <div>
-                        <input name="centralTlf" class="element text medium" type="text" maxlength="255" value=""/>
+                        <input name="phoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
                 </div>
                 <p class="guidelines">
                     Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.

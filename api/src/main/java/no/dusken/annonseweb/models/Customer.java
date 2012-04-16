@@ -17,13 +17,13 @@ import static javax.persistence.FetchType.LAZY;
 public class Customer extends DuskenObject{
 
     @NotNull
-    private String customerName;
+    private String name;
     @NotNull
     private String contactPerson;
     @NotNull
-    private String centralEmail;
+    private String email;
     @NotNull
-    private String centralTlf;
+    private String phoneNumber;
     @NotNull
     private String invoiceAddress;
 
@@ -44,21 +44,21 @@ public class Customer extends DuskenObject{
 
     public Customer(){}
 
-    public Customer(String customerName, String centralEmail, String centralTlf,
+    public Customer(String name, String email, String phoneNumber,
                     String invoiceAddress, String subscriberAddress){
-        this.customerName =customerName;
-        this.centralEmail=centralEmail;
-        this.centralTlf=centralTlf;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.invoiceAddress=invoiceAddress;
         this.subscriberAddress=subscriberAddress;
     }
 
-    public Customer(String customerName, String centralEmail, String centralTlf, String invoiceAddress,
+    public Customer(String name, String email, String phoneNumber, String invoiceAddress,
                     String subscriberAddress, String homepage, BigInteger discount, List<String> industryTags,
                     List<ContactNote> contactNotes, List<Sale> sales) {
-        this.customerName = customerName;
-        this.centralEmail = centralEmail;
-        this.centralTlf = centralTlf;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.invoiceAddress = invoiceAddress;
         this.subscriberAddress = subscriberAddress;
         this.discount = discount;
@@ -72,16 +72,16 @@ public class Customer extends DuskenObject{
         sales.add(sale);
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCentralEmail(String centralEmail) {
-        this.centralEmail = centralEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setCentralTlf(String centralTlf) {
-        this.centralTlf = centralTlf;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setInvoiceAddress(String invoiceAddress) {
@@ -100,16 +100,16 @@ public class Customer extends DuskenObject{
         this.industryTags = industryTags;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getName() {
+        return name;
     }
 
-    public String getCentralEmail() {
-        return centralEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public String getCentralTlf() {
-        return centralTlf;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getInvoiceAddress() {

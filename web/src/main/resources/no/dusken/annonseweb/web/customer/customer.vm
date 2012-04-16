@@ -5,7 +5,7 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customer/customer/$customer.Id">$customer.customerName - $customer.Id</a>
+        <a href="/annonse/customer/customer/$customer.Id">$customer.name - $customer.Id</a>
         <label class="edit"><a href="/annonse/customer/edit/$customer.Id">Edit Customer</a></label>
     </h2>
     <div class="content">
@@ -25,16 +25,16 @@
             <li>
                 <label class="description">Firmanavn</label>
                 <div>
-                    <label class="element text medium">$customer.customerName</label>
+                    <label class="element text medium">$customer.name</label>
                 </div>
                 <p class="guidelines">
                     Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
                 </p>
             </li>
             <li>
-                <label class="description">centralEmail</label>
+                <label class="description">email</label>
                 <div>
-                    <label class="element text medium">$customer.centralEmail</label>
+                    <label class="element text medium">$customer.email</label>
                 </div>
                 <p class="guidelines">
                     Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
@@ -54,7 +54,7 @@
             <li>
                 <label class="description">Telefon </label>
                 <div>
-                    <label class="element text medium">$customer.centralTlf</label>
+                    <label class="element text medium">$customer.phoneNumber</label>
                 </div>
                 <p class="guidelines">
                     Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.

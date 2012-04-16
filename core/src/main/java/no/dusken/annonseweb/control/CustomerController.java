@@ -42,11 +42,15 @@ public class CustomerController{
         return viewEdit(new Customer(), model);
     }
 
+    /**
+     * List all the email addresses of the customers.
+     * This is meant to give the user a mailing list, so it is easier to send mail to all the customers at the same time.
+     */
     @RequestMapping("/emailList")
     public String viewEmailsCustomersMain(Model model){
         List<String> emailList = new ArrayList<String>();
         for(Customer customer: customerService.findAll()){
-            emailList.add(customer.getCentralEmail());
+            emailList.add(customer.getEmail());
         }
         model.addAttribute("emailList", emailList);
         return "customer/emailList";
