@@ -45,12 +45,12 @@ public class Customer extends DuskenObject{
     public Customer(){}
 
     public Customer(String name, String email, String phoneNumber,
-                    String invoiceAddress, String subscriberAddress){
+                    String invoiceAddress, String contactPerson){
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.invoiceAddress=invoiceAddress;
-        this.subscriberAddress=subscriberAddress;
+        this.invoiceAddress = invoiceAddress;
+        this.contactPerson = contactPerson;
     }
 
     public Customer(String name, String email, String phoneNumber, String invoiceAddress,
