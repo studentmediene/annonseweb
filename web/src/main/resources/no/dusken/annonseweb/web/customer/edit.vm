@@ -5,17 +5,16 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customers/edit/$customer.Id">Edit customer: $customer.name - $customer.Id</a>
-        <label class="edit"><a href="/annonse/customers/customer/$customer.Id">Back</a></label>
+        <a href="/annonse/customers/edit/$customer.getId()">Edit customer: $customer.getName() - $customer.getId()</a>
+        <label class="edit"><a href="/annonse/customers/customer/$customer.getId()">Back</a></label>
     </h2>
     <form name="customer" id="customer" class="content"  method="post" action="#springUrl("/annonse/customer/edit")">
 
-        <label for="name">Kundenavn</label>
-        #springFormInput( "customer.name" 'size="30"')
+        #springFormHiddenInput( "customer.Id", '')
         #springShowErrors("<br>" "error") <br/>
 
-        <label for="contactPerson">Kontaktperson</label>
-        #springFormInput( "customer.contactPerson" 'size="30"')
+        <label for="name">Kundenavn</label>
+        #springFormInput( "customer.name" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
         <label for="email">Epost</label>
@@ -26,8 +25,8 @@
         #springFormInput( "customer.phoneNumber" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
-        <label for="invoiceAddress">Fakturaadresse</label>
-        #springFormInput( "customer.contactPerson" 'size="30"')
+        <label for="subscriberAddress">Besøksadresse</label>
+        #springFormInput( "customer.subscriberAddress" 'size="30"')
         #springShowErrors("<br>" "error") <br/>
 
         <label for="invoiceAddress">Fakturaadresse</label>
