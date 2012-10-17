@@ -9,8 +9,14 @@
         </h2>
         <div class="entry">
             <p>
-            Computer department messed this up nicely :P
-            Now you have the right to complain. So do it!
+            Computer department messed this up nicely :P  <br/>
+            Now you have the right to complain. So do it! <br/>
+            Info: <br/>
+            $exception.class
+            <br/>
+            $exception.printStackTrace
+            <br/>
+            $exception.message
         </p>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <nav id="sidebar">
-    <h2>CustomerBar</h2>
+    <h2>KundeBar</h2>
     <ul>
         <li><a href="/annonse/customer/new">Ny kunde</a>
         <li><a href="/annonse/customer/all">Kundeliste</a></li>

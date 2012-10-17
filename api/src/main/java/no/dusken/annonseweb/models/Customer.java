@@ -16,15 +16,15 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 public class Customer extends DuskenObject{
 
-    @NotNull
+    // @NotNull
     private String name;
-    @NotNull
+    // @NotNull
     private String contactPerson;
-    @NotNull
+    // @NotNull
     private String email;
-    @NotNull
+    // @NotNull
     private String phoneNumber;
-    @NotNull
+    // @NotNull
     private String invoiceAddress;
 
     private String subscriberAddress;
@@ -41,6 +41,8 @@ public class Customer extends DuskenObject{
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales = new ArrayList<Sale>();
+
+    private transient String editNumber;
 
     public Customer(){}
 
@@ -66,6 +68,27 @@ public class Customer extends DuskenObject{
         this.homepage = homepage;
         this.contactNotes = contactNotes;
         this.sales = sales;
+    }
+
+    /**
+     * Clones all information about this customer if other.getEditId().equals(this.getId().toString()) returns true.
+     * @param other Customer to clone information from
+     */
+    public void cloneFrom(Customer other) {
+        if (other == null || !other.getEditNumber().equals(getId().toString())){
+            return;
+        }
+        this.name = other.name;
+        this.contactPerson = other.contactPerson;
+        this.email = other.email;
+        this.phoneNumber = other.phoneNumber;
+        this.invoiceAddress = other.invoiceAddress;
+        this.subscriberAddress = other.subscriberAddress;
+        this.discount = other.discount;
+        this.industryTags = other.industryTags;
+        this.homepage = other.homepage;
+        this.contactNotes = other.contactNotes;
+        this.sales = other.sales;
     }
 
     public void addSale(Sale sale){
@@ -158,5 +181,16 @@ public class Customer extends DuskenObject{
 
     public void setContactPerson(String contactPerson) {
         this.contactPerson = contactPerson;
+    }
+
+    public void setEditNumber(String editNumber) {
+        try {
+            Long.valueOf(editNumber);
+            this.editNumber = editNumber;
+        } catch (NumberFormatException e) {}
+    }
+
+    public String getEditNumber() {
+        return editNumber;
     }
 }

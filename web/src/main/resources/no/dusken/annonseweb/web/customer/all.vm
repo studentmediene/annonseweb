@@ -10,7 +10,7 @@
         <div class="entry">
             #foreach($customer in $customerList)
                 <p>
-                    <a href="/annonse/customer/customer/$customer.Id">
+                    <a href="/annonse/customer/$customer.Id">
                         $customer.Id - $customer.name
                     </a>
                 </p>
