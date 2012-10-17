@@ -64,8 +64,17 @@ public class CustomerController{
 
     @RequestMapping(value="/edit", method = RequestMethod.POST)
     public String edit(@Valid @ModelAttribute Customer customer){
-        customerService.saveAndFlush(customer);
-        return "redirect:/annonse/customer/" + customer.getId();
+        Long customerId;
+        if (customer.getEditNumber() != null) {
+            Customer c = customerService.findOne(Long.valueOf(customer.getEditNumber()));
+            c.cloneFrom(customer);
+            customerService.saveAndFlush(c);
+            customerId = c.getId();
+        } else {
+            customerService.saveAndFlush(customer);
+            customerId = customer.getId();
+        }
+        return "redirect:/annonse/customer/" + customerId;
     }
 
     @InitBinder

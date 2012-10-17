@@ -5,39 +5,99 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customers/edit/$customer.getId()">Edit customer: $customer.getName() - $customer.getId()</a>
-        <label class="edit"><a href="/annonse/customers/customer/$customer.getId()">Back</a></label>
+        #set($custId = false)
+        #set($custId = $customer.getId())
+        #if (!$custId)
+            <a href="/annonse/customer/new">Ny kunde:</a>
+        #else
+            <a href="/annonse/customer/edit/$customer.getId()">Endre kunde: $customer.getName() - $customer.getId()</a>
+            <label class="edit"><a href="/annonse/customer/$customer.getId()">Tilbake</a></label>
+        #end
     </h2>
     <form name="customer" id="customer" class="content"  method="post" action="#springUrl("/annonse/customer/edit")">
+        <div class="content">
+        #if($custId)
+            $customer.setEditNumber("$custId")
+            #springFormHiddenInput( "customer.editNumber", '')
+            #springShowErrors("<br>" "error") <br/>
+        #end
 
-        #springFormHiddenInput( "customer.Id", '')
-        #springShowErrors("<br>" "error") <br/>
-
-        <label for="name">Kundenavn</label>
-        #springFormInput( "customer.name" 'size="30"')
-        #springShowErrors("<br>" "error") <br/>
-
-        <label for="email">Epost</label>
-        #springFormInput( "customer.email" 'size="30"')
-        #springShowErrors("<br>" "error") <br/>
-
-        <label for="phoneNumber">Telefon</label>
-        #springFormInput( "customer.phoneNumber" 'size="30"')
-        #springShowErrors("<br>" "error") <br/>
-
-        <label for="subscriberAddress">Besøksadresse</label>
-        #springFormInput( "customer.subscriberAddress" 'size="30"')
-        #springShowErrors("<br>" "error") <br/>
-
-        <label for="invoiceAddress">Fakturaadresse</label>
-        #springFormInput( "customer.invoiceAddress" 'size="30"')
-        #springShowErrors("<br>" "error") <br/>
-
-        <label for="contactPerson">Kontaktperson</label>
-        #springFormInput( "customer.contactPerson" 'size="30"')
-        #springShowErrors("<br>" "error") <br/>
-
-        #saveAndDelete($customer)
+            <ul>
+                <li>
+                    <label class="description" for="name">Kundenavn</label>
+                    <div>
+                        #springFormInput( "customer.name" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er navnet på firmaet, som Under Dusken er navnet på studentavisa.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="email">Epost</label>
+                    <div>
+                        #springFormInput( "customer.email" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er typisk post@ eller ud@ som vi har dette er ikke hovedkontakteposten til firmaet. Man skal ta kontakt med kontaktpersonen.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="homepage">Hjemmeside</label>
+                    <div>
+                        #springFormInput( "customer.homepage" 'size="30')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Hjemmesiden til firmaet. ala Underdusken.no
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="phoneNumber">Telefon</label>
+                    <div>
+                        #springFormInput( "customer.phoneNumber" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er telefonnummeret til hovedkontoret. Altså ikke til kontaktpersonen, men direkte til firmaet.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="subscriberAddress">Besøksadresse</label>
+                    <div>
+                        #springFormInput( "customer.subscriberAddress" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="invoiceAddress">Fakturaadresse</label>
+                    <div>
+                        #springFormInput( "customer.invoiceAddress" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er adressen vi sender fakturaen til.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="contactPerson">Kontaktperson</label>
+                    <div>
+                        #springFormInput( "customer.contactPerson" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Personen man skal ta kontakt med hos denne kunden.
+                    </p>
+                </li>
+                <li>
+                    #saveAndDelete($customer)
+                </li>
+            </ul>
+        </div>
     </form>
 </div>
 
