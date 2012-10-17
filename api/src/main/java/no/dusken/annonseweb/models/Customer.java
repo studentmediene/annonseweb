@@ -16,15 +16,15 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 public class Customer extends DuskenObject{
 
-    // @NotNull
+    @NotNull
     private String name;
-    // @NotNull
+    @NotNull
     private String contactPerson;
-    // @NotNull
+    @NotNull
     private String email;
-    // @NotNull
+    @NotNull
     private String phoneNumber;
-    // @NotNull
+    @NotNull
     private String invoiceAddress;
 
     private String subscriberAddress;
