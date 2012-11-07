@@ -36,7 +36,7 @@ public class Customer extends DuskenObject{
 
     private String homepage;
 
-    @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
+    @OneToMany(fetch = LAZY, mappedBy = "customer")
     private List<ContactNote> contactNotes= new ArrayList<ContactNote>();
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
@@ -71,7 +71,7 @@ public class Customer extends DuskenObject{
     }
 
     /**
-     * Clones all information about this customer if other.getEditId().equals(this.getId().toString()) returns true.
+     * Clones all information about this customer if other.getEditNumber().equals(this.getId().toString()) returns true.
      * @param other Customer to clone information from
      */
     public void cloneFrom(Customer other) {

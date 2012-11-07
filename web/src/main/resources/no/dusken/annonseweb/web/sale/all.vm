@@ -8,13 +8,17 @@
             <a href="/annonse/sale/all">Salgsliste</a>
         </h2>
         <div class="entry">
-            #foreach( $sale in $salesList)
+            #foreach( $sale in $saleList)
                 <div class="listEntry">
-                    <p class="meta">
-                        $sale.meta
+                    <p  class="meta">
+                        <a href="/annonse/customer/$sale.customer.Id">
+                            $sale.customer.Name
+                        </a>
                     </p>
                     <p class="info">
-                        $sale.info
+                        <a href="/annonse/sale/$sale.Id">
+                            $sale.Id - $sale.Description
+                        </a>
                     </p>
                 </div>
             #end

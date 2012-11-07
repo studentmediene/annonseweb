@@ -1,0 +1,67 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/sale/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+    <h2 class="title">
+        <a href="/annonse/sale/$sale.Id">$sale.Id - $sale.description</a>
+        <label class="edit"><a href="/annonse/sale/edit/$sale.Id">Endre salg</a></label>
+    </h2>
+    <div class="content_description">
+        <p>Informasjon vi har lagret om dette salget:</p>
+    </div>
+    <ul>
+        <li>
+            <label class="description">Salgsidentifikator</label>
+            <div><label class="element text medium">$sale.Id</label></div>
+            <p class="guidelines">Automatisk generert identifikator for dette salget</p>
+        </li>
+        <li>
+            <label class="description">Beskrivelse</label>
+            <div><label class="element text medium">$sale.Description</label></div>
+            <p class="guidelines">Beskrivelsen på salget eller hva salget heter.
+                eks: "UKA-11 høstsemester". Dette kan godt være et slags avtalenavn</p>
+        </li>
+        <li>
+            <label class="description">Kunde</label>
+            <div><label class="element text medium"><a href="/annonse/customer/$sale.customer.Id">
+                $sale.customer.Name
+            </a></label></div>
+            <p class="guidelines">Kunden som er registrert med dette salget. Også kjent som den vi skal få/ har fått penger fra</p>
+        </li>
+        <li>
+            <label class="description">Har motatt annonser</label>
+            <div><label class="element text medium">$sale.adReceived</label></div>
+            <p class="guidelines">Om vi har motatt annonse(r) for dette salget. Denne er vel ikke helt nødvendig, menmen</p>
+        </li>
+        <li>
+            <label class="description">Annonser</label>
+            <div><label class="element text medium">
+                #foreach($ad in $sale.ads)
+                    $ad.Id - Noe beskrivende her
+                #end$
+            </label></div>
+            <p class="guidelines">Liste med alle annonser vi har motatt i forbindelse med dette salget.</p>
+        </li>
+        <li>
+            <label class="description">Faktura</label>
+            <div><label class="element text medium">$sale.invoice.Id - $sale.invoice.Description</label></div>
+            <p class="guidelines">Faktura. Også kjent som regninga. Bør omgjøres til link til faktura når den delen blir implementert.</p>
+        </li>
+        <li>
+            <label class="description">Sist endret</label>
+            <div><label class="element text medium">$sale.lastEditedDate</label></div>
+            <p class="guidelines">Når dette salget sist ble endret</p>
+        </li>
+        <li>
+            <label class="description">Sist endret av</label>
+            <div><label class="element text medium">$sale.lastEditedUser</label></div>
+            <p class="guidelines">Hvem som sist endret dette salget.</p>
+        </li>
+        <li>
+            <label class="description">Opprettet av</label>
+            <div><label class="element text medium">$sale.CreatedUser</label></div>
+            <p class="guidelines">Hvem som opprettet dette salget.</p>
+        </li>
+    </ul>
+</div>

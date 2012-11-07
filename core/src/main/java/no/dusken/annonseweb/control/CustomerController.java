@@ -78,7 +78,7 @@ public class CustomerController{
     }
 
     @InitBinder
-    public void initbinder(WebDataBinder binder){
+    public void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
     }
 }
