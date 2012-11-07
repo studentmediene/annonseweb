@@ -20,7 +20,7 @@ public class Sale extends DuskenObject {
     @OneToMany(fetch = LAZY, cascade = ALL)
     private List<Ad>  ads = new LinkedList<Ad>();
 
-    @ManyToOne(optional = false, cascade = ALL)
+    @ManyToOne(optional = false)
     @NotNull
     private Customer customer;
 
@@ -38,6 +38,8 @@ public class Sale extends DuskenObject {
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
 
+    private transient String editNumber;
+
     public Sale(){}
 
     public Sale(Customer customer){
@@ -52,6 +54,24 @@ public class Sale extends DuskenObject {
         this.lastEditedDate = Calendar.getInstance();
         this.lastEditedUser = createdUser;
         this.adReceived = adReceived;
+    }
+
+    /**
+     * Clones all non-transient information about this <code>Sale</code>.
+     * @param other <code>Sale</code> to clone information from
+     */
+    public void cloneFrom(Sale other) {
+        if (other == null) {
+            return;
+        }
+        setDescription(other.description);
+        setAds(other.ads);
+        setCustomer(other.customer);
+        setCreatedUser(other.createdUser);
+        setLastEditedDate(other.lastEditedDate);
+        setLastEditedUser(other.lastEditedUser);
+        setAdReceived(other.adReceived);
+        invoice = other.invoice;
     }
 
     public String getDescription() {
@@ -108,5 +128,13 @@ public class Sale extends DuskenObject {
 
     public void setAdReceived(Boolean adReceived) {
         this.adReceived = adReceived;
+    }
+
+    public String getEditNumber() {
+        return editNumber;
+    }
+
+    public void setEditNumber(String editNumber) {
+        this.editNumber = editNumber;
     }
 }

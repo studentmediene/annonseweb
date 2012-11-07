@@ -32,11 +32,17 @@ public class ServiceIntegrationTest {
     @Autowired
     private SalesService salesService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @Test
     public void testSave(){
 
+
         Ad ad = new PrintedAd(new BigDecimal("100"), new BigDecimal("10"));
         Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "contactPerson");
+        // I save customer first, since at least first version of this program should not save more than one entity at a time
+        customerService.saveAndFlush(customer);
         Person createdUser = getPerson();
 
         Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)),
@@ -47,6 +53,7 @@ public class ServiceIntegrationTest {
         assertNotNull(sale.getId());
         assertEquals(ad, sale.getAds().get(0));
         assertEquals(customer, sale.getCustomer());
+
 
     }
 

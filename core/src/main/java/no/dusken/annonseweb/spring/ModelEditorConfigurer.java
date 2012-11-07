@@ -8,6 +8,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.WebBindingInitializer;
 import org.springframework.web.context.request.WebRequest;
 
+// TODO Is this class used at all? Mark it for delete?
 public class ModelEditorConfigurer implements WebBindingInitializer {
 
     @Autowired
@@ -15,7 +16,7 @@ public class ModelEditorConfigurer implements WebBindingInitializer {
     @Autowired
     private ContactNoteService contactNoteService;
     @Autowired
-    private ContactPersonService contactPersonSerive;
+    private ContactPersonService contactPersonService;
     @Autowired
     private CustomerService customerService;
     @Autowired
@@ -27,7 +28,7 @@ public class ModelEditorConfigurer implements WebBindingInitializer {
     public void initBinder(WebDataBinder binder, WebRequest request) {
         binder.registerCustomEditor(Ad.class, new BindByIdEditor(adService));
         binder.registerCustomEditor(ContactNote.class, new BindByIdEditor(contactNoteService));
-        binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonSerive));
+        binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
         binder.registerCustomEditor(Invoice.class, new BindByIdEditor(invoiceService));
         binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
