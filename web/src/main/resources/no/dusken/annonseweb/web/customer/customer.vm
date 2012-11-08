@@ -112,8 +112,8 @@
             <li>
                 <label class="description">
                     Two last sales -
-                    <a href="/annonse/sales/new/$customer.Id">
-                        Register new sale for this customer
+                    <a href="/annonse/sale/new/$customer.Id">
+                        Registrer nytt salg på denne kunden.
                     </a>
                 </label>
                 <div>

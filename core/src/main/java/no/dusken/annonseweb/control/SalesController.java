@@ -45,6 +45,11 @@ public class SalesController{
         return viewEdit(new Sale(), model);
     }
 
+    @RequestMapping("/new/{customer}")
+    public String newSaleCustomer(@PathVariable Customer customer, Model model) {
+        return viewEdit(new Sale(customer), model);
+    }
+
     @RequestMapping("edit/{sale}")
     public String viewEdit(@PathVariable Sale sale, Model model){
         model.addAttribute("customerList", customerService.findAll());

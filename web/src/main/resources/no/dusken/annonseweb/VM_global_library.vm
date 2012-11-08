@@ -14,14 +14,14 @@
       limitations under the License.
 *#
 
-#macro ( singleSelectIdName $bindpath $options $selected $attributes )
+#macro ( singleSelectIdName $bindpath $options $select $attributes )
     #springBind($bindpath)
 <select name="${status.expression}" id="${status.expression}" ${attributes}#springCloseTag()
     #foreach ($option in $options)
-        #if ($option.ID  && $selected.ID && $option.ID == $selected.ID)
-        <option value="$option.getId()" selected="true">$option.getId() - $option.getName()</option>
+        #if ($option.Id == $select.Id)
+            <option value="$option.getId()" selected="true">$option.getId() - $option.getName()</option>
         #else
-        <option value="$option.getId()">$option.getId() - $option.getName()</option>
+            <option value="$option.getId()">$option.getId() - $option.getName()</option>
         #end
     #end
 </select>
