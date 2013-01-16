@@ -68,6 +68,6 @@
     </bean>
 
     <bean class="no.dusken.common.plugin.security.PluginAuthenticationProviderManager" init-method="init" />
-    
+
     <security:authentication-manager alias="authenticationManager" />
 </beans>

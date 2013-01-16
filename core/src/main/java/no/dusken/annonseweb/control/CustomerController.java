@@ -62,19 +62,28 @@ public class CustomerController{
         return "customer/edit";
     }
 
-    @RequestMapping(value="/edit", method = RequestMethod.POST)
-    public String edit(@Valid @ModelAttribute Customer customer){
-        Long customerId;
-        if (customer.getEditNumber() != null) {
-            Customer c = customerService.findOne(Long.valueOf(customer.getEditNumber()));
-            c.cloneFrom(customer);
-            customerService.saveAndFlush(c);
-            customerId = c.getId();
-        } else {
-            customerService.saveAndFlush(customer);
-            customerId = customer.getId();
-        }
-        return "redirect:/annonse/customer/" + customerId;
+    /**
+     * Saves a new <code>Customer</code>.
+     * @param customer the <code>Customer</code> to save
+     * @return redirect address
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveNew(@Valid @ModelAttribute Customer customer) {
+        customerService.saveAndFlush(customer);
+        return "redirect:/annonse/customer/" + customer.getId();
+    }
+
+    /**
+     * Saves an edited <code>Customer</code>.
+     * @param pathCustomer <code>Customer</code> that should be edited taken from mapped path
+     * @param customer <code>Customer</code> from model to get new information from
+     * @return redirect address
+     */
+    @RequestMapping("save/{pathCustomer}")
+    public String saveEdit(@PathVariable Customer pathCustomer, @Valid @ModelAttribute Customer customer) {
+        pathCustomer.cloneFrom(customer);
+        customerService.saveAndFlush(pathCustomer);
+        return "redirect:/annonse/customer/" + pathCustomer.getId();
     }
 
     @InitBinder
