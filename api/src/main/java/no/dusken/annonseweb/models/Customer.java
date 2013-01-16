@@ -2,9 +2,7 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -14,6 +12,8 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@Table(name = "customer")
+@SequenceGenerator(name = "customer_seq", sequenceName = "customer_id_seq")
 public class Customer extends DuskenObject{
 
     @NotNull
@@ -29,8 +29,6 @@ public class Customer extends DuskenObject{
 
     private String subscriberAddress;
 
-    private BigInteger discount;
-
     @ElementCollection
     private List<String> industryTags = new ArrayList<String>();
 
@@ -41,8 +39,6 @@ public class Customer extends DuskenObject{
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales = new ArrayList<Sale>();
-
-    private transient String editNumber;
 
     public Customer(){}
 
@@ -56,14 +52,13 @@ public class Customer extends DuskenObject{
     }
 
     public Customer(String name, String email, String phoneNumber, String invoiceAddress,
-                    String subscriberAddress, String homepage, BigInteger discount, List<String> industryTags,
+                    String subscriberAddress, String homepage, List<String> industryTags,
                     List<ContactNote> contactNotes, List<Sale> sales) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.invoiceAddress = invoiceAddress;
         this.subscriberAddress = subscriberAddress;
-        this.discount = discount;
         this.industryTags = industryTags;
         this.homepage = homepage;
         this.contactNotes = contactNotes;
@@ -71,11 +66,11 @@ public class Customer extends DuskenObject{
     }
 
     /**
-     * Clones all information about this customer if other.getEditNumber().equals(this.getId().toString()) returns true.
+     * Clones all information about this customer if <code>other != null</code>.
      * @param other Customer to clone information from
      */
     public void cloneFrom(Customer other) {
-        if (other == null || !other.getEditNumber().equals(getId().toString())){
+        if (other == null){
             return;
         }
         this.name = other.name;
@@ -84,7 +79,6 @@ public class Customer extends DuskenObject{
         this.phoneNumber = other.phoneNumber;
         this.invoiceAddress = other.invoiceAddress;
         this.subscriberAddress = other.subscriberAddress;
-        this.discount = other.discount;
         this.industryTags = other.industryTags;
         this.homepage = other.homepage;
         this.contactNotes = other.contactNotes;
@@ -115,10 +109,6 @@ public class Customer extends DuskenObject{
         this.subscriberAddress = subscriberAddress;
     }
 
-    public void setDiscount(BigInteger discount) {
-        this.discount = discount;
-    }
-
     public void setIndustryTags(List<String> industryTags) {
         this.industryTags = industryTags;
     }
@@ -141,10 +131,6 @@ public class Customer extends DuskenObject{
 
     public String getSubscriberAddress() {
         return subscriberAddress;
-    }
-
-    public BigInteger getDiscount() {
-        return discount;
     }
 
     public List<String> getIndustryTags() {
@@ -181,16 +167,5 @@ public class Customer extends DuskenObject{
 
     public void setContactPerson(String contactPerson) {
         this.contactPerson = contactPerson;
-    }
-
-    public void setEditNumber(String editNumber) {
-        try {
-            Long.valueOf(editNumber);
-            this.editNumber = editNumber;
-        } catch (NumberFormatException e) {}
-    }
-
-    public String getEditNumber() {
-        return editNumber;
     }
 }

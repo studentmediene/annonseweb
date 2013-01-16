@@ -7,21 +7,17 @@
     <h2 class="title">
         #set($custId = false)
         #set($custId = $customer.getId())
+        #set($pathEnd = "")
         #if (!$custId)
             <a href="/annonse/customer/new">Ny kunde:</a>
         #else
             <a href="/annonse/customer/edit/$customer.getId()">Endre kunde: $customer.getName() - $customer.getId()</a>
-            <label class="edit"><a href="/annonse/customer/$customer.getId()">Tilbake</a></label>
+            <label class="edit"><a href="/annonse/customer/$customer.getId()">Tilbake</a>
+            #set($pathEnd = "/" + $custId)
         #end
     </h2>
-    <form name="customer" id="customer" class="content"  method="post" action="#springUrl("/annonse/customer/edit")">
+    <form name="customer" id="customer" class="content"  method="post" action="#springUrl("/annonse/customer/save$pathEnd")">
         <div class="content">
-        #if($custId)
-            $customer.setEditNumber("$custId")
-            #springFormHiddenInput( "customer.editNumber", '')
-            #springShowErrors("<br>" "error") <br/>
-        #end
-
             <ul>
                 <li>
                     <label class="description" for="name">Kundenavn</label>
