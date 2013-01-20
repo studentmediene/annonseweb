@@ -42,7 +42,7 @@
                 <li>
                     <label class="description" for="homepage">Hjemmeside</label>
                     <div>
-                        #springFormInput( "customer.homepage" 'size="30')
+                        #springFormInput( "customer.homepage" 'size="30"')
                         #springShowErrors("<br>" "error") <br/>
                     </div>
                     <p class="guidelines">
