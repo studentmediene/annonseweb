@@ -1,9 +1,6 @@
 package no.dusken.annonseweb.service;
 
-import no.dusken.annonseweb.models.Ad;
-import no.dusken.annonseweb.models.Customer;
-import no.dusken.annonseweb.models.PrintedAd;
-import no.dusken.annonseweb.models.Sale;
+import no.dusken.annonseweb.models.*;
 import no.dusken.common.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +40,7 @@ public class ServiceIntegrationTest {
         Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "contactPerson");
         // I save customer first, since at least first version of this program should not save more than one entity at a time
         customerService.saveAndFlush(customer);
-        Person createdUser = getPerson();
+        AnnonsePerson createdUser = getPerson();
 
         Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)),
                 customer, createdUser, true);
@@ -57,12 +54,9 @@ public class ServiceIntegrationTest {
 
     }
 
-    private Person getPerson() {
-        Person createdUser = new Person();
-        createdUser.setUsername("user");
-        createdUser.setFirstname("first");
-        createdUser.setSurname("surname");
-        createdUser.setEmailAddress("email@email.com");
+    private AnnonsePerson getPerson() {
+        AnnonsePerson createdUser = new AnnonsePerson();
+        createdUser.setPrincipal("UserName");
         return createdUser;
     }
 

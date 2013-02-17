@@ -1,7 +1,6 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
-import no.dusken.common.model.Person;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,6 +12,8 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@Table(name = "sale")
+@SequenceGenerator(name = "sale_seq", sequenceName = "sale_id_seq")
 public class Sale extends DuskenObject {
 
     private String description;
@@ -25,13 +26,13 @@ public class Sale extends DuskenObject {
     private Customer customer;
 
     @ManyToOne(cascade = ALL)
-    private Person createdUser;
+    private AnnonsePerson createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar lastEditedDate;
 
     @ManyToOne(cascade = ALL)
-    private Person lastEditedUser;
+    private AnnonsePerson lastEditedUser;
 
     private Boolean adReceived;
 
@@ -46,7 +47,7 @@ public class Sale extends DuskenObject {
         setCustomer(customer);
     }
 
-    public Sale(String description, List<Ad> ads, Customer customer, Person createdUser, Boolean adReceived) {
+    public Sale(String description, List<Ad> ads, Customer customer, AnnonsePerson createdUser, Boolean adReceived) {
         this.description = description;
         this.ads = ads;
         this.customer = customer;
@@ -98,11 +99,11 @@ public class Sale extends DuskenObject {
         this.customer = customer;
     }
 
-    public Person getCreatedUser() {
+    public AnnonsePerson getCreatedUser() {
         return createdUser;
     }
 
-    public void setCreatedUser(Person createdUser) {
+    public void setCreatedUser(AnnonsePerson createdUser) {
         this.createdUser = createdUser;
     }
 
@@ -114,11 +115,11 @@ public class Sale extends DuskenObject {
         this.lastEditedDate = lastEditedDate;
     }
 
-    public Person getLastEditedUser() {
+    public AnnonsePerson getLastEditedUser() {
         return lastEditedUser;
     }
 
-    public void setLastEditedUser(Person lastEditedUser) {
+    public void setLastEditedUser(AnnonsePerson lastEditedUser) {
         this.lastEditedUser = lastEditedUser;
     }
 
