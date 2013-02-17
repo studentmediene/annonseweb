@@ -67,7 +67,6 @@ public class SalesController{
         }
         sale.setCustomer(customer);
         salesService.saveAndFlush(sale);
-        customerService.saveAndFlush(customer);
         return "redirect:/annonse/sale/" + sale.getId();
     }
 

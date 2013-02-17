@@ -4,7 +4,6 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 

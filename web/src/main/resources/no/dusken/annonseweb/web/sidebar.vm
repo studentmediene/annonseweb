@@ -1,13 +1,4 @@
 <nav id="sidebar">
-    <h2>Innlogging</h2>
-    <!--<ul>
-        <li><a href="/customer/newCustomer.do">Ny kunde</a></li>
-        <li><a href="/customer/viewCustomers.do">Kundeliste</a></li>
-        <li><a href="/customer/searchCustomer.do">Søk etter kunde</a></li>
-        <li><a href="/customer/emailCustomers.do">Email til alle</a></li>
-    </ul>  -->
-    <p>
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
+    <h2>VELKOMMEN!</h2>
+    #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
