@@ -27,6 +27,20 @@
 </select>
 #end
 
+#macro ( singleSelectTest $bindpath $options $select $attributes )
+    #springBind($bindpath)
+<select name="${status.expression}" id="${status.expression}" ${attributes}#springCloseTag()
+    #foreach ($option in $options)
+        #if ($option == $select)
+        <option value="$option" selected="true">$option</option>
+        #else
+        <option value="$option">$option</option>
+        #end
+    #end
+</select>
+#end
+
+
 #macro( saveAndDelete $entity )
     <span id="saveAndDelete">
     <input type="submit" class="submit" name="save" value="Lagre"/>

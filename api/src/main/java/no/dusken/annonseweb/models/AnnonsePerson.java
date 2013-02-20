@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -22,17 +23,16 @@ import java.util.List;
 public class AnnonsePerson extends DuskenObject implements Authentication {
     @Column(length = 100)
     @Size(max = 100, min = 2)
-    private String credentials = null;
+    private String credentials;
 
     @Column(length = 100)
-    @NotNull
     @Size(max = 100, min = 2)
     private String principal;
 
     private boolean authenticated;
 
     @Column
-    private RoleAuth authority;
+    private String authority;
 
     @Column
     private boolean active;
@@ -44,7 +44,7 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> ret = new ArrayList<GrantedAuthority>();
-        ret.add(authority);
+        ret.add(RoleAuth.valueOf(authority));
         return ret;
     }
 
@@ -53,12 +53,17 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
         return credentials;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public boolean setCredentials(String credentials, String oldCredentials) {
-        if (this.credentials == null || this.credentials.equals(oldCredentials)) {
+    public void setCredentials(String credentials) {
+        if (credentials != null)
             this.credentials = credentials;
-            return true;
-        }
-        return false;
+    }
+
+    public String getPassword() {
+        return "Dette får du ikke se!";
+    }
+
+    public void setPassword(String passord) {
+        this.credentials = passord;
     }
 
     @Override
@@ -94,15 +99,25 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
         return principal;
     }
 
-    public void setAuthority(RoleAuth role) {
-        this.authority = role;
+    public void setName(String name) {
+        principal = name;
     }
 
-    private boolean getActive() {
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
+    public String getAuthority() {
+        if (authority == null)
+            return "";
+        return authority;
+    }
+
+    public boolean getActive() {
         return active;
     }
 
-    private void setActive(boolean active){
+    public void setActive(boolean active){
         this.active = active;
     }
 }
