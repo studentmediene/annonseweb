@@ -29,7 +29,8 @@
         <!--<security:intercept-url pattern="/**" access="denyAll"/>-->
         <security:form-login login-processing-url="/j_spring_security_check" default-target-url="/" always-use-default-target="true" /><!-- login-page="/jsp/login.jsp"/> -->
         <security:logout logout-url="/annonseweb_logout" delete-cookies="JSESSIONID" />
-        <security:intercept-url pattern="/annonse/**" access="hasRole('ROLE_MASKINIST')"/>
+        <security:intercept-url pattern="/annonse/user/me" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/annonse/user/**" access="hasAnyRole('ROLE_MASKINIST','ROLE_ANNONSE_ANSVARLIG')"/>
         <security:intercept-url pattern="/**" access="isAuthenticated()" />
     </security:http>
 

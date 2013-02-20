@@ -2,7 +2,9 @@
     <p>
         Logget inn som:
         <br>
-        $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
+        <a href="/annonse/user/me">
+            $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
+        </a>
     </p>
 </div>
 

@@ -32,8 +32,8 @@ public class AnnonseLoginAuthenticationProvider implements AuthenticationProvide
             AnnonsePerson p = new AnnonsePerson();
             p.setPrincipal("SuperDuper");
             // TODO Well, this works while password is not encrypted
-            p.setCredentials("SuperPass", null);
-            p.setAuthority(RoleAuth.MASKINIST);
+            p.setCredentials( "SuperPass");
+            p.setAuthority(RoleAuth.MASKINIST.toString());
             annonsePersonService.saveAndFlush(p);
             p.setAuthenticated(true);
             annonsePersonService.saveAndFlush(p);
