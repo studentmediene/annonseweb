@@ -59,6 +59,7 @@ public class SalesControllerTest {
 
     @Test
     public void testEditSale() throws Exception {
+        // TODO
         /*
         int customerCount;
         int saleCount;
