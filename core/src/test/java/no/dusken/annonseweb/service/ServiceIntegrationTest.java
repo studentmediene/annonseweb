@@ -32,6 +32,9 @@ public class ServiceIntegrationTest {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private AnnonsePersonService annonsePersonService;
+
     @Test
     public void testSave(){
 
@@ -57,6 +60,7 @@ public class ServiceIntegrationTest {
     private AnnonsePerson getPerson() {
         AnnonsePerson createdUser = new AnnonsePerson();
         createdUser.setPrincipal("UserName");
+        annonsePersonService.saveAndFlush(createdUser);
         return createdUser;
     }
 

@@ -4,22 +4,24 @@ import no.dusken.common.model.DuskenObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
+
 /**
  * The <code>AnnonsePerson</code> is a class created for user logging and tracking of sales.
  * It is thought only to be temporary, until a common db for MediaStud is created.
  *
- * @author Sitron Te
+ * @author Inge Halsaunet
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"ID", "principal"}))
 public class AnnonsePerson extends DuskenObject implements Authentication {
     @Column(length = 100)
     @Size(max = 100, min = 2)
@@ -28,6 +30,9 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
     @Column(length = 100)
     @Size(max = 100, min = 2)
     private String principal;
+
+    @OneToMany(fetch = LAZY, mappedBy = "createdUser")
+    private List<Sale> sales = new ArrayList<Sale>();
 
     private boolean authenticated;
 
@@ -119,5 +124,13 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
 
     public void setActive(boolean active){
         this.active = active;
+    }
+
+    public List<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
     }
 }

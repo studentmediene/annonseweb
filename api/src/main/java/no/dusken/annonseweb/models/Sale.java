@@ -25,21 +25,19 @@ public class Sale extends DuskenObject {
     @NotNull
     private Customer customer;
 
-    @ManyToOne(cascade = ALL)
+    @ManyToOne
     private AnnonsePerson createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar lastEditedDate;
 
-    @ManyToOne(cascade = ALL)
+    @ManyToOne
     private AnnonsePerson lastEditedUser;
 
     private Boolean adReceived;
 
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
-
-    private transient String editNumber;
 
     public Sale(){}
 
@@ -129,13 +127,5 @@ public class Sale extends DuskenObject {
 
     public void setAdReceived(Boolean adReceived) {
         this.adReceived = adReceived;
-    }
-
-    public String getEditNumber() {
-        return editNumber;
-    }
-
-    public void setEditNumber(String editNumber) {
-        this.editNumber = editNumber;
     }
 }
