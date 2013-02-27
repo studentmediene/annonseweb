@@ -4,14 +4,16 @@
     <h2 class="title">
         #set($saleId = false)
         #set($saleId = $sale.getId())
+        #set($pathEnd = "")
         #if (!$saleId)
             <a href="#springUrl("/annonse/sale/new")">Nytt salg:</a>
         #else
             <a href="#springUrl("/annonse/sale/edit/$sale.Id")">Endre salg: $sale.getId() - $sale.Description</a>
             <label class="edit"><a href="/annonse/sale/$sale.getId()">Tilbake</a></label>
+            #set($pathEnd = "/" + $saleId)
         #end
     </h2>
-    <form id="editSale" class="content" method="POST" action="#springUrl("/annonse/sale/edit")" name="sale" enctype="multipart/form-data">
+    <form id="editSale" class="content" method="POST" action="#springUrl("/annonse/sale/save$pathEnd")" name="sale" enctype="multipart/form-data">
         <div class="content_description">
             <p>Informasjonen om dette eksisterende salget</p>
         </div>

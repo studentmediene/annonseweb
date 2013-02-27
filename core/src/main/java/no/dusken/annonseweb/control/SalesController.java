@@ -1,5 +1,6 @@
 package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.CustomerService;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.beans.PropertyEditor;
+import java.util.Calendar;
 
 /**
  * Under Dusken - underdusken.no - https://github.com/dusken/
- * Magnus Kirø - magnuskiro@underdusken.no
+ * @author Magnus Kirø - magnuskiro@underdusken.no
+ * @author Inge Edward Halsaunet - ingehals@underdusken.no
  * 08.11.11
  */
 
@@ -29,6 +32,9 @@ public class SalesController{
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private AnnonsePersonController annonsePersonController;
 
     @RequestMapping()
     public String viewSaleHome(){
@@ -57,17 +63,37 @@ public class SalesController{
         return "sale/edit";
     }
 
-    @RequestMapping(value="/edit", method = RequestMethod.POST)
-    public String editSale(@Valid @ModelAttribute Sale sale){
+    /**
+     * Stores a new <code>Sale</code>.
+     * @param sale  the <code>Sale</code> to store
+     * @return address to view the newly stored <code>Sale</code>
+     */
+    @RequestMapping(value="/save", method = RequestMethod.POST)
+    public String storeNewSale(@Valid @ModelAttribute Sale sale){
+        AnnonsePerson usr = annonsePersonController.getLoggedInUser();
         Customer customer = customerService.findOne(sale.getCustomer().getId());
-        if (sale.getEditNumber() != null) {
-            Sale s = salesService.findOne(Long.valueOf(sale.getEditNumber()));
-            s.cloneFrom(sale);
-            sale = s;
-        }
         sale.setCustomer(customer);
+        sale.setCreatedUser(usr);
+        sale.setLastEditedUser(usr);
+        sale.setTimeCreated(Calendar.getInstance());
+        sale.setLastEditedDate(Calendar.getInstance());
         salesService.saveAndFlush(sale);
         return "redirect:/annonse/sale/" + sale.getId();
+    }
+
+    /**
+     * Edits a <code>Sale</code>.
+     * @param sale the <code>Sale</code> held in the model to get new data from
+     * @param pathSale the old <code>Sale</code> held by database
+     * @return address to view the edited sale
+     */
+    @RequestMapping(value="/save/{pathSale}")
+    public String editSale(@Valid @ModelAttribute Sale sale, @PathVariable Sale pathSale){
+        pathSale.cloneFrom(sale);
+        pathSale.setLastEditedUser(annonsePersonController.getLoggedInUser());
+        pathSale.setLastEditedDate(Calendar.getInstance());
+        salesService.saveAndFlush(pathSale);
+        return "redirect:/annonse/sale/" + pathSale.getId();
     }
 
     @RequestMapping("/{sale}")
