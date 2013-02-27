@@ -7,6 +7,7 @@
         <a href="/annonse/sale/$sale.Id">$sale.Id - $sale.description</a>
         <label class="edit"><a href="/annonse/sale/edit/$sale.Id">Endre salg</a></label>
     </h2>
+    <div class="content">
     <div class="content_description">
         <p>Informasjon vi har lagret om dette salget:</p>
     </div>
@@ -50,18 +51,19 @@
         </li>
         <li>
             <label class="description">Sist endret</label>
-            <div><label class="element text medium">$sale.lastEditedDate</label></div>
+            <div><label class="element text medium"><script type="text/javascript">document.write(new Date($sale.lastEditedDate.getTimeInMillis()))</script></label></div>
             <p class="guidelines">Når dette salget sist ble endret</p>
         </li>
         <li>
             <label class="description">Sist endret av</label>
-            <div><label class="element text medium">$sale.lastEditedUser</label></div>
+            <div><label class="element text medium">$sale.lastEditedUser.getName()</label></div>
             <p class="guidelines">Hvem som sist endret dette salget.</p>
         </li>
         <li>
             <label class="description">Opprettet av</label>
-            <div><label class="element text medium">$sale.CreatedUser</label></div>
+            <div><label class="element text medium">$sale.CreatedUser.getName()</label></div>
             <p class="guidelines">Hvem som opprettet dette salget.</p>
         </li>
     </ul>
+    </div>
 </div>

@@ -111,18 +111,18 @@
             </li>
             <li>
                 <label class="description">
-                    Two last sales -
+                    Siste salg -
                     <a href="/annonse/sale/new/$customer.Id">
                         Registrer nytt salg på denne kunden.
                     </a>
                 </label>
                 <div>
                     #foreach( $sale in $customer.sales )
-                        <lable class="element text medium">$sale</lable>
+                        <label class="element text medium"><a href="/annonse/sale/$sale.id">$sale.id - $sale.description</a></label>
                     #end
                 </div>
                 <p class="guidelines">
-                    The two latest sales made to this customer
+                    De siste salgene registrert på denne kunden
                 </p>
             </li>
             <li>
