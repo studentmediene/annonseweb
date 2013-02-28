@@ -40,7 +40,7 @@ public class ServiceIntegrationTest {
 
 
         Ad ad = new PrintedAd(new BigDecimal("100"), new BigDecimal("10"));
-        Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address", "contactPerson");
+        Customer customer = new Customer("customer", "mail@mail.mail", "12345678", "address");
         // I save customer first, since at least first version of this program should not save more than one entity at a time
         customerService.saveAndFlush(customer);
         AnnonsePerson createdUser = getPerson();

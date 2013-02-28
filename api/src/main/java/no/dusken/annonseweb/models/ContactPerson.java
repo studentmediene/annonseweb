@@ -2,23 +2,26 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
-
-import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class ContactPerson extends DuskenObject{
 
+    @NotNull
     private String personName;
-    private String email;
-    private String telephoneNumber;
-    private String companyPosition;
 
-    @OneToOne(cascade = ALL)
+    @NotNull
+    private String email;
+
+    @NotNull
+    private String telephoneNumber;
+
+    private String companyPosition;
+    private String otherInfo;
+
+    @ManyToOne
     private Customer customer;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -30,18 +33,18 @@ public class ContactPerson extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
 
-    private String createdUser;
+    private AnnonsePerson createdUser;
 
     private Boolean active;
 
     public ContactPerson() {}
 
     public ContactPerson(String personName, String email, String telephoneNumber, String companyPosition) {
-        this.personName = personName;
-        this.email = email;
-        this.telephoneNumber = telephoneNumber;
-        this.companyPosition = companyPosition;
-        this.active = true;
+        this.setPersonName(personName);
+        this.setEmail(email);
+        this.setTelephoneNumber(telephoneNumber);
+        this.setCompanyPosition(companyPosition);
+        this.setActive(true);
     }
 
     public String getPersonName() {
@@ -70,11 +73,6 @@ public class ContactPerson extends DuskenObject{
 
     public Calendar getLastContactedUser() {
         return lastContactedUser;
-    }
-
-    @Override
-    public String getTitle() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void setLastContactedUser(Calendar lastContactedUser) {
@@ -111,5 +109,29 @@ public class ContactPerson extends DuskenObject{
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public String getOtherInfo() {
+        return otherInfo;
+    }
+
+    public void setOtherInfo(String otherInfo) {
+        this.otherInfo = otherInfo;
+    }
+
+    public Calendar getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Calendar createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public AnnonsePerson getCreatedUser() {
+        return createdUser;
+    }
+
+    public void setCreatedUser(AnnonsePerson createdUser) {
+        this.createdUser = createdUser;
     }
 }

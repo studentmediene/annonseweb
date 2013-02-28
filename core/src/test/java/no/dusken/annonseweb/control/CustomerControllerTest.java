@@ -43,7 +43,7 @@ public class CustomerControllerTest {
     @Test
     public void testEdit() throws Exception {
         Customer customer = new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
+                "invoiceAddress");
 
         assertNull("has ID before it should", customer.getId());
         customerController.saveNew(customer);
