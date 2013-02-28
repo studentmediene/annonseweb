@@ -6,7 +6,7 @@ import org.junit.Assert;
 /**
  * @author Magnus Kirø - magnuskiro@ gmail.com/underdusken.no - 12/04/12
  */
-public class ContactControllerTest extends TestCase {
+public class ContactPersonControllerTest extends TestCase {
     public void testViewContactsHome() throws Exception {
         Assert.assertTrue(true);
     }

@@ -1,5 +1,5 @@
 <nav id="sidebar">
-    <h2>ContactBar</h2>
+    <h2>Kontakt</h2>
     <ul>
         <li><a href="/annonse/contact/note/new">Ny KontaktNotis</a></li>
         <li><a href="/annonse/contact/note/all">KontaktNotisListe</a></li>

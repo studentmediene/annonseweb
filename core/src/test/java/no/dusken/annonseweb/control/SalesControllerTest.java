@@ -82,7 +82,7 @@ public class SalesControllerTest {
         int customerCount;
         int salesCount = salesService.findAll().size();
         Customer c =  new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
+                "invoiceAddress");
         customerService.saveAndFlush(c);
         customerCount = customerService.findAll().size();
         Assert.assertTrue("After customer save, customer count was 0", customerCount != 0);
@@ -104,7 +104,7 @@ public class SalesControllerTest {
         int customerCount;
         int salesCount = salesService.findAll().size();
         Customer c =  new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
+                "invoiceAddress");
         customerService.saveAndFlush(c);
         customerCount = customerService.findAll().size();
         c = customerService.findOne(c.getId());
