@@ -24,11 +24,12 @@ public class ContactPerson extends DuskenObject{
     @ManyToOne
     private Customer customer;
 
+    // TODO Is not this to be deducted from notes connected to this ContactPerson
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar lastContactedTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Calendar lastContactedUser;
+    // TODO Is not this to be deducted from notes connected to this ContactPerson
+    private AnnonsePerson lastContactedUser;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
@@ -45,6 +46,22 @@ public class ContactPerson extends DuskenObject{
         this.setTelephoneNumber(telephoneNumber);
         this.setCompanyPosition(companyPosition);
         this.setActive(true);
+    }
+
+    public void copyInformationFrom(ContactPerson other) {
+        if (other == null || this == other)
+            return;
+        personName = other.personName;
+        email = other.email;
+        telephoneNumber = other.telephoneNumber;
+        companyPosition = other.companyPosition;
+        otherInfo = other.otherInfo;
+        customer = other.customer;
+        lastContactedTime = other.lastContactedTime;
+        lastContactedUser = other.lastContactedUser;
+        createdDate = other.createdDate;
+        createdUser = other.createdUser;
+        active = other.active;
     }
 
     public String getPersonName() {
@@ -71,11 +88,11 @@ public class ContactPerson extends DuskenObject{
         this.lastContactedTime = lastContactedTime;
     }
 
-    public Calendar getLastContactedUser() {
+    public AnnonsePerson getLastContactedUser() {
         return lastContactedUser;
     }
 
-    public void setLastContactedUser(Calendar lastContactedUser) {
+    public void setLastContactedUser(AnnonsePerson lastContactedUser) {
         this.lastContactedUser = lastContactedUser;
     }
 

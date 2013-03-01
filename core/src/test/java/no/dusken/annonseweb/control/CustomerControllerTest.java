@@ -2,8 +2,6 @@ package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.service.CustomerService;
-import no.dusken.annonseweb.service.SalesService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
 import static junit.framework.Assert.*;
 
