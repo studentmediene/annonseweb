@@ -1,17 +1,18 @@
 package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.annonseweb.models.ContactPerson;
 import no.dusken.annonseweb.service.ContactPersonService;
+import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -22,8 +23,12 @@ public class ContactPersonController {
     @Autowired
     private ContactPersonService contactPersonService;
 
+    @Autowired
+    private AnnonsePersonController annonsePersonController;
+
     @RequestMapping("")
     public String viewContactsHome(){
+        // TODO
         return "contact/home";
     }
 
@@ -44,22 +49,39 @@ public class ContactPersonController {
         return "contact/person/all";
     }
 
-    @RequestMapping(value="/{Id}")
-    public String viewContactPerson(@PathVariable Long Id, Model model){
-        ContactPerson contactPerson = contactPersonService.findOne(Id);
+    @RequestMapping(value="/{contactPerson}")
+    public String viewContactPerson(@PathVariable ContactPerson contactPerson, Model model){
         model.addAttribute("contact", contactPerson);
         return "contact/person/person";
     }
 
     @RequestMapping("/new")
-    public String newContactPerson(){
-        return "contact/person/new";
+    public String newContactPerson(Model model){
+        return viewEdit(new ContactPerson(), model);
     }
 
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String addContactPerson(@Valid @ModelAttribute("newContactPerson")ContactPerson contactPerson){
-        contactPersonService.save(contactPerson);
-        return "contact/person/person";
+    @RequestMapping("/edit/{contactPerson}")
+    public String viewEdit(@PathVariable ContactPerson contactPerson, Model model) {
+        model.addAttribute("contactPerson", contactPerson);
+        return "contact/person/edit";
+    }
+
+    @RequestMapping(value = "/save",  method = RequestMethod.POST)
+    public String storeNewContactPerson(@Valid @ModelAttribute ContactPerson contactPerson) {
+        AnnonsePerson usr = annonsePersonController.getLoggedInUser();
+        contactPerson.setCreatedDate(Calendar.getInstance());
+        contactPerson.setLastContactedUser(usr);
+        contactPerson.setCreatedUser(usr);
+        contactPerson.setLastContactedTime(Calendar.getInstance());
+        contactPersonService.saveAndFlush(contactPerson);
+        return "contact/person/" + contactPerson.getId();
+    }
+
+    @RequestMapping(value = "/save/{pathContactPerson}",  method = RequestMethod.POST)
+    public String editContactPerson(@Valid @ModelAttribute ContactPerson contactPerson,
+                                    @PathVariable ContactPerson pathContactPerson) {
+        pathContactPerson.copyInformationFrom(contactPerson);
+        return "contact/person/" + pathContactPerson.getId();
     }
 
     @RequestMapping("/emailList")
@@ -72,4 +94,8 @@ public class ContactPersonController {
         return "contact/person/emailList";
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
+    }
 }

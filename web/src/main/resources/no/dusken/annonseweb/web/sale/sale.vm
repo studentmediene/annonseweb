@@ -33,7 +33,7 @@
         <li>
             <label class="description">Har motatt annonser</label>
             <div><label class="element text medium">$sale.adReceived</label></div>
-            <p class="guidelines">Om vi har motatt annonse(r) for dette salget. Denne er vel ikke helt nødvendig, menmen</p>
+            <p class="guidelines">Om vi har motatt annonse(r) for dette salget.</p>
         </li>
         <li>
             <label class="description">Annonser</label>
