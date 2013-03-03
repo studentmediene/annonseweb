@@ -94,9 +94,13 @@
                         <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
                     </div>
                     <p class="guidelines">
-                        Telefon: $contPers.TelephoneNumber <br />
-                        Eposs: $contPers.Email <br />
-                        Annet: $contPers.OtherInfo
+                        #if($contPers.active)
+                            Telefon: $contPers.TelephoneNumber <br />
+                            Epost: $contPers.Email <br />
+                            Annet: $contPers.OtherInfo
+                        #else
+                            Kontakten er inaktiv!
+                        #end
                     </p>
                 </li>
             #end

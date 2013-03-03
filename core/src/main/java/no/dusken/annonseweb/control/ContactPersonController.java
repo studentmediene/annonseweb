@@ -39,9 +39,11 @@ public class ContactPersonController {
 
     @RequestMapping("/active")
     public String allActive(Model model){
-        List<ContactPerson> contactPersonList = contactPersonService.findAll();
-        for(ContactPerson contactPerson: contactPersonList){
-            if(!contactPerson.getActive()) contactPersonList.remove(contactPerson);
+        List<ContactPerson> contactPersonList = new ArrayList<ContactPerson>();
+        List<ContactPerson> cl = contactPersonService.findAll();
+        for(ContactPerson contactPerson: cl){
+            if(contactPerson.getActive() != null && contactPerson.getActive())
+                contactPersonList.add(contactPerson);
         }
         model.addAttribute("contactPersonList", contactPersonList);
         return "contact/person/all";
@@ -80,14 +82,15 @@ public class ContactPersonController {
         contactPerson.setCreatedUser(usr);
         contactPerson.setLastContactedTime(Calendar.getInstance());
         contactPersonService.saveAndFlush(contactPerson);
-        return "contact/person/" + contactPerson.getId();
+        return "redirect:/annonse/contact/person/" + contactPerson.getId();
     }
 
     @RequestMapping(value = "/save/{pathContactPerson}",  method = RequestMethod.POST)
     public String editContactPerson(@Valid @ModelAttribute ContactPerson contactPerson,
                                     @PathVariable ContactPerson pathContactPerson) {
         pathContactPerson.copyInformationFrom(contactPerson);
-        return "contact/person/" + pathContactPerson.getId();
+        contactPersonService.saveAndFlush(pathContactPerson);
+        return "redirect:/annonse/contact/person/" + pathContactPerson.getId();
     }
 
     @RequestMapping("/emailList")
