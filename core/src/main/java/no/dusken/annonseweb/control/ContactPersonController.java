@@ -2,7 +2,9 @@ package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.annonseweb.models.ContactPerson;
+import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.service.ContactPersonService;
+import no.dusken.annonseweb.service.CustomerService;
 import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class ContactPersonController {
 
     @Autowired
     private AnnonsePersonController annonsePersonController;
+
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping("")
     public String viewContactsHome(){
@@ -63,6 +68,7 @@ public class ContactPersonController {
     @RequestMapping("/edit/{contactPerson}")
     public String viewEdit(@PathVariable ContactPerson contactPerson, Model model) {
         model.addAttribute("contactPerson", contactPerson);
+        model.addAttribute("customerList", customerService.findAll());
         return "contact/person/edit";
     }
 
@@ -97,5 +103,6 @@ public class ContactPersonController {
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
+        binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
     }
 }
