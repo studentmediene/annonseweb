@@ -3,54 +3,90 @@
 
 <!-- content -->
 <div id="content" class="post">
-    <h2 class="title"><a href="/annonse/contact/person/new">Ny kontaktperson</a></h2>
+    <h2 class="title">
+        #set($contactId = false)
+        #set($contactId = $contactPerson.getId())
+        #set($pathEnd = "")
+        #if (!$contactId)
+            <a href="#springUrl("/annonse/contact/person/new")">Ny kontaktperson:</a>
+        #else
+            <a href="#springUrl("/annonse/contact/person/edit/$contactPerson.Id")">
+                Endre salg: $contactPerson.getId() - $contactPerson.PersonName
+            </a>
+            <label class="edit"><a href="/annonse/contact/person/$contactPerson.getId()">Tilbake</a></label>
+            #set($pathEnd = "/" + $contactId)
+        #end
+    </h2>
 
-    <form id="newContactPerson" class="content"  method="post" action="/annonse/contact/person/add">
+    <form id="editContactPerson" class="content"  method="post" action="#springUrl("/annonse/contact/person/save$pathEnd")" name="contactPerson" enctype="multipart/form-data">
         <div class="content_description">
-            <p>Legg til informasjon om kontaktpersonen du holder på å opprette.</p>
+            #if (!$contactId)
+                <p>Legg til informasjon om kontaktpersonen du holder på å opprette.</p>
+            #else
+                <p>Endre informasjon om denne kontaktpersonen.</p>
+            #end
+
         </div>
-        <fieldset>
-            <legend>Personalia</legend>
-            <label class="description" for="personName">Navn</label>
-            <div>
-                <input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>
-            </div>
-            <p class="guidelines">
-                Navnet på kontaktpersonen.
-            </p>
-
-            <label class="description">Epost</label>
-            <div>
-                <input name="email" class="element text medium" type="text" maxlength="255" value=""/>
-            </div>
-            <p class="guidelines" id="guide_4">
-                Epost til kontaktpersonen.
-            </p>
-
-            <label class="description">Telefonnummer</label>
-            <div>
-                <input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>
-            </div>
-            <p class="guidelines">
-                Telefonnummeret til kontaktpersonen.
-            </p>
-
-            <label class="description">Stilling</label>
-            <div>
-                <input name="companyPosition" class="element text medium" value="" type="text">
-            </div>
-
-            <p class="guidelines">
-                Kontaktpersonens stilling hos kunden.
-            </p>
-            <label class="description">Kunde</label>
-            <!--
-               Add popdown to choose from registered customers the contactperson is representing
-               Can use form from new sale, when the problem is fixed
-            -->
-        </fieldset>
-        <p class="buttons">
-            <input id="saveForm" class="button_text" type="submit" name="submit" value="Save Contactperson" />
-        </p>
-
+        <ul>
+            <li>
+                <label class="description" for="personName">Navn</label>
+                <div>
+                    #springFormInput( "contactPerson.PersonName" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Navnet på kontaktpersonen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Epost</label>
+                <div>
+                    #springFormInput( "contactPerson.Email" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines" id="guide_4">
+                    Epost til kontaktpersonen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Telefonnummer</label>
+                <div>
+                    #springFormInput( "contactPerson.TelephoneNumber" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Telefonnummeret til kontaktpersonen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Stilling</label>
+                <div>
+                    #springFormInput( "contactPerson.CompanyPosition" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Kontaktpersonens stilling hos kunden.
+                </p>
+            </li>
+            <li>
+                <label class="description">Annen informasjon</label>
+                <div>
+                    #springFormTextarea("contactPerson.OtherInfo" 'rows="5" cols="23"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Annen informasjon om denne kunden, som når kunden har bursdag eller andre viktige ting i livet.
+                </p>
+            </li>
+            <li>
+                <label class="description">Kunde</label>
+                <div>
+                    #singleSelectIdName("contactPerson.customer" $customerList $sale.customer '')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">Kunden denne kontaktpersonen jobber for.</p>
+            </li>
+        </ul>
+        #saveAndDelete($contactPerson)
+    </form>
 </div>

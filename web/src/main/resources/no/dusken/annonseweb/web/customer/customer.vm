@@ -87,17 +87,19 @@
                     Dette er rabattprosenten man vil at firmaet skal ha.
                 </p>
             </li>
-            <li>
-                <label class="description">Kontaktperson </label>
-                <div>
-                    <label class="element text medium">
-                        <a href="link til kontaktperson">$customer.contactPerson</a>
-                    </label>
-                </div>
-                <p class="guidelines">
-                    Personen man skal ta kontakt med hos denne kunden.
-                </p>
-            </li>
+            <li><label class="description">Kontaktpersoner</label></li>
+            #foreach($contPers in $customer.ContactPersons)
+                <li>
+                    <div>
+                        <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
+                    </div>
+                    <p class="guidelines">
+                        Telefon: $contPers.TelephoneNumber <br />
+                        Eposs: $contPers.Email <br />
+                        Annet: $contPers.OtherInfo
+                    </p>
+                </li>
+            #end
             <li>
                 <label class="description">Kontakt notiser, siste to </label>
                 <div>

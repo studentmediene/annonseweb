@@ -5,8 +5,8 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/contact/contact/person/$contactPerson.Id">$contactPerson.name</a>
-        <label class="edit"><a href="/annonse/contact/contact/person/edit/$contactPerson.Id">Endre kontaktperson</a></label>
+        <a href="/annonse/contact/person/$contactPerson.Id">$contactPerson.PersonName</a>
+        <label class="edit"><a href="/annonse/contact/person/edit/$contactPerson.Id">Endre kontaktperson</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -71,7 +71,7 @@
                 <label class="description">Kunde</label>
                 <div>
                     <label class="element text medium">
-                        <a href="/annonse/contact/">$!contactPerson.customer</a>
+                        <a href="/annonse/customer/$contactPerson.customer.id">$contactPerson.customer.name</a>
                     </label>
                 </div>
                 <p class="guidelines">
@@ -79,12 +79,17 @@
                 </p>
             </li>
             <li>
-                <label class="description">Created (user - when)</label>
+                <label class="description">Opprettet av:</label>
                 <div>
-                    <label class="element text medium">$!contactPerson.createdUser - $!contactPerson.createdDate</label>
+                    <label class="element text medium">
+                        $!contactPerson.createdUser.name -
+                        <script type="text/javascript">
+                            document.write(new Date($!contactPerson.createdDate.getTimeInMillis()))
+                        </script>
+                    </label>
                 </div>
                 <p class="guidelines">
-                    The user that created this customer and when the customer was created.
+                    Brukeren som opprettet denne kontaktpersonen og når den ble opprettet.
                 </p>
             </li>
             <li>
