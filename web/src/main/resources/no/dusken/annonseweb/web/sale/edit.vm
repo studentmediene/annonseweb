@@ -44,7 +44,7 @@
                         <option value="false" selected="true">Ikke motatt</option>
                     </select>
                 </div>
-                <p class="guidelines">Om vi har motatt annonse(r) for dette salget. Denne er vel ikke helt nødvendig, menmen</p>
+                <p class="guidelines">Om vi har motatt annonse(r) for dette salget.</p>
             </li>
             <!-- ---------------Also make last modified and created by hidden inputs. Or make controller set these values----------------- -->
         </ul>

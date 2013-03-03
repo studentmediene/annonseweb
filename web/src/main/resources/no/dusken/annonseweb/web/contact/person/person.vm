@@ -61,7 +61,12 @@
             <li>
                 <label class="description">Status</label>
                 <div>
-                    <label class="element text medium">$!contactPerson.active</label>
+                    <label class="element text medium">
+                        #if($!contactPerson.active)
+                            Aktiv
+                        #else
+                            Inaktiv
+                        #end</label>
                 </div>
                 <p class="guidelines">
                     Viser om kontaktpersonen er aktiv (gjeldende) eller inaktiv (at en annen har tatt over, forhåpentligvis)
