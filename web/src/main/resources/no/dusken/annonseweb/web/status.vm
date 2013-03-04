@@ -1,10 +1,10 @@
 <div>
     <p>
-        User name and other status for this session.
-        last logged in ?
-        logout
-
-        login box.
+        Logget inn som:
+        <br>
+        <a href="/annonse/user/me">
+            $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
+        </a>
     </p>
 </div>
 

@@ -87,17 +87,23 @@
                     Dette er rabattprosenten man vil at firmaet skal ha.
                 </p>
             </li>
-            <li>
-                <label class="description">Kontaktperson </label>
-                <div>
-                    <label class="element text medium">
-                        <a href="link til kontaktperson">$customer.contactPerson</a>
-                    </label>
-                </div>
-                <p class="guidelines">
-                    Personen man skal ta kontakt med hos denne kunden.
-                </p>
-            </li>
+            <li><label class="description">Kontaktpersoner</label></li>
+            #foreach($contPers in $customer.ContactPersons)
+                <li>
+                    <div>
+                        <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
+                    </div>
+                    <p class="guidelines">
+                        #if($contPers.active)
+                            Telefon: $contPers.TelephoneNumber <br />
+                            Epost: $contPers.Email <br />
+                            Annet: $contPers.OtherInfo
+                        #else
+                            Kontakten er inaktiv!
+                        #end
+                    </p>
+                </li>
+            #end
             <li>
                 <label class="description">Kontakt notiser, siste to </label>
                 <div>
@@ -111,18 +117,18 @@
             </li>
             <li>
                 <label class="description">
-                    Two last sales -
+                    Siste salg -
                     <a href="/annonse/sale/new/$customer.Id">
                         Registrer nytt salg på denne kunden.
                     </a>
                 </label>
                 <div>
                     #foreach( $sale in $customer.sales )
-                        <lable class="element text medium">$sale</lable>
+                        <label class="element text medium"><a href="/annonse/sale/$sale.id">$sale.id - $sale.description</a></label>
                     #end
                 </div>
                 <p class="guidelines">
-                    The two latest sales made to this customer
+                    De siste salgene registrert på denne kunden
                 </p>
             </li>
             <li>

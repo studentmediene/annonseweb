@@ -1,0 +1,17 @@
+#parse('no/dusken/annonseweb/web/user/sidebar.vm')
+
+<!-- content -->
+<div id="content">
+    <div class="post">
+        <h2 class="title"><a href="/annonse/user/all">Alle brukere:</a></h2>
+        <div class="entry">
+            #foreach($user in $userList)
+                <p>
+                    <a href="/annonse/user/$user.Id">
+                        $user.Id - $user.name
+                    </a>
+                </p>
+            #end
+        </div>
+    </div>
+</div>

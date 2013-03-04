@@ -6,12 +6,17 @@
     <div class="post">
         <h2 class="title"><a href="/annonse/contact/person/all">KontaktPersonListe</a></h2>
         <div class="entry">
-            <p>
-                <!-- should be boxed as sale and invoice to display the most relevant information. -->
-                #foreach($contact in $contactList)
-                    <a href="/annonse/contact/person/$contact.Id">$contact.Id - $contact.Name</a>
-                #end
-            </p>
+            <!-- should be boxed as sale and invoice to display the most relevant information. -->
+            #foreach($contact in $!contactPersonList)
+                <div class="listEntry">
+                    <p  class="meta">
+                        <a href="/annonse/customer/$contact.customer.id">$contact.customer.name</a>
+                    </p>
+                    <p class="info">
+                        <a href="/annonse/contact/person/$contact.Id">$contact.Id - $contact.PersonName</a>
+                    </p>
+                </div>
+            #end
         </div>
     </div>
 </div>

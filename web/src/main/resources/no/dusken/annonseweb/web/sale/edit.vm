@@ -4,22 +4,19 @@
     <h2 class="title">
         #set($saleId = false)
         #set($saleId = $sale.getId())
+        #set($pathEnd = "")
         #if (!$saleId)
             <a href="#springUrl("/annonse/sale/new")">Nytt salg:</a>
         #else
             <a href="#springUrl("/annonse/sale/edit/$sale.Id")">Endre salg: $sale.getId() - $sale.Description</a>
             <label class="edit"><a href="/annonse/sale/$sale.getId()">Tilbake</a></label>
+            #set($pathEnd = "/" + $saleId)
         #end
     </h2>
-    <form id="editSale" class="content" method="POST" action="#springUrl("/annonse/sale/edit")" name="sale" enctype="multipart/form-data">
+    <form id="editSale" class="content" method="POST" action="#springUrl("/annonse/sale/save$pathEnd")" name="sale" enctype="multipart/form-data">
         <div class="content_description">
             <p>Informasjonen om dette eksisterende salget</p>
         </div>
-        #if ($saleId)
-            $sale.setEditNumber("$saleId")
-            #springFormHiddenInput( "sale.editNumber", '')
-            #springShowErrors("<br>" "error") <br/>
-        #end
         <ul>
             <li>
                 <label class="description" for="description">Beskrivelse</label>
@@ -47,7 +44,7 @@
                         <option value="false" selected="true">Ikke motatt</option>
                     </select>
                 </div>
-                <p class="guidelines">Om vi har motatt annonse(r) for dette salget. Denne er vel ikke helt nødvendig, menmen</p>
+                <p class="guidelines">Om vi har motatt annonse(r) for dette salget.</p>
             </li>
             <!-- ---------------Also make last modified and created by hidden inputs. Or make controller set these values----------------- -->
         </ul>

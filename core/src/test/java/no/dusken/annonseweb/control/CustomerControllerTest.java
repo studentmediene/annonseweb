@@ -2,8 +2,6 @@ package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Customer;
 import no.dusken.annonseweb.service.CustomerService;
-import no.dusken.annonseweb.service.SalesService;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
 import static junit.framework.Assert.*;
 
@@ -43,7 +40,7 @@ public class CustomerControllerTest {
     @Test
     public void testEdit() throws Exception {
         Customer customer = new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
+                "invoiceAddress");
 
         assertNull("has ID before it should", customer.getId());
         customerController.saveNew(customer);
