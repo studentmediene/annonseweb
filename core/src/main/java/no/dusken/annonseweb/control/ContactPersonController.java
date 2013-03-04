@@ -67,6 +67,13 @@ public class ContactPersonController {
         return viewEdit(new ContactPerson(), model);
     }
 
+    @RequestMapping("/new/{customer}")
+    public String newContactPersonCustomer(@PathVariable Customer customer, Model model) {
+        ContactPerson p = new ContactPerson();
+        p.setCustomer(customer);
+        return viewEdit(p, model);
+    }
+
     @RequestMapping("/edit/{contactPerson}")
     public String viewEdit(@PathVariable ContactPerson contactPerson, Model model) {
         model.addAttribute("contactPerson", contactPerson);
@@ -78,9 +85,9 @@ public class ContactPersonController {
     public String storeNewContactPerson(@Valid @ModelAttribute ContactPerson contactPerson) {
         AnnonsePerson usr = annonsePersonController.getLoggedInUser();
         contactPerson.setCreatedDate(Calendar.getInstance());
-        contactPerson.setLastContactedUser(usr);
+        contactPerson.setLastEditedUser(usr);
         contactPerson.setCreatedUser(usr);
-        contactPerson.setLastContactedTime(Calendar.getInstance());
+        contactPerson.setLastEditedTime(Calendar.getInstance());
         contactPersonService.saveAndFlush(contactPerson);
         return "redirect:/annonse/contact/person/" + contactPerson.getId();
     }
@@ -89,6 +96,8 @@ public class ContactPersonController {
     public String editContactPerson(@Valid @ModelAttribute ContactPerson contactPerson,
                                     @PathVariable ContactPerson pathContactPerson) {
         pathContactPerson.copyInformationFrom(contactPerson);
+        pathContactPerson.setLastEditedTime(Calendar.getInstance());
+        pathContactPerson.setLastEditedUser(annonsePersonController.getLoggedInUser());
         contactPersonService.saveAndFlush(pathContactPerson);
         return "redirect:/annonse/contact/person/" + pathContactPerson.getId();
     }

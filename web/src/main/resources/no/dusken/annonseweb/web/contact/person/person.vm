@@ -59,6 +59,15 @@
                 </p>
             </li>
             <li>
+                <label class="description">Annen informasjon</label>
+                <div>
+                    <label class="element text medium">$!contactPerson.otherInfo</label>
+                </div>
+                <p class="guidelines">
+                    Annen informasjon om denne kunden, som når kunden har bursdag eller andre viktige ting i livet.
+                </p>
+            </li>
+            <li>
                 <label class="description">Status</label>
                 <div>
                     <label class="element text medium">
@@ -98,12 +107,17 @@
                 </p>
             </li>
             <li>
-                <label class="description">Last changed (user - when) </label>
+                <label class="description">Sist endret:</label>
                 <div>
-                    <label class="element text medium">$!contactPerson.lastContactedUser - $!contactPerson.lastContactedTime</label>
+                    <label class="element text medium">
+                        $!contactPerson.lastEditedUser.name -
+                        <script type="text/javascript">
+                            document.write(new Date($!contactPerson.lastEditedDate.getTimeInMillis()))
+                        </script>
+                    </label>
                 </div>
                 <p class="guidelines">
-                    When the customer was last changed and the user that did the change.
+                    Brukeren som sist endret denne kontaktpersonene, og når den ble endret.
                 </p>
             </li>
         </ul>

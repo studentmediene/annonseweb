@@ -72,12 +72,17 @@ public class ContactPersonControllerTest  {
     }
 
     @Test
-    public void viewContactPerson(){
+    public void testViewContactPerson(){
         assertTrue(true);
     }
 
     @Test
     public void testNewContactPerson(){
+        assertTrue(true);
+    }
+
+    @Test
+    public void testNewContactPersonCustomer() {
         assertTrue(true);
     }
 
