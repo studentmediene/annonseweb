@@ -1,7 +1,10 @@
 package no.dusken.annonseweb.control;
 
+import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.annonseweb.models.Customer;
+import no.dusken.annonseweb.models.RoleAuth;
 import no.dusken.annonseweb.models.Sale;
+import no.dusken.annonseweb.service.AnnonsePersonService;
 import no.dusken.annonseweb.service.CustomerService;
 import no.dusken.annonseweb.service.SalesService;
 import org.junit.Assert;
@@ -9,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -27,18 +31,29 @@ public class SalesControllerTest {
     private SalesController salesController;
 
     @Autowired
-    private CustomerController customerController;
-
-    @Autowired
     private SalesService salesService;
 
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    AnnonsePersonService annonsePersonService;
+
+    private AnnonsePerson someone;
+
     @Before
     public void setup() {
+        if (annonsePersonService.findAll().size() == 0) {
+            someone = new AnnonsePerson();
+            someone.setPrincipal("SuperDuper");
+            someone.setCredentials( "SuperPass");
+            someone.setAuthority(RoleAuth.MASKINIST.toString());
+            annonsePersonService.saveAndFlush(someone);
+        } else {
+            someone = annonsePersonService.findOne(Long.valueOf(1));
+        }
+        SecurityContextHolder.getContext().setAuthentication(someone);
     }
-
 
     @Test
     public void testViewSaleHome() throws Exception {
@@ -52,39 +67,57 @@ public class SalesControllerTest {
     }
 
     @Test
-    public void testViewEditSale() throws Exception {
+    public void testNewSaleCustomer() {
+        Assert.assertTrue(true);
+    }
+
+    @Test
+    public void testViewEdit() throws Exception {
         // As with new, this is better and much easier to test after build
         Assert.assertTrue(true);
     }
 
     @Test
+    public void testStoreNewSale() {
+        int customerCount;
+        int salesCount = salesService.findAll().size();
+        Customer c =  new Customer("customerName", "centralEmail", "centralTlf",
+                "invoiceAddress");
+        customerService.saveAndFlush(c);
+        customerCount = customerService.findAll().size();
+        Assert.assertTrue("After customer save, customer count was 0", customerCount != 0);
+        c = customerService.findOne(c.getId());
+
+        Sale sale =  new Sale("description", null, c, null, false);
+        Assert.assertNull("sale had id before it was stored", sale.getId());
+        salesController.storeNewSale(sale);
+
+        Long id = sale.getId();
+        Assert.assertNotNull("sale id was null", id);
+
+        Assert.assertEquals("Sale was stored 0 or multiple times", salesCount + 1, salesService.findAll().size());
+        Assert.assertEquals("We have created some unintended customers", customerCount, customerService.findAll().size());
+    }
+
+    @Test
     public void testEditSale() throws Exception {
         int customerCount;
-        int saleCount;
+        int salesCount = salesService.findAll().size();
         Customer c =  new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
-        customerController.saveNew(c);
+                "invoiceAddress");
+        customerService.saveAndFlush(c);
         customerCount = customerService.findAll().size();
         c = customerService.findOne(c.getId());
         Sale sale = new Sale("description", null, c, null, false);
-        Assert.assertNull("sale has id before it is stored", sale.getId());
-        salesController.editSale(sale);
+        salesController.storeNewSale(sale);
         Long id = sale.getId();
-        Assert.assertNotNull("sale id was null", id);
-        sale = salesService.findOne(id);
-        sale.setDescription("editedDescription");
-        salesController.editSale(sale);
+        Sale editedSale = new Sale("description", null, c, null, false);
+        editedSale.setDescription("editedDescription");
+        salesController.editSale(editedSale, sale);
         sale = salesService.findOne(id);
         Assert.assertEquals("could not edit sale description", "editedDescription", sale.getDescription());
-        Assert.assertEquals("one sale was stored 0 or multiple times", 1, salesService.findAll().size());
+        Assert.assertEquals("one sale was stored 0 or multiple times", salesCount + 1, salesService.findAll().size());
         Assert.assertEquals("We have created some unintended customers", customerCount, customerService.findAll().size());
-
-        saleCount = salesService.findAll().size();
-        Long s = sale.getId();
-        sale = new Sale("description", null, c, null, false);
-        sale.setEditNumber(s.toString());
-        salesController.editSale(sale);
-        Assert.assertEquals("could not edit sale by sale edit number", saleCount, salesService.findAll().size());
     }
 
     @Test
@@ -92,6 +125,7 @@ public class SalesControllerTest {
         // Better seen bugs after build
         Assert.assertTrue(true);
     }
+
 
     @Test
     public void testViewSalesList() throws Exception {

@@ -79,16 +79,29 @@
                         Dette er adressen vi sender fakturaen til.
                     </p>
                 </li>
-                <li>
-                    <label class="description" for="contactPerson">Kontaktperson</label>
-                    <div>
-                        #springFormInput( "customer.contactPerson" 'size="30"')
-                        #springShowErrors("<br>" "error") <br/>
-                    </div>
-                    <p class="guidelines">
-                        Personen man skal ta kontakt med hos denne kunden.
-                    </p>
-                </li>
+                #if($custId)
+                    <li><label class="description" for="contactPersons">Kontaktpersoner</label></li>
+                    #foreach($contPers in $customer.ContactPersons)
+                        <li>
+                            <div>
+                                <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
+                            </div>
+                            <p class="guidelines">
+                                Telefon: $contPers.TelephoneNumber <br />
+                                Eposs: $contPers.Email <br />
+                                Annet: $contPers.OtherInfo
+                            </p>
+                        </li>
+                    #end
+                    <li>
+                        <div>
+                            <a href="#springUrl("/annonse/contact/person/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
+                        </div>
+                        <p class="guidelines">
+                            Oppretter en ny kontaktperson tilknyttet denne kunden.
+                        </p>
+                    </li>
+                #end
                 <li>
                     #saveAndDelete($customer)
                 </li>

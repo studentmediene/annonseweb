@@ -1,0 +1,104 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/contact/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+    <h2 class="title">
+        #set($contactId = false)
+        #set($contactId = $contactPerson.getId())
+        #set($pathEnd = "")
+        #if (!$contactId)
+            <a href="#springUrl("/annonse/contact/person/new")">Ny kontaktperson:</a>
+        #else
+            <a href="#springUrl("/annonse/contact/person/edit/$contactPerson.Id")">
+                Endre kontaktperson: $contactPerson.getId() - $contactPerson.PersonName
+            </a>
+            <label class="edit"><a href="/annonse/contact/person/$contactPerson.getId()">Tilbake</a></label>
+            #set($pathEnd = "/" + $contactId)
+        #end
+    </h2>
+
+    <form id="editContactPerson" class="content"  method="post" action="#springUrl("/annonse/contact/person/save$pathEnd")" name="contactPerson" enctype="multipart/form-data">
+        <div class="content_description">
+            #if (!$contactId)
+                <p>Legg til informasjon om kontaktpersonen du holder på å opprette.</p>
+            #else
+                <p>Endre informasjon om denne kontaktpersonen.</p>
+            #end
+
+        </div>
+        <ul>
+            <li>
+                <label class="description" for="personName">Navn</label>
+                <div>
+                    #springFormInput( "contactPerson.PersonName" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Navnet på kontaktpersonen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Aktiv</label>
+                <div>
+                    <select id="active" name="active">
+                        <option value="true" selected="true">Aktiv</option>
+                        <option value="false">Inaktiv</option>
+                    </select>
+                </div>
+                <p class="guidelines">
+                    Om denne kontaktpersonen er aktiv eller inaktiv. Er vedkommende inaktv skal den ikke kontaktes!
+                </p>
+            </li>
+            <li>
+                <label class="description">Epost</label>
+                <div>
+                    #springFormInput( "contactPerson.Email" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines" id="guide_4">
+                    Epost til kontaktpersonen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Telefonnummer</label>
+                <div>
+                    #springFormInput( "contactPerson.TelephoneNumber" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Telefonnummeret til kontaktpersonen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Stilling</label>
+                <div>
+                    #springFormInput( "contactPerson.CompanyPosition" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Kontaktpersonens stilling hos kunden.
+                </p>
+            </li>
+            <li>
+                <label class="description">Annen informasjon</label>
+                <div>
+                    #springFormTextarea("contactPerson.OtherInfo" 'rows="5" cols="23"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Annen informasjon om denne kunden, som når kunden har bursdag eller andre viktige ting i livet.
+                </p>
+            </li>
+            <li>
+                <label class="description">Kunde</label>
+                <div>
+                    #singleSelectIdName("contactPerson.customer" $customerList $contactPerson.customer '')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">Kunden denne kontaktpersonen jobber for.</p>
+            </li>
+        </ul>
+        #saveAndDelete($contactPerson)
+    </form>
+</div>

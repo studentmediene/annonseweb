@@ -4,7 +4,6 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +17,7 @@ public class Customer extends DuskenObject{
 
     @NotNull
     private String name;
-    @NotNull
-    private String contactPerson;
+
     @NotNull
     private String email;
     @NotNull
@@ -40,15 +38,17 @@ public class Customer extends DuskenObject{
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales = new ArrayList<Sale>();
 
+    @OneToMany(fetch = LAZY, mappedBy = "customer")
+    private List<ContactPerson> contactPersons = new ArrayList<ContactPerson>();
+
     public Customer(){}
 
     public Customer(String name, String email, String phoneNumber,
-                    String invoiceAddress, String contactPerson){
+                    String invoiceAddress){
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.invoiceAddress = invoiceAddress;
-        this.contactPerson = contactPerson;
     }
 
     public Customer(String name, String email, String phoneNumber, String invoiceAddress,
@@ -74,7 +74,7 @@ public class Customer extends DuskenObject{
             return;
         }
         this.name = other.name;
-        this.contactPerson = other.contactPerson;
+        this.contactPersons = other.contactPersons;
         this.email = other.email;
         this.phoneNumber = other.phoneNumber;
         this.invoiceAddress = other.invoiceAddress;
@@ -161,11 +161,11 @@ public class Customer extends DuskenObject{
         this.homepage = homepage;
     }
 
-    public String getContactPerson() {
-        return contactPerson;
+    public List<ContactPerson> getContactPersons() {
+        return contactPersons;
     }
 
-    public void setContactPerson(String contactPerson) {
-        this.contactPerson = contactPerson;
+    public void setContactPersons(List<ContactPerson> contactPersons) {
+        this.contactPersons = contactPersons;
     }
 }
