@@ -55,7 +55,7 @@
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
                 <a href="/annonse/ad/new">Ny annonse</a>
-                <a href="/annonse/ad/overview">Aktive annonser</a>
+                <a href="/annonse/ad/overview">Annonseoversikt</a>
                 <a href="/annonse/ad/all">Alle annonser</a>
             </div>
         </li>

@@ -2,6 +2,8 @@ package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Invoice;
 import no.dusken.annonseweb.service.InvoiceService;
+import no.dusken.annonseweb.models.Sale;
+import no.dusken.annonseweb.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,8 @@ public class InvoiceController {
 
     @Autowired
     private InvoiceService invoiceService;
+    @Autowired
+    private SalesService salesService;
 
     @RequestMapping("/")
     public String viewHome(){
@@ -34,7 +38,9 @@ public class InvoiceController {
     }
 
     @RequestMapping("/new")
-    public String newInvoice(){
+    public String newInvoice(Model model){
+        model.addAttribute("SaleList", salesService.findAll());
+
         return "invoice/new";
     }
 
@@ -46,6 +52,11 @@ public class InvoiceController {
     @Autowired
     public void setInvoiceService(InvoiceService invoiceService){
         this.invoiceService = invoiceService;
+    }
+
+    @Autowired
+    public void setSalesService(SalesService salesService){
+        this.salesService = salesService;
     }
 
 }

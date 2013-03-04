@@ -1,5 +1,5 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/ads/sidebar.vm')
+#parse('no/dusken/annonseweb/web/ad/sidebar.vm')
 
 <!-- content -->
 
@@ -7,9 +7,18 @@
     <div class="post">
         <h2 class="title"><a href="#">Alle annonser</a></h2>
         <div class="entry">
-            <p>
-                list all ads
-            </p>
+            #foreach( $ad in $adList)
+                <div class="listEntry">
+                    <a href="/annonse/ad/$ad.Id">
+                    <p class="meta">
+                        $ad.sale.customer.
+                    </p>
+                    <p class="info">
+                        $ad.Id
+                    </p>
+                    </a>
+                </div>
+            #end
         </div>
     </div>
 </div>

@@ -1,0 +1,163 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/ad/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+
+    <h2 class="title">
+        <a href="/annonse/ad/$ad.Id">$ad.Id</a>
+        <label class="edit"><a href="/annonse/ad/edit/$ad.Id">Endre annonse</a></label>
+    </h2>
+    <div class="content">
+        <div class="content_description">
+            <p>Informasjonen vi har lagret om denne annonsen.</p>
+        </div>
+        <ul>
+            <li>
+                <label class="description">Annonsenummer</label>
+                <div>
+                    <label class="element text medium">$ad.Id</label>
+                </div>
+                <p class="guidelines">
+                    Automatisk generert identifikator for denne annonsen i annonseweb.
+                </p>
+            </li>
+            <li>
+                <a href="/annonse/sale/$ad.sale.Id">
+                <label class="description">Salg</label>
+                <div>
+                    <label class="element text medium">
+                        $ad.sale.Id - $ad.sale.description
+                    </label>
+                </div>
+                </a>
+                <p class="guidelines">
+                    Viser hvilket salg denne annonsen er koblet mot.
+                </p>
+            </li>
+            <li>
+                <label class="description">Bruttopris</label>
+                <div>
+                    <label class="element text medium">
+                        $ad.price kr
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Viser ordinær pris for denne annonsen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Rabatt</label>
+                <div>
+                    <label class="element text medium">
+                        $ad.discount %
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Viser rabatt som er gitt for denne annonsen.
+                </p>
+            </li>
+            <li>
+                <label class="description">Nettopris</label>
+                <div>
+                    <label class="element text medium">
+                        $ad.finalPrice  kr
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Viser prisen for denne annonsen etter rabatt er trukket fra.
+                </p>
+            </li>
+            <li>
+                <label class="description">Plassering</label>
+                <div>
+                    <label class="element text medium">
+                        $ad.placementDescription
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Beskrivende tekst om plassering av annonsen.
+                </p>
+            </li>
+            <li>
+                <label class="description">UD-nr</label>
+                <div>
+                    <label class="element text medium">
+                        #if($ad.issue.issueNumber.toString().length() == 3)
+                            0$ad.issue.issueNumber.toString()
+                        #else
+                            $ad.issue.issueNumber.toString()
+                        #end
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Forteller hvilken utgave av Under Dusken annonsen skal publiseres i (NRÅR)
+                </p>
+            </li>
+            <li>
+                <label class="description">Aktiv?</label>
+                <div>
+                    <label class="element text medium">
+                        #if($ad.active)
+                            Ja
+                        #else
+                            Nei
+                        #end
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Indikerer om annonsen er aktiv.
+                </p>
+            </li>
+            <li>
+                <label class="description">Plassert på /prod?</label>
+                <div>
+                    <label class="element text medium">
+                        #if($ad.placedOnProd)
+                            Ja
+                        #else
+                            Nei
+                        #end
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Indikerer om annonsen er plasseert på prod-serveren.
+                </p>
+            </li>
+            <li>
+                <label class="description">Plassert i disposisjon?</label>
+                <div>
+                    <label class="element text medium">
+                        #if($ad.placedInDisp)
+                            Ja
+                        #else
+                            Nei
+                        #end
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Indikerer om annonsen er plasseert i disposisjon for den aktuelle utgaven.
+                </p>
+            </li>
+            <li>
+                <label class="description">Opprettet (av - når)</label>
+                <div>
+                    <label class="element text medium">$ad.createdUser - $ad.createdDate</label>
+                </div>
+                <p class="guidelines">
+                    Hvem som opprettet denne kunden og når kunden ble opprettet i annonseweb
+                </p>
+            </li>
+            <li>
+                <label class="description">Sist endret (av - når) </label>
+                <div>
+                    <label class="element text medium">$ad.lastEditedUser - $ad.lastEditedDate</label>
+                </div>
+                <p class="guidelines">
+                    Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+

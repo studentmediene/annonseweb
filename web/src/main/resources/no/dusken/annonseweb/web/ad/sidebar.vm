@@ -2,9 +2,9 @@
 <nav id="sidebar">
     <h2>Annonse</h2>
     <ul>
-        <li><a href="/annonse/ads/new.do">Ny annonse</a></li>
-        <li><a href="/annonse/ads/overview">Aktive annonser</a></li>
-        <li><a href="/annonse/ads/all">Alle annonser</a></li>
+        <li><a href="/annonse/ad/new">Ny annonse</a></li>
+        <li><a href="/annonse/ad/overview">Aktive annonser</a></li>
+        <li><a href="/annonse/ad/all">Alle annonser</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

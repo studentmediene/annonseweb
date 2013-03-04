@@ -1,0 +1,175 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/ad/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+
+    <h2 class="title">
+    #set($adId = false)
+    #set($adId = $ad.getId())
+    #set($pathEnd = "")
+    #if (!$adId)
+        <a href="/annonse/ad/new/web">Ny annonse for Dusken.no:</a>
+    #else
+        <a href="/annonse/ad/edit/$ad.getId()">Endre annonse for Dusken.no: $ad.getId()</a>
+    <label class="edit"><a href="/annonse/ad/$ad.getId()">Tilbake</a>
+        #set($pathEnd = "/" + $adId)
+    #end
+</h2>
+<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/ad/save/web$pathEnd")">
+    <div class="content">
+        <ul>
+            <li>
+                <label class="description" for="sale">Salg</label>
+                <div>
+                    #singleSelectSale("ad.sale" $salesList $ad.sale '')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Velg salget som annonsen skal kobles mot.
+                </p>
+            </li>
+            <li>
+                <label class="description" for="price">Pris</label>
+                <div>
+                    #springFormInput( "ad.price" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Pris for annonsen.
+                </p>
+            </li>
+            <li>
+                <label class="description" for="discount">Rabatt</label>
+                <div>
+                    #springFormInput( "ad.discount" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+                <p class="guidelines">
+                    Rabatt i prosent.
+                </p>
+            </li>
+            <!--
+                <li>
+                    <label class="description" for="adFile">Annonsefil</label>
+                    <div>
+                       ## #springFormInput( "ad.discount" 'size="30" type="file"')
+                       ## #springShowErrors("<br>" "error") <br/>  -->
+                        <!-- Some way of uploading adfile -->      <!--
+                    </div>
+                    <p class="guidelines">
+                        Velg filen som inneholder annonsen. Filen blir automatisk lastet opp på serveren.
+                    </p>
+                </li> -->
+            <!-- Dusken.no specific -->
+
+            <li>
+                <label class="description" for="onlineFrom">Online fra dato</label>
+                <div>
+
+                    #springFormInput( "ad.onlineFrom" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+                #*
+                #singleSelectInRange( "ad.fromDay" [1..31] '')
+                #singleSelectInRange( "ad.fromMonth" [1..12] '')
+                #singleSelectInRange( "ad.fromYear" [2013..2020] '')
+                #springShowErrors("<br>" "error") <br/>
+                *#
+                </div>
+                <p class="guidelines">
+                    Sidetallet som annonsen skal plasseres på.
+                </p>
+            </li>
+
+            <li>
+                <label class="description" for="onlineTo">Online til dato</label>
+                <div>
+
+                    #springFormInput( "ad.onlineTo" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
+
+                #*
+                #singleSelectInRange( "ad.toDay" [1..31] '')
+                #singleSelectInRange( "ad.toMonth" [1..12] '')
+                #singleSelectInRange( "ad.toYear" [2013..2020] '')
+                #springShowErrors("<br>" "error") <br/>
+                *#
+                </div>
+                <p class="guidelines">
+                    Sidetallet som annonsen skal plasseres på.
+                </p>
+            </li>
+        #*
+        <li>
+            <label class="description" for="price">Pris</label>
+            <div>
+                <!-- Some way of getting price from web_format, or enter manually -->
+            </div>
+            <p class="guidelines">
+                Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+            </p>
+        </li>
+        *#
+            <li>
+                <label class="description" for="webFormat">Webformat</label>
+                <div>
+                    #springFormRadioButtons( "ad.webFormat" {1:"Horisontalt banner (Forside)",2:"Blokkannonse (Forside)",3:"Blokkannonse (Artikkel)"} "<br>" 'size="30"')
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                </p>
+            </li>
+            <li>
+                <label class="description" for="placedOnProd">Alternativer</label>
+                <div>
+                    #if($ad.placedOnProd == 'true')
+                        #springFormCheckboxes("ad.placedOnProd" {"1" : "Plassert på prod"} '' 'checked')
+                        #springShowErrors("<br>" "error") <br/>
+                    #else
+                        #springFormCheckboxes("ad.placedOnProd" {"1" : "Plassert på prod"} '' '')
+                        #springShowErrors("<br>" "error") <br/>
+                    #end
+                </div>
+                <p class="guidelines">
+                    Kryss av hvis annonsefilen er plassert på prod.
+                </p>
+            </li>
+            #if ($adId)
+                <li>
+                #*<label class="description" for="active">Aktiv?</label>    *#
+                    <div>
+                        #if($ad.active == 'true')
+                            #springFormCheckboxes("ad.active" {"1" : "Aktiv"} '' 'checked')
+                            #springShowErrors("<br>" "error") <br/>
+                        #else
+                            #springFormCheckboxes("ad.active" {"1" : "Aktiv"} '' '')
+                            #springShowErrors("<br>" "error") <br/>
+                        #end
+                    </div>
+                    <p class="guidelines">
+                        Fjern krysset dersom det ble gjort en feil ved registrering av annonsen (deaktiverer annonsen).
+                    </p>
+                </li>
+            #else
+                <li>
+                    <div>
+                        #springFormHiddenInputValue("ad.active" 'true' '')
+                    </div>
+                </li>
+            #end
+            <li>
+
+                #if($adId)
+                    #springFormHiddenInputValue("ad.lastEditedDate" '' '')
+                #else
+                    #springFormHiddenInputValue("ad.createdDate" '' '')
+                #end
+
+
+                    #saveAndDelete($ad)
+            </li>
+        </ul>
+    </div>
+</form>
+</div>

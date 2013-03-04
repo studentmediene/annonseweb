@@ -2,10 +2,7 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.List;
 
@@ -17,7 +14,6 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Entity
 public class Issue extends DuskenObject {
-
     private Integer issueNumber;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -32,5 +28,13 @@ public class Issue extends DuskenObject {
     @Override
     public String getTitle() {
         return null;
+    }
+
+    public Integer getIssueNumber(){
+        return issueNumber;
+    }
+
+    public void setIssueNumber(Integer issueNumber){
+        this.issueNumber = issueNumber;
     }
 }

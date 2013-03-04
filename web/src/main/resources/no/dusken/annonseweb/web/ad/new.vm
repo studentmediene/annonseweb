@@ -1,14 +1,18 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/ads/sidebar.vm')
+#parse('no/dusken/annonseweb/web/ad/sidebar.vm')
 
 <!-- content -->
 <div id="content">
     <div class="post">
         <h2 class="title"><a href="#">Ny annonse</a></h2>
         <div class="entry">
-            <p>
-                (Må få med valg av type, dvs til Nye Nett, RR, STV eller UD)
-            </p>
+            <p>Velg annonsetype</p>
+            <ul>
+                <li><a href="/annonse/ad/new/printed">Under Dusken</a></li>
+                <li><a href="/annonse/ad/new/web">Dusken.no</a></li>
+                <li>Radio Revolt(Kommer)</li>
+                <li>STV(Kommer)</li>
+            </ul>
         </div>
     </div>
 </div>
