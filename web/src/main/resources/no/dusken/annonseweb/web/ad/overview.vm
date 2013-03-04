@@ -1,35 +1,177 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/ads/sidebar.vm')
+#parse('no/dusken/annonseweb/web/ad/sidebar.vm')
+
+<script type="text/javascript">
+    function getPrintedadsByIssue(issue,id){
+        var issueNumber = document.getElementById("selectIssueNumber");
+        var issueYear = document.getElementById("selectIssueYear");
+        var issueSelected = issueNumber.value + issueYear.value;
+        var result = "";
+        if(issueSelected == issue){
+            result = "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonse/ad/" + id +
+                     "\"> \n <p class=\"meta\">" + "test" + "<\/p> \n <p class=\"info\">" + id +
+                     "<\/p> \n <\/a> \n <\/div> \n <\/div>";
+        }
+        return result;
+    }
+
+    function refreshPrinted(){
+        var result = "";
+        #foreach($ad in $adList)
+            #if($ad.active)
+                #if($ad.issue.issueNumber)  //Dumb workaround?
+                    result = result + getPrintedadsByIssue($ad.issue.issueNumber, $ad.Id);
+                #end
+            #end
+        #end
+        document.getElementById("printedads").innerHTML = result;
+    }
+
+    function getWebadsByPeriod(fromDay,fromMonth,fromYear,toDay,toMonth,toYear,id){
+        var selectedFromDay = document.getElementById("selectFromDay").value;
+        var selectedFromMonth = document.getElementById("selectFromMonth").value;
+        var selectedFromYear = document.getElementById("selectFromYear").value;
+        var selectedToDay = document.getElementById("selectToDay").value;
+        var selectedToMonth = document.getElementById("selectToMonth").value;
+        var selectedToYear = document.getElementById("selectToYear").value;
+
+        if(selectedToYear <= selectedFromYear){
+            for( var i = document.getElementById('selectToYear').options.length-1;i>=0; i-- ){
+                if(document.getElementById('selectToYear').options[i].value==document.getElementById('selectFromYear').value){
+                    document.getElementById('selectToYear').selectedIndex=i;
+                }
+            }
+            //document.getElementById("selectToYear").selectedIndex = document.getElementById("selectFromYear").indexOf(selectedFromYear.toString());
+            if(selectedToMonth <= selectedFromMonth){
+                for( var i = document.getElementById('selectToMonth').options.length-1;i>=0; i-- ){
+                    if(document.getElementById('selectToMonth').options[i].value==document.getElementById('selectFromMonth').value){
+                        document.getElementById('selectToMonth').selectedIndex=i;
+                    }
+                }
+                //document.getElementById("selectToMonth").selectedIndex = document.getElementById("selectFromMonth").indexOf(selectedFromMonth.toString());
+                if(selectedToDay <= selectedFromDay){
+                    for( var i = document.getElementById('selectToDay').options.length-1;i>=0; i-- ){
+                        if(document.getElementById('selectToDay').options[i].value==document.getElementById('selectFromDay').value){
+                            document.getElementById('selectToDay').selectedIndex=i;
+                        }
+                    }
+                    //document.getElementById("selectToDay").selectedIndex = document.getElementById("selectFromDay").indexOf(selectedFromDay.toString());
+                }
+            }
+        }
+
+        var result = "";
+        if((selectedFromYear >= fromYear) && (selectedToYear <= toYear)){
+            if(selectedFromMonth >= fromMonth && selectedToMonth <= toMonth){
+                if(selectedFromDay >= fromDay && selectedToDay <= toDay){
+                    result = "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonse/ad/" + id +
+                             "\"> \n <p class=\"meta\">" + "test" + "<\/p> \n <p class=\"info\">" + id +
+                             "<\/p> \n <\/a> \n <\/div> \n <\/div>";
+                }
+            }
+        }
+        //console.log(result);
+        return result;
+    }
+
+    function refreshWeb(){
+
+        var result = "";
+        #foreach($ad in $adList)
+            #if($ad.active)
+                #if($ad.fromDay)   //Dumb workaround?
+                    result += getWebadsByPeriod($ad.fromDay,$ad.fromMonth,$ad.fromYear,$ad.toDay,$ad.toMonth,$ad.toYear,$ad.Id);
+                #end
+            #end
+        #end
+        document.getElementById("webads").innerHTML = result;
+    }
+
+</script>
 
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Aktive annonser</a></h2>
-        <div class="entry">
-            #foreach( $sale in $salesList)
-                <p class="meta">$sale.meta</p>
-                <p>$sale.info</p>
-            #end
+        <h2 class="title"><a href="#">Annonseoversikt</a></h2>
+        <div class="content">
+            <ul>
+                <li>
+                    <div>
+                        <label class="description" for="issue">Velg utgave av Under Dusken</label>
+                        <form action="">
+                            <fieldset>
+                                <select id="selectIssueNumber" onchange="refreshPrinted()">
+                                    #foreach($number in [1..16])
+                                    <option value="$number">$number</option>
+                                    #end
+                                </select>
+                                <select id="selectIssueYear" onchange="refreshPrinted()">
+                                    #foreach($year in [13..20])
+                                        <option value="$year">$year</option>
+                                    #end
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="entry" id="printedads">
+            <script type="text/javascript">
+                refreshPrinted();
+            </script>
+        </div>
+        <div class="content">
+            <ul>
+                <li>
+                    <div>
+                        <label class="description" for="active">Velg periode for nettannonser</label>
+                        <form action="">
+                            <fieldset>
+                                <p>Fra:</p>
+                                <select id="selectFromDay" onchange="refreshWeb()">
+                                    #foreach($day in [1..31])
+                                        <option value="$day">$day</option>
+                                    #end
+                                </select>
+                                <select id="selectFromMonth" onchange="refreshWeb()">
+                                    #foreach($month in [1..12])
+                                        <option value="$month">$month</option>
+                                    #end
+                                </select>
+                                <select id="selectFromYear" onchange="refreshWeb()">
+                                    #foreach($year in [2013..2020])
+                                        <option value="$year">$year</option>
+                                    #end
+                                </select>
+                                <p>Til:</p>
+                                <select id="selectToDay" onchange="refreshWeb()">
+                                    #foreach($day in [1..31])
+                                        <option value="$day">$day</option>
+                                    #end
+                                </select>
+                                <select id="selectToMonth" onchange="refreshWeb()">
+                                    #foreach($month in [1..12])
+                                        <option value="$month">$month</option>
+                                    #end
+                                </select>
+                                <select id="selectToYear" onchange="refreshWeb()">
+                                    #foreach($year in [2013..2020])
+                                        <option value="$year">$year</option>
+                                    #end
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="entry" id="webads">
+            <script type="text/javascript">
+                refreshWeb();
+            </script>
         </div>
     </div>
 </div>
 
-<!-- <nav id="sidebar">
-    <h2>Annonser</h2>
-    <ul>
-        <li><a href="/ad/newAdGeneral.do">Ny annonse</a>
-            <ul>
-                <li><a href="/ad/newAdDuskenPaper.do">Under Dusken - papirutgave</a></li>
-                <li><a href="/ad/newAdDuskenNett.do">underdusken.no</a></li>
-                <li><a href="/ad/newAdRadioRevolt.do">Radio Revolt</a></li>
-                <li><a href="/ad/newAdStudentTV.do">Student TV</a></li>
-            </ul>
-        </li>
-        <li><a href="/ad/viewActiveAds.do">Annonseoversikt</a></li>
-        <li><a href="/ad/searchAd.do">Søk etter annonse</a></li>
-    </ul>
-    <p>
-        Logget inn som:    <br>
-        //oppdateres automatisk//
-    </p>
-</nav> -->
+

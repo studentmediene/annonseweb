@@ -63,7 +63,7 @@ public class SalesControllerTest {
         int saleCount;
         Customer c =  new Customer("customerName", "centralEmail", "centralTlf",
                 "invoiceAddress", "subscriberAddress");
-        customerController.edit(c);
+        customerController.saveNew(c);
         customerCount = customerService.findAll().size();
         c = customerService.findOne(c.getId());
         Sale sale = new Sale("description", null, c, null, false);

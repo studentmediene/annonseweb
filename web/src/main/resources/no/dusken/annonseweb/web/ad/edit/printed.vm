@@ -1,0 +1,182 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/ad/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+
+    <h2 class="title">
+        #set($adId = false)
+        #set($adId = $ad.getId())
+        #set($pathEnd = "")
+        #if (!$adId)
+            <a href="/annonse/ad/new/printed">Ny annonse for Under Dusken:</a>
+        #else
+            <a href="/annonse/ad/edit/$ad.getId()">Endre annonse for Under Dusken: $ad.getId()</a>
+        <label class="edit"><a href="/annonse/ad/$ad.getId()">Tilbake</a>
+            #set($pathEnd = "/" + $adId)
+        #end
+    </h2>
+    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/ad/save/printed$pathEnd")">
+        <div class="content">
+            <ul>
+                <li>
+                    <label class="description" for="sale">Salg</label>
+                    <div>
+                        #singleSelectSale("ad.sale" $salesList $ad.sale '')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Velg salget som annonsen skal kobles mot.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="printSize">Trykkstørrelse</label>
+                    <div>
+                        #springFormRadioButtons( "ad.printSize" $ad.printSizeList "<br>" 'size="30"')
+                        #springShowErrors("<br>" "error")
+                    </div>
+                    <p class="guidelines">
+                        Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="price">Pris</label>
+                    <div>
+                        #springFormInput( "ad.price" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Pris for annonsen.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="discount">Rabatt</label>
+                    <div>
+                        #springFormInput( "ad.discount" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Rabatt i prosent.
+                    </p>
+                </li>
+                <!--
+                <li>
+                    <label class="description" for="adFile">Annonsefil</label>
+                    <div>
+                       ## #springFormInput( "ad.discount" 'size="30" type="file"')
+                       ## #springShowErrors("<br>" "error") <br/>  -->
+                        <!-- Some way of uploading adfile -->      <!--
+                    </div>
+                    <p class="guidelines">
+                        Velg filen som inneholder annonsen. Filen blir automatisk lastet opp på serveren.
+                    </p>
+                </li> -->
+
+                <!-- Under Dusken specific -->
+
+                <li>
+                    <label class="description" for="issue">UD-nr</label>
+                    <div>
+                            #*
+                        #set($issueNumberOptions = {"1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","10":"10","11":"11","12":"12","13":"13","14":"14","15":"15","16":"16"})
+                        #set($issueYearOptions = {"13":"2013","14":"2014","15":"2015","16":"2016","17":"2017","18":"2018","19":"2019","20":"2020"})
+                        #springFormSingleSelect( "ad.issue.issueNumber" $issueNumberOptions '')
+                        #springFormSingleSelect( "ad.issue.issueYear" $issueYearOptions '')
+                        #springShowErrors("<br>" "error") <br/>    *#
+
+                            #springFormInput( "ad.issue.issueNumber" 'size="30"')
+                            #springShowErrors("<br>" "error") <br/>
+
+                    </div>
+                    <p class="guidelines">
+                        Utgave av Under Dusken som annonsen skal være med i. Skrives inn på formen: NRÅR. Eks.: 1. utgave i 2013 skrives 0113.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="placement">Plassering</label>
+                    <div>
+                        #springFormTextarea( "ad.placementDescription" 'rows="5" cols="24"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Beskrivelse av hvordan annonsen skal plasseres på siden.
+                    </p>
+                </li>
+                <li>
+                #*<label class="description" for="placedInDisp">Tidlig side</label> *#
+                    <div>
+                        #springFormCheckboxes("ad.placedInDisp" {"1" : "Plassert i disp"} '' '')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Kryss av hvis annonsen er plassert i disp.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="placedOnProd">Alternativer</label>
+                    <div>
+                        #if($ad.placedOnProd == 'true')
+                            #springFormCheckboxes("ad.placedOnProd" {"1" : "Plassert på prod"} '' 'checked')
+                            #springShowErrors("<br>" "error") <br/>
+                        #else
+                            #springFormCheckboxes("ad.placedOnProd" {"1" : "Plassert på prod"} '' '')
+                            #springShowErrors("<br>" "error") <br/>
+                        #end
+                    </div>
+                    <p class="guidelines">
+                        Kryss av hvis annonsefilen er plassert på prod.
+                    </p>
+                </li>
+                #if ($adId)
+                    <li>
+                    #*<label class="description" for="active">Aktiv?</label>    *#
+                        <div>
+                            #if($ad.active == 'true')
+                                #springFormCheckboxes("ad.active" {"1" : "Aktiv"} '' 'checked')
+                                #springShowErrors("<br>" "error") <br/>
+                            #else
+                                #springFormCheckboxes("ad.active" {"1" : "Aktiv"} '' '')
+                                #springShowErrors("<br>" "error") <br/>
+                            #end
+                        </div>
+                        <p class="guidelines">
+                            Fjern krysset dersom det ble gjort en feil ved registrering av annonsen (deaktiverer annonsen).
+                        </p>
+                    </li>
+                #else
+                    <li>
+                        <div>
+                            #springFormHiddenInputValue("ad.active" 'true' '')
+                        </div>
+                    </li>
+                #end
+                <li>
+                    #if($adId)
+                        #springFormHiddenInputValue("ad.lastEditedDate" '' '')
+                    #else
+                        #springFormHiddenInputValue("ad.createdDate" '' '')
+                    #end
+                    #saveAndDelete($ad)
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+
+<script type='text/javascript'>
+    $(window).load(function(){
+        var myArray = new Array();
+        #foreach($price in $ad.priceByPrintSize)
+            myArray.push($price)
+        #end
+        $('input[id="printSize"]').on('change', function() {
+            for(i = 1; i <= 3; i++) {
+                if($(this).val() == i){
+                    $('input[id="price"]').val(myArray[i-1]);
+                }
+            }
+        });
+    });
+</script>
+
