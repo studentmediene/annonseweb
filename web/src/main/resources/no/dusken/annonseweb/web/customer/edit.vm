@@ -95,8 +95,7 @@
                     #end
                     <li>
                         <div>
-                            <!-- TODO make this link to a new contact person with customer pre-selected.-->
-                            <a href="#springUrl("/annonse/contact/person/new")">Opprett ny kontaktperson for denne kunden</a>
+                            <a href="#springUrl("/annonse/contact/person/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
                         </div>
                         <p class="guidelines">
                             Oppretter en ny kontaktperson tilknyttet denne kunden.

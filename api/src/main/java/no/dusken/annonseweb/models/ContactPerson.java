@@ -24,12 +24,10 @@ public class ContactPerson extends DuskenObject{
     @ManyToOne
     private Customer customer;
 
-    // TODO Is not this to be deducted from notes connected to this ContactPerson
     @Temporal(TemporalType.TIMESTAMP)
-    private Calendar lastContactedTime;
+    private Calendar lastEditedTime;
 
-    // TODO Is not this to be deducted from notes connected to this ContactPerson
-    private AnnonsePerson lastContactedUser;
+    private AnnonsePerson lastEditedUser;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
@@ -57,10 +55,6 @@ public class ContactPerson extends DuskenObject{
         companyPosition = other.companyPosition;
         otherInfo = other.otherInfo;
         customer = other.customer;
-        lastContactedTime = other.lastContactedTime;
-        lastContactedUser = other.lastContactedUser;
-        createdDate = other.createdDate;
-        createdUser = other.createdUser;
         active = other.active;
     }
 
@@ -80,20 +74,20 @@ public class ContactPerson extends DuskenObject{
         return companyPosition;
     }
 
-    public Calendar getLastContactedTime() {
-        return lastContactedTime;
+    public Calendar getLastEditedTime() {
+        return lastEditedTime;
     }
 
-    public void setLastContactedTime(Calendar lastContactedTime) {
-        this.lastContactedTime = lastContactedTime;
+    public void setLastEditedTime(Calendar lastEditedTime) {
+        this.lastEditedTime = lastEditedTime;
     }
 
-    public AnnonsePerson getLastContactedUser() {
-        return lastContactedUser;
+    public AnnonsePerson getLastEditedUser() {
+        return lastEditedUser;
     }
 
-    public void setLastContactedUser(AnnonsePerson lastContactedUser) {
-        this.lastContactedUser = lastContactedUser;
+    public void setLastEditedUser(AnnonsePerson lastContactedUser) {
+        this.lastEditedUser = lastContactedUser;
     }
 
     public Boolean getActive() {
