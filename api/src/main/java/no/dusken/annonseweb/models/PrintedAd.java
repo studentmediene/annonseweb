@@ -15,9 +15,15 @@ import static javax.persistence.CascadeType.ALL;
 public class PrintedAd extends Ad {
 
     public enum PrintSize {
-        WHOLEPAGE("Helside",15300),     // Beskrivelse , pris
-        HALFPAGE("Halvside",8400),
-        QUARTPAGE("Kvartside",4800);
+        DOUBLEPAGE("Dobbeltside",27300),     // Beskrivelse , pris
+        WHOLEAGE_LARGE("Helside (330x233mm (+3mm))",15300),
+        WHOLEPAGE_SMALL("Helside (300x203mm)",15300),
+        HALFPAGE_HORISONTAL("1/2 side (147x203mm)",8400),
+        HALFPAGE_VERTICAL("1/2 side (300x96mm)",8400),
+        QUARTPAGE_HORISONTAL("1/4 side (147x96mm)",4800),
+        QUARTPAGE_VERTICAL("1/4 side (77x203mm)",4800),
+        EIGHTPAGE("1/8 side (77x96mm)",2800),
+        OTHER("Annet",0);
         private final Integer price;
         private final String description;
 
@@ -113,20 +119,36 @@ public class PrintedAd extends Ad {
     }
 
     public Integer getPrintSize() {
-        if(this.printSize == PrintSize.WHOLEPAGE) { return 1;}
-        else if(this.printSize == PrintSize.HALFPAGE) {return 2;}
-        else if (this.printSize == PrintSize.QUARTPAGE) {return 3;}
+        if(this.printSize == PrintSize.DOUBLEPAGE) { return 1;}
+        else if(this.printSize == PrintSize.WHOLEAGE_LARGE) {return 2;}
+        else if (this.printSize == PrintSize.WHOLEPAGE_SMALL) {return 3;}
+        else if (this.printSize == PrintSize.HALFPAGE_HORISONTAL) {return 4;}
+        else if (this.printSize == PrintSize.HALFPAGE_VERTICAL) {return 5;}
+        else if (this.printSize == PrintSize.QUARTPAGE_HORISONTAL) {return 6;}
+        else if (this.printSize == PrintSize.QUARTPAGE_VERTICAL) {return 7;}
+        else if (this.printSize == PrintSize.EIGHTPAGE) {return 8;}
         else {return 0;}
     }
 
     public void setPrintSize(Integer printSize) {
         switch (printSize) {
-            case 1: this.printSize = PrintSize.WHOLEPAGE;
+            case 1: this.printSize = PrintSize.DOUBLEPAGE;
                 break;
-            case 2: this.printSize = PrintSize.HALFPAGE;
+            case 2: this.printSize = PrintSize.WHOLEAGE_LARGE;
                 break;
-            case 3: this.printSize = PrintSize.QUARTPAGE;
+            case 3: this.printSize = PrintSize.WHOLEPAGE_SMALL;
                 break;
+            case 4: this.printSize = PrintSize.HALFPAGE_HORISONTAL;
+                break;
+            case 5: this.printSize = PrintSize.HALFPAGE_VERTICAL;
+                break;
+            case 6: this.printSize = PrintSize.QUARTPAGE_HORISONTAL;
+                break;
+            case 7: this.printSize = PrintSize.QUARTPAGE_VERTICAL;
+                break;
+            case 8: this.printSize = PrintSize.EIGHTPAGE;
+                break;
+            default: this.printSize = PrintSize.OTHER;
         }
     }
 

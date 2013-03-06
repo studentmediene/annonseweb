@@ -5,7 +5,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.util.*;
 import java.text.SimpleDateFormat;
 
 import static javax.persistence.CascadeType.ALL;
@@ -13,7 +13,26 @@ import static javax.persistence.CascadeType.ALL;
 @Entity
 public class WebAd extends Ad {
 
-    public enum WebFormat {TOP_BANNER, MID_BANNER, SIDEBAR}
+    public enum WebFormat {
+        BANNER("Horisontalt banner (Forside - 1180x160px)",10000),     // Beskrivelse , pris
+        BLOCK_MAIN("Blokkannonse (Forside - 380x290px)",10000),
+        BLOCK_ARTICLE("Blokkannonse (Artikkel - 380x410px)",10000);
+        private final Integer price;
+        private final String description;
+
+        WebFormat(String desc, Integer value){
+            price = value;
+            description = desc;
+        }
+
+        public Integer getPrice(){
+            return price;
+        }
+
+        public String getDescription(){
+            return description;
+        }
+    }
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar onlineFrom = Calendar.getInstance();
@@ -87,21 +106,41 @@ public class WebAd extends Ad {
     }
 
     public Integer getWebFormat() {
-        if(this.webFormat == WebFormat.TOP_BANNER) { return 1;}
-        else if(this.webFormat == WebFormat.MID_BANNER) {return 2;}
-        else if (this.webFormat == WebFormat.SIDEBAR) {return 3;}
+        if(this.webFormat == WebFormat.BANNER) { return 1;}
+        else if(this.webFormat == WebFormat.BLOCK_MAIN) {return 2;}
+        else if (this.webFormat == WebFormat.BLOCK_ARTICLE) {return 3;}
         else {return 0;}
     }
 
     public void setWebFormat(Integer webFormat) {
         switch (webFormat) {
-            case 1: this.webFormat = WebFormat.TOP_BANNER;
+            case 1: this.webFormat = WebFormat.BANNER;
                 break;
-            case 2: this.webFormat = WebFormat.MID_BANNER;
+            case 2: this.webFormat = WebFormat.BLOCK_MAIN;
                 break;
-            case 3: this.webFormat = WebFormat.SIDEBAR;
+            case 3: this.webFormat = WebFormat.BLOCK_ARTICLE;
                 break;
         }
+    }
+
+    public Map<Integer,String> getWebFormatList(){
+        Map<Integer,String> webFormatList = new HashMap<Integer,String>();
+        Integer i = 1;
+        for(WebFormat sizes : webFormat.values()){
+            webFormatList.put(i,sizes.getDescription());
+            i++;
+        }
+        return webFormatList;
+    }
+
+    public List<Integer> getPriceByWebFormat(){
+        List<Integer> prices = new ArrayList<Integer>();
+        Integer i = 1;
+        for(WebFormat sizes : webFormat.values()){
+            prices.add(sizes.getPrice());
+            i++;
+        }
+        return prices;
     }
 
     public String getEditNumber() {

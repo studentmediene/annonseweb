@@ -103,9 +103,13 @@
                     </p>
                 </li>
                 <li>
-                #*<label class="description" for="placedInDisp">Tidlig side</label> *#
+                    <label class="description" for="placedOnProd">Alternativer</label>
                     <div>
-                        #springFormCheckboxes("ad.placedInDisp" {"1" : "Plassert i disp"} '' '')
+                        #if($ad.placedOnProd == 'true')
+                            #springFormCheckboxes("ad.placedInDisp" {"1" : "Plassert i disp"} '' 'checked')
+                        #else
+                            #springFormCheckboxes("ad.placedInDisp" {"1" : "Plassert i disp"} '' '')
+                        #end
                         #springShowErrors("<br>" "error") <br/>
                     </div>
                     <p class="guidelines">
@@ -113,15 +117,14 @@
                     </p>
                 </li>
                 <li>
-                    <label class="description" for="placedOnProd">Alternativer</label>
+                    <!--<label class="description" for="placedOnProd">Alternativer</label>-->
                     <div>
                         #if($ad.placedOnProd == 'true')
                             #springFormCheckboxes("ad.placedOnProd" {"1" : "Plassert på prod"} '' 'checked')
-                            #springShowErrors("<br>" "error") <br/>
                         #else
                             #springFormCheckboxes("ad.placedOnProd" {"1" : "Plassert på prod"} '' '')
-                            #springShowErrors("<br>" "error") <br/>
                         #end
+                        #springShowErrors("<br>" "error") <br/>
                     </div>
                     <p class="guidelines">
                         Kryss av hvis annonsefilen er plassert på prod.
@@ -133,11 +136,10 @@
                         <div>
                             #if($ad.active == 'true')
                                 #springFormCheckboxes("ad.active" {"1" : "Aktiv"} '' 'checked')
-                                #springShowErrors("<br>" "error") <br/>
                             #else
                                 #springFormCheckboxes("ad.active" {"1" : "Aktiv"} '' '')
-                                #springShowErrors("<br>" "error") <br/>
                             #end
+                            #springShowErrors("<br>" "error") <br/>
                         </div>
                         <p class="guidelines">
                             Fjern krysset dersom det ble gjort en feil ved registrering av annonsen (deaktiverer annonsen).
@@ -171,7 +173,7 @@
             myArray.push($price)
         #end
         $('input[id="printSize"]').on('change', function() {
-            for(i = 1; i <= 3; i++) {
+            for(i = 1; i <= 8; i++) {
                 if($(this).val() == i){
                     $('input[id="price"]').val(myArray[i-1]);
                 }
