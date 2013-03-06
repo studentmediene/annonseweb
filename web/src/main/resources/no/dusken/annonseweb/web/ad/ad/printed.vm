@@ -142,7 +142,7 @@
             <li>
                 <label class="description">Opprettet (av - når)</label>
                 <div>
-                    <label class="element text medium">$ad.createdUser - $ad.createdDate</label>
+                    <label class="element text medium">$ad.createdUser.getName() - $ad.createdDate</label>
                 </div>
                 <p class="guidelines">
                     Hvem som opprettet denne kunden og når kunden ble opprettet i annonseweb
@@ -151,7 +151,7 @@
             <li>
                 <label class="description">Sist endret (av - når) </label>
                 <div>
-                    <label class="element text medium">$ad.lastEditedUser - $ad.lastEditedDate</label>
+                    <label class="element text medium">$ad.lastEditedUser.getName() - $ad.lastEditedDate</label>
                 </div>
                 <p class="guidelines">
                     Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.

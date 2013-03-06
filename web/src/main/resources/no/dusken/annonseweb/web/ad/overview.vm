@@ -2,32 +2,31 @@
 #parse('no/dusken/annonseweb/web/ad/sidebar.vm')
 
 <script type="text/javascript">
-    function getPrintedadsByIssue(issue,id){
-        var issueNumber = document.getElementById("selectIssueNumber");
-        var issueYear = document.getElementById("selectIssueYear");
-        var issueSelected = issueNumber.value + issueYear.value;
-        var result = "";
-        if(issueSelected == issue){
-            result = "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonse/ad/" + id +
-                     "\"> \n <p class=\"meta\">" + "test" + "<\/p> \n <p class=\"info\">" + id +
-                     "<\/p> \n <\/a> \n <\/div> \n <\/div>";
-        }
-        return result;
-    }
 
     function refreshPrinted(){
         var result = "";
+        var price = 0;
         #foreach($ad in $adList)
             #if($ad.active)
                 #if($ad.issue.issueNumber)  //Dumb workaround?
-                    result = result + getPrintedadsByIssue($ad.issue.issueNumber, $ad.Id);
+                    if($ad.issue.issueNumber == (document.getElementById("selectIssueNumber").value + document.getElementById("selectIssueYear").value)){
+                        result += "<div class=\"entry\"> \n <div class=\"listEntry\"> \n" +
+                                  "<a href=\"/annonse/ad/ $ad.Id \"> \n" +
+                                  "<p class=\"meta\">Kunde: $ad.sale.customer.name<\/p> \n" +
+                                  "<p class=\"info\">AnnonseID: $ad.Id <br \/> Nettopris: " +
+                                  "$ad.finalPrice <\/p> \n <\/a> \n <\/div> \n <\/div>";
+                        price += $ad.finalPrice;
+                    }
                 #end
             #end
         #end
+        result += "<p>Totalt pris for alle annonser i valgt utgaven: " + price + "<\/p>";
+
         document.getElementById("printedads").innerHTML = result;
     }
 
-    function getWebadsByPeriod(fromDay,fromMonth,fromYear,toDay,toMonth,toYear,id){
+    function getWebadsByPeriod(fromDay,fromMonth,fromYear,toDay,toMonth,toYear){
+
         var selectedFromDay = document.getElementById("selectFromDay").value;
         var selectedFromMonth = document.getElementById("selectFromMonth").value;
         var selectedFromYear = document.getElementById("selectFromYear").value;
@@ -35,55 +34,60 @@
         var selectedToMonth = document.getElementById("selectToMonth").value;
         var selectedToYear = document.getElementById("selectToYear").value;
 
-        if(selectedToYear <= selectedFromYear){
-            for( var i = document.getElementById('selectToYear').options.length-1;i>=0; i-- ){
-                if(document.getElementById('selectToYear').options[i].value==document.getElementById('selectFromYear').value){
-                    document.getElementById('selectToYear').selectedIndex=i;
-                }
-            }
-            //document.getElementById("selectToYear").selectedIndex = document.getElementById("selectFromYear").indexOf(selectedFromYear.toString());
-            if(selectedToMonth <= selectedFromMonth){
-                for( var i = document.getElementById('selectToMonth').options.length-1;i>=0; i-- ){
-                    if(document.getElementById('selectToMonth').options[i].value==document.getElementById('selectFromMonth').value){
-                        document.getElementById('selectToMonth').selectedIndex=i;
-                    }
-                }
-                //document.getElementById("selectToMonth").selectedIndex = document.getElementById("selectFromMonth").indexOf(selectedFromMonth.toString());
-                if(selectedToDay <= selectedFromDay){
-                    for( var i = document.getElementById('selectToDay').options.length-1;i>=0; i-- ){
-                        if(document.getElementById('selectToDay').options[i].value==document.getElementById('selectFromDay').value){
-                            document.getElementById('selectToDay').selectedIndex=i;
-                        }
-                    }
-                    //document.getElementById("selectToDay").selectedIndex = document.getElementById("selectFromDay").indexOf(selectedFromDay.toString());
-                }
-            }
-        }
+        //var result = "";
+        if( (fromYear <= selectedFromYear && toYear >= selectedToYear) ||
+            (fromYear >= selectedFromYear && toYear >= selectedToYear && fromYear <= selectedToYear) ||
+            (fromYear >= selectedFromYear && toYear <= selectedToYear) ||
+            (fromYear <= selectedFromYear && toYear <= selectedToYear && toYear >= selectedFromYear) ){
+            if( (fromMonth <= selectedFromMonth && toMonth >= selectedToMonth) ||
+                (fromMonth >= selectedFromMonth && toMonth >= selectedToMonth && fromMonth <= selectedToMonth) ||
+                (fromMonth >= selectedFromMonth && toMonth <= selectedToMonth) ||
+                (fromMonth <= selectedFromMonth && toMonth <= selectedToMonth && toMonth >= selectedFromMonth)){
+                if( (fromDay <= selectedFromDay && toDay >= selectedToDay) ||
+                    (fromDay >= selectedFromDay && toDay >= selectedToDay && fromDay <= selectedToDay) ||
+                    (fromDay >= selectedFromDay && toDay <= selectedToDay) ||
+                    (fromDay <= selectedFromDay && toDay <= selectedToDay && toDay >= selectedFromDay)){
 
-        var result = "";
-        if((selectedFromYear >= fromYear) && (selectedToYear <= toYear)){
-            if(selectedFromMonth >= fromMonth && selectedToMonth <= toMonth){
-                if(selectedFromDay >= fromDay && selectedToDay <= toDay){
-                    result = "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonse/ad/" + id +
-                             "\"> \n <p class=\"meta\">" + "test" + "<\/p> \n <p class=\"info\">" + id +
-                             "<\/p> \n <\/a> \n <\/div> \n <\/div>";
+                    return 1;
                 }
             }
         }
-        //console.log(result);
-        return result;
+        else return 0;
+        //return result;
     }
 
     function refreshWeb(){
+
+        var selectedFromDay = document.getElementById("selectFromDay").selectedIndex;
+        var selectedFromMonth = document.getElementById("selectFromMonth").selectedIndex;
+        var selectedFromYear = document.getElementById("selectFromYear").selectedIndex;
+        var selectedToDay = document.getElementById("selectToDay").selectedIndex;
+        var selectedToMonth = document.getElementById("selectToMonth").selectedIndex;
+        var selectedToYear = document.getElementById("selectToYear").selectedIndex;
+
+        if(selectedToYear <= selectedFromYear){
+            document.getElementById('selectToYear').selectedIndex = document.getElementById('selectFromYear').selectedIndex;
+            if(selectedToMonth <= selectedFromMonth){
+                document.getElementById('selectToMonth').selectedIndex = document.getElementById('selectFromMonth').selectedIndex;
+                if(selectedToDay <= selectedFromDay){
+                    document.getElementById('selectToDay').selectedIndex = document.getElementById('selectFromDay').selectedIndex;
+                }
+            }
+        }
 
         var result = "";
         #foreach($ad in $adList)
             #if($ad.active)
                 #if($ad.fromDay)   //Dumb workaround?
-                    result += getWebadsByPeriod($ad.fromDay,$ad.fromMonth,$ad.fromYear,$ad.toDay,$ad.toMonth,$ad.toYear,$ad.Id);
+                    if(getWebadsByPeriod($ad.fromDay,$ad.fromMonth,$ad.fromYear,$ad.toDay,$ad.toMonth,$ad.toYear)){
+                        result += "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonse/ad/" + $ad.Id +
+                                "\"> \n <p class=\"meta\">" + "Kunde: $ad.sale.customer.name" + "<\/p> \n <p class=\"info\">" + "AnnonseID: $ad.Id<br \/>" +
+                                "Aktiv fra: $ad.onlineFrom <br \/> Aktiv til: $ad.onlineTo <\/p> \n <\/a> \n <\/div> \n <\/div>";
+                    }
                 #end
             #end
         #end
+
         document.getElementById("webads").innerHTML = result;
     }
 

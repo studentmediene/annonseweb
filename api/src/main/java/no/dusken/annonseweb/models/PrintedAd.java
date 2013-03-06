@@ -50,17 +50,13 @@ public class PrintedAd extends Ad {
 
     public PrintedAd() {}
 
-    public PrintedAd(BigDecimal price, BigDecimal discount) {
+    public PrintedAd( BigDecimal price, BigDecimal discount) {
         super(price, discount);
     }
-    /*
-    public PrintedAd(Sale sale, BigDecimal price, BigDecimal discount, Boolean active) {
-        super(sale, price, discount, active);
-    }  */
 
     public PrintedAd(Sale sale, BigDecimal price, BigDecimal discount, Boolean active, Boolean placedOnProd,
-                     String placementDescription, Boolean placedInDisp, Integer issueNumber) {
-        super(sale, price, discount, active, placedOnProd);
+                     AnnonsePerson createdUser, String placementDescription, Boolean placedInDisp, Integer issueNumber) {
+        super(sale, price, discount, active, placedOnProd, createdUser);
         this.placementDescription = placementDescription;
         this.placedInDisp = placedInDisp;
         this.issue.setIssueNumber(issueNumber);
