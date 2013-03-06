@@ -1,7 +1,6 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
-import no.dusken.common.model.Person;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -31,14 +30,14 @@ public abstract class Ad extends DuskenObject {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate = new GregorianCalendar();
 
-    @ManyToOne(cascade = ALL)
-    private Person createdUser;
+    @ManyToOne
+    private AnnonsePerson createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar lastEditedDate = new GregorianCalendar();
 
-    @ManyToOne(cascade = ALL)
-    private Person lastEditedUser;
+    @ManyToOne
+    private AnnonsePerson lastEditedUser;
 
     public Ad() {}
 
@@ -47,7 +46,7 @@ public abstract class Ad extends DuskenObject {
         this.discount = discount;
     }
 
-    public Ad(Sale sale, BigDecimal price, BigDecimal discount, Boolean active, Boolean placedOnProd) {
+    public Ad(Sale sale, BigDecimal price, BigDecimal discount, Boolean active, Boolean placedOnProd, AnnonsePerson createdUser) {
         this.sale = sale;
         this.price = price;
         this.discount = discount;
@@ -55,6 +54,8 @@ public abstract class Ad extends DuskenObject {
         this.placedOnProd = placedOnProd;
         this.setLastEditedDate();
         this.setCreatedDate();
+        this.createdUser = createdUser;
+        this.lastEditedUser = createdUser;
     }
 
     public abstract void cloneFrom(WebAd other);
@@ -100,10 +101,6 @@ public abstract class Ad extends DuskenObject {
         this.placedOnProd = placedOnProd;
     }
 
-    public Person getCreatedUser() {
-        return createdUser;
-    }
-
     public String getCreatedDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         String strdate = null;
@@ -117,7 +114,11 @@ public abstract class Ad extends DuskenObject {
         this.createdDate = Calendar.getInstance();
     }
 
-    public void setCreatedUser(Person createdUser) {
+    public AnnonsePerson getCreatedUser() {
+        return createdUser;
+    }
+
+    public void setCreatedUser(AnnonsePerson createdUser) {
         this.createdUser = createdUser;
     }
 
@@ -134,11 +135,11 @@ public abstract class Ad extends DuskenObject {
         this.lastEditedDate = Calendar.getInstance();
     }
 
-    public Person getLastEditedUser() {
+    public AnnonsePerson getLastEditedUser() {
         return lastEditedUser;
     }
 
-    public void setLastEditedUser(Person lastEditedUser) {
+    public void setLastEditedUser(AnnonsePerson lastEditedUser) {
         this.lastEditedUser = lastEditedUser;
     }
 

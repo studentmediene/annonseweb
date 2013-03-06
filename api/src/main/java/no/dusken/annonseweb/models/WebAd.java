@@ -28,8 +28,8 @@ public class WebAd extends Ad {
     public WebAd(){}
 
     public WebAd(Sale sale, BigDecimal price, BigDecimal discount, Boolean active, Boolean placedOnProd,
-                 Integer webFormat, String onlineFrom, String onlineTo) {
-        super(sale, price, discount, active, placedOnProd);
+                 AnnonsePerson createdUser, Integer webFormat, String onlineFrom, String onlineTo) {
+        super(sale, price, discount, active, placedOnProd, createdUser);
         this.setWebFormat(webFormat);
         this.setOnlineFrom(onlineFrom);
         this.setOnlineTo(onlineTo);
