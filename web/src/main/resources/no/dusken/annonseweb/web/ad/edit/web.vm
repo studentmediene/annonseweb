@@ -30,6 +30,16 @@
                 </p>
             </li>
             <li>
+                <label class="description" for="webFormat">Annonseformat</label>
+                <div>
+                    #springFormRadioButtons( "ad.webFormat" $ad.webFormatList "<br>" '')
+                        #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                </p>
+            </li>
+            <li>
                 <label class="description" for="price">Pris</label>
                 <div>
                     #springFormInput( "ad.price" 'size="30"')
@@ -111,16 +121,6 @@
         </li>
         *#
             <li>
-                <label class="description" for="webFormat">Webformat</label>
-                <div>
-                    #springFormRadioButtons( "ad.webFormat" {1:"Horisontalt banner (Forside)",2:"Blokkannonse (Forside)",3:"Blokkannonse (Artikkel)"} "<br>" 'size="30"')
-                    #springShowErrors("<br>" "error")
-                </div>
-                <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
-                </p>
-            </li>
-            <li>
                 <label class="description" for="placedOnProd">Alternativer</label>
                 <div>
                     #if($ad.placedOnProd == 'true')
@@ -173,3 +173,19 @@
     </div>
 </form>
 </div>
+
+<script type='text/javascript'>
+    $(window).load(function(){
+        var myArray = new Array();
+        #foreach($price in $ad.priceByWebFormat)
+            myArray.push($price)
+        #end
+        $('input[id="webFormat"]').on('change', function() {
+            for(i = 1; i <= 3; i++) {
+                if($(this).val() == i){
+                    $('input[id="price"]').val(myArray[i-1]);
+                }
+            }
+        });
+    });
+</script>
