@@ -7,56 +7,77 @@
 
     <form id="newContactNote" class="content"  method="post" action="/annonse/contact/note/add">
         <div class="content_description">
-            <p>Add information about the contactnote you are about to create.</p>
+            <p>Legg til informasjon om notatet du lager:</p>
         </div>
         <ul>
             <li>
-                <label class="description">Contact with which customer</label>
+                <label class="description">Notat tilknyttet kunde?</label>
                 <div>
                     <!--<input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>-->
-                    drop-down box
+                    Drop down menu med valg av kunder eller ingen kunde
                 </div>
                 <p class="guidelines">
-                    Which customer you had contact with.
+                    Er notatet tilknyttet en kunde, hvilken kunde?
                 </p>
             </li>
             <li>
-                <label class="description">... through which contact person</label>
+                <label class="description">... Hvis tilknyttet kunde, via hvem?</label>
                 <div>
                     <!--<input name="email" class="element text medium" type="text" maxlength="255" value=""/>-->
-                    drop-down box based on customer
+                    Drop down menu med velg av kontaktpersoner, eller ingen kontaktperson.
+                    Burde ikke være synlig hvis ikke kunde er valgt.
                 </div>
                 <p class="guidelines" id="guide_4">
-                    On behalf of the customer.
+                    Hvem du skal følge opp.
                 </p>
             </li>
             <li>
-                <label class="description">Contact method</label>
+                <label class="description">Notat tilknyttet salg?</label>
                 <div>
-                    <!--<input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>-->
-                    drop-down box
+                    Drop down menu med valg av salg eller ingen salg
                 </div>
                 <p class="guidelines">
-                    Did you have contact by email, phone or in person?
+                    Er notatet tilknyttet et eksisterende salg? Hvis ja, hvilket?
                 </p>
             </li>
             <li>
-                <label class="description">The outcome</label>
+                <label class="description">Varsel når:</label>
+                <div>
+                    <!--<input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>-->
+                    Mulighet for valg av dato og tidspunkt. Standardvalget er nå
+                </div>
+                <p class="guidelines">
+                    Når denne notatet skal minne deg på det.
+                </p>
+            </li>
+            <li>
+                <label class="description">Notat</label>
                 <div>
                     <!--<input name="companyPosition" type="text" size="4000">      class="element text medium" value=""-->
-                    <textarea rows="5" cols="70"></textarea>
+                    <textarea rows="5" cols="40"></textarea>
                 </div>
 
                 <p class="guidelines">
-                    What was discussed, agreed on etc.
+                    Fritekst med selve notatet.
                 </p>
             </li>
             <li>
-                <label class="description">Kunde</label>
-                 <!--
-                    Add popdown to choose from registered customer the contactperson is representing
-                    Can use form from new sale, when the problem is fixed
-                 -->
+                <label class="description">Del dette notatet med en annen bruker</label>
+                <div>
+                    Drop down menu med valg av brukere tilknyttet annonseweb. Enten ingen eller en annen.
+                </div>
+                <p class="guidelines">
+                    Deleger oppgaven til noen andre!
+                </p>
+            </li>
+            <li>
+                <label class="description">Arkiver</label>
+                <div>
+                    Drop down menu med valg av aktiv eller arkivert.
+                </div>
+                <p class="guidelines">
+                    Velg arkiver for å slippe påminnere!
+                </p>
             </li>
 
 
