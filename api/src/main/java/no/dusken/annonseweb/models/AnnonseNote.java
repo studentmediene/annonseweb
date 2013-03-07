@@ -9,7 +9,7 @@ import java.util.Calendar;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-public class ContactNote extends DuskenObject{
+public class AnnonseNote extends DuskenObject{
 
     @ManyToOne(optional = true)
     private Customer customer;
@@ -36,9 +36,9 @@ public class ContactNote extends DuskenObject{
 
     private Boolean active;
 
-    public ContactNote() {}
+    public AnnonseNote() {}
 
-    public ContactNote(String text, ContactPerson contactPerson, Customer customer) {
+    public AnnonseNote(String text, ContactPerson contactPerson, Customer customer) {
         this.text = text;
         this.contactPerson = contactPerson;
         this.customer = customer;

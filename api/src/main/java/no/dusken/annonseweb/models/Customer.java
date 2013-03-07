@@ -33,7 +33,7 @@ public class Customer extends DuskenObject{
     private String homepage;
 
     @OneToMany(fetch = LAZY, mappedBy = "customer")
-    private List<ContactNote> contactNotes= new ArrayList<ContactNote>();
+    private List<AnnonseNote> annonseNotes = new ArrayList<AnnonseNote>();
 
     @OneToMany(fetch = LAZY, cascade = ALL, mappedBy = "customer")
     private List<Sale> sales = new ArrayList<Sale>();
@@ -53,7 +53,7 @@ public class Customer extends DuskenObject{
 
     public Customer(String name, String email, String phoneNumber, String invoiceAddress,
                     String subscriberAddress, String homepage, List<String> industryTags,
-                    List<ContactNote> contactNotes, List<Sale> sales) {
+                    List<AnnonseNote> annonseNotes, List<Sale> sales) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -61,7 +61,7 @@ public class Customer extends DuskenObject{
         this.subscriberAddress = subscriberAddress;
         this.industryTags = industryTags;
         this.homepage = homepage;
-        this.contactNotes = contactNotes;
+        this.annonseNotes = annonseNotes;
         this.sales = sales;
     }
 
@@ -81,7 +81,7 @@ public class Customer extends DuskenObject{
         this.subscriberAddress = other.subscriberAddress;
         this.industryTags = other.industryTags;
         this.homepage = other.homepage;
-        this.contactNotes = other.contactNotes;
+        this.annonseNotes = other.annonseNotes;
         this.sales = other.sales;
     }
 
@@ -137,12 +137,12 @@ public class Customer extends DuskenObject{
         return industryTags;
     }
 
-    public List<ContactNote> getContactNotes() {
-        return contactNotes;
+    public List<AnnonseNote> getAnnonseNotes() {
+        return annonseNotes;
     }
 
-    public void setContactNotes(List<ContactNote> contactNotes) {
-        this.contactNotes = contactNotes;
+    public void setAnnonseNotes(List<AnnonseNote> annonseNotes) {
+        this.annonseNotes = annonseNotes;
     }
 
     public List<Sale> getSales() {

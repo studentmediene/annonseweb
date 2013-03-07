@@ -6,8 +6,8 @@ package no.dusken.annonseweb.service;
  * 16.12.11
  */
 
-import no.dusken.annonseweb.models.ContactNote;
+import no.dusken.annonseweb.models.AnnonseNote;
 import no.dusken.common.service.GenericService;
 
-public interface ContactNoteService extends GenericService<ContactNote> {
+public interface AnnonseNoteService extends GenericService<AnnonseNote> {
 }

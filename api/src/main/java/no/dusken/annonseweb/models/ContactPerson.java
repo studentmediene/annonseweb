@@ -4,7 +4,11 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 public class ContactPerson extends DuskenObject{
@@ -31,6 +35,9 @@ public class ContactPerson extends DuskenObject{
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
+
+    @OneToMany(fetch = LAZY, mappedBy = "contactPerson")
+    private List<AnnonseNote> annonseNotes = new ArrayList<AnnonseNote>();
 
     private AnnonsePerson createdUser;
 
@@ -144,5 +151,13 @@ public class ContactPerson extends DuskenObject{
 
     public void setCreatedUser(AnnonsePerson createdUser) {
         this.createdUser = createdUser;
+    }
+
+    public List<AnnonseNote> getAnnonseNotes() {
+        return annonseNotes;
+    }
+
+    public void setAnnonseNotes(List<AnnonseNote> annonseNotes) {
+        this.annonseNotes = annonseNotes;
     }
 }

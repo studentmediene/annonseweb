@@ -4,6 +4,7 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,6 +39,9 @@ public class Sale extends DuskenObject {
 
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
+
+    @OneToMany(fetch = LAZY, mappedBy = "sale")
+    private List<AnnonseNote> annonseNotes = new ArrayList<AnnonseNote>();
 
     public Sale(){}
 
@@ -127,5 +131,13 @@ public class Sale extends DuskenObject {
 
     public void setAdReceived(Boolean adReceived) {
         this.adReceived = adReceived;
+    }
+
+    public List<AnnonseNote> getAnnonseNotes() {
+        return annonseNotes;
+    }
+
+    public void setAnnonseNotes(List<AnnonseNote> annonseNotes) {
+        this.annonseNotes = annonseNotes;
     }
 }
