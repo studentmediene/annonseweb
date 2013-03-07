@@ -14,10 +14,10 @@
                 <a href="/annonse/customer/emailList">Email for alle</a>
                 <!-- TODO Remove this styling. Styles in html should not occur!-->
                 <hr>
-                <a href="/annonse/contact/person/new">Ny kontaktperson</a>
-                <a href="/annonse/contact/person/active">Kontaktpersonliste - aktive</a>
-                <a href="/annonse/contact/person/all">Kontaktpersonliste - alle</a>
-                <a href="/annonse/contact/person/emailList">Epostliste - aktive kontaktpersoner</a>
+                <a href="/annonse/contactperson/new">Ny kontaktperson</a>
+                <a href="/annonse/contactperson/active">Kontaktpersonliste - aktive</a>
+                <a href="/annonse/contactperson/all">Kontaktpersonliste - alle</a>
+                <a href="/annonse/contactperson/emailList">Epostliste - aktive kontaktpersoner</a>
             </div>
         </li>
         <li><a href="/annonse/sale"
