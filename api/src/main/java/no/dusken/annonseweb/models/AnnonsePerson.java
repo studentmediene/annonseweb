@@ -42,6 +42,12 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
     @Column
     private boolean active;
 
+    @OneToMany(fetch = LAZY, mappedBy = "createdUser")
+    private List<AnnonseNote> myNotes = new ArrayList<AnnonseNote>();
+
+    @OneToMany(fetch = LAZY, mappedBy = "delegatedUser")
+    private List<AnnonseNote> delegatedNotes = new ArrayList<AnnonseNote>();
+
     public AnnonsePerson() {
         active = true;
     }
@@ -132,5 +138,21 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
 
     public void setSales(List<Sale> sales) {
         this.sales = sales;
+    }
+
+    public List<AnnonseNote> getMyNotes() {
+        return myNotes;
+    }
+
+    public void setMyNotes(List<AnnonseNote> myNotes) {
+        this.myNotes = myNotes;
+    }
+
+    public List<AnnonseNote> getDelegatedNotes() {
+        return delegatedNotes;
+    }
+
+    public void setDelegatedNotes(List<AnnonseNote> delegatedNotes) {
+        this.delegatedNotes = delegatedNotes;
     }
 }

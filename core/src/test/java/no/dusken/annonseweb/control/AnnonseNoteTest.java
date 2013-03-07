@@ -18,7 +18,7 @@ import static junit.framework.Assert.*;
 @ContextConfiguration({"/integrationtest-jpa.xml"})
 @TransactionConfiguration
 @Transactional
-public class ContactNoteTest {
+public class AnnonseNoteTest {
     // TODO Make this test
     @Before
     public void setUp() {

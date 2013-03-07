@@ -1,0 +1,8 @@
+<nav id="sidebar">
+    <h2>Kontakt</h2>
+    <ul>
+        <li><a href="/annonse/note/new">Ny KontaktNotis</a></li>
+        <li><a href="/annonse/note/all">KontaktNotisListe</a></li>
+    </ul>
+    #parse('no/dusken/annonseweb/web/status.vm')
+</nav>

@@ -107,7 +107,7 @@
             <li>
                 <label class="description">Kontakt notiser, siste to </label>
                 <div>
-                    #foreach( $note in $customer.contactNotes)
+                    #foreach( $note in $customer.annonseNotes)
                         <lable class="element text medium">$note</lable>
                     #end
                 </div>

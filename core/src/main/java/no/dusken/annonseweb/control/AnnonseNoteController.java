@@ -1,7 +1,7 @@
 package no.dusken.annonseweb.control;
 
-import no.dusken.annonseweb.models.ContactNote;
-import no.dusken.annonseweb.service.ContactNoteService;
+import no.dusken.annonseweb.models.AnnonseNote;
+import no.dusken.annonseweb.service.AnnonseNoteService;
 import no.dusken.annonseweb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,46 +15,51 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * <code>ContactNoteController</code> keeps track of <code>ContactNote</code>s.
+ * <code>ContactNoteController</code> keeps track of <code>AnnonseNote</code>s.
  * @author Inge Halsaunet
  */
 @Controller
-@RequestMapping("/contact/note")
-public class ContactNoteController {
+@RequestMapping("/note")
+public class AnnonseNoteController {
 
     @Autowired
-    private ContactNoteService contactNoteService;
+    private AnnonseNoteService annonseNoteService;
 
     @Autowired
     private CustomerService customerService;
 
+    @RequestMapping()
+    public String viewHome() {
+        return "note/home";
+    }
+
     @RequestMapping("/all")
     public String allContacts(Model model){
-        List<ContactNote> contactNotes = contactNoteService.findAll();
-        model.addAttribute("contactPersonList", contactNotes);
-        return "contact/note/all";
+        List<AnnonseNote> annonseNotes = annonseNoteService.findAll();
+        model.addAttribute("contactPersonList", annonseNotes);
+        return "note/all";
     }
 
     @RequestMapping(value="/{Id}")
     public String viewContactNote(@PathVariable Long Id, Model model){
-        model.addAttribute("contact", contactNoteService.findOne(Id));
-        return "contact/note/note";
+        model.addAttribute("contact", annonseNoteService.findOne(Id));
+        return "note/note";
     }
 
     @RequestMapping("/new")
     public String newContact(){
-        return "contact/note/new";
+        return "note/new";
     }
 
     @RequestMapping("/new/{Id}")
     public String newContactWithCustomerID(@PathVariable Long Id,Model model){
         model.addAttribute("customer", customerService.findOne(Id));
-        return "contact/note/new";
+        return "note/new";
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String addContactNote(@Valid @ModelAttribute("contactNote")ContactNote contactNote){
-        contactNoteService.save(contactNote);
-        return "contact/note";
+    public String addContactNote(@Valid @ModelAttribute("annonseNote")AnnonseNote annonseNote){
+        annonseNoteService.save(annonseNote);
+        return "note";
     }
 }
