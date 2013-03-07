@@ -1,12 +1,12 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contact/sidebar.vm')
+#parse('no/dusken/annonseweb/web/contactperson/sidebar.vm')
 
 <!-- content -->
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/contact/person/$contactPerson.Id">$contactPerson.PersonName</a>
-        <label class="edit"><a href="/annonse/contact/person/edit/$contactPerson.Id">Endre kontaktperson</a></label>
+        <a href="/annonse/contactperson/$contactPerson.Id">$contactPerson.PersonName</a>
+        <label class="edit"><a href="/annonse/contactperson/edit/$contactPerson.Id">Endre kontaktperson</a></label>
     </h2>
     <div class="content">
         <div class="content_description">

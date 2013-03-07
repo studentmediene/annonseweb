@@ -91,7 +91,7 @@
             #foreach($contPers in $customer.ContactPersons)
                 <li>
                     <div>
-                        <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
+                        <a href="#springUrl("/annonse/contactperson/$contPers.Id")">$contPers.PersonName</a>
                     </div>
                     <p class="guidelines">
                         #if($contPers.active)

@@ -2,40 +2,44 @@ package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
+import java.util.Calendar;
 
 import static javax.persistence.CascadeType.ALL;
-
-enum ContactMethod{
-    EMAIL,
-    TLFNUMBER,
-    INPERSON,
-    OTHER
-}
 
 @Entity
 public class ContactNote extends DuskenObject{
 
-    @ManyToOne(cascade = ALL)
+    @ManyToOne(optional = true)
     private Customer customer;
 
-    @ManyToOne(cascade = ALL)
+    @ManyToOne(optional = true)
     private ContactPerson contactPerson;
 
-    //private String method; //email,telephonenumber or in person
-    @Enumerated(EnumType.STRING)
-    private ContactMethod method;
+    @ManyToOne(optional = true)
+    private Sale sale;
+
+    @ManyToOne(optional = false)
+    private AnnonsePerson createdUser;
+
+    @ManyToOne(optional = true)
+    private AnnonsePerson delegatedUser;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar dueDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar createdDate;
 
     private String text;
 
+    private Boolean active;
+
     public ContactNote() {}
 
-    public ContactNote(String text, ContactMethod method, ContactPerson contactPerson, Customer customer) {
+    public ContactNote(String text, ContactPerson contactPerson, Customer customer) {
         this.text = text;
-        this.method = method;
         this.contactPerson = contactPerson;
         this.customer = customer;
     }
@@ -56,20 +60,60 @@ public class ContactNote extends DuskenObject{
         this.contactPerson = contactPerson;
     }
 
-    public ContactMethod getMethod() {
-        return this.method;
-    }
-
-    public void setMethod(ContactMethod method) {
-        this.method = method;
-    }
-
     public String getText() {
         return text;
     }
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
+
+    public AnnonsePerson getCreatedUser() {
+        return createdUser;
+    }
+
+    public void setCreatedUser(AnnonsePerson createdUser) {
+        this.createdUser = createdUser;
+    }
+
+    public AnnonsePerson getDelegatedUser() {
+        return delegatedUser;
+    }
+
+    public void setDelegatedUser(AnnonsePerson delegatedUser) {
+        this.delegatedUser = delegatedUser;
+    }
+
+    public Calendar getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Calendar dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Calendar getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Calendar createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
 

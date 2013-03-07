@@ -84,7 +84,7 @@
                     #foreach($contPers in $customer.ContactPersons)
                         <li>
                             <div>
-                                <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
+                                <a href="#springUrl("/annonse/contactperson/$contPers.Id")">$contPers.PersonName</a>
                             </div>
                             <p class="guidelines">
                                 Telefon: $contPers.TelephoneNumber <br />
@@ -95,7 +95,7 @@
                     #end
                     <li>
                         <div>
-                            <a href="#springUrl("/annonse/contact/person/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
+                            <a href="#springUrl("/annonse/contactperson/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
                         </div>
                         <p class="guidelines">
                             Oppretter en ny kontaktperson tilknyttet denne kunden.
