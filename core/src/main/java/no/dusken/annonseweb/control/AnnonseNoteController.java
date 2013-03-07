@@ -1,15 +1,19 @@
 package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.AnnonseNote;
+import no.dusken.annonseweb.models.ContactPerson;
+import no.dusken.annonseweb.models.Customer;
+import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.AnnonseNoteService;
+import no.dusken.annonseweb.service.ContactPersonService;
 import no.dusken.annonseweb.service.CustomerService;
+import no.dusken.annonseweb.service.SalesService;
+import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -28,38 +32,92 @@ public class AnnonseNoteController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private SalesService salesService;
+
+    @Autowired
+    private ContactPersonService contactPersonService;
+
     @RequestMapping()
     public String viewHome() {
         return "note/home";
     }
 
-    @RequestMapping("/all")
-    public String allContacts(Model model){
-        List<AnnonseNote> annonseNotes = annonseNoteService.findAll();
-        model.addAttribute("contactPersonList", annonseNotes);
-        return "note/all";
+    @RequestMapping("/archive")
+    public String viewArchivedNotes(Model model) {
+        // TODO
+        return null;
     }
 
-    @RequestMapping(value="/{Id}")
-    public String viewContactNote(@PathVariable Long Id, Model model){
-        model.addAttribute("contact", annonseNoteService.findOne(Id));
+    @RequestMapping("/archive/all")
+    public String viewAllArchivedNotes(Model model) {
+        // TODO
+        return null;
+    }
+
+    @RequestMapping("/active")
+    public String viewActiveNotes(Model model) {
+        // TODO
+        return null;
+    }
+
+    @RequestMapping("/{annonseNote}")
+    public String viewAnnonseNote(@PathVariable AnnonseNote annonseNote, Model model) {
+        model.addAttribute("annonseNote", annonseNote);
         return "note/note";
     }
 
     @RequestMapping("/new")
-    public String newContact(){
-        return "note/new";
+    public String viewNew(Model model) {
+        AnnonseNote note = new AnnonseNote();
+        return viewEdit(note, model);
     }
 
-    @RequestMapping("/new/{Id}")
-    public String newContactWithCustomerID(@PathVariable Long Id,Model model){
-        model.addAttribute("customer", customerService.findOne(Id));
-        return "note/new";
+    @RequestMapping("/new/sale/{sale}")
+    public String viewNewWithSale(@PathVariable Sale sale, Model model) {
+        AnnonseNote note = new AnnonseNote();
+        note.setSale(sale);
+        return viewEdit(note, model);
     }
 
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String addContactNote(@Valid @ModelAttribute("annonseNote")AnnonseNote annonseNote){
-        annonseNoteService.save(annonseNote);
-        return "note";
+    @RequestMapping("/new/customer/{customer}")
+    public String viewNewWithCustomer(@PathVariable Customer customer, Model model) {
+        AnnonseNote note = new AnnonseNote();
+        note.setCustomer(customer);
+        return viewEdit(note, model);
+    }
+
+    @RequestMapping("/new/contactperson/{contactPerson}")
+    public String viewNewWithContactPerson(@PathVariable ContactPerson contactPerson, Model model) {
+        AnnonseNote note = new AnnonseNote();
+        note.setCustomer(contactPerson.getCustomer());
+        note.setContactPerson(contactPerson);
+        return viewEdit(note, model);
+    }
+
+    @RequestMapping("/edit/{annonseNote}")
+    public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
+        // TODO
+        return null;
+    }
+
+    @RequestMapping("/save")
+    public String saveNew(@Valid @ModelAttribute AnnonseNote annonseNote) {
+        // TODO
+        return null;
+    }
+
+    @RequestMapping("/save/{pathAnnonseNote}")
+    public String saveEdit(@PathVariable AnnonseNote pathAnnonseNote, @Valid @ModelAttribute AnnonseNote annonseNote) {
+        // TODO
+        return null;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.registerCustomEditor(AnnonseNote.class, new BindByIdEditor(annonseNoteService));
+        binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
+        binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
+        binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
     }
 }
