@@ -55,6 +55,12 @@ public class AnnonseNoteController {
         return null;
     }
 
+    @RequestMapping("/doarchive/{annonseNote}")
+    public String doArchive(@PathVariable AnnonseNote annonseNote) {
+        // TODO
+        return null;
+    }
+
     @RequestMapping("/active")
     public String viewActiveNotes(Model model) {
         // TODO
