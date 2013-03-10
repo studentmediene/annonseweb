@@ -13,6 +13,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
+import sun.util.resources.LocaleNames_th;
 
 import java.util.Collection;
 import java.util.Map;
@@ -72,14 +73,14 @@ public class AnnonseNoteControllerTest {
         note.setText("A short note");
         customer =  new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress");
         customerService.saveAndFlush(customer);
-        Sale sale =  new Sale("description", null, customer, null, false);
+        sale =  new Sale("description", null, customer, null, false);
         salesService.saveAndFlush(sale);
         contactPerson = new ContactPerson("name", "email", "phone", "position");
         contactPerson.setCustomer(customer);
         contactPersonService.saveAndFlush(contactPerson);
     }
 
-    // TODO Make this test
+
     @Test
     public void testViewHome() {
         assertEquals("View home returned wrong view address.", "note/home", annonseNoteController.viewHome());
@@ -106,7 +107,8 @@ public class AnnonseNoteControllerTest {
     public void testDoArchive() {
         note.setActive(Boolean.TRUE);
         annonseNoteController.saveNew(note);
-        assertEquals("Do active returned wrong view name!", "note/list", annonseNoteController.doArchive(note));
+        assertEquals("Do active returned wrong view name!", "redirect:/annonse/note/" + note.getId(),
+                annonseNoteController.doArchive(note));
         assertFalse("Do archive did not make note passive!", note.getActive());
     }
 
@@ -178,8 +180,9 @@ public class AnnonseNoteControllerTest {
     public void testSaveNew() {
         int noteCount = annonseNoteService.findAll().size();
         assertNull("Annonse note had ID before it should", note.getId());
-        assertEquals("Save new did not return correct view adress!", "note/note", annonseNoteController.saveNew(note));
-        assertNull("Note did not get ID!", note.getId());
+        String retAdr = annonseNoteController.saveNew(note);
+        assertEquals("Save new did not return correct view adress!", "redirect:/annonse/note/" + note.getId(), retAdr);
+        assertNotNull("Note did not get ID!", note.getId());
         assertEquals("Note was stored 0 or multiple times!", noteCount + 1, annonseNoteService.findAll().size());
         note = annonseNoteService.findOne(note.getId());
         assertEquals("Note did not get correct AnnonsePerson as creator!", someone, note.getCreatedUser());
@@ -191,12 +194,13 @@ public class AnnonseNoteControllerTest {
         int noteCount;
         AnnonseNote editSrc = new AnnonseNote();
         annonseNoteController.saveNew(note);
+        Long id = note.getId();
         noteCount = annonseNoteService.findAll().size();
         editSrc.setText("edited short note");
-        assertEquals("Save Edit returned wrong view address!", "note/note",
-                annonseNoteController.saveEdit(note, editSrc));
+        String retAdr = annonseNoteController.saveEdit(note, editSrc);
+        assertEquals("Id was changed", id, note.getId());
+        assertEquals("Save Edit returned wrong view address!", "redirect:/annonse/note/" + id, retAdr);
         assertEquals("Note was stored again or deleted!", noteCount, annonseNoteService.findAll().size());
-
         note = annonseNoteService.findOne(note.getId());
         assertEquals("Notes text was not properly edited", "edited short note", note.getText());
     }
