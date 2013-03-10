@@ -3,47 +3,70 @@
 
 <!-- content -->
 <div id="content" class="post">
-    <h2 class="title"><a href="/annonse/note/new">New Contact Note</a></h2>
+    <h2 class="title">
+        #set($conCustomer = false)
+        #set($conCustomer = $annonseNote.getCustomer())
+        #set($conContact = false)
+        #set($conContact = $annonseNote.getContactPerson())
+        #set($conSale = false)
+        #set($conSale = $annonseNote.getSale())
+        #set($noteId = false)
+        #set($noteId = $annonseNote.getId())
+        #set($pathEnd = "")
+        #if (!$noteId)
+            <!-- If new should still be linked with customer etc, this should be changed -->
+            <a href="#springUrl("/annonse/note/new")">Nytt notat:</a>
+        #else
+            <a href="#springUrl("/annonse/note/edit/$noteId")">Endre notis: $noteId - #formatCalendarObject( $annonseNote.getCreatedDate())</a>
+            <label class="edit"><a href="/annonse/note/$noteId">Tilbake</a></label>
+            #set($pathEnd = "/" + $noteId)
+        #end
+    </h2>
 
-    <form id="newContactNote" class="content"  method="post" action="/annonse/note/add">
+    <form id="editAnnonseNote" class="content"  method="post" action="#springUrl("/annonse/note/save$pathEnd")" name="annnonseNote" enctype="multipart/form-data">
         <div class="content_description">
             <p>Legg til informasjon om notatet du lager:</p>
         </div>
         <ul>
-            <li>
-                <label class="description">Notat tilknyttet kunde?</label>
-                <div>
-                    <!--<input id="personName" name="personName" class="element text medium" type="text" maxlength="255" value=""/>-->
-                    Drop down menu med valg av kunder eller ingen kunde
-                </div>
-                <p class="guidelines">
-                    Er notatet tilknyttet en kunde, hvilken kunde?
-                </p>
-            </li>
-            <li>
-                <label class="description">... Hvis tilknyttet kunde, via hvem?</label>
-                <div>
-                    <!--<input name="email" class="element text medium" type="text" maxlength="255" value=""/>-->
-                    Drop down menu med velg av kontaktpersoner, eller ingen kontaktperson.
-                    Burde ikke være synlig hvis ikke kunde er valgt.
-                </div>
-                <p class="guidelines" id="guide_4">
-                    Hvem du skal følge opp.
-                </p>
-            </li>
-            <li>
-                <label class="description">Notat tilknyttet salg?</label>
-                <div>
-                    Drop down menu med valg av salg eller ingen salg
-                </div>
-                <p class="guidelines">
-                    Er notatet tilknyttet et eksisterende salg? Hvis ja, hvilket?
-                </p>
-            </li>
+            #if($conCustomer)
+                <li>
+                    <label class="description">Notat tilknyttet kunde</label>
+                    <div>
+                        <a href="/annonse/customer/$conCustomer.getId()">$conCustomer.getName()</a>
+                    </div>
+                    <p class="guidelines">
+                        Dette notatet er tilknyttet $conCustomer.getName().
+                    </p>
+                </li>
+            #end
+            #if($conContact)
+                <li>
+                    <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
+                    <div>
+                        <a href="/annonse/contactperson/$conContact.getId()">$conContact.getPersonName()</a>
+                    </div>
+                    <p class="guidelines" id="guide_4">
+                        Den du skal følge opp.
+                    </p>
+                </li>
+            #end
+            #if($conSale)
+                <li>
+                    <label class="description">Notat tilknyttet salg</label>
+                    <div>
+                        <a href="/annonse/sale/$conSale.getId()">$conSale.getDescription()</a>
+                    </div>
+                    <p class="guidelines">
+                        Dette notatet er tilknyttet dette salget
+                    </p>
+                </li>
+            #end
             <li>
                 <label class="description">Varsel når:</label>
                 <div>
                     <!--<input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>-->
+                    #dateSelect("annonseNote.DueDate" "")
+                    #springShowErrors("<br>" "error")
                     Mulighet for valg av dato og tidspunkt. Standardvalget er nå
                 </div>
                 <p class="guidelines">
@@ -53,8 +76,8 @@
             <li>
                 <label class="description">Notat</label>
                 <div>
-                    <!--<input name="companyPosition" type="text" size="4000">      class="element text medium" value=""-->
-                    <textarea rows="5" cols="40"></textarea>
+                    #springFormTextarea("annonseNote.Text" 'rows="5" cols="40"')
+                    #springShowErrors("<br>" "error") <br/>
                 </div>
 
                 <p class="guidelines">

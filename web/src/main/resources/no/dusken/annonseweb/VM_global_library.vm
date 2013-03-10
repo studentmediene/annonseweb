@@ -29,6 +29,16 @@
 #end
 *#
 
+#macro ( dateSelect $bindpath $attributes )
+    #springBind($bindpath)
+<input type="datetime-local" name="${status.expression}" id="${status.expression}" ${attributes} value="$!status.value" #springCloseTag()
+#end
+
+#macro( formatCalendarObject $calendar)
+    #set($date = $portal.getClass().forName("org.apache.velocity.tools.generic.DateTool"))
+    $date.format($calendar)
+#end
+
 #macro( checkedCheckbox $path $options)
     #springBind($path)
     #foreach($option in $options.keySet())

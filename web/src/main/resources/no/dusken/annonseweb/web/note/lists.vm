@@ -4,12 +4,12 @@
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonse/contact/note/all">Contact Notes</a></h2>
+        <h2 class="title"><a href="/annonse/contact/note/active">Aktive notater:</a></h2>
         <div class="entry">
             <p>
                 <!-- should be boxed as sale and invoice to display the most relevant information. -->
-                #foreach($contact in $contactList)
-                    <a href="/annonse/contact/note/$contact.Id">$contact.Id - $contact.description</a>
+                #foreach($note in $annonseNoteList)
+                    <a href="/annonse/note/$note.getId()">$note.getId() - #formatCalendarObject($note.getCreatedDate())</a>
                 #end
             </p>
         </div>
