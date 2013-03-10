@@ -50,7 +50,8 @@ public class AnnonseNoteController {
     @RequestMapping("/archive")
     public String viewArchivedNotes(Model model) {
         // TODO make comparator, sort list and remove if there are too many entries.
-        List<AnnonseNote> list = annonseNoteService.findAll();
+        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
+        list.addAll(annonsePersonController.getLoggedInUser().getDelegatedNotes());
         ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
         for (AnnonseNote note: list) {
             if (!note.getActive())
@@ -62,7 +63,8 @@ public class AnnonseNoteController {
 
     @RequestMapping("/archive/all")
     public String viewAllArchivedNotes(Model model) {
-        List<AnnonseNote> list = annonseNoteService.findAll();
+        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
+        list.addAll(annonsePersonController.getLoggedInUser().getDelegatedNotes());
         ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
         for (AnnonseNote note: list) {
             if (!note.getActive())
@@ -81,7 +83,8 @@ public class AnnonseNoteController {
 
     @RequestMapping("/active")
     public String viewActiveNotes(Model model) {
-        List<AnnonseNote> list = annonseNoteService.findAll();
+        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
+        list.addAll(annonsePersonController.getLoggedInUser().getDelegatedNotes());
         ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
         for (AnnonseNote note: list) {
             if (note.getActive())
