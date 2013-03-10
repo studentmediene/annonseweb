@@ -63,10 +63,20 @@
     #springBind($bindpath)
 <select name="${status.expression}" id="${status.expression}" ${attributes}#springCloseTag()
     #foreach ($option in $options)
-        #if ($option.Id == $select.Id)
-            <option value="$option.getId()" selected="true">$option.getId() - $option.getName()</option>
+        #set($ident = false)
+        #set($ident = $option.getId())
+        #if($ident)
+            #set($ident = "" + $option.getId() + " - " + $option.getName())
+            #set($val = "value='$option.getId()'")
         #else
-            <option value="$option.getId()">$option.getId() - $option.getName()</option>
+            #set($ident = "INGEN VALGT")
+            <!-- WARNING this makes id 0 for element unpredictable -->
+            #set($val = "value='0'")
+        #end
+        #if ($option.Id == $select.Id)
+            <option $val selected="true">$ident</option>
+        #else
+            <option $val>$ident</option>
         #end
     #end
 </select>

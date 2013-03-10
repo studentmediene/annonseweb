@@ -13,6 +13,7 @@
         #set($noteId = false)
         #set($noteId = $annonseNote.getId())
         #set($pathEnd = "")
+
         #if (!$noteId)
             <!-- If new should still be linked with customer etc, this should be changed -->
             <a href="#springUrl("/annonse/note/new")">Nytt notat:</a>
@@ -64,7 +65,6 @@
             <li>
                 <label class="description">Varsel når:</label>
                 <div>
-                    <!--<input name="telephoneNumber" class="element text medium" type="text" maxlength="255" value=""/>-->
                     #dateSelect("annonseNote.DueDate" "")
                     #springShowErrors("<br>" "error")
                     Mulighet for valg av dato og tidspunkt. Standardvalget er nå
@@ -87,7 +87,8 @@
             <li>
                 <label class="description">Del dette notatet med en annen bruker</label>
                 <div>
-                    Drop down menu med valg av brukere tilknyttet annonseweb. Enten ingen eller en annen.
+                    #singleSelectIdName("annonseNote.DelegatedUser" $userList $annonseNote.getDelegatedUser() "")
+                    #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
                     Deleger oppgaven til noen andre!
@@ -96,7 +97,15 @@
             <li>
                 <label class="description">Arkiver</label>
                 <div>
-                    Drop down menu med valg av aktiv eller arkivert.
+                    <select id="active" name="active">
+                        #if($annonseNote.getActive())
+                            <option value="true" selected="true">Aktiv</option>
+                            <option value="false">Arkiver</option>
+                        #else
+                            <option value="true">Aktiv</option>
+                            <option value="false" selected="true">Arkiver</option>
+                        #end
+                    </select>
                 </div>
                 <p class="guidelines">
                     Velg arkiver for å slippe påminnere!
