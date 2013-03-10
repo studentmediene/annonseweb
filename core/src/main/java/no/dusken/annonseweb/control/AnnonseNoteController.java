@@ -1,5 +1,7 @@
 package no.dusken.annonseweb.control;
 
+import customeditors.ResolveCalendarEditor;
+
 import no.dusken.annonseweb.models.AnnonseNote;
 import no.dusken.annonseweb.models.ContactPerson;
 import no.dusken.annonseweb.models.Customer;
@@ -13,7 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -22,6 +27,7 @@ import java.util.List;
 
 /**
  * <code>ContactNoteController</code> keeps track of <code>AnnonseNote</code>s.
+ *
  * @author Inge Halsaunet
  */
 @Controller
@@ -161,5 +167,6 @@ public class AnnonseNoteController {
         binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
         binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
+        binder.registerCustomEditor(Calendar.class, new ResolveCalendarEditor());
     }
 }

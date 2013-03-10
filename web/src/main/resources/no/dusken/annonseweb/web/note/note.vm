@@ -1,15 +1,103 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/note/sidebar.vm')
 
+#set($conCustomer = false)
+#set($conCustomer = $annonseNote.getCustomer())
+#set($conContact = false)
+#set($conContact = $annonseNote.getContactPerson())
+#set($conSale = false)
+#set($conSale = $annonseNote.getSale())
+#set($followUp = false)
+#set($followUp = $annonseNote.getDueDate())
+#set($delegated = false)
+#set($delegated = $annonseNote.getDelegatedUser())
+
 <!-- content -->
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="/annonse/note/all">Contact Notes</a></h2>
-        <div class="entry">
-            <p>
-                <a href="/annonse/contactperson/$contact.Id">$contact.Id - $contact.description</a>
-            </p>
+<div id="content" class="post">
+    <h2 class="title">
+        <a href="/annonse/note/$annonseNote.getId()">#formatCalendarObject($annonseNote.getCreatedDate())</a>
+        <label class="edit"><a href="/annonse/note/edit/$annonseNote.getId()">Endre notis</a></label>
+    </h2>
+
+    <div class="content">
+        <div class="content_description">
+            <p>Informasjonen i dette notatet:</p>
         </div>
+        <ul>
+            <li>
+                <label class="description">Opprettet:</label>
+                <div>#formatCalendarObject($annonseNote.getCreatedDate())</div>
+                <p class="guidelines">Når dette notatet først ble opprettet</p>
+            </li>
+            <li>
+                <label class="description">Opprettet av:</label>
+                <div>$annonseNote.getCreatedUser().getName()</div>
+                <p class="guidelines">Hvem som først lagde dette notatet</p>
+            </li>
+            #if($delegated)
+                <li>
+                    <label class="description">Delegert til:</label>
+                    <div>$delegated.getName()</div>
+                    <p class="guidelines">Hvem som skal følge opp dette</p>
+                </li>
+            #end
+            #if($followUp)
+                <li>
+                    <label class="description">Følges opp innnen:</label>
+                    <div>#formatCalendarObject($followUp)</div>
+                    <p class="guidelines">Når dette skal være fulgt opp!</p>
+                </li>
+            #end
+            <li>
+                <label class="description">Innhold</label>
+                <div>$annonseNote.getText()</div>
+                <p class="guidelines">Selve notatet!</p>
+            </li>
+            #if($conCustomer)
+                <li>
+                    <label class="description">Notat tilknyttet kunde</label>
+                    <div>
+                        <a href="/annonse/customer/$conCustomer.getId()">$conCustomer.getName()</a>
+                    </div>
+                    <p class="guidelines">
+                        Dette notatet er tilknyttet $conCustomer.getName().
+                    </p>
+                </li>
+            #end
+            #if($conContact)
+                <li>
+                    <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
+                    <div>
+                        <a href="/annonse/contactperson/$conContact.getId()">$conContact.getPersonName()</a>
+                    </div>
+                    <p class="guidelines" id="guide_4">
+                        Den du skal følge opp.
+                    </p>
+                </li>
+            #end
+            #if($conSale)
+                <li>
+                    <label class="description">Notat tilknyttet salg</label>
+                    <div>
+                        <a href="/annonse/sale/$conSale.getId()">$conSale.getDescription()</a>
+                    </div>
+                    <p class="guidelines">
+                        Dette notatet er tilknyttet dette salget
+                    </p>
+                </li>
+            #end
+            <li>
+                #if($annonseNote.getActive())
+                    <label class="description">Aktiv</label>
+                    <div>Notatet er aktivt</div>
+                    <p class="guidelines">Dette er et aktivt notat</p>
+                #else
+                    <label class="description">Arkivert</label>
+                    <div>Notatet er plassert i arkivet</div>
+                    <p class="guidelines">Arkiverte notat får du ikke varsel om</p>
+                #end
+            </li>
+        </ul>
     </div>
 </div>
 

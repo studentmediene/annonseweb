@@ -47,7 +47,7 @@
                  onmouseover="stayOpen('dropmenu2')"
                  onmouseout="setClosing()">
                 <a href="/annonse/note/new">Nytt notat</a>
-                <a href="/annonse/note/all">Aktive notater</a>
+                <a href="/annonse/note/active">Aktive notater</a>
             </div>
         </li>
         <li><a href="/annonse/ad/"
