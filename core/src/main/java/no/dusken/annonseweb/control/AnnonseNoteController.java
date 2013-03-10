@@ -16,6 +16,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -38,6 +40,8 @@ public class AnnonseNoteController {
     @Autowired
     private ContactPersonService contactPersonService;
 
+    @Autowired AnnonsePersonController annonsePersonController;
+
     @RequestMapping()
     public String viewHome() {
         return "note/home";
@@ -45,26 +49,46 @@ public class AnnonseNoteController {
 
     @RequestMapping("/archive")
     public String viewArchivedNotes(Model model) {
-        // TODO
-        return null;
+        // TODO make comparator, sort list and remove if there are too many entries.
+        List<AnnonseNote> list = annonseNoteService.findAll();
+        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
+        for (AnnonseNote note: list) {
+            if (!note.getActive())
+                aList.add(note);
+        }
+        model.addAttribute("annonseNoteList", aList);
+        return "note/list";
     }
 
     @RequestMapping("/archive/all")
     public String viewAllArchivedNotes(Model model) {
-        // TODO
-        return null;
+        List<AnnonseNote> list = annonseNoteService.findAll();
+        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
+        for (AnnonseNote note: list) {
+            if (!note.getActive())
+                aList.add(note);
+        }
+        model.addAttribute("annonseNoteList", aList);
+        return "note/list";
     }
 
     @RequestMapping("/doarchive/{annonseNote}")
     public String doArchive(@PathVariable AnnonseNote annonseNote) {
-        // TODO
-        return null;
+        annonseNote.setActive(Boolean.FALSE);
+        annonseNoteService.saveAndFlush(annonseNote);
+        return "redirect:/annonse/note/" + annonseNote.getId();
     }
 
     @RequestMapping("/active")
     public String viewActiveNotes(Model model) {
-        // TODO
-        return null;
+        List<AnnonseNote> list = annonseNoteService.findAll();
+        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
+        for (AnnonseNote note: list) {
+            if (note.getActive())
+                aList.add(note);
+        }
+        model.addAttribute("annonseNoteList", aList);
+        return "note/list";
     }
 
     @RequestMapping("/{annonseNote}")
@@ -103,20 +127,29 @@ public class AnnonseNoteController {
 
     @RequestMapping("/edit/{annonseNote}")
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
-        // TODO
-        return null;
+        model.addAttribute("annonseNote", annonseNote);
+        return "note/edit";
     }
 
     @RequestMapping("/save")
     public String saveNew(@Valid @ModelAttribute AnnonseNote annonseNote) {
-        // TODO
-        return null;
+        annonseNote.setCreatedUser(annonsePersonController.getLoggedInUser());
+        annonseNote.setCreatedDate(Calendar.getInstance());
+        annonseNoteService.saveAndFlush(annonseNote);
+        return "redirect:/annonse/note/" + annonseNote.getId();
     }
 
     @RequestMapping("/save/{pathAnnonseNote}")
     public String saveEdit(@PathVariable AnnonseNote pathAnnonseNote, @Valid @ModelAttribute AnnonseNote annonseNote) {
-        // TODO
-        return null;
+        pathAnnonseNote.setActive(annonseNote.getActive());
+        pathAnnonseNote.setContactPerson(annonseNote.getContactPerson());
+        pathAnnonseNote.setCustomer(annonseNote.getCustomer());
+        pathAnnonseNote.setDelegatedUser(annonseNote.getDelegatedUser());
+        pathAnnonseNote.setDueDate(annonseNote.getDueDate());
+        pathAnnonseNote.setSale(annonseNote.getSale());
+        pathAnnonseNote.setText(annonseNote.getText());
+        annonseNoteService.saveAndFlush(pathAnnonseNote);
+        return "redirect:/annonse/note/" + pathAnnonseNote.getId();
     }
 
     @InitBinder
