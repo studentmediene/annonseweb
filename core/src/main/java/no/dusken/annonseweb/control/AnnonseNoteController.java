@@ -1,15 +1,8 @@
 package no.dusken.annonseweb.control;
 
 import customeditors.ResolveCalendarEditor;
-
-import no.dusken.annonseweb.models.AnnonseNote;
-import no.dusken.annonseweb.models.ContactPerson;
-import no.dusken.annonseweb.models.Customer;
-import no.dusken.annonseweb.models.Sale;
-import no.dusken.annonseweb.service.AnnonseNoteService;
-import no.dusken.annonseweb.service.ContactPersonService;
-import no.dusken.annonseweb.service.CustomerService;
-import no.dusken.annonseweb.service.SalesService;
+import no.dusken.annonseweb.models.*;
+import no.dusken.annonseweb.service.*;
 import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,7 +39,11 @@ public class AnnonseNoteController {
     @Autowired
     private ContactPersonService contactPersonService;
 
-    @Autowired AnnonsePersonController annonsePersonController;
+    @Autowired
+    private AnnonsePersonService annonsePersonService;
+
+    @Autowired
+    private AnnonsePersonController annonsePersonController;
 
     @RequestMapping()
     public String viewHome() {
@@ -56,27 +53,37 @@ public class AnnonseNoteController {
     @RequestMapping("/archive")
     public String viewArchivedNotes(Model model) {
         // TODO make comparator, sort list and remove if there are too many entries.
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        list.addAll(annonsePersonController.getLoggedInUser().getDelegatedNotes());
         ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        for (AnnonseNote note: list) {
-            if (!note.getActive())
-                aList.add(note);
-        }
+        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
+        if (list!=null)
+            for (AnnonseNote note:list)
+                if (note != null && !note.getActive())
+                    aList.add(note);
+        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
+        if (list!=null)
+            for (AnnonseNote note:list)
+                if (note != null && !note.getActive())
+                    aList.add(note);
         model.addAttribute("annonseNoteList", aList);
+        model.addAttribute("active", false);
         return "note/list";
     }
 
     @RequestMapping("/archive/all")
     public String viewAllArchivedNotes(Model model) {
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        list.addAll(annonsePersonController.getLoggedInUser().getDelegatedNotes());
         ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        for (AnnonseNote note: list) {
-            if (!note.getActive())
-                aList.add(note);
-        }
+        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
+        if (list!=null)
+            for (AnnonseNote note:list)
+                if (note != null && !note.getActive())
+                    aList.add(note);
+        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
+        if (list!=null)
+            for (AnnonseNote note:list)
+                if (note != null && !note.getActive())
+                    aList.add(note);
         model.addAttribute("annonseNoteList", aList);
+        model.addAttribute("active", false);
         return "note/list";
     }
 
@@ -89,14 +96,19 @@ public class AnnonseNoteController {
 
     @RequestMapping("/active")
     public String viewActiveNotes(Model model) {
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        list.addAll(annonsePersonController.getLoggedInUser().getDelegatedNotes());
         ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        for (AnnonseNote note: list) {
-            if (note.getActive())
-                aList.add(note);
-        }
+        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
+        if (list!=null)
+            for (AnnonseNote note:list)
+                if (note != null && note.getActive())
+                    aList.add(note);
+        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
+        if (list!=null)
+            for (AnnonseNote note:list)
+                if (note != null && note.getActive())
+                    aList.add(note);
         model.addAttribute("annonseNoteList", aList);
+        model.addAttribute("active", true);
         return "note/list";
     }
 
@@ -136,8 +148,11 @@ public class AnnonseNoteController {
 
     @RequestMapping("/edit/{annonseNote}")
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
+        List<AnnonsePerson> uList = annonsePersonService.findAll();
+        uList.add(null);
         model.addAttribute("annonseNote", annonseNote);
-        return "note/edit";
+        model.addAttribute("userList", uList);
+        return"note/edit";
     }
 
     @RequestMapping("/save")
@@ -167,6 +182,7 @@ public class AnnonseNoteController {
         binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
         binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
+        binder.registerCustomEditor(AnnonsePerson.class, new BindByIdEditor(annonsePersonService));
         binder.registerCustomEditor(Calendar.class, new ResolveCalendarEditor());
     }
 }

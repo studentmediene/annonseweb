@@ -13,10 +13,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
-import sun.util.resources.LocaleNames_th;
-
-import java.util.Collection;
-import java.util.Map;
 
 import static junit.framework.Assert.*;
 
@@ -71,6 +67,7 @@ public class AnnonseNoteControllerTest {
         model = new ExtendedModelMap();
         note = new AnnonseNote();
         note.setText("A short note");
+        note.setActive(Boolean.TRUE);
         customer =  new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress");
         customerService.saveAndFlush(customer);
         sale =  new Sale("description", null, customer, null, false);
@@ -197,6 +194,7 @@ public class AnnonseNoteControllerTest {
         Long id = note.getId();
         noteCount = annonseNoteService.findAll().size();
         editSrc.setText("edited short note");
+        editSrc.setActive(Boolean.FALSE);
         String retAdr = annonseNoteController.saveEdit(note, editSrc);
         assertEquals("Id was changed", id, note.getId());
         assertEquals("Save Edit returned wrong view address!", "redirect:/annonse/note/" + id, retAdr);
