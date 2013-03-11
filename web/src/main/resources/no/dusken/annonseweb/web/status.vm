@@ -6,21 +6,7 @@
             $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
         </a>
     </p>
-    <ul class="tasks">
-        Påminnere:
-        <li class="task">
-            <div>
-                oppgave 1
-            </div>
-            <p class="guidelines">hva skjer nå?</p>
-        </li>
-        <li class="task">
-            <div>
-                oppgave 2
-            </div>
-            <p class="guidelines">Dette skjer! iasd asd asd asd asd asd asd adas dasd</p>
-        </li>
-    </ul>
+    <div id="sidebar-tasks"></div>
 </div>
 
 

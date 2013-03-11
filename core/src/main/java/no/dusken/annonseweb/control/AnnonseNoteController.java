@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -150,8 +153,19 @@ public class AnnonseNoteController {
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
         List<AnnonsePerson> uList = annonsePersonService.findAll();
         uList.add(null);
+        List<Sale> sList = salesService.findAll();
+        sList.add(null);
+        List<Customer> cList = customerService.findAll();
+        cList.add(null);
+        if (annonseNote.getCustomer() != null) {
+            List<ContactPerson> pList = annonseNote.getCustomer().getContactPersons();
+            pList.add(null);
+            model.addAttribute("contactPersonList", pList);
+        }
         model.addAttribute("annonseNote", annonseNote);
         model.addAttribute("userList", uList);
+        model.addAttribute("saleList", sList);
+        model.addAttribute("customerList", cList);
         return"note/edit";
     }
 
@@ -174,6 +188,29 @@ public class AnnonseNoteController {
         pathAnnonseNote.setText(annonseNote.getText());
         annonseNoteService.saveAndFlush(pathAnnonseNote);
         return "redirect:/annonse/note/" + pathAnnonseNote.getId();
+    }
+
+    @RequestMapping("/sidebar_notes")
+    public void viewSidebarNotes(Writer writer) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MMM.yyyy - HH:mm:");
+        String response = "<ul class=\"tasks\">Påminnere:";
+        Calendar yesterday = Calendar.getInstance();
+        yesterday.add(Calendar.DAY_OF_MONTH, -1);
+        for (AnnonseNote note: annonseNoteService.findAll()) {
+            if (note.getActive() && note.getDueDate() != null && note.getDueDate().after(yesterday)) {
+                response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
+                response += dateFormat.format(note.getDueDate().getTime());
+                response += "</a><p class=\"guidelines\">" + note.getText() + "<br />";
+                response += "<a href=\"/annonse/note/doarchive/" + note.getId();
+                response += "\">Arkiver</a></p></li>";
+            }
+        }
+        try {
+            writer.write(response);
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     @InitBinder
