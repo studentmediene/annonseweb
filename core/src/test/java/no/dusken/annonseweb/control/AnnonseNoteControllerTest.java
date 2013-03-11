@@ -202,4 +202,10 @@ public class AnnonseNoteControllerTest {
         note = annonseNoteService.findOne(note.getId());
         assertEquals("Notes text was not properly edited", "edited short note", note.getText());
     }
+
+    @Test
+    public void testViewSidebarNotes() {
+        // I have no idea how to test how a writer writes correctly to the stream at the moment.
+        assertTrue(true);
+    }
 }

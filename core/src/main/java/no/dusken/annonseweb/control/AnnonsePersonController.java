@@ -6,7 +6,6 @@ import no.dusken.annonseweb.service.AnnonsePersonService;
 import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +31,7 @@ public class AnnonsePersonController {
     public AnnonsePerson getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth instanceof AnnonsePerson)
-            return (AnnonsePerson) auth;
+            return annonsePersonService.findOne(((AnnonsePerson) auth).getId());
         return null;
     }
 

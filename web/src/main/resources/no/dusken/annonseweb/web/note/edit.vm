@@ -6,10 +6,6 @@
     <h2 class="title">
         #set($conCustomer = false)
         #set($conCustomer = $annonseNote.getCustomer())
-        #set($conContact = false)
-        #set($conContact = $annonseNote.getContactPerson())
-        #set($conSale = false)
-        #set($conSale = $annonseNote.getSale())
         #set($noteId = false)
         #set($noteId = $annonseNote.getId())
         #set($pathEnd = "")
@@ -29,39 +25,39 @@
             <p>Legg til informasjon om notatet du lager:</p>
         </div>
         <ul>
+            <li>
+                <label class="description">Notat tilknyttet kunde</label>
+                <div>
+                    #singleSelectIdName("annonseNote.Customer" $customerList $annonseNote.getCustomer() "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Velg hvilken kunde dette salget er tilknyttet.
+                </p>
+            </li>
+            <!-- TODO: Make customer choice alter choices here. -->
             #if($conCustomer)
-                <li>
-                    <label class="description">Notat tilknyttet kunde</label>
-                    <div>
-                        <a href="/annonse/customer/$conCustomer.getId()">$conCustomer.getName()</a>
-                    </div>
-                    <p class="guidelines">
-                        Dette notatet er tilknyttet $conCustomer.getName().
-                    </p>
-                </li>
-            #end
-            #if($conContact)
                 <li>
                     <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
                     <div>
-                        <a href="/annonse/contactperson/$conContact.getId()">$conContact.getPersonName()</a>
+                        #singleSelectIdName("annonseNote.ContactPerson" $contactPersonList $annonseNote.getContactPerson() "")
+                        #springShowErrors("<br>" "error")
                     </div>
                     <p class="guidelines" id="guide_4">
-                        Den du skal følge opp.
+                        Velg den det har vært eller skal være kontakt med.
                     </p>
                 </li>
             #end
-            #if($conSale)
-                <li>
-                    <label class="description">Notat tilknyttet salg</label>
-                    <div>
-                        <a href="/annonse/sale/$conSale.getId()">$conSale.getDescription()</a>
-                    </div>
-                    <p class="guidelines">
-                        Dette notatet er tilknyttet dette salget
-                    </p>
-                </li>
-            #end
+            <li>
+                <label class="description">Notat tilknyttet salg</label>
+                <div>
+                    #singleSelectSale("annonseNote.Sale" $saleList $annonseNote.getSale() "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Dette notatet er tilknyttet dette salget
+                </p>
+            </li>
             <li>
                 <label class="description">Varsel når:</label>
                 <div>
