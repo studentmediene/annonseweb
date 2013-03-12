@@ -40,7 +40,7 @@
                 <li>
                     <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
                     <div>
-                        #singleSelectIdName("annonseNote.ContactPerson" $contactPersonList $annonseNote.getContactPerson() "")
+                        #singleSelectIdPersonName("annonseNote.ContactPerson" $contactPersonList $annonseNote.getContactPerson() "")
                         #springShowErrors("<br>" "error")
                     </div>
                     <p class="guidelines" id="guide_4">
