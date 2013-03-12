@@ -1,6 +1,12 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/contactperson/sidebar.vm')
 
+<!-- Variables used for contact notes -->
+#set($conId = false)
+#set($conId = $contactPerson.Id)
+#set($conNotes = false)
+#set($conNotes = $contactPerson.getAnnonseNotes())
+
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
@@ -98,6 +104,38 @@
                 </div>
                 <p class="guidelines">Kunden denne kontaktpersonen jobber for.</p>
             </li>
+
+            #if($conId)
+            <li>
+                <label class ="description">Lag notat tilknyttet denne kontaktpersonen</label>
+                <div><a href ="/annonse/note/new/contactperson/$conId">Nytt notat</a></div>
+                <p class ="guidelines">
+                    Oppretter et nytt notat på denne kontaktpersonen. Kan sees på som å lage et innskudd i en logg over
+                    kontakten med vedkommende.
+                </p>
+            </li>
+            #if($conNotes)
+                <li>
+                    <label class ="description">Notater allerede tilknyttet</label>
+                    <div>
+                        #foreach($note in $conNotes)
+                            #if($note.Active)
+                                #set($aktivt = "Aktivt")
+                            #else
+                                #set($aktivt = "Arkivert")
+                            #end
+                            <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                            <br />
+                        #end
+                    </div>
+                    <p class ="guidelines">
+                        De siste notatene(en slags rapport) om siste kontakt man hadde med kontaktpersonen.
+                        Dette vil fungere som en slags logg for å enklere holde oversikt over aktiviteten
+                        med denne kontaktpersonen.
+                    </p>
+                </li>
+            #end
+            #end
         </ul>
         #saveAndDelete($contactPerson)
     </form>

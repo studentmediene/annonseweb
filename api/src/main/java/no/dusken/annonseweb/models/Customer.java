@@ -23,9 +23,7 @@ public class Customer extends DuskenObject{
     @NotNull
     private String phoneNumber;
     @NotNull
-    private String invoiceAddress;
-
-    private String subscriberAddress;
+    private String address;
 
     @ElementCollection
     private List<String> industryTags = new ArrayList<String>();
@@ -44,21 +42,20 @@ public class Customer extends DuskenObject{
     public Customer(){}
 
     public Customer(String name, String email, String phoneNumber,
-                    String invoiceAddress){
+                    String address){
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.invoiceAddress = invoiceAddress;
+        this.address = address;
     }
 
-    public Customer(String name, String email, String phoneNumber, String invoiceAddress,
-                    String subscriberAddress, String homepage, List<String> industryTags,
-                    List<AnnonseNote> annonseNotes, List<Sale> sales) {
+    public Customer(String name, String email, String phoneNumber, String address,
+                    String homepage, List<String> industryTags, List<AnnonseNote> annonseNotes,
+                    List<Sale> sales) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.invoiceAddress = invoiceAddress;
-        this.subscriberAddress = subscriberAddress;
+        this.address = address;
         this.industryTags = industryTags;
         this.homepage = homepage;
         this.annonseNotes = annonseNotes;
@@ -77,8 +74,7 @@ public class Customer extends DuskenObject{
         this.contactPersons = other.contactPersons;
         this.email = other.email;
         this.phoneNumber = other.phoneNumber;
-        this.invoiceAddress = other.invoiceAddress;
-        this.subscriberAddress = other.subscriberAddress;
+        this.address = other.address;
         this.industryTags = other.industryTags;
         this.homepage = other.homepage;
         this.annonseNotes = other.annonseNotes;
@@ -101,12 +97,8 @@ public class Customer extends DuskenObject{
         this.phoneNumber = phoneNumber;
     }
 
-    public void setInvoiceAddress(String invoiceAddress) {
-        this.invoiceAddress = invoiceAddress;
-    }
-
-    public void setSubscriberAddress(String subscriberAddress) {
-        this.subscriberAddress = subscriberAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setIndustryTags(List<String> industryTags) {
@@ -125,12 +117,8 @@ public class Customer extends DuskenObject{
         return phoneNumber;
     }
 
-    public String getInvoiceAddress() {
-        return invoiceAddress;
-    }
-
-    public String getSubscriberAddress() {
-        return subscriberAddress;
+    public String getAddress() {
+        return address;
     }
 
     public List<String> getIndustryTags() {
