@@ -1,6 +1,12 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/customer/sidebar.vm')
 
+<!-- Variables used for notes -->
+#set($custId = false)
+#set($custId = $customer.Id)
+#set($customerNotes = false)
+#set($customerNotes = $customer.getAnnonseNotes())
+
 <!-- content -->
 <div id="content" class="post">
 
@@ -61,30 +67,12 @@
                 </p>
             </li>
             <li>
-                <label class="description">Besøksadresse e.l - trenger korrekt navn </label>
+                <label class="description">Adresse</label>
                 <div>
-                    <label class="element text medium">$customer.subscriberAddress</label>
+                    <label class="element text medium">$customer.Address</label>
                 </div>
                 <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
-                </p>
-            </li>
-            <li>
-                <label class="description">Fakturaadresse </label>
-                <div>
-                    <label class="element text medium">$customer.invoiceAddress</label>
-                </div>
-                <p class="guidelines">
-                    Dette er adressen vi sender fakturaen til.
-                </p>
-            </li>
-            <li>
-                <label class="description">Rabatt (i prosent) </label>
-                <div>
-                    <label class="element text medium">$customer.discount</label>
-                </div>
-                <p class="guidelines">
-                    Dette er rabattprosenten man vil at firmaet skal ha.
+                    Adressen til firmaet, dette er besøksadressen eller adressen vi sender fakturaen til.
                 </p>
             </li>
             <li><label class="description">Kontaktpersoner</label></li>
@@ -105,16 +93,34 @@
                 </li>
             #end
             <li>
-                <label class="description">Kontakt notiser, siste to </label>
-                <div>
-                    #foreach( $note in $customer.annonseNotes)
-                        <lable class="element text medium">$note</lable>
-                    #end
-                </div>
-                <p class="guidelines">
-                    De siste to kommentarene(en slags rapport) om siste kontakt man hadde med kunden. Dette vil fungere som en slags log for å enklere holde oversikt over aktiviteten med denne kunden.
+                <label class ="description">Lag notat tilknyttet denne kunden</label>
+                <div><a href ="/annonse/note/new/customer/$custId">Nytt notat</a></div>
+                <p class ="guidelines">
+                    Oppretter et nytt notat på denne kunden. Kan sees på som å lage et innskudd i en logg over
+                    kontakten med kunden.
                 </p>
             </li>
+            #if($customerNotes)
+                <li>
+                    <label class ="description">Notater allerede tilknyttet</label>
+                    <div>
+                        #foreach($note in $customerNotes)
+                            #if($note.Active)
+                                #set($aktivt = "Aktivt")
+                            #else
+                                #set($aktivt = "Arkivert")
+                            #end
+                            <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                            <br />
+                        #end
+                    </div>
+                    <p class ="guidelines">
+                        De siste notatene(en slags rapport) om siste kontakt man hadde med kunden.
+                        Dette vil fungere som en slags logg for å enklere holde oversikt over aktiviteten
+                        med denne kunden.
+                    </p>
+                </li>
+            #end
             <li>
                 <label class="description">
                     Siste salg -
@@ -131,7 +137,8 @@
                     De siste salgene registrert på denne kunden
                 </p>
             </li>
-            <li>
+            <!-- Maybe for later -->
+            <!--<li>
                 <label class="description">Tags </label>
                 <div>
                     <label class="element text medium">$customer.industryTags</label>
@@ -139,25 +146,7 @@
                 <p class="guidelines">
                     Tags, ord som beskriver denne kunden. Så man kan sortere kunder på tags og finne kunder som er ganske like. OM man tagger kunder riktig vil det på sikt bli lettere å føre statistikk og markedsføre Dusken.
                 </p>
-            </li>
-            <li>
-                <label class="description">Opprettet (av - når)</label>
-                <div>
-                    <label class="element text medium">$customer.createdUser - $customer.createdDate</label>
-                </div>
-                <p class="guidelines">
-                    Hvem som opprettet denne kunden og når kunden ble opprettet i annonseweb
-                </p>
-            </li>
-            <li>
-                <label class="description">Sist endret (av - når) </label>
-                <div>
-                    <label class="element text medium">$customer.lastEditedUser - $customer.lastEditedDate</label>
-                </div>
-                <p class="guidelines">
-                    Når denne kunden/firmaet sist ble oppdatert og hvem som gjorde det.
-                </p>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>

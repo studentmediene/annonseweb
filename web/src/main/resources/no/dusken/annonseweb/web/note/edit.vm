@@ -32,7 +32,7 @@
                     #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
-                    Velg hvilken kunde dette salget er tilknyttet.
+                    Hvis dette notatet skal være tilknyttet en kunde, velg hvilken kunde
                 </p>
             </li>
             <!-- TODO: Make customer choice alter choices here. -->
@@ -44,7 +44,7 @@
                         #springShowErrors("<br>" "error")
                     </div>
                     <p class="guidelines" id="guide_4">
-                        Velg den det har vært eller skal være kontakt med.
+                        hvis det skal være kontakt med noen, velg den det har vært eller skal være kontakt med.
                     </p>
                 </li>
             #end
@@ -55,7 +55,7 @@
                     #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
-                    Dette notatet er tilknyttet dette salget
+                    Hvis dette notatet er tilknyttet et salg, velges salget her
                 </p>
             </li>
             <li>
@@ -63,7 +63,10 @@
                 <div>
                     #dateSelect("annonseNote.DueDate" "")
                     #springShowErrors("<br>" "error")
-                    Mulighet for valg av dato og tidspunkt. Standardvalget er nå
+                    <br />
+                    Enkelte nettlesere kan ha problemer med å vise riktig datofelt. Hvis du ser bare ett tekstfelt,
+                    skriv dato og tidspunkt på formen: åååå-mm-ddTHH:MM hvor å står for årstall, m er måned, d er dag,
+                    T er bokstaven T, H er time og M er minutt. Ellers skrives tegnene som de står.
                 </div>
                 <p class="guidelines">
                     Når denne notatet skal minne deg på det.
