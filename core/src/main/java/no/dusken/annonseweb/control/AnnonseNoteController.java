@@ -194,18 +194,56 @@ public class AnnonseNoteController {
     public void viewSidebarNotes(Writer writer) {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MMM.yyyy - HH:mm:");
-        String response = "<ul class=\"tasks\">Påminnere:";
+        String response = "<ul class=\"tasks\">Mine påminnere:";
         Calendar yesterday = Calendar.getInstance();
         yesterday.add(Calendar.DAY_OF_MONTH, -1);
-        for (AnnonseNote note: annonseNoteService.findAll()) {
+        for (AnnonseNote note: annonsePersonController.getLoggedInUser().getMyNotes()) {
             if (note.getActive() && note.getDueDate() != null && note.getDueDate().after(yesterday)) {
                 response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
-                response += dateFormat.format(note.getDueDate().getTime());
-                response += "</a><p class=\"guidelines\">" + note.getText() + "<br />";
-                response += "<a href=\"/annonse/note/doarchive/" + note.getId();
+                response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
+                if (note.getCustomer() != null) {
+                    response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
+                    response += "Kunde: " + note.getCustomer().getName() + "</a>";
+                }
+                if (note.getContactPerson() != null) {
+                    response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
+                    response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
+                }
+                if (note.getSale() != null) {
+                    response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
+                    response += "Salg: " + note.getSale().getDescription() + "</a>";
+                }
+                response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
+                response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
+                response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
                 response += "\">Arkiver</a></p></li>";
             }
         }
+        response += "Tildelte påminnere:";
+        for (AnnonseNote note: annonsePersonController.getLoggedInUser().getDelegatedNotes()) {
+            if (note.getActive() && note.getDueDate() != null && note.getDueDate().after(yesterday)) {
+                response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
+                response += dateFormat.format(note.getDueDate().getTime());
+                response += "</a><br />Fra: "+note.getCreatedUser().getName();
+                if (note.getCustomer() != null) {
+                    response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
+                    response += "Kunde: " + note.getCustomer().getName() + "</a>";
+                }
+                if (note.getContactPerson() != null) {
+                    response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
+                    response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
+                }
+                if (note.getSale() != null) {
+                    response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
+                    response += "Salg: " + note.getSale().getDescription() + "</a>";
+                }
+                response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
+                response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
+                response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
+                response += "\">Arkiver</a></p></li>";
+            }
+        }
+        response += "</ul>";
         try {
             writer.write(response);
         } catch (IOException e) {
