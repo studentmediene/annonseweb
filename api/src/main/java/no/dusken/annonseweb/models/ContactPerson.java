@@ -11,7 +11,7 @@ import java.util.List;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-public class ContactPerson extends DuskenObject{
+public class ContactPerson extends DuskenObject implements ActiveAnnonseElement{
 
     @NotNull
     private String personName;
@@ -41,7 +41,7 @@ public class ContactPerson extends DuskenObject{
 
     private AnnonsePerson createdUser;
 
-    private Boolean active;
+    private Boolean active = Boolean.TRUE;
 
     public ContactPerson() {}
 

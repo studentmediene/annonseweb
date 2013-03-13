@@ -13,7 +13,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Table(name = "customer")
 @SequenceGenerator(name = "customer_seq", sequenceName = "customer_id_seq")
-public class Customer extends DuskenObject{
+public class Customer extends DuskenObject implements ActiveAnnonseElement{
 
     @NotNull
     private String name;
@@ -24,6 +24,8 @@ public class Customer extends DuskenObject{
     private String phoneNumber;
     @NotNull
     private String address;
+    @NotNull
+    private Boolean active = Boolean.TRUE;
 
     @ElementCollection
     private List<String> industryTags = new ArrayList<String>();
@@ -79,6 +81,7 @@ public class Customer extends DuskenObject{
         this.homepage = other.homepage;
         this.annonseNotes = other.annonseNotes;
         this.sales = other.sales;
+        this.active = other.active;
     }
 
     public void addSale(Sale sale){
@@ -155,5 +158,15 @@ public class Customer extends DuskenObject{
 
     public void setContactPersons(List<ContactPerson> contactPersons) {
         this.contactPersons = contactPersons;
+    }
+
+    @Override
+    public Boolean getActive() {
+        return active;
+    }
+
+    @Override
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

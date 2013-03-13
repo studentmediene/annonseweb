@@ -5,13 +5,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 /**
@@ -22,7 +20,7 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"ID", "principal"}))
-public class AnnonsePerson extends DuskenObject implements Authentication {
+public class AnnonsePerson extends DuskenObject implements Authentication, ActiveAnnonseElement{
     @Column(length = 100)
     @Size(max = 100, min = 2)
     private String credentials;
@@ -40,7 +38,7 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
     private String authority;
 
     @Column
-    private boolean active;
+    private Boolean active;
 
     @OneToMany(fetch = LAZY, mappedBy = "createdUser")
     private List<AnnonseNote> myNotes = new ArrayList<AnnonseNote>();
@@ -124,11 +122,11 @@ public class AnnonsePerson extends DuskenObject implements Authentication {
         return authority;
     }
 
-    public boolean getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active){
+    public void setActive(Boolean active){
         this.active = active;
     }
 
