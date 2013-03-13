@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 @Entity
-public class AnnonseNote extends DuskenObject{
+public class AnnonseNote extends DuskenObject implements ActiveAnnonseElement{
 
     @ManyToOne(optional = true)
     private Customer customer;
@@ -37,7 +37,7 @@ public class AnnonseNote extends DuskenObject{
     private String text;
 
     @NotNull
-    private Boolean active;
+    private Boolean active = Boolean.TRUE;
 
     public AnnonseNote() {}
 

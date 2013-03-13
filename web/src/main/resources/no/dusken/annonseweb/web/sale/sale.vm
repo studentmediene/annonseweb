@@ -90,6 +90,29 @@
                 <p class ="guidelines">Hvis det er noen notater opprettet på dette salget, vises de her.</p>
             </li>
         #end
+        #if($sale.Active)
+            <li>
+                <label class="description">Aktiv</label>
+                <div>
+                    <label class="element text medium">Dette salget er aktivt hos oss</label>
+                </div>
+                <p class="guidelines">
+                    Dette forteller oss at salget fortsatt gjelder.
+                </p>
+            </li>
+        #else
+            <li>
+                <label class="description">Inaktiv</label>
+                <div>
+                    <label class="element text medium">
+                        Dette salget er inaktivt.
+                    </label>
+                </div>
+                <p class="guidelines">
+                    Dette forteller oss at salget ikke lenger gjelder.
+                </p>
+            </li>
+        #end
     </ul>
     </div>
 </div>

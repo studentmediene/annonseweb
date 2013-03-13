@@ -64,7 +64,7 @@
                     </p>
                 </li>
                 <li>
-                    <label class="description" for="subscriberAddress">Adresse</label>
+                    <label class="description" for="Address">Adresse</label>
                     <div>
                         #springFormInput( "customer.Address" 'size="30"')
                         #springShowErrors("<br>" "error") <br/>
@@ -118,6 +118,14 @@
                         </li>
                     #end
                 #end
+                <li>
+                    <label class ="description">Aktiv</label>
+                    <div>
+                        #singleSelectActive("customer.Active" $customer.Active "")
+                        #springShowErrors("<br>" "error")
+                    </div>
+                    <p class ="guidelines">Velg om denne kunden er aktiv</p>
+                </li>
                 <li>
                     #saveAndDelete($customer)
                 </li>

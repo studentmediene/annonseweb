@@ -15,7 +15,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Table(name = "sale")
 @SequenceGenerator(name = "sale_seq", sequenceName = "sale_id_seq")
-public class Sale extends DuskenObject {
+public class Sale extends DuskenObject implements ActiveAnnonseElement{
 
     private String description;
 
@@ -42,6 +42,9 @@ public class Sale extends DuskenObject {
 
     @OneToMany(fetch = LAZY, mappedBy = "sale")
     private List<AnnonseNote> annonseNotes = new ArrayList<AnnonseNote>();
+
+    @NotNull
+    private Boolean active = Boolean.TRUE;
 
     public Sale(){}
 
@@ -75,6 +78,7 @@ public class Sale extends DuskenObject {
         setLastEditedUser(other.lastEditedUser);
         setAdReceived(other.adReceived);
         invoice = other.invoice;
+        this.active = other.active;
     }
 
     public String getDescription() {
@@ -139,5 +143,15 @@ public class Sale extends DuskenObject {
 
     public void setAnnonseNotes(List<AnnonseNote> annonseNotes) {
         this.annonseNotes = annonseNotes;
+    }
+
+    @Override
+    public Boolean getActive() {
+        return active;
+    }
+
+    @Override
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

@@ -47,10 +47,8 @@
             <li>
                 <label class="description">Aktiv</label>
                 <div>
-                    <select id="active" name="active">
-                        <option value="true" selected="true">Aktiv</option>
-                        <option value="false">Inaktiv</option>
-                    </select>
+                    #singleSelectActive("contactPerson.Active" $contactPerson.Active "")
+                    #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
                     Om denne kontaktpersonen er aktiv eller inaktiv. Er vedkommende inaktv skal den ikke kontaktes!

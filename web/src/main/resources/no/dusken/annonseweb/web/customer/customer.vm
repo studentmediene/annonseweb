@@ -137,6 +137,30 @@
                     De siste salgene registrert på denne kunden
                 </p>
             </li>
+            #if($customer.Active)
+                <li>
+                    <label class="description">Aktiv</label>
+                    <div>
+                        <label class="element text medium">Denne kunden er aktiv hos oss</label>
+                    </div>
+                    <p class="guidelines">
+                        Dette forteller oss at kunden er aktiv, det vil si vi har jevnlig kontakt med den
+                    </p>
+                </li>
+            #else
+                <li>
+                    <label class="description">Inaktiv</label>
+                    <div>
+                        <label class="element text medium">
+                            Denne kunden har vi ikke noe særlig med å gjøre lenger.
+                        </label>
+                    </div>
+                    <p class="guidelines">
+                        Dette forteller oss at kunden er inaktiv hos oss, det vil si vi har
+                        ikke noe særlig kontakt emd den lenger.
+                    </p>
+                </li>
+            #end
             <!-- Maybe for later -->
             <!--<li>
                 <label class="description">Tags </label>

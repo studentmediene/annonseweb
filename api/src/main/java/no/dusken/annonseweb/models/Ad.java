@@ -14,7 +14,7 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-public abstract class Ad extends DuskenObject {
+public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
 
     private BigDecimal price;
     private BigDecimal discount;

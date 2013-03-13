@@ -48,6 +48,14 @@
                 </div>
                 <p class="guidelines">Om vi har motatt annonse(r) for dette salget.</p>
             </li>
+            <li>
+                <label class ="description">Aktiv</label>
+                <div>
+                    #singleSelectActive("sale.Active" $sale.Active "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class ="guidelines">Velg om denne kunden er aktiv</p>
+            </li>
             #if($saleId)
                 <li>
                     <label class ="description">Lag notat tilknyttet dette salget</label>
