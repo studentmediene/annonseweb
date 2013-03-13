@@ -224,7 +224,7 @@ public class AnnonseNoteController {
                 }
             }
         }
-        response += "Tildelte påminnere:";
+        response += "<br />Tildelte påminnere:";
         for (AnnonseNote note: annonsePersonController.getLoggedInUser().getDelegatedNotes()) {
             if (note.getActive() && note.getDueDate() != null) {
                 if (note.getDueDate().after(yesterday)) {
@@ -252,7 +252,7 @@ public class AnnonseNoteController {
                 }
             }
         }
-        response += "Utgåtte påminnere:";
+        response += "<br />Utgåtte påminnere:";
         for (AnnonseNote note: expiredNotes) {
             response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
             response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
