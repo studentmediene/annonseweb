@@ -1,20 +1,20 @@
 package no.dusken.annonseweb.models;
 
 import no.dusken.common.model.DuskenObject;
-import no.dusken.common.model.Person;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.ArrayList;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 public class Invoice extends DuskenObject{
 
-    @OneToMany(fetch = LAZY, cascade = ALL)
+    @OneToMany
     private List<Sale> sales = new ArrayList<Sale>();
 
     private String description;
@@ -26,22 +26,54 @@ public class Invoice extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
 
-    @ManyToOne(cascade = ALL)
-    private Person createdUser;
+    @ManyToOne//(cascade = ALL)
+    private AnnonsePerson createdUser;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lastEditedDate;
+
+    @ManyToOne
+    private AnnonsePerson lastEditedUser;
+
 
     public Invoice(){}
+
+    public Invoice(List<Sale> sales, String description, Long invoiceNumber, Calendar invoiceDate) {
+        this.setSales(sales);
+        this.setDescription(description);
+        this.setInvoiceNumber(invoiceNumber);
+        this.invoiceDate = invoiceDate;
+    }
+
+    public void cloneFrom(Invoice other) {
+        if (other == null){
+            return;
+        }
+        this.setSales(other.getSales());
+        this.setDescription(other.getDescription());
+        this.setInvoiceNumber(other.getInvoiceNumber());
+        this.setInvoiceDate(other.getInvoiceDate());
+        this.setCreatedUser(other.getCreatedUser());
+        this.setLastEditedUser(other.getLastEditedUser());
+        this.setCreatedDate(other.createdDate);
+        this.setLastEditedDate(other.lastEditedDate);
+    }
 
     public List<Sale> getSales() {
         return sales;
     }
 
-    @Override
+    /*@Override
     public String getTitle() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+    } */
 
     public void setSales(List<Sale> sales) {
         this.sales = sales;
+        for(Sale sale : this.sales){
+            sale.setInvoiceGenerated(true);
+            sale.setInvoice(this);
+        }
     }
 
     public String getDescription() {
@@ -60,27 +92,62 @@ public class Invoice extends DuskenObject{
         this.invoiceNumber = invoiceNumber;
     }
 
-    public Calendar getInvoiceDate() {
-        return invoiceDate;
+    public void setInvoiceDate(String invoiceDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            this.invoiceDate.setTime(sdf.parse(invoiceDate));
+        } catch (Exception e) {}
     }
 
-    public void setInvoiceDate(Calendar invoiceDate) {
-        this.invoiceDate = invoiceDate;
+    public String getInvoiceDate() {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        if (this.invoiceDate == null) {
+            this.invoiceDate = Calendar.getInstance();
+            this.invoiceDate.add(Calendar.DATE,14);
+        }
+        return sdf.format(this.invoiceDate.getTime());
     }
 
-    public Calendar getCreatedDate() {
-        return createdDate;
+    public String getCreatedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+        String strdate = null;
+        if (this.createdDate != null) {
+            strdate = sdf.format(this.createdDate.getTime());
+        }
+        return strdate;
     }
 
-    public void setCreatedDate(Calendar createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedDate(Calendar time) {
+        this.createdDate = time;
     }
 
-    public Person getCreatedUser() {
+    public AnnonsePerson getCreatedUser() {
         return createdUser;
     }
 
-    public void setCreatedUser(Person createdUser) {
+    public void setCreatedUser(AnnonsePerson createdUser) {
         this.createdUser = createdUser;
+    }
+
+    public String getLastEditedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+        String strdate = null;
+        if (this.lastEditedDate != null) {
+            strdate = sdf.format(this.lastEditedDate.getTime());
+        }
+        return strdate;
+    }
+
+    public void setLastEditedDate(Calendar lastEditedDate) {
+        this.lastEditedDate = lastEditedDate;
+    }
+
+    public AnnonsePerson getLastEditedUser() {
+        return lastEditedUser;
+    }
+
+    public void setLastEditedUser(AnnonsePerson lastEditedUser) {
+        this.lastEditedUser = lastEditedUser;
     }
 }

@@ -36,7 +36,9 @@ public class Sale extends DuskenObject {
 
     private Boolean adReceived;
 
-    @ManyToOne(optional = true, cascade = ALL)
+    private Boolean invoiceGenerated;
+
+    @ManyToOne(optional = true)
     public Invoice invoice;
 
     public Sale(){}
@@ -45,7 +47,7 @@ public class Sale extends DuskenObject {
         setCustomer(customer);
     }
 
-    public Sale(String description, List<Ad> ads, Customer customer, AnnonsePerson createdUser, Boolean adReceived) {
+    public Sale(String description, List<Ad> ads, Customer customer, AnnonsePerson createdUser, Boolean adReceived, Boolean invoiceGenerated ) {
         this.description = description;
         this.ads = ads;
         this.customer = customer;
@@ -53,6 +55,7 @@ public class Sale extends DuskenObject {
         this.lastEditedDate = Calendar.getInstance();
         this.lastEditedUser = createdUser;
         this.adReceived = adReceived;
+        this.invoiceGenerated = invoiceGenerated;
     }
 
     /**
@@ -127,5 +130,21 @@ public class Sale extends DuskenObject {
 
     public void setAdReceived(Boolean adReceived) {
         this.adReceived = adReceived;
+    }
+
+    public Boolean getInvoiceGenerated() {
+        return invoiceGenerated;
+    }
+
+    public void setInvoiceGenerated(Boolean invoiceGenerated) {
+        this.invoiceGenerated = invoiceGenerated;
+    }
+
+    public Invoice getInvoice() {
+        return this.invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 }

@@ -17,7 +17,7 @@ import static javax.persistence.FetchType.LAZY;
 public abstract class Ad extends DuskenObject {
 
     private BigDecimal price;
-    private BigDecimal discount;
+    private BigDecimal discount = new BigDecimal(0);
     private Boolean active;
     private Boolean placedOnProd;
 
@@ -70,7 +70,12 @@ public abstract class Ad extends DuskenObject {
     }
 
     public BigDecimal getDiscount() {
-        return discount;
+        if(this.discount == null){
+            return new BigDecimal(0);
+        }
+        else{
+            return this.discount;
+        }
     }
 
     public void setDiscount(BigDecimal discount) {
@@ -144,13 +149,7 @@ public abstract class Ad extends DuskenObject {
     }
 
     public BigDecimal getFinalPrice() {
-        if(discount == BigDecimal.ZERO){
-            return this.price;
-        }
-        else {
-            return this.price.multiply (new BigDecimal(1).subtract((discount.divide(new BigDecimal(100)))));
-        }
-
+        return this.price.multiply (new BigDecimal(1).subtract((discount.divide(new BigDecimal(100)))));
     }
 
 

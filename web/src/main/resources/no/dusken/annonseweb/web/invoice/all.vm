@@ -5,13 +5,13 @@
 <div id="content" >
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/customer/all">Invoice List</a>
+            <a href="/annonse/invoice/all">Invoice List</a>
         </h2>
         <div class="entry">
-            #foreach($invoice in $invoiceList)
+            #foreach($invoice in $InvoiceList)
                 <p>
                     <!-- TODO: make the invoice list more informative. Like a box with the most important info for this invoice, such as payment deadline, sum and customer. -->
-                    <a href="/annonse/customer/customer/$invoice.Id">
+                    <a href="/annonse/invoice/$invoice.Id">
                         $invoice.Id - $invoice.description
                     </a>
                 </p>
