@@ -88,7 +88,7 @@ public class SalesControllerTest {
         Assert.assertTrue("After customer save, customer count was 0", customerCount != 0);
         c = customerService.findOne(c.getId());
 
-        Sale sale =  new Sale("description", null, c, null, false);
+        Sale sale =  new Sale("description", null, c, null, false, false);
         Assert.assertNull("sale had id before it was stored", sale.getId());
         salesController.storeNewSale(sale);
 
@@ -108,10 +108,10 @@ public class SalesControllerTest {
         customerService.saveAndFlush(c);
         customerCount = customerService.findAll().size();
         c = customerService.findOne(c.getId());
-        Sale sale = new Sale("description", null, c, null, false);
+        Sale sale = new Sale("description", null, c, null, false, false);
         salesController.storeNewSale(sale);
         Long id = sale.getId();
-        Sale editedSale = new Sale("description", null, c, null, false);
+        Sale editedSale = new Sale("description", null, c, null, false, false);
         editedSale.setDescription("editedDescription");
         salesController.editSale(editedSale, sale);
         sale = salesService.findOne(id);
