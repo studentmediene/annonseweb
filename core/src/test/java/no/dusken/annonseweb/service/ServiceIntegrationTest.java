@@ -46,7 +46,7 @@ public class ServiceIntegrationTest {
         AnnonsePerson createdUser = getPerson();
 
         Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)),
-                customer, createdUser, true);
+                customer, createdUser, true, false);
 
         Sale sale = salesService.saveAndFlush(s);
         assertNotNull(sale);

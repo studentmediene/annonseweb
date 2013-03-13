@@ -5,64 +5,65 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/invoice/new">New Invoice</a>
+        #set($InvoiceId = false)
+        #set($InvoiceId = $invoice.getId())
+        #set($pathEnd = "")
+        #if (!$InvoiceId)
+            <a href="/annonse/invoice/new/">Ny faktura:</a>
+        #else
+            <a href="/annonse/invoice/edit/$invoice.getId()">Endre faktura: $invoice.getId()</a>
+            <label class="edit"><a href="/annonse/invoice/$invoice.getId()">Tilbake</a>
+            #set($pathEnd = "/" + $InvoiceId)
+        #end
     </h2>
+    <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonse/invoice/save$pathEnd")">
+
+<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/invoice/save")">
     <div class="content">
-        <div class="content_description">
-            <p>Invoice information about this invoice.</p>
-        </div>
         <ul>
             <li>
-                <label class="description">
-                    Invoice Id - $invoice.Id
-                </label>
+                <label class="description" for="sales">Salg</label>
+                <div>
+                    #multipleSaleCheckboxes("invoice.sales" $salesList "<br>" '')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
                 <p class="guidelines">
-                    Automatically generated invoice id.
+                    A list of sales, Check the ones you want to add to the new invoice.
                 </p>
             </li>
             <li>
-                <label class="description" for="invoiceDescription">Invoice Description</label>
+                <label class="description" for="description">Fakturabeskrivelse</label>
                 <div>
-                    <input id="invoiceDescription" name="name" class="element text medium" type="text" maxlength="1000" value="$invoice.description"/>
+                    #springFormInput( "invoice.description" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
                     This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
                 </p>
             </li>
             <li>
-                <label class="description" for="invoiceNumber">Invoice Number</label>
+                <label class="description" for="invoiceNumber">Fakturanummer</label>
                 <div>
-                    <input id="invoiceNumber" name="name" class="element text medium" type="text" maxlength="25" value="$invoice.invoiceNumber"/>
+                    #springFormInput( "invoice.invoiceNumber" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
                     The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
                 </p>
-            </li>
             <li>
-                <label class="description" for="invoiceDate">
-                    <input id="invoiceDate" type="text" maxlength="50" value="$invoice.invoiceDate">
-                </label>
-                <p class="guidelines">
-                    The date the invoice should be paid.
-                </p>
-            </li>
-            <li>
-                <label class="description">Sales</label>
+                <label class="description" for="description">Forfallsdato</label>
                 <div>
-                    #foreach($sale in $invoice.sales)
-                        <!-- Should be changed to a div with the most important information for this sale. Same as for the sale list -->
-                        <label class="element text medium">
-                            $sale.Id - $sale.description
-                        </label>
-                    #end
+                    #springFormInput( "invoice.invoiceDate" 'size="30"')
+                    #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
-                    A list of invoices, Check the ones you want to add to the new invoice.
+                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
                 </p>
             </li>
-            <li class="buttons">
-                <input id="saveForm" class="button_text" type="submit" name="submit" value="New Invoice" />
+            <li>
+                #saveAndDelete($invoice)
             </li>
         </ul>
     </div>
+</form>
 </div>

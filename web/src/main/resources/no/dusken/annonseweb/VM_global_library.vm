@@ -14,18 +14,29 @@
       limitations under the License.
 *#
 
-#*   For later!
-#macro( singleSelectInRange $path $options $attributes )
+#macro( multipleSaleCheckboxes $path $options $separator $attributes )
     #springBind($path)
-<select id="${status.expression}" name="${status.expression}" ${attributes}>
-    #foreach($option in $options)
-        <option value="$option"
-            #if("$!status.value" == "$option")
-                selected="selected"
-            #end>
-            $option</option>
+    #foreach($option in $invoice.getSales())
+    <input type="checkbox" id="${status.expression}" name="${status.expression}" value="$option.Id"
+           checked="checked"
+        ${attributes} #springCloseTag()
+        $option.Id - $option.description ${separator}
     #end
-</select>
+    #foreach($option in $options)
+        #if($option.getInvoiceGenerated() == false)
+                <input type="checkbox" id="${status.expression}" name="${status.expression}" value="$option.Id"
+            #foreach($sale in $invoice.getSales())
+                #if($sale.getId() == $option.Id)
+                       checked="checked"
+                #end
+            #end
+            #if($selectedSale.Id == $option.Id)
+                       checked="checked"
+            #end
+            ${attributes} #springCloseTag()
+            $option.Id - $option.description ${separator}
+        #end
+    #end
 #end
 *#
 
@@ -53,12 +64,6 @@
     $date.format($calendar)
 #end
 
-#macro( checkedCheckbox $path $options)
-    #springBind($path)
-    #foreach($option in $options.keySet())
-            <input type="checkbox" id="${status.expression}" name="${status.expression}" value="${option}" checked="checked" style="display:none;" #springCloseTag()
-    #end
-#end
 
 #macro ( singleSelectIdPersonName $bindpath $options $select $attributes )
     #springBind($bindpath)

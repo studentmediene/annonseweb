@@ -1,11 +1,8 @@
 <nav id="sidebar">
     <h2>InvoiceBar</h2>
     <ul>
-        <li>
-            <input name="invoiceLookup" type="text" value="insert invoice ID to lookup an invoice"/> Field to open the invoice with the specific number(ID).
-        </li>
-        <li><a href="/annonse/invoice/new">New Invoice</a></li>
-        <li><a href="/annonse/invoice/all">Invoice List</a></li>
+        <li><a href="/annonse/invoice/new">Ny Faktura</a></li>
+        <li><a href="/annonse/invoice/all">Fakturaliste</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

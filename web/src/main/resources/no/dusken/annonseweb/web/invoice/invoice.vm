@@ -5,16 +5,39 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/invoice/invoice/$invoice.Id">$invoice.description - $invoice.Id</a>
-        <label class="edit"><a href="/annonse/invoices/edit/$invoice.Id">Edit Invoice</a></label>
+        <a href="/annonse/invoice/$invoice.Id">$invoice.description - $invoice.Id</a>
+        <label class="edit"><a href="/annonse/invoice/edit/$invoice.Id">Edit Invoice</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
-            <p>Invoice information about this invoice.</p>
+            <p>Fakturainformasjon om denne fakturaen</p>
         </div>
         <ul>
             <li>
-                <label class="description">Invoice Number</label>
+                <label class="description">Fakturaidentifikator</label>
+                <div>
+                    <label class="element text medium">$invoice.Id</label>
+                </div>
+                <p class="guidelines">
+                    Automatisk generert fakturaidentifikator.
+                </p>
+            </li>
+            <li>
+                <label class="description">Sales</label>
+                <div>
+                    <!-- the list of sale that this invoice contains. -->
+                    #foreach($sale in $invoice.sales)
+                        <label class="element text medium"><a href="/annonse/sale/$sale.Id">
+                            $sale.Id - $sale.description - generert faktura?: $sale.invoiceGenerated
+                        </a></label><br>
+                    #end
+                </div>
+                <p class="guidelines">
+                    Liste over alle salgene som er inkludert i denne fakturaen
+                </p>
+            </li>
+            <li>
+                <label class="description">Fakturanummer</label>
                 <div>
                     <label class="element text medium">$invoice.invoiceNumber</label>
                 </div>
@@ -23,75 +46,57 @@
                 </p>
             </li>
             <li>
-                <label class="description">Invoice Id</label>
-                <div>
-                    <label class="element text medium">$invoice.Id</label>
-                </div>
-                <p class="guidelines">
-                    Automatically generated invoice id.
-                </p>
-            </li>
-            <li>
-                <label class="description">Invoice Description</label>
+                <label class="description">Fakturabeskrivelse</label>
                 <div>
                     <label class="element text medium">$invoice.description</label>
                 </div>
                 <p class="guidelines">
-                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
+                    Beskrivelse av fakturaen f.eks: "Uka 11: Samlefaktura"
                 </p>
             </li>
             <li>
-                <label class="description">
-                    Due date: $invoice.invoiceDate
-                </label>
-                <p class="guidelines">
-                    The date the invoice should be paid.
-                </p>
-            </li>
-            <li>
-                <label class="description">
-                    Created Date: $invoice.createdDate
-                </label>
-                <p class="guidelines">
-                    The date the invoice was created in this system.
-                </p>
-            </li>
-            <li>
-                <label class="description">
-                    Created by: $invoice.createdUser
-                </label>
-                <p class="guidelines">
-                    The user that created this invoice.
-                </p>
-            </li>
-            <li>
-                <label class="description">
-                    Laste edited date: $invoice.lastEditedDate
-                </label>
-                <p class="guidelines">
-                    The date the invoice was laste edited.
-                </p>
-            </li>
-            <li>
-                <label class="description">
-                    Last edited by: $invoice.lastEditedUser
-                </label>
-                <p class="guidelines">
-                    The user that last edited this invoice.
-                </p>
-            </li>
-            <li>
-                <label class="description">Sales</label>
+                <label class="description">Forfaller</label>
                 <div>
-                    <!-- the list of sale that this invoice contains. -->
-                    #foreach($sale in $invoice.sales)
-                        <label class="element text medium">
-                            $sale.Id - $sale.description
-                        </label>
-                    #end
+                    <label class="element text medium">$invoice.invoiceDate</label>
                 </div>
                 <p class="guidelines">
-                    A list of all the sales that is in this invoice. The sales are listed here. Iften there might be only one sale in an invice, it is possible to have multiple sales in one invoice as it might be convenient for the customer or us.
+                    Dette er datoen fakturaen skal være betalt
+                </p>
+            </li>
+            <li>
+                <label class="description">Opprettet</label>
+                <div>
+                    <label class="element text medium">$invoice.createdDate</label>
+                </div>
+                <p class="guidelines">
+                    Tidspunktet fakturaen var opprettet.
+                </p>
+            </li>
+            <li>
+                <label class="description">Opprettet av</label>
+                <div>
+                    <label class="element text medium">$invoice.createdUser.name</label>
+                </div>
+                <p class="guidelines">
+                    Brukeren som opprettet denne fakturaen
+                </p>
+            </li>
+            <li>
+                <label class="description">Sist endret</label>
+                <div>
+                    <label class="element text medium">$invoice.lastEditedDate</label>
+                </div>
+                <p class="guidelines">
+                    Siste tidspunkt fakturaen ble endret
+                </p>
+            </li>
+            <li>
+                <label class="description">Sist endret av</label>
+                <div>
+                    <label class="element text medium">$invoice.lastEditedUser.name</label>
+                </div>
+                <p class="guidelines">
+                    Brukeren som sist endret fakturaen
                 </p>
             </li>
         </ul>

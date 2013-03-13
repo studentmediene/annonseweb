@@ -81,7 +81,9 @@
                 #end
             #end
         </ul>
-
+        #if (!$adId)
+            #springFormHiddenInputValue("sale.invoiceGenerated" 'false' '')
+        #end
         #saveAndDelete($sale)
     </form>
 </div>

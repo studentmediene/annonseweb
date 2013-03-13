@@ -1,0 +1,153 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/invoice/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+
+    <h2 class="title">
+        <a href="/annonse/invoive/edit/$invoice.Id">Endre faktura: $invoice.Id</a>
+        <label class="edit"><a href="/annonse/invoice/$invoice.Id">Tilbake</a>
+    </h2>
+
+    <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonse/invoice/save")">
+        <div class="content">
+            <ul>
+                <li>
+                    <label class="description">
+                        Fakturaidentifikator: $invoice.Id
+                    </label>
+                    <p class="guidelines">
+                        Automatically generated invoice id.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="sales">Salg</label>
+                    <div>
+                        #multiSelectSale("invoice.sales" $salesList "onclick='selectMultiple(this)'")
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        A list of sales, Check the ones you want to add to the new invoice.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="description">Fakturabeskrivelse</label>
+                    <div>
+                        #springFormInput( "invoice.description" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="invoiceNumer">Annonsenummer</label>
+                    <div>
+                        #springFormInput( "invoice.invoiceNumber" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
+                    </p>
+                </li>
+                <li>
+                #saveAndDelete($invoice)
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<!--Lets you select multiple sales without CTRL-key-->
+<script type="text/JavaScript">
+    var currentOptions = new Array();
+    var current;
+    function selectMultiple(s)
+    {
+        current = s.selectedIndex;
+        var topush=true;
+        for (var i=0; i<currentOptions.length; i++)
+        {
+            if (current == currentOptions[i])
+            {
+                currentOptions.splice(i, 1);
+                topush=false;
+                break;
+            }
+        }
+
+        if (i >= currentOptions.length && topush) currentOptions.push(current);
+        for (var i=0; i<s.options.length; i++) s.options[i].selected = false;
+        for (var i=0; i<currentOptions.length; i++) s.options[currentOptions[i]].selected = true;
+    }
+</script>
+
+<!-- the sidebar -->
+###parse('no/dusken/annonseweb/web/invoice/sidebar.vm')
+
+<!-- content -->
+<!--<div id="content" class="post">
+
+    <h2 class="title">
+        <a href="/annonse/invoice/new">New Invoice</a>
+    </h2>
+    <div class="content">
+        <div class="content_description">
+            <p>Invoice information about this invoice.</p>
+        </div>
+        <ul>
+            <li>
+                <label class="description">
+                    Invoice Id - $invoice.Id
+                </label>
+                <p class="guidelines">
+                    Automatically generated invoice id.
+                </p>
+            </li>
+            <li>
+                <label class="description" for="invoiceDescription">Invoice Description</label>
+                <div>
+                    <input id="invoiceDescription" name="name" class="element text medium" type="text" maxlength="1000" value="$invoice.description"/>
+                </div>
+                <p class="guidelines">
+                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
+                </p>
+            </li>
+            <li>
+                <label class="description" for="invoiceNumber">Invoice Number</label>
+                <div>
+                    <input id="invoiceNumber" name="name" class="element text medium" type="text" maxlength="25" value="$invoice.invoiceNumber"/>
+                </div>
+                <p class="guidelines">
+                    The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
+                </p>
+            </li>
+            <li>
+                <label class="description" for="invoiceDate">
+                    <input id="invoiceDate" type="text" maxlength="50" value="$invoice.invoiceDate">
+                </label>
+                <p class="guidelines">
+                    The date the invoice should be paid.
+                </p>
+            </li>
+            <li>
+                <label class="description">Sales</label>
+                <div> #*
+                    #foreach($sale in $invoice.sales)
+                        <!-- Should be changed to a div with the most important information for this sale. Same as for the sale list -->
+                        <label class="element text medium">
+                            $sale.Id - $sale.description
+                        </label>
+                    #end
+                </div>
+                <p class="guidelines">
+                    A list of invoices, Check the ones you want to add to the new invoice.
+                </p>
+            </li>
+            <li>
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="New Invoice" />
+            </li>
+        </ul>
+    </div>
+</div>
+    -->     *#
