@@ -4,6 +4,8 @@
     <h2 class="title">
         #set($saleId = false)
         #set($saleId = $sale.getId())
+        #set($saleNotes = false)
+        #set($saleNotes = $sale.getAnnonseNotes())
         #set($pathEnd = "")
         #if (!$saleId)
             <a href="#springUrl("/annonse/sale/new")">Nytt salg:</a>
@@ -46,7 +48,30 @@
                 </div>
                 <p class="guidelines">Om vi har motatt annonse(r) for dette salget.</p>
             </li>
-            <!-- ---------------Also make last modified and created by hidden inputs. Or make controller set these values----------------- -->
+            #if($saleId)
+                <li>
+                    <label class ="description">Lag notat tilknyttet dette salget</label>
+                    <div><a href ="/annonse/note/new/sale/$saleId">Nytt notat</a></div>
+                    <p class ="guidelines">Oppretter et nytt notat på dette salget</p>
+                </li>
+                #if($saleNotes)
+                    <li>
+                        <label class ="description">Notater allerede tilknyttet</label>
+                        <div>
+                            #foreach($note in $saleNotes)
+                                #if($note.Active)
+                                    #set($aktivt = "Aktivt")
+                                #else
+                                    #set($aktivt = "Arkivert")
+                                #end
+                                <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                                <br />
+                            #end
+                        </div>
+                        <p class ="guidelines">Hvis det er noen notater opprettet på dette salget, vises de her.</p>
+                    </li>
+                #end
+            #end
         </ul>
         #if (!$adId)
             #springFormHiddenInputValue("sale.invoiceGenerated" 'false' '')

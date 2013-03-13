@@ -6,6 +6,7 @@
             $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
         </a>
     </p>
+    <div id="sidebar-tasks"></div>
 </div>
 
 

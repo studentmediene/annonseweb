@@ -1,0 +1,24 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/note/sidebar.vm')
+
+<!-- content -->
+<div id="content">
+    <div class="post">
+        #if($active)
+            <h2 class="title"><a href="/annonse/note/active">Aktive notater:</a></h2>
+        #else
+            <h2 class="title"><a href="/annonse/note/archive">Arkiverte notater:</a></h2>
+        #end
+        <div class="entry">
+            <ul>
+                #foreach($note in $annonseNoteList)
+                    <li><a href="/annonse/note/$note.getId()">
+                        $note.getId() - #formatCalendarObject($note.getCreatedDate())
+                    </a></li>
+                #end
+            </ul>
+        </div>
+    </div>
+</div>
+
+
