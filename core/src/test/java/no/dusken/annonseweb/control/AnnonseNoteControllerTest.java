@@ -70,7 +70,7 @@ public class AnnonseNoteControllerTest {
         note.setActive(Boolean.TRUE);
         customer =  new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress");
         customerService.saveAndFlush(customer);
-        sale =  new Sale("description", null, customer, null, false);
+        sale =  new Sale("description", null, customer, null, false, false);
         salesService.saveAndFlush(sale);
         contactPerson = new ContactPerson("name", "email", "phone", "position");
         contactPerson.setCustomer(customer);

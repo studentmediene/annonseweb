@@ -37,6 +37,8 @@ public class Sale extends DuskenObject implements ActiveAnnonseElement{
 
     private Boolean adReceived;
 
+    private Boolean invoiceGenerated;
+
     @ManyToOne(optional = true, cascade = ALL)
     public Invoice invoice;
 
@@ -52,7 +54,7 @@ public class Sale extends DuskenObject implements ActiveAnnonseElement{
         setCustomer(customer);
     }
 
-    public Sale(String description, List<Ad> ads, Customer customer, AnnonsePerson createdUser, Boolean adReceived) {
+    public Sale(String description, List<Ad> ads, Customer customer, AnnonsePerson createdUser, Boolean adReceived, Boolean invoiceGenerated ) {
         this.description = description;
         this.ads = ads;
         this.customer = customer;
@@ -60,6 +62,7 @@ public class Sale extends DuskenObject implements ActiveAnnonseElement{
         this.lastEditedDate = Calendar.getInstance();
         this.lastEditedUser = createdUser;
         this.adReceived = adReceived;
+        this.invoiceGenerated = invoiceGenerated;
     }
 
     /**
@@ -135,6 +138,22 @@ public class Sale extends DuskenObject implements ActiveAnnonseElement{
 
     public void setAdReceived(Boolean adReceived) {
         this.adReceived = adReceived;
+    }
+
+    public Boolean getInvoiceGenerated() {
+        return invoiceGenerated;
+    }
+
+    public void setInvoiceGenerated(Boolean invoiceGenerated) {
+        this.invoiceGenerated = invoiceGenerated;
+    }
+
+    public Invoice getInvoice() {
+        return this.invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     public List<AnnonseNote> getAnnonseNotes() {
