@@ -1,10 +1,10 @@
 <!-- the sidebar -->
-#parse('no/dusken/annonseweb/web/contact/sidebar.vm')
+#parse('no/dusken/annonseweb/web/contactperson/sidebar.vm')
 
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonse/contact">Contact Home</a></h2>
+        <h2 class="title"><a href="/annonse/contactperson">Contact Persons Home</a></h2>
         <div class="entry">
             <p>
                 Summary and mots used stuff goes here!

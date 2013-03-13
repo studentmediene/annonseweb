@@ -17,8 +17,8 @@
 #macro( multipleSaleCheckboxes $path $options $separator $attributes )
     #springBind($path)
     #foreach($option in $invoice.getSales())
-        <input type="checkbox" id="${status.expression}" name="${status.expression}" value="$option.Id"
-        checked="checked"
+    <input type="checkbox" id="${status.expression}" name="${status.expression}" value="$option.Id"
+           checked="checked"
         ${attributes} #springCloseTag()
         $option.Id - $option.description ${separator}
     #end
@@ -27,17 +27,27 @@
                 <input type="checkbox" id="${status.expression}" name="${status.expression}" value="$option.Id"
             #foreach($sale in $invoice.getSales())
                 #if($sale.getId() == $option.Id)
-                    checked="checked"
+                       checked="checked"
                 #end
             #end
             #if($selectedSale.Id == $option.Id)
-                checked="checked"
+                       checked="checked"
             #end
             ${attributes} #springCloseTag()
             $option.Id - $option.description ${separator}
         #end
     #end
 #end
+#macro ( dateSelect $bindpath $attributes )
+    #springBind($bindpath)
+<input type="datetime-local" name="${status.expression}" id="${status.expression}" ${attributes} value="$!status.value" #springCloseTag()
+#end
+
+#macro( formatCalendarObject $calendar)
+    #set($date = $portal.getClass().forName("org.apache.velocity.tools.generic.DateTool"))
+    $date.format($calendar)
+#end
+
 
 #macro ( singleSelectSale $bindpath $options $select $attributes )
     #springBind($bindpath)

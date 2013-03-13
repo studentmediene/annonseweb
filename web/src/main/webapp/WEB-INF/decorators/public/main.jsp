@@ -27,11 +27,12 @@
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/addNewElement.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/removeElement.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/js/uniqueId.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/loadSidebarTasks.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/style/main.css"/>
     <link rel="shortcut icon" type="image/png" href="/images/logo/ud-transparentbg.png" />
 </head>
-<body>
+<body onload="loadSidebarTasks()">
 <div id="wrapper">
     <header>
         <div id="logo">

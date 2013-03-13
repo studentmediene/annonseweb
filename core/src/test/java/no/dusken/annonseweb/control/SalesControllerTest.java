@@ -37,7 +37,7 @@ public class SalesControllerTest {
     private CustomerService customerService;
 
     @Autowired
-    AnnonsePersonService annonsePersonService;
+    private AnnonsePersonService annonsePersonService;
 
     private AnnonsePerson someone;
 

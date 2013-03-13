@@ -19,7 +19,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/contact/person")
+@RequestMapping("/contactperson")
 public class ContactPersonController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class ContactPersonController {
     @RequestMapping("")
     public String viewContactsHome(){
         // TODO
-        return "contact/home";
+        return "contactperson/home";
     }
 
     @RequestMapping("/active")
@@ -46,20 +46,20 @@ public class ContactPersonController {
                 contactPersonList.add(contactPerson);
         }
         model.addAttribute("contactPersonList", contactPersonList);
-        return "contact/person/all";
+        return "contactperson/all";
     }
 
     @RequestMapping("/all")
     public String all(Model model){
         List<ContactPerson> contactPersonList = contactPersonService.findAll();
         model.addAttribute("contactPersonList", contactPersonList);
-        return "contact/person/all";
+        return "contactperson/all";
     }
 
     @RequestMapping(value="/{contactPerson}")
     public String viewContactPerson(@PathVariable ContactPerson contactPerson, Model model){
         model.addAttribute("contact", contactPerson);
-        return "contact/person/person";
+        return "contactperson/person";
     }
 
     @RequestMapping("/new")
@@ -78,7 +78,7 @@ public class ContactPersonController {
     public String viewEdit(@PathVariable ContactPerson contactPerson, Model model) {
         model.addAttribute("contactPerson", contactPerson);
         model.addAttribute("customerList", customerService.findAll());
-        return "contact/person/edit";
+        return "contactperson/edit";
     }
 
     @RequestMapping(value = "/save",  method = RequestMethod.POST)
@@ -89,7 +89,7 @@ public class ContactPersonController {
         contactPerson.setCreatedUser(usr);
         contactPerson.setLastEditedTime(Calendar.getInstance());
         contactPersonService.saveAndFlush(contactPerson);
-        return "redirect:/annonse/contact/person/" + contactPerson.getId();
+        return "redirect:/annonse/contactperson/" + contactPerson.getId();
     }
 
     @RequestMapping(value = "/save/{pathContactPerson}",  method = RequestMethod.POST)
@@ -99,7 +99,7 @@ public class ContactPersonController {
         pathContactPerson.setLastEditedTime(Calendar.getInstance());
         pathContactPerson.setLastEditedUser(annonsePersonController.getLoggedInUser());
         contactPersonService.saveAndFlush(pathContactPerson);
-        return "redirect:/annonse/contact/person/" + pathContactPerson.getId();
+        return "redirect:/annonse/contactperson/" + pathContactPerson.getId();
     }
 
     @RequestMapping("/emailList")
@@ -109,7 +109,7 @@ public class ContactPersonController {
             emailList.add(contactPerson.getEmail());
         }
         model.addAttribute("emailList", emailList);
-        return "contact/person/emailList";
+        return "contactperson/emailList";
     }
 
     @InitBinder

@@ -1,0 +1,123 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/note/sidebar.vm')
+
+<!-- content -->
+<div id="content" class="post">
+    <h2 class="title">
+        #set($conCustomer = false)
+        #set($conCustomer = $annonseNote.getCustomer())
+        #set($noteId = false)
+        #set($noteId = $annonseNote.getId())
+        #set($pathEnd = "")
+
+        #if (!$noteId)
+            <!-- If new should still be linked with customer etc, this should be changed -->
+            <a href="#springUrl("/annonse/note/new")">Nytt notat:</a>
+        #else
+            <a href="#springUrl("/annonse/note/edit/$noteId")">Endre notis: $noteId - #formatCalendarObject( $annonseNote.getCreatedDate())</a>
+            <label class="edit"><a href="/annonse/note/$noteId">Tilbake</a></label>
+            #set($pathEnd = "/" + $noteId)
+        #end
+    </h2>
+
+    <form id="editAnnonseNote" class="content"  method="post" action="#springUrl("/annonse/note/save$pathEnd")" name="annnonseNote" enctype="multipart/form-data">
+        <div class="content_description">
+            <p>Legg til informasjon om notatet du lager:</p>
+        </div>
+        <ul>
+            <li>
+                <label class="description">Notat tilknyttet kunde</label>
+                <div>
+                    #singleSelectIdName("annonseNote.Customer" $customerList $annonseNote.getCustomer() "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Hvis dette notatet skal være tilknyttet en kunde, velg hvilken kunde
+                </p>
+            </li>
+            <!-- TODO: Make customer choice alter choices here. -->
+            #if($conCustomer)
+                <li>
+                    <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
+                    <div>
+                        #singleSelectIdPersonName("annonseNote.ContactPerson" $contactPersonList $annonseNote.getContactPerson() "")
+                        #springShowErrors("<br>" "error")
+                    </div>
+                    <p class="guidelines" id="guide_4">
+                        hvis det skal være kontakt med noen, velg den det har vært eller skal være kontakt med.
+                    </p>
+                </li>
+            #end
+            <li>
+                <label class="description">Notat tilknyttet salg</label>
+                <div>
+                    #singleSelectSale("annonseNote.Sale" $saleList $annonseNote.getSale() "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Hvis dette notatet er tilknyttet et salg, velges salget her
+                </p>
+            </li>
+            <li>
+                <label class="description">Varsel når:</label>
+                <div>
+                    #dateSelect("annonseNote.DueDate" "")
+                    #springShowErrors("<br>" "error")
+                    <br />
+                    Enkelte nettlesere kan ha problemer med å vise riktig datofelt. Hvis du ser bare ett tekstfelt,
+                    skriv dato og tidspunkt på formen: åååå-mm-ddTHH:MM hvor å står for årstall, m er måned, d er dag,
+                    T er bokstaven T, H er time og M er minutt. Ellers skrives tegnene som de står.
+                </div>
+                <p class="guidelines">
+                    Når denne notatet skal minne deg på det.
+                </p>
+            </li>
+            <li>
+                <label class="description">Notat</label>
+                <div>
+                    #springFormTextarea("annonseNote.Text" 'rows="5" cols="40"')
+                    #springShowErrors("<br>" "error") <br/>
+                </div>
+
+                <p class="guidelines">
+                    Fritekst med selve notatet.
+                </p>
+            </li>
+            <li>
+                <label class="description">Del dette notatet med en annen bruker</label>
+                <div>
+                    #singleSelectIdName("annonseNote.DelegatedUser" $userList $annonseNote.getDelegatedUser() "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines">
+                    Deleger oppgaven til noen andre!
+                </p>
+            </li>
+            <li>
+                <label class="description">Arkiver</label>
+                <div>
+                    <select id="active" name="active">
+                        #if($annonseNote.getActive())
+                            <option value="true" selected="true">Aktiv</option>
+                            <option value="false">Arkiver</option>
+                        #else
+                            <option value="true">Aktiv</option>
+                            <option value="false" selected="true">Arkiver</option>
+                        #end
+                    </select>
+                </div>
+                <p class="guidelines">
+                    Velg arkiver for å slippe påminnere!
+                </p>
+            </li>
+
+
+            <li class="buttons">
+                <input id="saveForm" class="button_text" type="submit" name="submit" value="Save ContactNote" />
+            </li>
+        </ul>
+
+</div>
+
+
+

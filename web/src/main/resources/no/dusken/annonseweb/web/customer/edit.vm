@@ -1,6 +1,10 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/customer/sidebar.vm')
 
+<!-- Variables used for notes -->
+#set($customerNotes = false)
+#set($customerNotes = $customer.getAnnonseNotes())
+
 <!-- content -->
 <div id="content" class="post">
 
@@ -60,23 +64,13 @@
                     </p>
                 </li>
                 <li>
-                    <label class="description" for="subscriberAddress">Besøksadresse</label>
+                    <label class="description" for="subscriberAddress">Adresse</label>
                     <div>
-                        #springFormInput( "customer.subscriberAddress" 'size="30"')
+                        #springFormInput( "customer.Address" 'size="30"')
                         #springShowErrors("<br>" "error") <br/>
                     </div>
                     <p class="guidelines">
-                        Adressen til firmaet, dette er hovedadressen eller besøksadressen.
-                    </p>
-                </li>
-                <li>
-                    <label class="description" for="invoiceAddress">Fakturaadresse</label>
-                    <div>
-                        #springFormInput( "customer.invoiceAddress" 'size="30"')
-                        #springShowErrors("<br>" "error") <br/>
-                    </div>
-                    <p class="guidelines">
-                        Dette er adressen vi sender fakturaen til.
+                        Adressen til firmaet, dette er hovedadressen, besøksadressen eller bare dit vi sender fakturaen.
                     </p>
                 </li>
                 #if($custId)
@@ -84,7 +78,7 @@
                     #foreach($contPers in $customer.ContactPersons)
                         <li>
                             <div>
-                                <a href="#springUrl("/annonse/contact/person/$contPers.Id")">$contPers.PersonName</a>
+                                <a href="#springUrl("/annonse/contactperson/$contPers.Id")">$contPers.PersonName</a>
                             </div>
                             <p class="guidelines">
                                 Telefon: $contPers.TelephoneNumber <br />
@@ -95,12 +89,34 @@
                     #end
                     <li>
                         <div>
-                            <a href="#springUrl("/annonse/contact/person/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
+                            <a href="#springUrl("/annonse/contactperson/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
                         </div>
                         <p class="guidelines">
                             Oppretter en ny kontaktperson tilknyttet denne kunden.
                         </p>
                     </li>
+                    <li>
+                        <label class ="description">Lag notat tilknyttet denne kunden</label>
+                        <div><a href ="/annonse/note/new/customer/$custId">Nytt notat</a></div>
+                        <p class ="guidelines">Oppretter et nytt notat på denne kunden</p>
+                    </li>
+                    #if($customerNotes)
+                        <li>
+                            <label class ="description">Notater allerede tilknyttet</label>
+                            <div>
+                                #foreach($note in $customerNotes)
+                                    #if($note.Active)
+                                        #set($aktivt = "Aktivt")
+                                    #else
+                                        #set($aktivt = "Arkivert")
+                                    #end
+                                    <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                                    <br />
+                                #end
+                            </div>
+                            <p class ="guidelines">Hvis det er noen notater opprettet på denne kunden, vises de her.</p>
+                        </li>
+                    #end
                 #end
                 <li>
                     #saveAndDelete($customer)

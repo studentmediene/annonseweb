@@ -1,6 +1,10 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/sale/sidebar.vm')
 
+<!-- Variables used when listing notes on sale -->
+#set($saleNotes = false)
+#set($saleNotes = $sale.getAnnonseNotes())
+
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
@@ -59,7 +63,7 @@
         </li>
         <li>
             <label class="description">Sist endret</label>
-            <div><label class="element text medium"><script type="text/javascript">document.write(new Date($sale.lastEditedDate.getTimeInMillis()))</script></label></div>
+            <div><label class="element text medium">#formatCalendarObject($sale.lastEditedDate)</label></div>
             <p class="guidelines">Når dette salget sist ble endret</p>
         </li>
         <li>
@@ -72,6 +76,28 @@
             <div><label class="element text medium">$sale.CreatedUser.getName()</label></div>
             <p class="guidelines">Hvem som opprettet dette salget.</p>
         </li>
+        <li>
+            <label class ="description">Lag notat tilknyttet dette salget</label>
+            <div><a href ="/annonse/note/new/sale/$sale.Id">Nytt notat</a></div>
+            <p class ="guidelines">Oppretter et nytt notat på dette salget</p>
+        </li>
+        #if($saleNotes)
+            <li>
+                <label class ="description">Notater allerede tilknyttet</label>
+                <div>
+                    #foreach($note in $saleNotes)
+                        #if($note.Active)
+                            #set($aktivt = "Aktivt")
+                        #else
+                            #set($aktivt = "Arkivert")
+                        #end
+                        <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                        <br />
+                    #end
+                </div>
+                <p class ="guidelines">Hvis det er noen notater opprettet på dette salget, vises de her.</p>
+            </li>
+        #end
     </ul>
     </div>
 </div>

@@ -1,0 +1,11 @@
+<nav id="sidebar">
+    <h2>Notater</h2>
+    <ul>
+        <li><a href="/annonse/note">Hjem</a></li>
+        <li><a href="/annonse/note/new">Nytt notat</a></li>
+        <li><a href="/annonse/note/active">Mine aktive notater/ oppgaver</a></li>
+        <li><a href="/annonse/note/archive">Mitt arkiv</a></li>
+        <li><a href="/annonse/note/archive/all">Hele mitt arkiv</a></li>
+    </ul>
+    #parse('no/dusken/annonseweb/web/status.vm')
+</nav>

@@ -58,7 +58,7 @@ public class ContactPersonControllerTest  {
 
     @Test
     public void testViewContactsHome(){
-        assertEquals("Contacts home was not correctly returned", "contact/home", contactPersonController.viewContactsHome());
+        assertEquals("Contacts home was not correctly returned", "contactperson/home", contactPersonController.viewContactsHome());
     }
 
     @Test
