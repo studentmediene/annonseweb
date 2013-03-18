@@ -38,8 +38,8 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git@github.com:dusken/annonseweb.git</connection>
-        <developerConnection>scm:git:git@github.com:dusken/annonseweb.git</developerConnection>
+        <connection>scm:git:git@github.com:mediastud/annonseweb.git</connection>
+        <developerConnection>scm:git:git@github.com:mediastud/annonseweb.git</developerConnection>
     </scm>
 
     <properties>
