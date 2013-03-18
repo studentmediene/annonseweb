@@ -1,6 +1,7 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/note/sidebar.vm')
 
+// todo: is this neccesary? =flase thingy?
 #set($conCustomer = false)
 #set($conCustomer = $annonseNote.getCustomer())
 #set($conContact = false)

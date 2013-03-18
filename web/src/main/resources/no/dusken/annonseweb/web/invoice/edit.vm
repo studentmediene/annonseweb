@@ -28,6 +28,7 @@
                     #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
+                    <!-- todo norsk -->
                     A list of sales, Check the ones you want to add to the new invoice.
                 </p>
             </li>
@@ -38,6 +39,7 @@
                     #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
+                    <!-- todo norsk -->
                     This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
                 </p>
             </li>

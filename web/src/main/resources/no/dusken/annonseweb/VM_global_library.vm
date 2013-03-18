@@ -76,7 +76,8 @@
             #set($val = "value='$option.getId()'")
         #else
             #set($ident = "INGEN VALGT")
-        <!-- WARNING this makes id 0 for element unpredictable -->
+
+        <!-- todo like what is this?; WARNING this makes id 0 for element unpredictable -->
             #set($val = "value='0'")
         #end
         #if ($option.Id == $select.Id)

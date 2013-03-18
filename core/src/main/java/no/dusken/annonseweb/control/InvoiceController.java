@@ -38,6 +38,7 @@ public class InvoiceController {
 
     @RequestMapping("/{invoice}")
     public String viewInvoice(@PathVariable Invoice invoice, Model model){
+        // todo does this work?
         model.addAttribute("invoice", invoice);
         return "invoice/invoice";
     }
@@ -62,6 +63,7 @@ public class InvoiceController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveNewInvoice(@Valid @ModelAttribute Invoice invoice) {
+        // todo get getLoggedInUser, ain't that in commons ?
         invoice.setCreatedUser(annonsePersonController.getLoggedInUser());
         invoice.setLastEditedUser(annonsePersonController.getLoggedInUser());
         invoice.setCreatedDate(Calendar.getInstance());

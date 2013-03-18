@@ -42,6 +42,7 @@
                     <label class="element text medium">$invoice.invoiceNumber</label>
                 </div>
                 <p class="guidelines">
+                    <!-- todo norsk -->
                     The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
                 </p>
             </li>
