@@ -51,9 +51,9 @@
         </div>
         <div id="feedback">
             <p>
-                <a href="https://github.com/dusken/annonseweb">Utviklet av Duskens Dataavdeling</a>
+                <a href="https://github.com/mediastud/annonseweb">Utviklet av Duskens Dataavdeling</a>
                 -
-                <a href="https://github.com/dusken/annonseweb/issues">Feedback?(click me)</a>
+                <a href="https://github.com/mediastud/annonseweb/issues">Feedback?(klikk meg)</a>
                 <!-- add some javascript pop out for feedback -->
             </p>
         </div>
