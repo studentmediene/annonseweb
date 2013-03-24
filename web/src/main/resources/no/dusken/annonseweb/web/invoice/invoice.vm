@@ -99,6 +99,13 @@
                     Brukeren som sist endret fakturaen
                 </p>
             </li>
+            <li>
+                <label class="description">Skriv ut</label>
+                <div>
+                    <a onclick="javascript:window.open('/annonse/invoice/print/$invoice.Id')">Skriv ut</a>
+                </div>
+                <p class ="guidelines">Åpner ett nytt vindu med fakturainformasjonen som lett kan printes</p>
+            </li>
         </ul>
     </div>
 </div>
