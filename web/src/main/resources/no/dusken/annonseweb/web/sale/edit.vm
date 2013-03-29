@@ -54,7 +54,7 @@
                     #singleSelectActive("sale.Active" $sale.Active "")
                     #springShowErrors("<br>" "error")
                 </div>
-                <p class ="guidelines">Velg om denne kunden er aktiv</p>
+                <p class ="guidelines">Velg om dette salget er aktivt</p>
             </li>
             #if($saleId)
                 <li>

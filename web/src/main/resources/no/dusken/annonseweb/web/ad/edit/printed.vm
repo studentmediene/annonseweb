@@ -36,7 +36,7 @@
                         #springShowErrors("<br>" "error")
                     </div>
                     <p class="guidelines">
-                        Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                        Dette er hvor stor annonsen er, hvilken type annonse som selges.
                     </p>
                 </li>
                 <li>
@@ -173,7 +173,7 @@
             myArray.push($price)
         #end
         $('input[id="printSize"]').on('change', function() {
-            for(i = 1; i <= 8; i++) {
+            for(i = 1; i <= myArray.length; i++) {
                 if($(this).val() == i){
                     $('input[id="price"]').val(myArray[i-1]);
                 }

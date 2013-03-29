@@ -3,7 +3,7 @@
         Logget inn som:
         <br>
         <a href="/annonse/user/me">
-            $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
+            $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal().Username
         </a>
     </p>
     <div id="sidebar-tasks"></div>

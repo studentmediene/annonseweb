@@ -23,72 +23,76 @@
               http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd"
        default-autowire="byName">
 
-    <security:http realm="Annonseweb" access-denied-page="/jsp/admin/accessdenied.jsp" use-expressions="true">
-        <!--<security:anonymous/>-->
-        <!--<security:intercept-url pattern="/" access="permitAll"/>-->
-        <!--<security:intercept-url pattern="/**" access="denyAll"/>-->
-        <security:form-login login-processing-url="/j_spring_security_check" default-target-url="/" always-use-default-target="true" /><!-- login-page="/jsp/login.jsp"/> -->
+    <security:http realm="Annonseweb" access-denied-page="/jsp/accessdenied.jsp" use-expressions="true">
+        <security:form-login login-processing-url="/j_spring_security_check" default-target-url="/annonse/welcome" always-use-default-target="true" />
         <security:logout logout-url="/annonseweb_logout" delete-cookies="JSESSIONID" />
-        <security:intercept-url pattern="/annonse/user/me" access="isAuthenticated()"/>
-        <security:intercept-url pattern="/annonse/user/**" access="hasAnyRole('ROLE_MASKINIST','ROLE_ANNONSE_ANSVARLIG')"/>
         <security:intercept-url pattern="/**" access="isAuthenticated()" />
     </security:http>
 
-    <bean id="myAuthenticationProvider" class="no.dusken.annonseweb.AnnonseLoginAuthenticationProvider" />
 
-    <security:authentication-manager>
-        <security:authentication-provider ref="myAuthenticationProvider"/>
-        <!--<security:authentication-provider>
-            <security:user-service>
-                <security:user name="SuperDuper" password="SuperPass" authorities="ROLE_MASKINIST"/>
-                <security:user name="test" password="testPass" authorities="ROLE_ANNONSE"/>
-            </security:user-service>
-        </security:authentication-provider>-->
-    </security:authentication-manager>
-    <!--
-    <bean id="roleVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
-        <constructor-arg ref="roleHierarchy" />
-    </bean>
-    <bean id="roleHierarchy" class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
-        <property name="hierarchy">
-            <value>
-                ROLE_MASKINIST > ROLE_ANNONSEANSVARLIG
-                ROLE_ANNONSEANSVARLIG > ROLE_ANSVARLIG_REDAKTØR
-                ROLE_ANNONSEANSVARLIG > ROLE_ANNONSE
-                ROLE_ANNONSE > ROLE_JOURNALIST
-                ROLE_ANNONSE > ROLE_LAYOUT
-                ROLE_ANNONSE > ROLE_FOTOGRAF
-                ROLE_ANNONSE > ROLE_ILLUSTRATØR
-                ROLE_ANNONSE > ROLE_DATA
-                ROLE_ANNONSE > ROLE_ØKONOMI
-                ROLE_ANNONSE > ROLE_KORREKTUR
-                ROLE_ANNONSE > ROLE_GJENGSJEF
-                ROLE_ANNONSE > ROLE_SIVILARBEIDER
-                ROLE_ANNONSE > ROLE_DEBATT-_OG_KRONIKKANSVARLIG
-                ROLE_ANNONSE > ROLE_OVERSETTER
-                ROLE_ANNONSE > ROLE_REPORTASJEREDAKTØR
-                ROLE_ANNONSE > ROLE_NYHETSREDAKTØR
-                ROLE_ANNONSE > ROLE_KULTURREDAKTØR
-            </value>
-        </property>
-    </bean>
-    -->
-
-    <!-- An access decision voter that reads ROLE_* configuration settings -->
-    <!--<bean id="roleHiearchyVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
-        <constructor-arg ref="roleHiarchy" />
+    <bean id="ldapAuthProvider"
+          class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
+        <constructor-arg>
+            <bean class="org.springframework.security.ldap.authentication.BindAuthenticator">
+                <constructor-arg ref="defaultSpringSecurityContextSource"/>
+                <property name="userDnPatterns">
+                    <list><value>uid={0},ou=people</value></list>
+                </property>
+            </bean>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="no.dusken.common.plugin.ldapplugin.auth.DuskenLdapAuthoritiesPopulator">
+                <constructor-arg ref="defaultSpringSecurityContextSource"/>
+                <constructor-arg value="ou=roles"/>
+                <property name="convertToUpperCase" value="true"/>
+                <property name="defaultRole" value="ROLE_USER"/>
+            </bean>
+        </constructor-arg>
     </bean>
 
-    <bean id="roleHiearchyAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
-        <property name="allowIfAllAbstainDecisions" value="false"/>
-        <property name="decisionVoters">
+
+    <bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+        <property name="rolePrefix" value="ROLE_"/>
+    </bean>
+
+    <bean id="accessDecisionManager" class="no.dusken.common.plugin.security.PluginAccessDecisionVoterManager" init-method="init">
+        <constructor-arg>
             <list>
-                <ref local="roleHiearchyVoter"/>
+                <bean class="org.springframework.security.web.access.expression.WebExpressionVoter"/>
             </list>
-        </property>
-    </bean>-->
+        </constructor-arg>
+        <property name="allowIfAllAbstainDecisions" value="false"/>
+    </bean>
 
-    <!--<bean class="no.dusken.common.plugin.security.PluginAuthenticationProviderManager" init-method="init" />-->
+    <security:authentication-manager alias="authenticationManager" >
+        <security:authentication-provider ref="ldapAuthProvider"/>
+    </security:authentication-manager>
 
-    <!--<security:authentication-manager alias="authenticationManager" />-->
+
+    <bean id="userServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+        <property name="userDetailsService" ref="userService"/>
+    </bean>
+
+    <bean id="userService" class="org.springframework.security.ldap.userdetails.LdapUserDetailsService">
+        <constructor-arg>
+            <bean class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
+                <constructor-arg value="ou=people"/>
+                <constructor-arg value="uid={0}" />
+                <constructor-arg ref="defaultSpringSecurityContextSource"/>
+            </bean>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="no.dusken.common.plugin.ldapplugin.auth.DuskenLdapAuthoritiesPopulator">
+                <constructor-arg ref="defaultSpringSecurityContextSource"/>
+                <constructor-arg value="ou=roles"/>
+                <property name="convertToUpperCase" value="true"/>
+                <!-- All authenticated users are granted this role: -->
+                <property name="defaultRole" value="ROLE_USER"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="defaultSpringSecurityContextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
+        <constructor-arg value="ldap://ldap.underdusken.no/dc=underdusken,dc=no"/>
+    </bean>
 </beans>

@@ -1,22 +1,27 @@
 package no.dusken.annonseweb.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.math.BigDecimal;
-import java.util.*;
 import java.text.SimpleDateFormat;
-
-import static javax.persistence.CascadeType.ALL;
+import java.util.*;
 
 @Entity
 public class WebAd extends Ad {
 
     public enum WebFormat {
-        BANNER("Horisontalt banner (Forside - 1180x160px)",10000),     // Beskrivelse , pris
-        BLOCK_MAIN("Blokkannonse (Forside - 380x290px)",10000),
-        BLOCK_ARTICLE("Blokkannonse (Artikkel - 380x410px)",10000);
+        SONE_1_FULL_BANNER("Innen 5 første artikkerader (hovedside - øverst) - heldekkende (1170x380px)", 10000),// Beskrivelse , pris
+        SONE_1_MEDIUM_BANNER("Innen 5 første artikkerader (hovedside - øverst) - medium størrelse (780x380px)", 8500),
+        SONE_1_SMALL_BANNER("Innen 5 første artikkerader (hovedside - øverst) - liten størrelse (270x380px)", 7000),
+        SONE_2_FULL_BANNER("Innen artikkerader 6 - 15 (hovedside) - heldekkende (1170x380px)", 8000),
+        SONE_2_MEDIUM_BANNER("Innen artikkerader 6 - 15 (hovedside) - medium størrelse (780x380px)", 6500),
+        SONE_2_SMALL_BANNER("Innen artikkerader 6 - 15 (hovedside) - liten størrelse (270x380px)", 5000),
+        SONE_3_FULL_BANNER("Innen artikkerader 16 - 25 (hovedside - nederst) - heldekkende (1170x380px)", 4500),
+        SONE_3_MEDIUM_BANNER("Innen artikkerader 16 - 25 (hovedside - nederst) - medium størrelse (780x380px)", 4000),
+        SONE_3_SMALL_BANNER("Innen artikkerader 16 - 25 (hovedside - nederst) - liten størrelse (270x380px)", 3000),
+        POPULAR_ARTICLE("Annonse på en populær artikkelside", 3000),
+        SUBPAGE_RADIO_TV("Annonse på en av undersidene (radio/tv)", 4000);
         private final Integer price;
         private final String description;
 
@@ -106,21 +111,19 @@ public class WebAd extends Ad {
     }
 
     public Integer getWebFormat() {
-        if(this.webFormat == WebFormat.BANNER) { return 1;}
-        else if(this.webFormat == WebFormat.BLOCK_MAIN) {return 2;}
-        else if (this.webFormat == WebFormat.BLOCK_ARTICLE) {return 3;}
-        else {return 0;}
+        WebFormat[] formats = WebFormat.values();
+        for (int i = 0; i < formats.length; i++)
+            if (formats[i] == this.webFormat)
+                return i + 1;
+        return 0;
     }
 
     public void setWebFormat(Integer webFormat) {
-        switch (webFormat) {
-            case 1: this.webFormat = WebFormat.BANNER;
-                break;
-            case 2: this.webFormat = WebFormat.BLOCK_MAIN;
-                break;
-            case 3: this.webFormat = WebFormat.BLOCK_ARTICLE;
-                break;
-        }
+        WebFormat[] formats = WebFormat.values();
+        int indice = webFormat - 1;
+        if (indice < 0 || indice > formats.length)
+            return;
+        this.webFormat = formats[indice];
     }
 
     public Map<Integer,String> getWebFormatList(){

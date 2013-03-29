@@ -3,7 +3,6 @@ package no.dusken.annonseweb.control;
 import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.annonseweb.models.ContactPerson;
 import no.dusken.annonseweb.models.Customer;
-import no.dusken.annonseweb.models.RoleAuth;
 import no.dusken.annonseweb.service.AnnonsePersonService;
 import no.dusken.annonseweb.service.ContactPersonService;
 import no.dusken.annonseweb.service.CustomerService;
@@ -18,7 +17,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
-import java.util.jar.Pack200;
 
 import static junit.framework.Assert.*;
 
@@ -39,21 +37,17 @@ public class ContactPersonControllerTest  {
     private CustomerService customerService;
     @Autowired
     AnnonsePersonService annonsePersonService;
+
+    @Autowired
+    AnnonsePersonController annonsePersonController;
+
     private AnnonsePerson someone;
 
     @Before
     public void setup() {
-        customerService.saveAndFlush(new Customer("name", "email", "phone", "address"));
-        if (annonsePersonService.findAll().size() == 0) {
-            someone = new AnnonsePerson();
-            someone.setPrincipal("SuperDuper");
-            someone.setCredentials( "SuperPass");
-            someone.setAuthority(RoleAuth.MASKINIST.toString());
-            annonsePersonService.saveAndFlush(someone);
-        } else {
-            someone = annonsePersonService.findOne(Long.valueOf(1));
-        }
-        SecurityContextHolder.getContext().setAuthentication(someone);
+        String username = "username";
+        SecurityContextHolder.getContext().setAuthentication(new DummyAuthenticationUserDetails(username));
+        someone = annonsePersonController.getLoggedInUser();
     }
 
     @Test

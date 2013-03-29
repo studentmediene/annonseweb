@@ -16,13 +16,12 @@ public class PrintedAd extends Ad {
 
     public enum PrintSize {
         DOUBLEPAGE("Dobbeltside",27300),     // Beskrivelse , pris
-        WHOLEAGE_LARGE("Helside (330x233mm (+3mm))",15300),
-        WHOLEPAGE_SMALL("Helside (300x203mm)",15300),
-        HALFPAGE_HORISONTAL("1/2 side (147x203mm)",8400),
-        HALFPAGE_VERTICAL("1/2 side (300x96mm)",8400),
-        QUARTPAGE_HORISONTAL("1/4 side (147x96mm)",4800),
-        QUARTPAGE_VERTICAL("1/4 side (77x203mm)",4800),
-        EIGHTPAGE("1/8 side (77x96mm)",2800),
+        WHOLEAGE_LARGE("Bakside (330x233mm (+3mm))",19800),
+        WHOLEPAGE_SMALL("Helside (300x203mm)",15800),
+        HALFPAGE_HORISONTAL("1/2 side - liggende (147x203mm)",8400),
+        HALFPAGE_VERTICAL("1/2 side - stående (300x96mm)",8400),
+        QUARTPAGE_HORISONTAL("1/4 side - liggende (147x96mm)",4800),
+        QUARTPAGE_VERTICAL("1/4 side - stående (77x203mm)",4800),
         OTHER("Annet",0);
         private final Integer price;
         private final String description;
@@ -126,7 +125,6 @@ public class PrintedAd extends Ad {
         else if (this.printSize == PrintSize.HALFPAGE_VERTICAL) {return 5;}
         else if (this.printSize == PrintSize.QUARTPAGE_HORISONTAL) {return 6;}
         else if (this.printSize == PrintSize.QUARTPAGE_VERTICAL) {return 7;}
-        else if (this.printSize == PrintSize.EIGHTPAGE) {return 8;}
         else {return 0;}
     }
 
@@ -145,8 +143,6 @@ public class PrintedAd extends Ad {
             case 6: this.printSize = PrintSize.QUARTPAGE_HORISONTAL;
                 break;
             case 7: this.printSize = PrintSize.QUARTPAGE_VERTICAL;
-                break;
-            case 8: this.printSize = PrintSize.EIGHTPAGE;
                 break;
             default: this.printSize = PrintSize.OTHER;
         }

@@ -5,10 +5,7 @@ import no.dusken.common.model.DuskenObject;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
@@ -38,6 +35,9 @@ public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
 
     @ManyToOne
     private AnnonsePerson lastEditedUser;
+
+    @OneToMany(fetch = LAZY, mappedBy = "ad")
+    private List<AnnonseNote> annonseNotes = new ArrayList<AnnonseNote>();
 
     public Ad() {}
 
@@ -152,5 +152,12 @@ public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
         return this.price.multiply (new BigDecimal(1).subtract((discount.divide(new BigDecimal(100)))));
     }
 
+    public List<AnnonseNote> getAnnonseNotes() {
+        return annonseNotes;
+    }
+
+    public void setAnnonseNotes(List<AnnonseNote> annonseNotes) {
+        this.annonseNotes = annonseNotes;
+    }
 
 }

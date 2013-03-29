@@ -4,10 +4,10 @@
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="#">Invoices</a></h2>
+        <h2 class="title"><a href="#">Fakturaer</a></h2>
         <div class="entry">
             <p>
-                This page should contain a summary of the latest actions and events of the invoice section.
+                Denne siden burde kanskje inneholde liste over de siste oppdateringene på fakturafronten.
             </p>
         </div>
     </div>
