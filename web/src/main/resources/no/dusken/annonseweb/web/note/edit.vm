@@ -86,7 +86,7 @@
             <li>
                 <label class="description">Del dette notatet med en annen bruker</label>
                 <div>
-                    #singleSelectIdName("annonseNote.DelegatedUser" $userList $annonseNote.getDelegatedUser() "")
+                    #singleSelectNameUsername("annonseNote.DelegatedUser" $userList $annonseNote.getDelegatedUser() "")
                     #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">

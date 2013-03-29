@@ -2,7 +2,6 @@
     <h2>Bruker:</h2>
     <ul>
         <li><a href="/annonse/user/me">Meg</a>
-        <li><a href="/annonse/user/addUser">Legg til bruker</a></li>
         <li><a href="/annonse/user/all">Vis alle</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')

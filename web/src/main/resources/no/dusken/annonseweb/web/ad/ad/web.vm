@@ -19,7 +19,7 @@
                     <label class="element text medium">$ad.Id</label>
                 </div>
                 <p class="guidelines">
-                    Automatisk generert identifikator for denne kunden i annonseweb.
+                    Automatisk generert identifikator for denne annonsen i annonseweb.
                 </p>
             </li>
             <li>

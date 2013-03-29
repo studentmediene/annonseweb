@@ -40,6 +40,29 @@
 #end
 *#
 
+#macro ( singleSelectNameUsername $bindpath $options $select $attributes )
+    #springBind($bindpath)
+        <select name="${status.expression}" id="${status.expression}" ${attributes}#springCloseTag()
+    #foreach ($option in $options)
+        #set($ident = false)
+        #set($ident = $option.getUsername())
+        #if($ident)
+            #set($ident = "" + $option.getName() + " - (" + $option.getUsername() + ")")
+            #set($val = "value='$option.getUsername()'")
+        #else
+            #set($ident = "_INGEN VALGT_")
+        <!-- WARNING this makes username 0 for element unpredictable -->
+            #set($val = "value='0'")
+        #end
+        #if ($option.Username == $select.Username)
+            <option $val selected="true">$ident</option>
+        #else
+            <option $val>$ident</option>
+        #end
+    #end
+</select>
+#end
+
 #macro ( singleSelectActive $bindpath $select $attributes )
     #springBind($bindpath)
 
@@ -72,10 +95,10 @@
         #set($ident = false)
         #set($ident = $option.getId())
         #if($ident)
-            #set($ident = "" + $option.getId() + " - " + $option.getPersonName())
+            #set($ident = "" + $option.getPersonName() + " - " + $option.getId())
             #set($val = "value='$option.getId()'")
         #else
-            #set($ident = "INGEN VALGT")
+            #set($ident = "_INGEN VALGT_")
         <!-- WARNING this makes id 0 for element unpredictable -->
             #set($val = "value='0'")
         #end
@@ -95,10 +118,10 @@
         #set($ident = false)
         #set($ident = $option.getId())
         #if($ident)
-            #set($ident = "" + $option.getId() + " - " + $option.getDescription())
+            #set($ident = "" + $option.getDescription() + " - " + $option.getId())
             #set($val = "value='$option.getId()'")
         #else
-            #set($ident = "INGEN VALGT")
+            #set($ident = "_INGEN VALGT_")
         <!-- WARNING this makes id 0 for element unpredictable -->
             #set($val = "value='0'")
         #end
@@ -118,10 +141,10 @@
         #set($ident = false)
         #set($ident = $option.getId())
         #if($ident)
-            #set($ident = "" + $option.getId() + " - " + $option.getName())
+            #set($ident = "" + $option.getName() + " - " + $option.getId())
             #set($val = "value='$option.getId()'")
         #else
-            #set($ident = "INGEN VALGT")
+            #set($ident = "_INGEN VALGT_")
             <!-- WARNING this makes id 0 for element unpredictable -->
             #set($val = "value='0'")
         #end

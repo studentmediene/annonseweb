@@ -29,6 +29,15 @@
                 </p>
             </li>
             <li>
+                <label class="description">Opprettet</label>
+                <div>
+                    <label class="element text medium">#formatCalendarObject($customer.TimeCreated)</label>
+                </div>
+                <p class="guidelines">
+                    Når denne kunden ble første gang registrert i annonseweb.
+                </p>
+            </li>
+            <li>
                 <label class="description">Firmanavn</label>
                 <div>
                     <label class="element text medium">$customer.name</label>

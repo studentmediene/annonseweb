@@ -6,7 +6,7 @@
 
     <h2 class="title">
         <a href="/annonse/invoice/$invoice.Id">$invoice.description - $invoice.Id</a>
-        <label class="edit"><a href="/annonse/invoice/edit/$invoice.Id">Edit Invoice</a></label>
+        <label class="edit"><a href="/annonse/invoice/edit/$invoice.Id">Endre faktura</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -42,7 +42,8 @@
                     <label class="element text medium">$invoice.invoiceNumber</label>
                 </div>
                 <p class="guidelines">
-                    The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
+                    Fakturanummer. Dette er en identifikator for fakturaene for fakturaer fra det gamle systemet.
+                    Nye faktura får egne identifikatorer.
                 </p>
             </li>
             <li>

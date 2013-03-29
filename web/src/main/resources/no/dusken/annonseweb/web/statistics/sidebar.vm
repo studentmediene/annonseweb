@@ -1,10 +1,10 @@
 <nav id="sidebar">
-    <h2>Kunder</h2>
+    <!--<h2>Kunder</h2>-->
     <ul>
-        <li><a href="/customer/new">Ny kunde</a></li>
+        <!--<li><a href="/customer/new">Ny kunde</a></li>
         <li><a href="/customer/all">Kundeliste</a></li>
         <li><a href="/customer/emailList">Email til alle</a></li>
-        <li><a href="/search.do">Søk</a></li>
+        <li><a href="/search.do">Søk</a></li>-->
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

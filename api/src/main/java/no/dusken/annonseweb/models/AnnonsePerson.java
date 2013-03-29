@@ -1,13 +1,12 @@
 package no.dusken.annonseweb.models;
 
-import no.dusken.common.model.DuskenObject;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import no.dusken.common.model.Person;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
@@ -19,26 +18,15 @@ import static javax.persistence.FetchType.LAZY;
  * @author Inge Halsaunet
  */
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"ID", "principal"}))
-public class AnnonsePerson extends DuskenObject implements Authentication, ActiveAnnonseElement{
-    @Column(length = 100)
-    @Size(max = 100, min = 2)
-    private String credentials;
-
-    @Column(length = 100)
-    @Size(max = 100, min = 2)
-    private String principal;
-
+//@Table(name = "person", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+//@SequenceGenerator(name = "annonse_person_seq", sequenceName = "annonse_person_id_seq")
+public class AnnonsePerson extends Person implements ActiveAnnonseElement{
     @OneToMany(fetch = LAZY, mappedBy = "createdUser")
     private List<Sale> sales = new ArrayList<Sale>();
 
-    private boolean authenticated;
-
     @Column
-    private String authority;
-
-    @Column
-    private Boolean active;
+    @NotNull
+    private Boolean annonseActive = true;
 
     @OneToMany(fetch = LAZY, mappedBy = "createdUser")
     private List<AnnonseNote> myNotes = new ArrayList<AnnonseNote>();
@@ -47,87 +35,25 @@ public class AnnonsePerson extends DuskenObject implements Authentication, Activ
     private List<AnnonseNote> delegatedNotes = new ArrayList<AnnonseNote>();
 
     public AnnonsePerson() {
-        active = true;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> ret = new ArrayList<GrantedAuthority>();
-        ret.add(RoleAuth.valueOf(authority));
-        return ret;
+    public AnnonsePerson(String username) {
+        setFirstname("Fornavn");
+        setSurname("Etternavn");
+        setEmailAddress(username + "@underdusken.no");
+        setUsername(username);
     }
 
-    @Override
-    public Object getCredentials() {
-        return credentials;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public void setCredentials(String credentials) {
-        if (credentials != null)
-            this.credentials = credentials;
-    }
-
-    public String getPassword() {
-        return "Dette får du ikke se!";
-    }
-
-    public void setPassword(String passord) {
-        this.credentials = passord;
-    }
-
-    @Override
-    public Object getDetails() {
-        return null;
-    }
-
-    @Override
-    public Object getPrincipal() {
-        return principal;
-    }
-
-    public void setPrincipal(String principal) {
-        this.principal = principal;
-    }
-
-    @Override
-    public boolean isAuthenticated() {
-        return authenticated;
-    }
-
-    @Override
-    public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-        if (getId() != null)
-            if (active)
-                this.authenticated = isAuthenticated;
-        else if (isAuthenticated)
-            throw new IllegalArgumentException("Could not set authenticated");
-    }
-
-    @Override
-    public String getName() {
-        return principal;
-    }
-
-    public void setName(String name) {
-        principal = name;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
-
-    public String getAuthority() {
-        if (authority == null)
-            return "";
-        return authority;
+    public AnnonsePerson(Long id, String firstname, String surname, String username, String email) {
+        super(id,firstname, surname, username, email);
     }
 
     public Boolean getActive() {
-        return active;
+        return annonseActive;
     }
 
     public void setActive(Boolean active){
-        this.active = active;
+        this.annonseActive = active;
     }
 
     public List<Sale> getSales() {

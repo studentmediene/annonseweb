@@ -1,7 +1,6 @@
 package no.dusken.annonseweb.service;
 
 import no.dusken.annonseweb.models.*;
-import no.dusken.common.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +57,7 @@ public class ServiceIntegrationTest {
     }
 
     private AnnonsePerson getPerson() {
-        AnnonsePerson createdUser = new AnnonsePerson();
-        createdUser.setPrincipal("UserName");
+        AnnonsePerson createdUser = new AnnonsePerson("Users Name");
         annonsePersonService.saveAndFlush(createdUser);
         return createdUser;
     }

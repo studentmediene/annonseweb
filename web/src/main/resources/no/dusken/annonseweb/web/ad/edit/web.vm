@@ -36,7 +36,7 @@
                         #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
-                    Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                    Hvor annonsen skal plasseres, og hvor stor den er. Kort sagt hvilken type annonse det er snakk om.
                 </p>
             </li>
             <li>
@@ -181,7 +181,7 @@
             myArray.push($price)
         #end
         $('input[id="webFormat"]').on('change', function() {
-            for(i = 1; i <= 3; i++) {
+            for(i = 1; i <= myArray.length; i++) {
                 if($(this).val() == i){
                     $('input[id="price"]').val(myArray[i-1]);
                 }

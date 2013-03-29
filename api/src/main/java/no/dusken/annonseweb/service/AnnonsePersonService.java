@@ -4,4 +4,5 @@ import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.common.service.GenericService;
 
 public interface AnnonsePersonService extends GenericService<AnnonsePerson> {
+    public AnnonsePerson getByUsername(String username);
 }

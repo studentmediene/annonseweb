@@ -1,5 +1,6 @@
 package no.dusken.annonseweb.control;
 
+import customeditors.ResolveByUsernameEditor;
 import customeditors.ResolveCalendarEditor;
 import no.dusken.annonseweb.models.*;
 import no.dusken.annonseweb.service.*;
@@ -151,7 +152,7 @@ public class AnnonseNoteController {
 
     @RequestMapping("/edit/{annonseNote}")
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
-        List<AnnonsePerson> uList = annonsePersonService.findAll();
+        List<AnnonsePerson> uList = (List<AnnonsePerson>) annonsePersonService.findAll();
         uList.add(null);
         List<Sale> sList = salesService.findAll();
         sList.add(null);
@@ -287,7 +288,7 @@ public class AnnonseNoteController {
         binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
         binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
-        binder.registerCustomEditor(AnnonsePerson.class, new BindByIdEditor(annonsePersonService));
+        binder.registerCustomEditor(AnnonsePerson.class, new ResolveByUsernameEditor(annonsePersonService));
         binder.registerCustomEditor(Calendar.class, new ResolveCalendarEditor());
     }
 }

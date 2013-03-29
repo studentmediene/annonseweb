@@ -44,6 +44,9 @@ public class AnnonseNoteControllerTest {
     @Autowired
     private AnnonsePersonService annonsePersonService;
 
+    @Autowired
+    private AnnonsePersonController annonsePersonController;
+
     private AnnonsePerson someone;
     private Model model;
     private AnnonseNote note;
@@ -54,16 +57,9 @@ public class AnnonseNoteControllerTest {
 
     @Before
     public void setup() {
-        if (annonsePersonService.findAll().size() == 0) {
-            someone = new AnnonsePerson();
-            someone.setPrincipal("SuperDuper");
-            someone.setCredentials( "SuperPass");
-            someone.setAuthority(RoleAuth.MASKINIST.toString());
-            annonsePersonService.saveAndFlush(someone);
-        } else {
-            someone = annonsePersonService.findOne(Long.valueOf(1));
-        }
-        SecurityContextHolder.getContext().setAuthentication(someone);
+        String username = "username";
+        SecurityContextHolder.getContext().setAuthentication(new DummyAuthenticationUserDetails(username));
+        someone = annonsePersonController.getLoggedInUser();
         model = new ExtendedModelMap();
         note = new AnnonseNote();
         note.setText("A short note");

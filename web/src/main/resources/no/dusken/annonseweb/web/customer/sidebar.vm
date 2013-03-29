@@ -3,7 +3,8 @@
     <ul>
         <li><a href="/annonse/customer/new">Ny kunde</a>
         <li><a href="/annonse/customer/all">Kundeliste</a></li>
-        <li><a href="/annonse/customer/emailList">Epost for alle</a></li>
+        <!-- Utkommentert fordi marked forteller den trengs egentlig ikke -->
+        <!--<li><a href="/annonse/customer/emailList">Epost for alle</a></li>-->
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

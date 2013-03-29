@@ -1,12 +1,10 @@
 package no.dusken.annonseweb.control;
 
+import customeditors.ResolveByUsernameEditor;
 import no.dusken.annonseweb.models.AnnonsePerson;
-import no.dusken.annonseweb.models.RoleAuth;
 import no.dusken.annonseweb.service.AnnonsePersonService;
-import no.dusken.common.editor.BindByIdEditor;
+import no.dusken.common.util.AuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * The <code>AnnonsePersonController</code> is a class created for management of <code>AnnonsePerson</code>s.
@@ -29,35 +27,22 @@ public class AnnonsePersonController {
     private AnnonsePersonService annonsePersonService;
 
     public AnnonsePerson getLoggedInUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth instanceof AnnonsePerson)
-            return annonsePersonService.findOne(((AnnonsePerson) auth).getId());
-        return null;
+        String username = AuthenticationUtil.getLoggedinUsername();
+        AnnonsePerson person = annonsePersonService.getByUsername(username);
+        if (person == null) {
+            // Inserts a new AnnonsePerson, and makes sure it is read from database
+            person = new AnnonsePerson(username);
+            annonsePersonService.saveAndFlush(person);
+            person = annonsePersonService.getByUsername(username);
+        }
+        return person;
     }
 
-    @RequestMapping("/addUser")
-    public String addUser(Model model) {
-        AnnonsePerson usr = new AnnonsePerson();
-        usr.setPrincipal("");
-        usr.setCredentials("");
-        usr.setAuthority(RoleAuth.ANNONSE_ARBEIDER.toString());
-        model.addAttribute("user", usr);
-        return edit(model);
-    }
-
-    @RequestMapping("/edit/{user}")
-    public String editUser(Model model, @PathVariable AnnonsePerson user) {
-        model.addAttribute("user", user);
-        return edit(model);
-    }
-
-    private String edit(Model model) {
-        ArrayList<String> aList = new ArrayList<String>();
-        for (RoleAuth r:RoleAuth.values())
-            aList.add(r.toString());
-        model.addAttribute("authorityList", aList);
-        model.addAttribute("activeList", Arrays.asList(true, false));
-        return "/user/edit";
+    @RequestMapping("/doArchive/{user}")
+    public String archiveUser(@PathVariable AnnonsePerson user) {
+        user.setActive(Boolean.FALSE);
+        annonsePersonService.saveAndFlush(user);
+        return "redirect:/annonse/user/all";
     }
 
     @RequestMapping("/me")
@@ -68,23 +53,30 @@ public class AnnonsePersonController {
 
     @RequestMapping("/all")
     public String viewAll(Model model) {
-        model.addAttribute("userList", annonsePersonService.findAll());
+        List<AnnonsePerson> all = annonsePersonService.findAll();
+        List<AnnonsePerson> active = new ArrayList<AnnonsePerson>();
+        List<AnnonsePerson> nonActive = new ArrayList<AnnonsePerson>();
+        for (AnnonsePerson u: all) {
+            if (u.getActive())
+                active.add(u);
+            else
+                nonActive.add(u);
+        }
+        model.addAttribute("activeUserList", active);
+        model.addAttribute("nonActiveUserList", nonActive);
         return "/user/all";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveNew(@Valid @ModelAttribute AnnonsePerson user) {
-        annonsePersonService.saveAndFlush(user);
-        return "redirect:/annonse/user/" + user.getId();
-    }
-
-    @RequestMapping("/save/{pathUser}")
-    public String saveEdit(@PathVariable AnnonsePerson pathUser, @Valid @ModelAttribute AnnonsePerson user) {
-        pathUser.setAuthority(user.getAuthority());
-        // TODO Should password change be possible?
-        pathUser.setActive(user.getActive());
-        annonsePersonService.saveAndFlush(pathUser);
-        return "redirect:/annonse/user/" + pathUser.getId();
+        AnnonsePerson self = getLoggedInUser();
+        self.setActive(user.getActive());
+        self.setFirstname(user.getFirstname());
+        self.setSurname(user.getSurname());
+        self.setEmailAddress(user.getEmailAddress());
+        self.setPhoneNumber(user.getPhoneNumber());
+        annonsePersonService.saveAndFlush(self);
+        return "redirect:/annonse/user/me";
     }
 
     @RequestMapping("/{user}")
@@ -95,6 +87,6 @@ public class AnnonsePersonController {
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
-        binder.registerCustomEditor(AnnonsePerson.class, new BindByIdEditor(annonsePersonService));
+        binder.registerCustomEditor(AnnonsePerson.class, new ResolveByUsernameEditor(annonsePersonService));
     }
 }

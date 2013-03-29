@@ -1,0 +1,27 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/sidebar.vm')
+
+<!-- content -->
+<div id="content">
+    <div class="post">
+        <h2 class="title"><a href="#">Velkommen til Annonseweb!</a></h2>
+        <div class="entry">
+            <div class="meta">Dette Annonseweb ble første gang publisert i påsken 2013</div>
+            <div class="content">Velkommen til studentmedienes salgssystem for annonser; Annonseweb!</div>
+            <div class="content">
+                Hei $loggedIn.Name
+                <br />
+                Hvis du aldri har vært her før, anbefaler vi deg å gå til <a href="/annonse/user/me">profilen din</a>
+                <br />
+                Der kan du endre kontaktinfo og se andres kontaktinfo. Det er alltid en snarvei dit i menyen til venstre.
+                Bare trykk på brukernavnet ditt.
+            </div>
+            <div class="content">
+                Under brukernavnet ditt kan du alltid se om du har noen oppgaver på gang som du har planlagt, eller om
+                noen har sendt deg noen.
+                <br />
+                Klikk deg rundt på menyen og utforsk de ulike mulighetene du har!
+            </div>
+        </div>
+    </div>
+</div>

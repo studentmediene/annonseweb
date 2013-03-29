@@ -42,12 +42,15 @@
             </p>
         </div>
         <div id="search">
+            Søk kommer!
+            <!--
             <form method="get">
                 <fieldset>
                     <input type="text" name="s" placeholder="Søk" id="search-text" size="15" />
                     <input type="submit" id="search-submit" value="GO" />
                 </fieldset>
             </form>
+            -->
         </div>
         <div id="feedback">
             <p>

@@ -1,10 +1,7 @@
 package no.dusken.annonseweb.control;
 
-import no.dusken.annonseweb.models.AnnonsePerson;
 import no.dusken.annonseweb.models.Customer;
-import no.dusken.annonseweb.models.RoleAuth;
 import no.dusken.annonseweb.models.Sale;
-import no.dusken.annonseweb.service.AnnonsePersonService;
 import no.dusken.annonseweb.service.CustomerService;
 import no.dusken.annonseweb.service.SalesService;
 import org.junit.Assert;
@@ -37,22 +34,12 @@ public class SalesControllerTest {
     private CustomerService customerService;
 
     @Autowired
-    private AnnonsePersonService annonsePersonService;
-
-    private AnnonsePerson someone;
+    AnnonsePersonController annonsePersonController;
 
     @Before
     public void setup() {
-        if (annonsePersonService.findAll().size() == 0) {
-            someone = new AnnonsePerson();
-            someone.setPrincipal("SuperDuper");
-            someone.setCredentials( "SuperPass");
-            someone.setAuthority(RoleAuth.MASKINIST.toString());
-            annonsePersonService.saveAndFlush(someone);
-        } else {
-            someone = annonsePersonService.findOne(Long.valueOf(1));
-        }
-        SecurityContextHolder.getContext().setAuthentication(someone);
+        String username = "username";
+        SecurityContextHolder.getContext().setAuthentication(new DummyAuthenticationUserDetails(username));
     }
 
     @Test
