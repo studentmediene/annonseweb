@@ -14,6 +14,8 @@ import static javax.persistence.CascadeType.ALL;
 @Entity
 public class Invoice extends DuskenObject{
 
+    //todo cleanup
+
     @OneToMany
     private List<Sale> sales = new ArrayList<Sale>();
 
@@ -26,6 +28,7 @@ public class Invoice extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
 
+    // todo
     @ManyToOne//(cascade = ALL)
     private AnnonsePerson createdUser;
 
@@ -110,6 +113,7 @@ public class Invoice extends DuskenObject{
     }
 
     public String getCreatedDate() {
+        // todo
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         String strdate = null;
         if (this.createdDate != null) {
@@ -131,6 +135,7 @@ public class Invoice extends DuskenObject{
     }
 
     public String getLastEditedDate() {
+        //todo
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         String strdate = null;
         if (this.lastEditedDate != null) {

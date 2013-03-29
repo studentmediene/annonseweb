@@ -195,6 +195,9 @@ public class AnnonseNoteController {
     public void viewSidebarNotes(Writer writer) {
         List<AnnonseNote> expiredNotes = new ArrayList<AnnonseNote>();
 
+        // todo check this out.
+        // can be improved with db queries. expired notes array can be removed.
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MMM.yyyy - HH:mm:");
         String response = "<ul class=\"tasks\">Mine påminnere:";
         Calendar yesterday = Calendar.getInstance();
