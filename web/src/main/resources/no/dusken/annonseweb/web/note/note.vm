@@ -1,7 +1,8 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/note/sidebar.vm')
 
-// todo: is this neccesary? =flase thingy?
+<!--// todo: is this neccesary? =flase thingy?-->
+<!-- No, it is not, but it does not cause large problems, does it? -->
 #set($conCustomer = false)
 #set($conCustomer = $annonseNote.getCustomer())
 #set($conContact = false)
