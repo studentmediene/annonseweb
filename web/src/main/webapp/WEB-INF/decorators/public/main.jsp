@@ -38,7 +38,7 @@
         <div id="logo">
             <h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
             <p>
-                <a href="http://www.underdusken.no">Annonser for Under Dusken</a>
+                <a href="http://www.dusken.no">Annonser for studentmediene</a>
             </p>
         </div>
         <div id="search">
