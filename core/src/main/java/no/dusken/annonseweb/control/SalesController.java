@@ -13,7 +13,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.beans.PropertyEditor;
 import java.util.Calendar;
 
 /**
@@ -78,7 +77,7 @@ public class SalesController{
         sale.setTimeCreated(Calendar.getInstance());
         sale.setLastEditedDate(Calendar.getInstance());
         salesService.saveAndFlush(sale);
-        return "redirect:/annonse/sale/" + sale.getId();
+        return "redirect:/annonseweb/sale/" + sale.getId();
     }
 
     /**
@@ -93,7 +92,7 @@ public class SalesController{
         pathSale.setLastEditedUser(annonsePersonController.getLoggedInUser());
         pathSale.setLastEditedDate(Calendar.getInstance());
         salesService.saveAndFlush(pathSale);
-        return "redirect:/annonse/sale/" + pathSale.getId();
+        return "redirect:/annonseweb/sale/" + pathSale.getId();
     }
 
     @RequestMapping("/{sale}")

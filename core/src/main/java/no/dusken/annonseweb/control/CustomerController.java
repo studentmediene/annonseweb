@@ -70,7 +70,7 @@ public class CustomerController{
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveNew(@Valid @ModelAttribute Customer customer) {
         customerService.saveAndFlush(customer);
-        return "redirect:/annonse/customer/" + customer.getId();
+        return "redirect:/annonseweb/customer/" + customer.getId();
     }
 
     /**
@@ -83,7 +83,7 @@ public class CustomerController{
     public String saveEdit(@PathVariable Customer pathCustomer, @Valid @ModelAttribute Customer customer) {
         pathCustomer.cloneFrom(customer);
         customerService.saveAndFlush(pathCustomer);
-        return "redirect:/annonse/customer/" + pathCustomer.getId();
+        return "redirect:/annonseweb/customer/" + pathCustomer.getId();
     }
 
     @InitBinder

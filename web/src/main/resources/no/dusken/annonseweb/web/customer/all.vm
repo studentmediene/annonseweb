@@ -5,12 +5,12 @@
 <div id="content" >
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/customer/all">Kundeliste</a>
+            <a href="/annonseweb/customer/all">Kundeliste</a>
         </h2>
         <div class="entry">
             #foreach($customer in $customerList)
                 <p>
-                    <a href="/annonse/customer/$customer.Id">
+                    <a href="/annonseweb/customer/$customer.Id">
                         $customer.Id - $customer.name
                     </a>
                 </p>

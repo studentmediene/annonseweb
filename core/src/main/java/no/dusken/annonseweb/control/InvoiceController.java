@@ -76,7 +76,7 @@ public class InvoiceController {
         for(Sale sale: invoice.getSales()){
             salesService.saveAndFlush(sale);
         }
-        return "redirect:/annonse/invoice/" + invoice.getId();
+        return "redirect:/annonseweb/invoice/" + invoice.getId();
     }
 
     @RequestMapping("/save/{pathInvoice}")
@@ -106,7 +106,7 @@ public class InvoiceController {
                 }
             }
         }
-        return "redirect:/annonse/invoice/" + pathInvoice.getId();
+        return "redirect:/annonseweb/invoice/" + pathInvoice.getId();
     }
 
     @RequestMapping("/print/{invoice}")

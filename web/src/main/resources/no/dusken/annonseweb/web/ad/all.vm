@@ -9,7 +9,7 @@
         <div class="entry">
             #foreach( $ad in $adList)
                 <div class="listEntry">
-                    <a href="/annonse/ad/$ad.Id">
+                    <a href="/annonseweb/ad/$ad.Id">
                     <p class="meta">
                         $ad.sale.customer.
                     </p>

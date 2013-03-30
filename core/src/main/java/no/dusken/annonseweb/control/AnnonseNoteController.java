@@ -95,7 +95,7 @@ public class AnnonseNoteController {
     public String doArchive(@PathVariable AnnonseNote annonseNote) {
         annonseNote.setActive(Boolean.FALSE);
         annonseNoteService.saveAndFlush(annonseNote);
-        return "redirect:/annonse/note/" + annonseNote.getId();
+        return "redirect:/annonseweb/note/" + annonseNote.getId();
     }
 
     @RequestMapping("/active")
@@ -175,7 +175,7 @@ public class AnnonseNoteController {
         annonseNote.setCreatedUser(annonsePersonController.getLoggedInUser());
         annonseNote.setCreatedDate(Calendar.getInstance());
         annonseNoteService.saveAndFlush(annonseNote);
-        return "redirect:/annonse/note/" + annonseNote.getId();
+        return "redirect:/annonseweb/note/" + annonseNote.getId();
     }
 
     @RequestMapping("/save/{pathAnnonseNote}")
@@ -188,7 +188,7 @@ public class AnnonseNoteController {
         pathAnnonseNote.setSale(annonseNote.getSale());
         pathAnnonseNote.setText(annonseNote.getText());
         annonseNoteService.saveAndFlush(pathAnnonseNote);
-        return "redirect:/annonse/note/" + pathAnnonseNote.getId();
+        return "redirect:/annonseweb/note/" + pathAnnonseNote.getId();
     }
 
     @RequestMapping("/sidebar_notes")
@@ -205,23 +205,23 @@ public class AnnonseNoteController {
         for (AnnonseNote note: annonsePersonController.getLoggedInUser().getMyNotes()) {
             if (note.getActive() && note.getDueDate() != null) {
                 if (note.getDueDate().after(yesterday)) {
-                    response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
+                    response += "<li class=\"task\"><a href=\"/annonseweb/note/" + note.getId() + "\">";
                     response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
                     if (note.getCustomer() != null) {
-                        response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
+                        response += "<br /><a href=\"/annonseweb/customer/" + note.getCustomer().getId() + "\">";
                         response += "Kunde: " + note.getCustomer().getName() + "</a>";
                     }
                     if (note.getContactPerson() != null) {
-                        response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
+                        response += "<br /><a href=\"/annonseweb/contactperson/" + note.getContactPerson().getId() + "\">";
                         response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
                     }
                     if (note.getSale() != null) {
-                        response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
+                        response += "<br /><a href=\"/annonseweb/sale/" + note.getSale().getId() + "\">";
                         response += "Salg: " + note.getSale().getDescription() + "</a>";
                     }
-                    response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
-                    response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
-                    response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
+                    response += "<p class=\"guidelines\"><a href=\"/annonseweb/note/"+note.getId()+"\">Vis</a>";
+                    response += "<br /><a href=\"/annonseweb/note/edit/" + note.getId() + "\">Endre</a>";
+                    response += "<br /><a href=\"/annonseweb/note/doarchive/" + note.getId();
                     response += "\">Arkiver</a></p></li>";
                 } else {
                     expiredNotes.add(note);
@@ -232,24 +232,24 @@ public class AnnonseNoteController {
         for (AnnonseNote note: annonsePersonController.getLoggedInUser().getDelegatedNotes()) {
             if (note.getActive() && note.getDueDate() != null) {
                 if (note.getDueDate().after(yesterday)) {
-                    response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
+                    response += "<li class=\"task\"><a href=\"/annonseweb/note/" + note.getId() + "\">";
                     response += dateFormat.format(note.getDueDate().getTime());
                     response += "</a><br />Fra: "+note.getCreatedUser().getName();
                     if (note.getCustomer() != null) {
-                        response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
+                        response += "<br /><a href=\"/annonseweb/customer/" + note.getCustomer().getId() + "\">";
                         response += "Kunde: " + note.getCustomer().getName() + "</a>";
                     }
                     if (note.getContactPerson() != null) {
-                        response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
+                        response += "<br /><a href=\"/annonseweb/contactperson/" + note.getContactPerson().getId() + "\">";
                         response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
                     }
                     if (note.getSale() != null) {
-                        response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
+                        response += "<br /><a href=\"/annonseweb/sale/" + note.getSale().getId() + "\">";
                         response += "Salg: " + note.getSale().getDescription() + "</a>";
                     }
-                    response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
-                    response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
-                    response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
+                    response += "<p class=\"guidelines\"><a href=\"/annonseweb/note/"+note.getId()+"\">Vis</a>";
+                    response += "<br /><a href=\"/annonseweb/note/edit/" + note.getId() + "\">Endre</a>";
+                    response += "<br /><a href=\"/annonseweb/note/doarchive/" + note.getId();
                     response += "\">Arkiver</a></p></li>";
                 } else {
                     expiredNotes.add(note);
@@ -258,23 +258,23 @@ public class AnnonseNoteController {
         }
         response += "<br />Utgåtte påminnere:";
         for (AnnonseNote note: expiredNotes) {
-            response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
+            response += "<li class=\"task\"><a href=\"/annonseweb/note/" + note.getId() + "\">";
             response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
             if (note.getCustomer() != null) {
-                response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
+                response += "<br /><a href=\"/annonseweb/customer/" + note.getCustomer().getId() + "\">";
                 response += "Kunde: " + note.getCustomer().getName() + "</a>";
             }
             if (note.getContactPerson() != null) {
-                response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
+                response += "<br /><a href=\"/annonseweb/contactperson/" + note.getContactPerson().getId() + "\">";
                 response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
             }
             if (note.getSale() != null) {
-                response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
+                response += "<br /><a href=\"/annonseweb/sale/" + note.getSale().getId() + "\">";
                 response += "Salg: " + note.getSale().getDescription() + "</a>";
             }
-            response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
-            response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
-            response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
+            response += "<p class=\"guidelines\"><a href=\"/annonseweb/note/"+note.getId()+"\">Vis</a>";
+            response += "<br /><a href=\"/annonseweb/note/edit/" + note.getId() + "\">Endre</a>";
+            response += "<br /><a href=\"/annonseweb/note/doarchive/" + note.getId();
             response += "\">Arkiver</a></p></li>";
         }
         response += "</ul>";

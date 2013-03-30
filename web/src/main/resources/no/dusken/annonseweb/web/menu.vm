@@ -1,75 +1,75 @@
 <div id="menu">
     <ul>
         <li>
-            <a href="/annonse/welcome">Hjem</a>
+            <a href="#springUrl("/annonseweb/welcome")">Hjem</a>
         </li>
-        <li><a href="/annonse/customer"
+        <li><a href="#springUrl("/annonseweb/customer")"
                onmouseover="openMenu('dropmenu1')"
                onmouseout="setClosing()">Kunder</a>
             <div id="dropmenu1"
                  onmouseover="stayOpen('dropmenu1')"
                  onmouseout="setClosing()">
-                <a href="/annonse/customer/new">Ny kunde</a>
-                <a href="/annonse/customer/all">Kundeliste</a>
-                <a href="/annonse/customer/emailList">Email for alle</a>
+                <a href="#springUrl("/annonseweb/customer/new")">Ny kunde</a>
+                <a href="#springUrl("/annonseweb/customer/all")">Kundeliste</a>
+                <a href="#springUrl("/annonseweb/customer/emailList")">Email for alle</a>
                 <!-- TODO Remove this styling. Styles in html should not occur!-->
                 <hr>
-                <a href="/annonse/contactperson/new">Ny kontaktperson</a>
-                <a href="/annonse/contactperson/active">Kontaktpersonliste - aktive</a>
-                <a href="/annonse/contactperson/all">Kontaktpersonliste - alle</a>
-                <a href="/annonse/contactperson/emailList">Epostliste - aktive kontaktpersoner</a>
+                <a href="#springUrl("/annonseweb/contactperson/new")">Ny kontaktperson</a>
+                <a href="#springUrl("/annonseweb/contactperson/active")">Kontaktpersonliste - aktive</a>
+                <a href="#springUrl("/annonseweb/contactperson/all")">Kontaktpersonliste - alle</a>
+                <a href="#springUrl("/annonseweb/contactperson/emailList")">Epostliste - aktive kontaktpersoner</a>
             </div>
         </li>
-        <li><a href="/annonse/sale"
+        <li><a href="#springUrl("/annonseweb/sale")"
                onmouseover="openMenu('dropmenu4')"
                onmouseout="setClosing()">Salg</a>
             <div id="dropmenu4"
                  onmouseover="stayOpen('dropmenu4')"
                  onmouseout="setClosing()">
-                <a href="#springUrl("/annonse/sale/new")">Nytt salg</a>
-                <a href="#springUrl("/annonse/sale/all")">SalgsListe</a>
+                <a href="#springUrl("/annonseweb/sale/new")">Nytt salg</a>
+                <a href="#springUrl("/annonseweb/sale/all")">SalgsListe</a>
             </div>
         </li>
-        <li><a href="/annonse/invoice"
+        <li><a href="#springUrl("/annonseweb/invoice")"
                onmouseover="openMenu('dropmenu5')"
                onmouseout="setClosing()">Faktura</a>
             <div id="dropmenu5"
                  onmouseover="stayOpen('dropmenu5')"
                  onmouseout="setClosing()">
-                <a href="/annonse/invoice/new">Ny faktura</a>
-                <a href="/annonse/invoice/all">FakturaListe</a>
+                <a href="#springUrl("/annonseweb/invoice/new")">Ny faktura</a>
+                <a href="#springUrl("/annonseweb/invoice/all")">FakturaListe</a>
             </div>
         </li>
-        <li><a href="/annonse/note"
+        <li><a href="#springUrl("/annonseweb/note")"
                onmouseover="openMenu('dropmenu2')"
                onmouseout="setClosing()">Notater</a>
             <div id="dropmenu2"
                  onmouseover="stayOpen('dropmenu2')"
                  onmouseout="setClosing()">
-                <a href="/annonse/note/new">Nytt notat</a>
-                <a href="/annonse/note/active">Mine aktive notater/ oppgaver</a>
-                <a href="/annonse/note/archive">Mitt arkiv</a>
-                <a href="/annonse/note/archive/all">Hele mitt arkiv</a>
+                <a href="#springUrl("/annonseweb/note/new")">Nytt notat</a>
+                <a href="#springUrl("/annonseweb/note/active")">Mine aktive notater/ oppgaver</a>
+                <a href="#springUrl("/annonseweb/note/archive")">Mitt arkiv</a>
+                <a href="#springUrl("/annonseweb/note/archive/all")">Hele mitt arkiv</a>
             </div>
         </li>
-        <li><a href="/annonse/ad/"
+        <li><a href="#springUrl("/annonseweb/ad/")"
                onmouseover="openMenu('dropmenu3')"
                onmouseout="setClosing()">Annonser</a>
             <div id="dropmenu3"
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
-                <a href="/annonse/ad/new">Ny annonse</a>
-                <a href="/annonse/ad/overview">Annonseoversikt</a>
-                <a href="/annonse/ad/all">Alle annonser</a>
+                <a href="#springUrl("/annonseweb/ad/new")">Ny annonse</a>
+                <a href="#springUrl("/annonseweb/ad/overview")">Annonseoversikt</a>
+                <a href="#springUrl("/annonseweb/ad/all")">Alle annonser</a>
             </div>
         </li>
-        <li><a href="/annonse/statistics"
+        <li><a href="#springUrl("/annonseweb/statistics")"
                onmouseover="openMenu('dropmenu6')"
                onmouseout="setClosing()">Statistikk</a>
             <div id="dropmenu6"
                  onmouseover="stayOpen('dropmenu6')"
                  onmouseout="setClosing()">
-                <a href="/annonse/statistics">--Kommer--</a>
+                <a href="#springUrl("/annonseweb/statistics")">--Kommer--</a>
                 <!--<a href="/annonse/statistics">Omsetning</a>
                 <a href="/annonse/statistics">Antall annonsesider</a>
                 <a href="/annonse/statistics">Aktive nettannonser</a>-->

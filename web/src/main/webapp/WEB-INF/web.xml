@@ -101,7 +101,7 @@
     
     <servlet-mapping>
         <servlet-name>annonseweb</servlet-name>
-        <url-pattern>/annonse/*</url-pattern>
+        <url-pattern>/annonseweb/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

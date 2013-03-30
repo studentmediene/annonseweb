@@ -6,9 +6,16 @@ Annonseweb-0.1
 - Do not know where to start-
 ====================================================
 
-Annonseweb-1.2
+Annonseweb-1.2.0
 ====================================================
 - First release.
-- Most major change: It works.
+- Most major change: It works. Locally...
 - Other changes are too numerous to count.
+====================================================
+
+Annonseweb-1.2.1
+====================================================
+- Updated location and all links
+====================================================
+
 

@@ -9,14 +9,14 @@
         #set($adId = $ad.getId())
         #set($pathEnd = "")
         #if (!$adId)
-            <a href="/annonse/ad/new/printed">Ny annonse for Under Dusken:</a>
+            <a href="/annonseweb/ad/new/printed">Ny annonse for Under Dusken:</a>
         #else
-            <a href="/annonse/ad/edit/$ad.getId()">Endre annonse for Under Dusken: $ad.getId()</a>
+            <a href="/annonseweb/ad/edit/$ad.getId()">Endre annonse for Under Dusken: $ad.getId()</a>
         <label class="edit"><a href="/annonse/ad/$ad.getId()">Tilbake</a>
             #set($pathEnd = "/" + $adId)
         #end
     </h2>
-    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/ad/save/printed$pathEnd")">
+    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/ad/save/printed$pathEnd")">
         <div class="content">
             <ul>
                 <li>

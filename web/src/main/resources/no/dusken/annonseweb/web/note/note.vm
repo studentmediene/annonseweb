@@ -17,8 +17,8 @@
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
-        <a href="/annonse/note/$annonseNote.getId()">#formatCalendarObject($annonseNote.getCreatedDate())</a>
-        <label class="edit"><a href="/annonse/note/edit/$annonseNote.getId()">Endre notis</a></label>
+        <a href="/annonseweb/note/$annonseNote.getId()">#formatCalendarObject($annonseNote.getCreatedDate())</a>
+        <label class="edit"><a href="/annonseweb/note/edit/$annonseNote.getId()">Endre notis</a></label>
     </h2>
 
     <div class="content">
@@ -59,7 +59,7 @@
                 <li>
                     <label class="description">Notat tilknyttet kunde</label>
                     <div>
-                        <a href="/annonse/customer/$conCustomer.getId()">$conCustomer.getName()</a>
+                        <a href="/annonseweb/customer/$conCustomer.getId()">$conCustomer.getName()</a>
                     </div>
                     <p class="guidelines">
                         Dette notatet er tilknyttet $conCustomer.getName().
@@ -70,7 +70,7 @@
                 <li>
                     <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
                     <div>
-                        <a href="/annonse/contactperson/$conContact.getId()">$conContact.getPersonName()</a>
+                        <a href="/annonseweb/contactperson/$conContact.getId()">$conContact.getPersonName()</a>
                     </div>
                     <p class="guidelines" id="guide_4">
                         Den du skal følge opp.
@@ -81,7 +81,7 @@
                 <li>
                     <label class="description">Notat tilknyttet salg</label>
                     <div>
-                        <a href="/annonse/sale/$conSale.getId()">$conSale.getDescription()</a>
+                        <a href="/annonseweb/sale/$conSale.getId()">$conSale.getDescription()</a>
                     </div>
                     <p class="guidelines">
                         Dette notatet er tilknyttet dette salget

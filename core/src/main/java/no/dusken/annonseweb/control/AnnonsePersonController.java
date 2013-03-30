@@ -42,7 +42,7 @@ public class AnnonsePersonController {
     public String archiveUser(@PathVariable AnnonsePerson user) {
         user.setActive(Boolean.FALSE);
         annonsePersonService.saveAndFlush(user);
-        return "redirect:/annonse/user/all";
+        return "redirect:/annonseweb/user/all";
     }
 
     @RequestMapping("/me")
@@ -76,7 +76,7 @@ public class AnnonsePersonController {
         self.setEmailAddress(user.getEmailAddress());
         self.setPhoneNumber(user.getPhoneNumber());
         annonsePersonService.saveAndFlush(self);
-        return "redirect:/annonse/user/me";
+        return "redirect:/annonseweb/user/me";
     }
 
     @RequestMapping("/{user}")

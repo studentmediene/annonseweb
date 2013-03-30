@@ -63,7 +63,7 @@
     </header>
 
     <nav id="menu">
-        <page:applyDecorator name="blank" page="/annonse/menu"/>
+        <page:applyDecorator name="blank" page="/annonseweb/menu"/>
     </nav>
 
     <div id="page">

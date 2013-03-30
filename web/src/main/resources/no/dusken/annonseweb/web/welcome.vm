@@ -11,7 +11,7 @@
             <div class="content">
                 Hei $loggedIn.Name
                 <br />
-                Hvis du aldri har vært her før, anbefaler vi deg å gå til <a href="/annonse/user/me">profilen din</a>
+                Hvis du aldri har vært her før, anbefaler vi deg å gå til <a href="/annonseweb/user/me">profilen din</a>
                 <br />
                 Der kan du endre kontaktinfo og se andres kontaktinfo. Det er alltid en snarvei dit i menyen til venstre.
                 Bare trykk på brukernavnet ditt.

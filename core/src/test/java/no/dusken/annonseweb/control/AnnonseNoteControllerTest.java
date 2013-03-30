@@ -100,7 +100,7 @@ public class AnnonseNoteControllerTest {
     public void testDoArchive() {
         note.setActive(Boolean.TRUE);
         annonseNoteController.saveNew(note);
-        assertEquals("Do active returned wrong view name!", "redirect:/annonse/note/" + note.getId(),
+        assertEquals("Do active returned wrong view name!", "redirect:/annonseweb/note/" + note.getId(),
                 annonseNoteController.doArchive(note));
         assertFalse("Do archive did not make note passive!", note.getActive());
     }
@@ -174,7 +174,7 @@ public class AnnonseNoteControllerTest {
         int noteCount = annonseNoteService.findAll().size();
         assertNull("Annonse note had ID before it should", note.getId());
         String retAdr = annonseNoteController.saveNew(note);
-        assertEquals("Save new did not return correct view adress!", "redirect:/annonse/note/" + note.getId(), retAdr);
+        assertEquals("Save new did not return correct view adress!", "redirect:/annonseweb/note/" + note.getId(), retAdr);
         assertNotNull("Note did not get ID!", note.getId());
         assertEquals("Note was stored 0 or multiple times!", noteCount + 1, annonseNoteService.findAll().size());
         note = annonseNoteService.findOne(note.getId());
@@ -193,7 +193,7 @@ public class AnnonseNoteControllerTest {
         editSrc.setActive(Boolean.FALSE);
         String retAdr = annonseNoteController.saveEdit(note, editSrc);
         assertEquals("Id was changed", id, note.getId());
-        assertEquals("Save Edit returned wrong view address!", "redirect:/annonse/note/" + id, retAdr);
+        assertEquals("Save Edit returned wrong view address!", "redirect:/annonseweb/note/" + id, retAdr);
         assertEquals("Note was stored again or deleted!", noteCount, annonseNoteService.findAll().size());
         note = annonseNoteService.findOne(note.getId());
         assertEquals("Notes text was not properly edited", "edited short note", note.getText());

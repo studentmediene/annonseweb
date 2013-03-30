@@ -2,7 +2,7 @@
     <p>
         Logget inn som:
         <br>
-        <a href="/annonse/user/me">
+        <a href="#springUrl("/annonseweb/user/me")">
             $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal().Username
         </a>
     </p>

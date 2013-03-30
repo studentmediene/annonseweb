@@ -9,16 +9,17 @@
         #set($InvoiceId = $invoice.getId())
         #set($pathEnd = "")
         #if (!$InvoiceId)
-            <a href="/annonse/invoice/new/">Ny faktura:</a>
+            <a href="/annonseweb/invoice/new/">Ny faktura:</a>
         #else
-            <a href="/annonse/invoice/edit/$invoice.getId()">Endre faktura: $invoice.getId()</a>
-            <label class="edit"><a href="/annonse/invoice/$invoice.getId()">Tilbake</a>
+            <a href="/annonseweb/invoice/edit/$invoice.getId()">Endre faktura: $invoice.getId()</a>
+            <label class="edit"><a href="/annonseweb/invoice/$invoice.getId()">Tilbake</a>
             #set($pathEnd = "/" + $InvoiceId)
         #end
     </h2>
-    <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonse/invoice/save$pathEnd")">
+    <!-- TODO: There seems to be forms within forms. Should not be like that -->
+    <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonseweb/invoice/save$pathEnd")">
 
-<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/invoice/save")">
+<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/invoice/save")">
     <div class="content">
         <ul>
             <li>

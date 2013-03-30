@@ -8,8 +8,8 @@
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
-        <a href="/annonse/sale/$sale.Id">$sale.Id - $sale.description</a>
-        <label class="edit"><a href="/annonse/sale/edit/$sale.Id">Endre salg</a></label>
+        <a href="/annonseweb/sale/$sale.Id">$sale.Id - $sale.description</a>
+        <label class="edit"><a href="/annonseweb/sale/edit/$sale.Id">Endre salg</a></label>
     </h2>
     <div class="content">
     <div class="content_description">
@@ -29,7 +29,7 @@
         </li>
         <li>
             <label class="description">Kunde</label>
-            <div><label class="element text medium"><a href="/annonse/customer/$sale.customer.Id">
+            <div><label class="element text medium"><a href="/annonseweb/customer/$sale.customer.Id">
                 $sale.customer.Name
             </a></label></div>
             <p class="guidelines">Kunden som er registrert med dette salget. Også kjent som den vi skal få/ har fått penger fra</p>
@@ -51,11 +51,11 @@
         <li>
             <label class="description">Faktura</label>
             #if($sale.getInvoiceGenerated() == true)
-                <div><label class="element text medium"><a href="/annonse/invoice/$sale.invoice.Id">
+                <div><label class="element text medium"><a href="/annonseweb/invoice/$sale.invoice.Id">
                     $sale.invoice.Id - $sale.invoice.Description
                 </a></label></div>
             #else
-                <div><label class="element text medium"><a href="/annonse/invoice/new/$sale.Id">
+                <div><label class="element text medium"><a href="/annonseweb/invoice/new/$sale.Id">
                     Ingen faktura. Klikk for å opprette
                 </a></label></div>
             #end
@@ -78,7 +78,7 @@
         </li>
         <li>
             <label class ="description">Lag notat tilknyttet dette salget</label>
-            <div><a href ="/annonse/note/new/sale/$sale.Id">Nytt notat</a></div>
+            <div><a href ="/annonseweb/note/new/sale/$sale.Id">Nytt notat</a></div>
             <p class ="guidelines">Oppretter et nytt notat på dette salget</p>
         </li>
         #if($saleNotes)
@@ -91,7 +91,7 @@
                         #else
                             #set($aktivt = "Arkivert")
                         #end
-                        <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                        <a href="/annonseweb/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
                         <br />
                     #end
                 </div>
