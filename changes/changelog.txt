@@ -3,4 +3,12 @@ Changelog for Annonseweb
 
 Annonseweb-0.1
 ====================================================
+- Do not know where to start-
+====================================================
+
+Annonseweb-1.2
+====================================================
+- First release.
+- Most major change: It works.
+- Other changes are too numerous to count.
 
