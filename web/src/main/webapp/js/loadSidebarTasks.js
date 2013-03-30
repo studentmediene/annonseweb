@@ -17,6 +17,6 @@ function loadSidebarTasks() {
             document.getElementById("sidebar-tasks").innerHTML = request.responseText;
         }
     }
-    request.open("GET","/annonse/note/sidebar_notes",true);
+    request.open("GET","/annonseweb/note/sidebar_notes",true);
     request.send();
 }

@@ -89,7 +89,7 @@ public class ContactPersonController {
         contactPerson.setCreatedUser(usr);
         contactPerson.setLastEditedTime(Calendar.getInstance());
         contactPersonService.saveAndFlush(contactPerson);
-        return "redirect:/annonse/contactperson/" + contactPerson.getId();
+        return "redirect:/annonseweb/contactperson/" + contactPerson.getId();
     }
 
     @RequestMapping(value = "/save/{pathContactPerson}",  method = RequestMethod.POST)
@@ -99,7 +99,7 @@ public class ContactPersonController {
         pathContactPerson.setLastEditedTime(Calendar.getInstance());
         pathContactPerson.setLastEditedUser(annonsePersonController.getLoggedInUser());
         contactPersonService.saveAndFlush(pathContactPerson);
-        return "redirect:/annonse/contactperson/" + pathContactPerson.getId();
+        return "redirect:/annonseweb/contactperson/" + pathContactPerson.getId();
     }
 
     @RequestMapping("/emailList")

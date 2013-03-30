@@ -5,8 +5,8 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/ad/$ad.Id">$ad.Id</a>
-        <label class="edit"><a href="/annonse/ad/edit/$ad.Id">Endre annonse</a></label>
+        <a href="/annonseweb/ad/$ad.Id">$ad.Id</a>
+        <label class="edit"><a href="/annonseweb/ad/edit/$ad.Id">Endre annonse</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -23,7 +23,7 @@
                 </p>
             </li>
             <li>
-                <a href="/annonse/sale/$ad.sale.Id">
+                <a href="/annonseweb/sale/$ad.sale.Id">
                     <label class="description">Salg</label>
                     <div>
                         <label class="element text medium">

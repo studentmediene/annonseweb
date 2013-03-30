@@ -4,7 +4,7 @@
 <div id="content">
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/user/$user.Username">$user.name:</a>
+            <a href="/annonseweb/user/$user.Username">$user.name:</a>
         </h2>
         <div class="entry">
             <ul>

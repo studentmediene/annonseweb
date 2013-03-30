@@ -1,8 +1,8 @@
 <nav id="sidebar">
     <h2>Fakturameny</h2>
     <ul>
-        <li><a href="/annonse/invoice/new">Ny Faktura</a></li>
-        <li><a href="/annonse/invoice/all">Fakturaliste</a></li>
+        <li><a href="/annonseweb/invoice/new">Ny Faktura</a></li>
+        <li><a href="/annonseweb/invoice/all">Fakturaliste</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

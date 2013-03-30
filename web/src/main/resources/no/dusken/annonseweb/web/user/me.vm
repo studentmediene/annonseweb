@@ -2,7 +2,7 @@
 
 <!-- content -->
 <div id="content" class="post">
-    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/user/save")">
+    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/user/save")">
         <div class="content">
             <ul>
                 <li>

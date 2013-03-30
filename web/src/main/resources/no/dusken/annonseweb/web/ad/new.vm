@@ -8,8 +8,8 @@
         <div class="entry">
             <p>Velg annonsetype</p>
             <ul>
-                <li><a href="/annonse/ad/new/printed">Under Dusken</a></li>
-                <li><a href="/annonse/ad/new/web">Dusken.no</a></li>
+                <li><a href="/annonseweb/ad/new/printed">Under Dusken</a></li>
+                <li><a href="/annonseweb/ad/new/web">Dusken.no</a></li>
                 <li>Radio Revolt(Kommer)</li>
                 <li>STV(Kommer)</li>
             </ul>
