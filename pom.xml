@@ -24,7 +24,7 @@
     </parent>
 
     <groupId>no.dusken.annonseweb</groupId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.2</version>
     <artifactId>annonseweb</artifactId>
     <packaging>pom</packaging>
     <name>Annonseweb</name>
