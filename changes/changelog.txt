@@ -18,4 +18,12 @@ Annonseweb-1.2.1
 - Updated location and all links
 ====================================================
 
+Annonseweb-1.2.2
+====================================================
+- Downgraded slf4j dependency. Something must be
+    using 1.6.1
+- Commented out mail controller bean as it caused a
+    illegal table creation (table mail ... body
+    varchar(100000)).
 
+====================================================

@@ -31,7 +31,7 @@
         <property name="filename" value="annonseweb.conf" />
     </bean>
 
-    <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
+    <!--<bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
         <property name="mailAddress" value="${mailadress}"/>
         <property name="mailSender" ref="mailController"/>
         <property name="defaultErrorView" value="exception"/>
@@ -49,7 +49,7 @@
 
             </props>
         </property>
-    </bean>
+    </bean>-->
 
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 

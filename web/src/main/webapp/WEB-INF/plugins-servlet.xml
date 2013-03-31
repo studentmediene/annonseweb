@@ -34,7 +34,7 @@
         </property>
     </bean>
 
-     <bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
+     <!--<bean id="exceptionResolver" class="no.dusken.common.spring.ExceptionHandler">
         <property name="mailAddress" value="${mailadress}"/>
         <property name="mailSender" ref="mailController"/>
         <property name="defaultErrorView" value="no/dusken/annonseweb/common/exception"/>
@@ -52,5 +52,5 @@
 
             </props>
         </property>
-    </bean>
+    </bean>-->
 </beans>
