@@ -82,9 +82,9 @@
         <property name="loggingDirectory" value="${dataDir}/log"/>
     </bean>
 -->
-    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <!--<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.stud.ntnu.no"/>
-    </bean>
+    </bean>-->
 
     <!--<bean id="mailController" class="no.dusken.common.control.MailController">
         <property name="mailSender" ref="mailSender"/>
