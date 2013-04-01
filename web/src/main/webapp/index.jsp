@@ -7,7 +7,7 @@
 <head><title>Simple jsp page</title></head>
 <body>
     <nav id="sidebar">
-        <page:applyDecorator name="blank" page="/annonse/sidebar"/>
+        <page:applyDecorator name="blank" page="/annonseweb/sidebar"/>
     </nav>
     <div id="content">
         <div class="post">
