@@ -23,10 +23,14 @@ Annonseweb-1.2.2
 - Downgraded slf4j dependency. Something must be
     using 1.6.1
 - Attempt at bugfix
-
 ====================================================
 
 Annonseweb-1.2.3
 ====================================================
-- Attempted bugfix for velocity global macro problem
+- Bugfix for velocity global macro problem
+====================================================
+
+Annonseweb-1.2.4
+====================================================
+- Location bugfix
 ====================================================
