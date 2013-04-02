@@ -5,8 +5,8 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonseweb/invoice/$invoice.Id">$invoice.description - $invoice.Id</a>
-        <label class="edit"><a href="/annonseweb/invoice/edit/$invoice.Id">Endre faktura</a></label>
+        <a href="#springUrl("/annonseweb/invoice/$invoice.Id")">$invoice.description - $invoice.Id</a>
+        <label class="edit"><a href="#springUrl("/annonseweb/invoice/edit/$invoice.Id")">Endre faktura</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -27,7 +27,7 @@
                 <div>
                     <!-- the list of sale that this invoice contains. -->
                     #foreach($sale in $invoice.sales)
-                        <label class="element text medium"><a href="/annonseweb/sale/$sale.Id">
+                        <label class="element text medium"><a href="#springUrl("/annonseweb/sale/$sale.Id")">
                             $sale.Id - $sale.description - generert faktura?: $sale.invoiceGenerated
                         </a></label><br>
                     #end
@@ -103,7 +103,7 @@
             <li>
                 <label class="description">Skriv ut</label>
                 <div>
-                    <a onclick="javascript:window.open('/annonseweb/invoice/print/$invoice.Id')">Skriv ut</a>
+                    <a onclick="javascript:window.open('#springUrl("/annonseweb/invoice/print/$invoice.Id")')">Skriv ut</a>
                 </div>
                 <p class ="guidelines">Åpner ett nytt vindu med fakturainformasjonen som lett kan printes</p>
             </li>

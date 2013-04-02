@@ -4,7 +4,7 @@
 <div id="content">
     <div class="post">
         <h2 class="title">
-            <a href="/annonseweb/user/$user.Username">$user.name:</a>
+            <a href="#springUrl("/annonseweb/user/$user.Username")">$user.name:</a>
         </h2>
         <div class="entry">
             <ul>
@@ -14,9 +14,9 @@
                 <li>Telefon:<br />$user.PhoneNumber</li>
                 <li>
                     #if ($user.active)
-                        Aktiv
+                        Aktiv selger
                     #else
-                        Ikke aktiv
+                        Ikke aktiv selger
                     #end
                 </li>
             <p></p>

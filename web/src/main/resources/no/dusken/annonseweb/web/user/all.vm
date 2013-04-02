@@ -9,16 +9,16 @@
                 <li><h2 class="title">Aktive selgere:</h2></li>
                 #foreach($user in $activeUserList)
                     <li>
-                        <a href="/annonseweb/user/$user.Username">
+                        <a href="#springUrl("/annonseweb/user/$user.Username")">
                             $user.Name - $user.Username
                         </a>
                         ---- ----
-                        <a href="/annonseweb/user/doArchive/$user.Username">ARKIVER! ikke lenger aktiv.</a>
+                        <a href="#springUrl("/annonseweb/user/doArchive/$user.Username")">ARKIVER! ikke lenger aktiv.</a>
                     </li>
                 #end
                 <li><h2 class="title">Andre:</h2></li>
                 #foreach($user in $nonActiveUserList)
-                    <li><a href="/annonseweb/user/$user.Username">$user.Name - $user.Username</a></li>
+                    <li><a href="#springUrl("/annonseweb/user/$user.Username")">$user.Name - $user.Username</a></li>
                 #end
             </ul>
         </div>

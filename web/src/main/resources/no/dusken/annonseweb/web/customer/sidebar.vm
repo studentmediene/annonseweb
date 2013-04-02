@@ -1,8 +1,8 @@
 <nav id="sidebar">
-    <h2>KundeBar</h2>
+    <h2>Kunder</h2>
     <ul>
-        <li><a href="/annonseweb/customer/new">Ny kunde</a>
-        <li><a href="/annonseweb/customer/all">Kundeliste</a></li>
+        <li><a href="#springUrl("/annonseweb/customer/new")">Ny kunde</a>
+        <li><a href="#springUrl("/annonseweb/customer/all")">Kundeliste</a></li>
         <!-- Utkommentert fordi marked forteller den trengs egentlig ikke -->
         <!--<li><a href="/annonse/customer/emailList">Epost for alle</a></li>-->
     </ul>

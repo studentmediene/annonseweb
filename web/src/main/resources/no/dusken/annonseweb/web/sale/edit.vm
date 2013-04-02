@@ -2,16 +2,14 @@
 
 <div id="content" class="post">
     <h2 class="title">
-        #set($saleId = false)
         #set($saleId = $sale.getId())
-        #set($saleNotes = false)
         #set($saleNotes = $sale.getAnnonseNotes())
         #set($pathEnd = "")
         #if (!$saleId)
             <a href="#springUrl("/annonseweb/sale/new")">Nytt salg:</a>
         #else
             <a href="#springUrl("/annonseweb/sale/edit/$sale.Id")">Endre salg: $sale.getId() - $sale.Description</a>
-            <label class="edit"><a href="/annonseweb/sale/$sale.getId()">Tilbake</a></label>
+            <label class="edit"><a href="#springUrl("/annonseweb/sale/$sale.getId()")">Tilbake</a></label>
             #set($pathEnd = "/" + $saleId)
         #end
     </h2>
@@ -59,7 +57,7 @@
             #if($saleId)
                 <li>
                     <label class ="description">Lag notat tilknyttet dette salget</label>
-                    <div><a href ="/annonseweb/note/new/sale/$saleId">Nytt notat</a></div>
+                    <div><a href ="#springUrl("/annonseweb/note/new/sale/$saleId")">Nytt notat</a></div>
                     <p class ="guidelines">Oppretter et nytt notat på dette salget</p>
                 </li>
                 #if($saleNotes)
@@ -72,7 +70,7 @@
                                 #else
                                     #set($aktivt = "Arkivert")
                                 #end
-                                <a href="/annonseweb/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                                <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
                                 <br />
                             #end
                         </div>

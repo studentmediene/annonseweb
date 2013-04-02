@@ -4,9 +4,7 @@
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
-        #set($conCustomer = false)
         #set($conCustomer = $annonseNote.getCustomer())
-        #set($noteId = false)
         #set($noteId = $annonseNote.getId())
         #set($pathEnd = "")
 
@@ -15,7 +13,7 @@
             <a href="#springUrl("/annonseweb/note/new")">Nytt notat:</a>
         #else
             <a href="#springUrl("/annonseweb/note/edit/$noteId")">Endre notis: $noteId - #formatCalendarObject( $annonseNote.getCreatedDate())</a>
-            <label class="edit"><a href="/annonseweb/note/$noteId">Tilbake</a></label>
+            <label class="edit"><a href="#springUrl("/annonseweb/note/$noteId")">Tilbake</a></label>
             #set($pathEnd = "/" + $noteId)
         #end
     </h2>
