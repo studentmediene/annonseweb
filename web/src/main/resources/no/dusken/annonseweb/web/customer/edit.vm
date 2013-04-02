@@ -13,10 +13,10 @@
         #set($custId = $customer.getId())
         #set($pathEnd = "")
         #if (!$custId)
-            <a href="/annonseweb/customer/new">Ny kunde:</a>
+            <a href="#springUrl("/annonseweb/customer/new")">Ny kunde:</a>
         #else
-            <a href="/annonseweb/customer/edit/$customer.getId()">Endre kunde: $customer.getName() - $customer.getId()</a>
-            <label class="edit"><a href="/annonseweb/customer/$customer.getId()">Tilbake</a>
+            <a href="#springUrl("/annonseweb/customer/edit/$customer.getId()")">Endre kunde: $customer.getName() - $customer.getId()</a>
+            <label class="edit"><a href="#springUrl("/annonseweb/customer/$customer.getId()")">Tilbake</a>
             #set($pathEnd = "/" + $custId)
         #end
     </h2>
@@ -97,7 +97,7 @@
                     </li>
                     <li>
                         <label class ="description">Lag notat tilknyttet denne kunden</label>
-                        <div><a href ="/annonseweb/note/new/customer/$custId">Nytt notat</a></div>
+                        <div><a href ="#springUrl("/annonseweb/note/new/customer/$custId")">Nytt notat</a></div>
                         <p class ="guidelines">Oppretter et nytt notat på denne kunden</p>
                     </li>
                     #if($customerNotes)
@@ -110,7 +110,7 @@
                                     #else
                                         #set($aktivt = "Arkivert")
                                     #end
-                                    <a href="/annonseweb/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                                    <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
                                     <br />
                                 #end
                             </div>

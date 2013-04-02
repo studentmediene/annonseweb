@@ -2,17 +2,15 @@
 #parse('no/dusken/annonseweb/web/contactperson/sidebar.vm')
 
 <!-- Variables used for contact notes -->
-#set($conId = false)
 #set($conId = $contactPerson.Id)
-#set($conNotes = false)
 #set($conNotes = $contactPerson.getAnnonseNotes())
 
 <!-- content -->
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonseweb/contactperson/$contactPerson.Id">$contactPerson.PersonName</a>
-        <label class="edit"><a href="/annonseweb/contactperson/edit/$contactPerson.Id">Endre kontaktperson</a></label>
+        <a href="#springUrl("/annonseweb/contactperson/$contactPerson.Id")">$contactPerson.PersonName</a>
+        <label class="edit"><a href="#springUrl("/annonseweb/contactperson/edit/$contactPerson.Id")">Endre kontaktperson</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -91,7 +89,7 @@
                 <label class="description">Kunde</label>
                 <div>
                     <label class="element text medium">
-                        <a href="/annonseweb/customer/$contactPerson.customer.id">$contactPerson.customer.name</a>
+                        <a href="#springUrl("/annonseweb/customer/$contactPerson.customer.id")">$contactPerson.customer.name</a>
                     </label>
                 </div>
                 <p class="guidelines">
@@ -100,7 +98,7 @@
             </li>
             <li>
                 <label class ="description">Lag notat tilknyttet denne kontaktpersonen</label>
-                <div><a href ="/annonseweb/note/new/contactperson/$conId">Nytt notat</a></div>
+                <div><a href ="#springUrl("/annonseweb/note/new/contactperson/$conId")">Nytt notat</a></div>
                 <p class ="guidelines">
                     Oppretter et nytt notat på denne kontaktpersonen. Kan sees på som å lage et innskudd i en logg over
                     kontakten med vedkommende.
@@ -116,7 +114,7 @@
                             #else
                                 #set($aktivt = "Arkivert")
                             #end
-                            <a href="/annonseweb/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                            <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
                             <br />
                         #end
                     </div>

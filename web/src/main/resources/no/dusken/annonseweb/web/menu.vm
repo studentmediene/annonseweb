@@ -59,7 +59,7 @@
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
                 <a href="#springUrl("/annonseweb/ad/new")">Ny annonse</a>
-                <a href="#springUrl("/annonseweb/ad/overview")">Annonseoversikt</a>
+                <a href="#springUrl("/annonseweb/ad/overview")">Aktive annonser</a>
                 <a href="#springUrl("/annonseweb/ad/all")">Alle annonser</a>
             </div>
         </li>
@@ -75,7 +75,7 @@
                 <a href="/annonse/statistics">Aktive nettannonser</a>-->
             </div>
         </li>
-        <li><a href="/annonseweb_logout">Logg ut</a>
+        <li><a href="#springUrl("/annonseweb_logout")">Logg ut</a>
         </li>
     </ul>
 </div>

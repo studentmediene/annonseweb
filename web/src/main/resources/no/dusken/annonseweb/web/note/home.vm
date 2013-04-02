@@ -4,7 +4,7 @@
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonseweb/note">Notat hjemmeside.</a></h2>
+        <h2 class="title"><a href="#springUrl("/annonseweb/note")">Notat hjemmeside.</a></h2>
         <div class="entry">
             <p>
                 Her kan vi skrive fine sammendrag og linke til nyttige sider.

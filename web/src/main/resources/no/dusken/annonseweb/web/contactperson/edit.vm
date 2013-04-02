@@ -2,9 +2,7 @@
 #parse('no/dusken/annonseweb/web/contactperson/sidebar.vm')
 
 <!-- Variables used for contact notes -->
-#set($conId = false)
 #set($conId = $contactPerson.Id)
-#set($conNotes = false)
 #set($conNotes = $contactPerson.getAnnonseNotes())
 
 <!-- content -->
@@ -19,7 +17,7 @@
             <a href="#springUrl("/annonseweb/contactperson/edit/$contactPerson.Id")">
                 Endre kontaktperson: $contactPerson.getId() - $contactPerson.PersonName
             </a>
-            <label class="edit"><a href="/annonseweb/contactperson/$contactPerson.getId()">Tilbake</a></label>
+            <label class="edit"><a href="#springUrl("/annonseweb/contactperson/$contactPerson.getId()")">Tilbake</a></label>
             #set($pathEnd = "/" + $contactId)
         #end
     </h2>
@@ -106,7 +104,7 @@
             #if($conId)
             <li>
                 <label class ="description">Lag notat tilknyttet denne kontaktpersonen</label>
-                <div><a href ="/annonseweb/note/new/contactperson/$conId">Nytt notat</a></div>
+                <div><a href ="#springUrl("/annonseweb/note/new/contactperson/$conId")">Nytt notat</a></div>
                 <p class ="guidelines">
                     Oppretter et nytt notat på denne kontaktpersonen. Kan sees på som å lage et innskudd i en logg over
                     kontakten med vedkommende.
@@ -122,7 +120,7 @@
                             #else
                                 #set($aktivt = "Arkivert")
                             #end
-                            <a href="/annonseweb/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                            <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
                             <br />
                         #end
                     </div>

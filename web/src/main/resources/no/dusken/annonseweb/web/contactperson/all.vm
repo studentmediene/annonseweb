@@ -4,16 +4,16 @@
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonseweb/contactperson/all">KontaktPersonListe</a></h2>
+        <h2 class="title"><a href="#springUrl("/annonseweb/contactperson/all")">KontaktPersonListe</a></h2>
         <div class="entry">
             <!-- should be boxed as sale and invoice to display the most relevant information. -->
             #foreach($contact in $!contactPersonList)
                 <div class="listEntry">
                     <p  class="meta">
-                        <a href="/annonseweb/customer/$contact.customer.id">$contact.customer.name</a>
+                        <a href="#springUrl("/annonseweb/customer/$contact.customer.id")">$contact.customer.name</a>
                     </p>
                     <p class="info">
-                        <a href="/annonseweb/contactperson/$contact.Id">$contact.Id - $contact.PersonName</a>
+                        <a href="#springUrl("/annonseweb/contactperson/$contact.Id")">$contact.Id - $contact.PersonName</a>
                     </p>
                 </div>
             #end

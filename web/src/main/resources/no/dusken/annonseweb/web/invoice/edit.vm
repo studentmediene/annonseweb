@@ -5,14 +5,13 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        #set($InvoiceId = false)
         #set($InvoiceId = $invoice.getId())
         #set($pathEnd = "")
         #if (!$InvoiceId)
-            <a href="/annonseweb/invoice/new/">Ny faktura:</a>
+            <a href="#springUrl("/annonseweb/invoice/new/")">Ny faktura:</a>
         #else
-            <a href="/annonseweb/invoice/edit/$invoice.getId()">Endre faktura: $invoice.getId()</a>
-            <label class="edit"><a href="/annonseweb/invoice/$invoice.getId()">Tilbake</a>
+            <a href="#springUrl("/annonseweb/invoice/edit/$invoice.getId()")">Endre faktura: $invoice.getId()</a>
+            <label class="edit"><a href="#springUrl("/annonseweb/invoice/$invoice.getId()")">Tilbake</a>
             #set($pathEnd = "/" + $InvoiceId)
         #end
     </h2>

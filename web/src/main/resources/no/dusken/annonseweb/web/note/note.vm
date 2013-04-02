@@ -1,24 +1,17 @@
 <!-- the sidebar -->
 #parse('no/dusken/annonseweb/web/note/sidebar.vm')
 
-<!--// todo: is this neccesary? =flase thingy?-->
-<!-- No, it is not, but it does not cause large problems, does it? -->
-#set($conCustomer = false)
 #set($conCustomer = $annonseNote.getCustomer())
-#set($conContact = false)
 #set($conContact = $annonseNote.getContactPerson())
-#set($conSale = false)
 #set($conSale = $annonseNote.getSale())
-#set($followUp = false)
 #set($followUp = $annonseNote.getDueDate())
-#set($delegated = false)
 #set($delegated = $annonseNote.getDelegatedUser())
 
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
-        <a href="/annonseweb/note/$annonseNote.getId()">#formatCalendarObject($annonseNote.getCreatedDate())</a>
-        <label class="edit"><a href="/annonseweb/note/edit/$annonseNote.getId()">Endre notis</a></label>
+        <a href="#springUrl("/annonseweb/note/$annonseNote.getId()")">#formatCalendarObject($annonseNote.getCreatedDate())</a>
+        <label class="edit"><a href="#springUrl("/annonseweb/note/edit/$annonseNote.getId()")">Endre notis</a></label>
     </h2>
 
     <div class="content">
@@ -59,7 +52,7 @@
                 <li>
                     <label class="description">Notat tilknyttet kunde</label>
                     <div>
-                        <a href="/annonseweb/customer/$conCustomer.getId()">$conCustomer.getName()</a>
+                        <a href="#springUrl("/annonseweb/customer/$conCustomer.getId()")">$conCustomer.getName()</a>
                     </div>
                     <p class="guidelines">
                         Dette notatet er tilknyttet $conCustomer.getName().
@@ -70,7 +63,7 @@
                 <li>
                     <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
                     <div>
-                        <a href="/annonseweb/contactperson/$conContact.getId()">$conContact.getPersonName()</a>
+                        <a href="#springUrl("/annonseweb/contactperson/$conContact.getId()")">$conContact.getPersonName()</a>
                     </div>
                     <p class="guidelines" id="guide_4">
                         Den du skal følge opp.
@@ -81,7 +74,7 @@
                 <li>
                     <label class="description">Notat tilknyttet salg</label>
                     <div>
-                        <a href="/annonseweb/sale/$conSale.getId()">$conSale.getDescription()</a>
+                        <a href="#springUrl("/annonseweb/sale/$conSale.getId()")">$conSale.getDescription()</a>
                     </div>
                     <p class="guidelines">
                         Dette notatet er tilknyttet dette salget

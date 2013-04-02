@@ -2,9 +2,9 @@
 <nav id="sidebar">
     <h2>Annonse</h2>
     <ul>
-        <li><a href="/annonseweb/ad/new">Ny annonse</a></li>
-        <li><a href="/annonseweb/ad/overview">Aktive annonser</a></li>
-        <li><a href="/annonseweb/ad/all">Alle annonser</a></li>
+        <li><a href="#springUrl("/annonseweb/ad/new")">Ny annonse</a></li>
+        <li><a href="#springUrl("/annonseweb/ad/overview")">Aktive annonser</a></li>
+        <li><a href="#springUrl("/annonseweb/ad/all")">Alle annonser</a></li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
