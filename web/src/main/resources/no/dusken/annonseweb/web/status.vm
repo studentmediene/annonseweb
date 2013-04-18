@@ -7,7 +7,7 @@
         </a>
     </p>
     <!-- A hidden input to show sidebar tasks script where to look for tasks -->
-    <input type="hidden" id="sidebar-tasks-fetch-url" value="#springUrl("/annonseweb/note/sidebar_notes")">
+    <input type="hidden" id="sidebar-tasks-fetch-url" value="#springUrl("/annonseweb/note/blank/sidebar_notes")">
     <div id="sidebar-tasks"></div>
 </div>
 

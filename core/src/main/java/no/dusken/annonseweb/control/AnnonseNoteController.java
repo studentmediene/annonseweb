@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.Writer;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -191,98 +188,32 @@ public class AnnonseNoteController {
         return "redirect:/annonseweb/note/" + pathAnnonseNote.getId();
     }
 
-    @RequestMapping("/sidebar_notes")
-    public void viewSidebarNotes(Writer writer) {
-        List<AnnonseNote> expiredNotes = new ArrayList<AnnonseNote>();
-
-        // todo check this out.
-        // can be improved with db queries. expired notes array can be removed.
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MMM.yyyy - HH:mm:");
-        String response = "<ul class=\"tasks\">Mine påminnere:";
-        Calendar yesterday = Calendar.getInstance();
-        yesterday.add(Calendar.DAY_OF_MONTH, -1);
-        for (AnnonseNote note: annonsePersonController.getLoggedInUser().getMyNotes()) {
-            if (note.getActive() && note.getDueDate() != null) {
-                if (note.getDueDate().after(yesterday)) {
-                    response += "<li class=\"task\"><a href=\"/annonseweb/note/" + note.getId() + "\">";
-                    response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
-                    if (note.getCustomer() != null) {
-                        response += "<br /><a href=\"/annonseweb/customer/" + note.getCustomer().getId() + "\">";
-                        response += "Kunde: " + note.getCustomer().getName() + "</a>";
-                    }
-                    if (note.getContactPerson() != null) {
-                        response += "<br /><a href=\"/annonseweb/contactperson/" + note.getContactPerson().getId() + "\">";
-                        response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
-                    }
-                    if (note.getSale() != null) {
-                        response += "<br /><a href=\"/annonseweb/sale/" + note.getSale().getId() + "\">";
-                        response += "Salg: " + note.getSale().getDescription() + "</a>";
-                    }
-                    response += "<p class=\"guidelines\"><a href=\"/annonseweb/note/"+note.getId()+"\">Vis</a>";
-                    response += "<br /><a href=\"/annonseweb/note/edit/" + note.getId() + "\">Endre</a>";
-                    response += "<br /><a href=\"/annonseweb/note/doarchive/" + note.getId();
-                    response += "\">Arkiver</a></p></li>";
-                } else {
-                    expiredNotes.add(note);
-                }
+    @RequestMapping("/blank/sidebar_notes")
+    public String viewSidebarNotes(Model model) {
+        // TODO make sql queries to effectivise
+        List<AnnonseNote> myNotes = new ArrayList<AnnonseNote>();
+        List<AnnonseNote> myDelegatedNotes = new ArrayList<AnnonseNote>();
+        List<AnnonseNote> myExpiredNotes = new ArrayList<AnnonseNote>();
+        for (AnnonseNote note:annonsePersonController.getLoggedInUser().getMyNotes()) {
+            if (note.getActive()) {
+                if (note.getDueDate().after(Calendar.getInstance()))
+                    myNotes.add(note);
+                else
+                    myExpiredNotes.add(note);
             }
         }
-        response += "<br />Tildelte påminnere:";
         for (AnnonseNote note: annonsePersonController.getLoggedInUser().getDelegatedNotes()) {
-            if (note.getActive() && note.getDueDate() != null) {
-                if (note.getDueDate().after(yesterday)) {
-                    response += "<li class=\"task\"><a href=\"/annonseweb/note/" + note.getId() + "\">";
-                    response += dateFormat.format(note.getDueDate().getTime());
-                    response += "</a><br />Fra: "+note.getCreatedUser().getName();
-                    if (note.getCustomer() != null) {
-                        response += "<br /><a href=\"/annonseweb/customer/" + note.getCustomer().getId() + "\">";
-                        response += "Kunde: " + note.getCustomer().getName() + "</a>";
-                    }
-                    if (note.getContactPerson() != null) {
-                        response += "<br /><a href=\"/annonseweb/contactperson/" + note.getContactPerson().getId() + "\">";
-                        response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
-                    }
-                    if (note.getSale() != null) {
-                        response += "<br /><a href=\"/annonseweb/sale/" + note.getSale().getId() + "\">";
-                        response += "Salg: " + note.getSale().getDescription() + "</a>";
-                    }
-                    response += "<p class=\"guidelines\"><a href=\"/annonseweb/note/"+note.getId()+"\">Vis</a>";
-                    response += "<br /><a href=\"/annonseweb/note/edit/" + note.getId() + "\">Endre</a>";
-                    response += "<br /><a href=\"/annonseweb/note/doarchive/" + note.getId();
-                    response += "\">Arkiver</a></p></li>";
-                } else {
-                    expiredNotes.add(note);
-                }
+            if (note.getActive()) {
+                if (note.getDueDate().after(Calendar.getInstance()))
+                    myDelegatedNotes.add(note);
+                else
+                    myExpiredNotes.add(note);
             }
         }
-        response += "<br />Utgåtte påminnere:";
-        for (AnnonseNote note: expiredNotes) {
-            response += "<li class=\"task\"><a href=\"/annonseweb/note/" + note.getId() + "\">";
-            response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
-            if (note.getCustomer() != null) {
-                response += "<br /><a href=\"/annonseweb/customer/" + note.getCustomer().getId() + "\">";
-                response += "Kunde: " + note.getCustomer().getName() + "</a>";
-            }
-            if (note.getContactPerson() != null) {
-                response += "<br /><a href=\"/annonseweb/contactperson/" + note.getContactPerson().getId() + "\">";
-                response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
-            }
-            if (note.getSale() != null) {
-                response += "<br /><a href=\"/annonseweb/sale/" + note.getSale().getId() + "\">";
-                response += "Salg: " + note.getSale().getDescription() + "</a>";
-            }
-            response += "<p class=\"guidelines\"><a href=\"/annonseweb/note/"+note.getId()+"\">Vis</a>";
-            response += "<br /><a href=\"/annonseweb/note/edit/" + note.getId() + "\">Endre</a>";
-            response += "<br /><a href=\"/annonseweb/note/doarchive/" + note.getId();
-            response += "\">Arkiver</a></p></li>";
-        }
-        response += "</ul>";
-        try {
-            writer.write(response);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        model.addAttribute("myComingNotes", myNotes);
+        model.addAttribute("myDelegatedNotes", myDelegatedNotes);
+        model.addAttribute("myExpiredNotes", myExpiredNotes);
+        return "note/sidebar_notes";
     }
 
     @InitBinder

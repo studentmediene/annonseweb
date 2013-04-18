@@ -103,7 +103,7 @@
             <li>
                 <label class="description">Skriv ut</label>
                 <div>
-                    <a onclick="javascript:window.open('#springUrl("/annonseweb/invoice/print/$invoice.Id")')">Skriv ut</a>
+                    <a onclick="javascript:window.open('#springUrl("/annonseweb/invoice/print/blank/$invoice.Id")')">Skriv ut</a>
                 </div>
                 <p class ="guidelines">Åpner ett nytt vindu med fakturainformasjonen som lett kan printes</p>
             </li>
