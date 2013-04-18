@@ -201,7 +201,13 @@ public class AnnonseNoteControllerTest {
 
     @Test
     public void testViewSidebarNotes() {
-        // I have no idea how to test how a writer writes correctly to the stream at the moment.
-        assertTrue(true);
+        assertFalse("Model was populated before it should! myComingNotes", model.containsAttribute("myComingNotes"));
+        assertFalse("Model was populated before it should! myDelegatedNotes", model.containsAttribute("myDelegatedNotes"));
+        assertFalse("Model was populated before it should! myExpiredNotes", model.containsAttribute("myExpiredNotes"));
+        assertEquals("View sidebar notes returned wrong view address", "note/sidebar_notes",
+                annonseNoteController.viewSidebarNotes(model));
+        assertTrue("Model was not populated! myComingNotes", model.containsAttribute("myComingNotes"));
+        assertTrue("Model was not populated! myDelegatedNotes", model.containsAttribute("myDelegatedNotes"));
+        assertTrue("Model was not populated! myExpiredNotes", model.containsAttribute("myExpiredNotes"));
     }
 }

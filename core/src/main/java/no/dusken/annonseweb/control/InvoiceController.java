@@ -13,8 +13,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.Writer;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
@@ -109,31 +107,17 @@ public class InvoiceController {
         return "redirect:/annonseweb/invoice/" + pathInvoice.getId();
     }
 
-    @RequestMapping("/print/{invoice}")
-    public void printInvoice(@PathVariable Invoice invoice, Writer writer) {
+    @RequestMapping("/print/blank/{invoice}")
+    public String printInvoice(@PathVariable Invoice invoice, Model model) {
         BigDecimal tot = new BigDecimal(0);
-        String html = "<html><head><title>Print faktura</title></head><body>";
-        html +="<h1>Faktura: " + invoice.getId() + "</h1>";
-        html += "Fakturadato: " + invoice.getCreatedDate() + "<br />";
-        html += "Uløpsdato: " + invoice.getInvoiceDate() + "<br /><hr><br />";
-        html += "Kunde:<br />" + invoice.getSales().get(0).getCustomer().getName();
-        html += "<br />" + invoice.getSales().get(0).getCustomer().getAddress();
-        html += "<br /><hr /><br />";
         for (Sale s : invoice.getSales()) {
-            html += s.getDescription() + "<br />";
             for (Ad a: s.getAds()) {
                 tot.add(a.getFinalPrice());
-                html += a.getTitle() + " - " + a.getFinalPrice() + "<br />";
             }
         }
-        html += "<br /><hr /><br />";
-        html += "<h2>Total: " + tot.toPlainString() + "</h2>";
-        html += "</body></html>";
-        try {
-            writer.write(html);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        model.addAttribute("invoice", invoice);
+        model.addAttribute("total", tot.toPlainString());
+        return "invoice/print";
     }
 
     @InitBinder
