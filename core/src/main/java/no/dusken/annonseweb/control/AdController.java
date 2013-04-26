@@ -46,7 +46,7 @@ public class AdController {
 
     @RequestMapping("overview")
     public String viewAdListActive(Model model){
-        model.addAttribute("adList", adService.findAll());
+        model.addAttribute("adList", adService.getActiveAds());
         return "ad/overview";
     }
 
@@ -68,7 +68,7 @@ public class AdController {
 
     @RequestMapping("edit/{ad}")
     public String viewEdit(@PathVariable Ad ad, Model model){
-        model.addAttribute("salesList", salesService.findAll());
+        model.addAttribute("salesList", salesService.getActiveSales());
         model.addAttribute("ad", ad);
         if (ad instanceof PrintedAd) {
             return "ad/edit/printed";

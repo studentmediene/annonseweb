@@ -33,26 +33,18 @@ public class ContactPersonController {
 
     @RequestMapping("")
     public String viewContactsHome(){
-        // TODO
         return "contactperson/home";
     }
 
     @RequestMapping("/active")
     public String allActive(Model model){
-        List<ContactPerson> contactPersonList = new ArrayList<ContactPerson>();
-        List<ContactPerson> cl = contactPersonService.findAll();
-        for(ContactPerson contactPerson: cl){
-            if(contactPerson.getActive() != null && contactPerson.getActive())
-                contactPersonList.add(contactPerson);
-        }
-        model.addAttribute("contactPersonList", contactPersonList);
+        model.addAttribute("contactPersonList", contactPersonService.getActiveContactPersons());
         return "contactperson/all";
     }
 
     @RequestMapping("/all")
     public String all(Model model){
-        List<ContactPerson> contactPersonList = contactPersonService.findAll();
-        model.addAttribute("contactPersonList", contactPersonList);
+        model.addAttribute("contactPersonList", contactPersonService.findAll());
         return "contactperson/all";
     }
 

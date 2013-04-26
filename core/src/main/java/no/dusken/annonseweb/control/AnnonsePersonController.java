@@ -11,8 +11,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The <code>AnnonsePersonController</code> is a class created for management of <code>AnnonsePerson</code>s.
@@ -53,17 +51,8 @@ public class AnnonsePersonController {
 
     @RequestMapping("/all")
     public String viewAll(Model model) {
-        List<AnnonsePerson> all = annonsePersonService.findAll();
-        List<AnnonsePerson> active = new ArrayList<AnnonsePerson>();
-        List<AnnonsePerson> nonActive = new ArrayList<AnnonsePerson>();
-        for (AnnonsePerson u: all) {
-            if (u.getActive())
-                active.add(u);
-            else
-                nonActive.add(u);
-        }
-        model.addAttribute("activeUserList", active);
-        model.addAttribute("nonActiveUserList", nonActive);
+        model.addAttribute("activeUserList", annonsePersonService.getActiveAnnonsePersons());
+        model.addAttribute("nonActiveUserList", annonsePersonService.getNotActiveAnnonsePersons());
         return "/user/all";
     }
 

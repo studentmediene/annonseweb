@@ -100,7 +100,13 @@ public class SalesController{
         model.addAttribute("sale", sale);
         return "sale/sale";
     }
-    
+
+    @RequestMapping("/all_active")
+    public String viewActiveSalesList(Model model){
+        model.addAttribute("saleList", salesService.getActiveSales());
+        return "sale/all";
+    }
+
     @RequestMapping("/all")
     public String viewSalesList(Model model){
         model.addAttribute("saleList", salesService.findAll());
