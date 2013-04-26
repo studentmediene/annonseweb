@@ -10,7 +10,8 @@
                  onmouseover="stayOpen('dropmenu1')"
                  onmouseout="setClosing()">
                 <a href="#springUrl("/annonseweb/customer/new")">Ny kunde</a>
-                <a href="#springUrl("/annonseweb/customer/all")">Kundeliste</a>
+                <a href="#springUrl("/annonseweb/customer/all_active")">Aktive kunder</a>
+                <a href="#springUrl("/annonseweb/customer/all")">Alle kunder</a>
                 <a href="#springUrl("/annonseweb/customer/emailList")">Email for alle</a>
                 <!-- TODO Remove this styling. Styles in html should not occur!-->
                 <hr>
@@ -27,7 +28,8 @@
                  onmouseover="stayOpen('dropmenu4')"
                  onmouseout="setClosing()">
                 <a href="#springUrl("/annonseweb/sale/new")">Nytt salg</a>
-                <a href="#springUrl("/annonseweb/sale/all")">SalgsListe</a>
+                <a href="#springUrl("/annonseweb/sale/all_active")">Aktive salg</a>
+                <a href="#springUrl("/annonseweb/sale/all")">Alle salg</a>
             </div>
         </li>
         <li><a href="#springUrl("/annonseweb/invoice")"

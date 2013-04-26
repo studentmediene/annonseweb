@@ -37,5 +37,15 @@ Annonseweb-1.2.4
 
 Annonseweb-1.2.5
 ====================================================
-- CURRENT DEVELOPMENT
+- bugfix
+====================================================
+
+Annonseweb-1.2.6
+====================================================
+- Sidebar tasks links fixed
+- Added customer only active list
+- Added sale only active list
+- When changing ads, now only active sales are
+    possible to choose from sale list
+- Spellings in invoice print fixed
 ====================================================

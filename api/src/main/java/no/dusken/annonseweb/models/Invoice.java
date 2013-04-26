@@ -4,12 +4,9 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.ArrayList;
-
-import static javax.persistence.CascadeType.ALL;
+import java.util.Calendar;
+import java.util.List;
 
 @Entity
 public class Invoice extends DuskenObject{
@@ -28,8 +25,7 @@ public class Invoice extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
 
-    // todo
-    @ManyToOne//(cascade = ALL)
+    @ManyToOne
     private AnnonsePerson createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)

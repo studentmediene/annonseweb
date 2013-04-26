@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -54,36 +53,16 @@ public class AnnonseNoteController {
     @RequestMapping("/archive")
     public String viewArchivedNotes(Model model) {
         // TODO make comparator, sort list and remove if there are too many entries.
-        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        model.addAttribute("annonseNoteList", aList);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        model.addAttribute("annonseNoteList", annonseNoteService.getUserAndDelegatedNotActiveAnnonseNotes(me));
         model.addAttribute("active", false);
         return "note/list";
     }
 
     @RequestMapping("/archive/all")
     public String viewAllArchivedNotes(Model model) {
-        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        model.addAttribute("annonseNoteList", aList);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        model.addAttribute("annonseNoteList", annonseNoteService.getUserAndDelegatedNotActiveAnnonseNotes(me));
         model.addAttribute("active", false);
         return "note/list";
     }
@@ -97,18 +76,8 @@ public class AnnonseNoteController {
 
     @RequestMapping("/active")
     public String viewActiveNotes(Model model) {
-        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && note.getActive())
-                    aList.add(note);
-        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && note.getActive())
-                    aList.add(note);
-        model.addAttribute("annonseNoteList", aList);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        model.addAttribute("annonseNoteList", annonseNoteService.getUserAndDelegatedActiveAnnonseNotes(me));
         model.addAttribute("active", true);
         return "note/list";
     }
@@ -190,29 +159,11 @@ public class AnnonseNoteController {
 
     @RequestMapping("/blank/sidebar_notes")
     public String viewSidebarNotes(Model model) {
-        // TODO make sql queries to effectivise
-        List<AnnonseNote> myNotes = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> myDelegatedNotes = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> myExpiredNotes = new ArrayList<AnnonseNote>();
-        for (AnnonseNote note:annonsePersonController.getLoggedInUser().getMyNotes()) {
-            if (note.getActive()) {
-                if (note.getDueDate().after(Calendar.getInstance()))
-                    myNotes.add(note);
-                else
-                    myExpiredNotes.add(note);
-            }
-        }
-        for (AnnonseNote note: annonsePersonController.getLoggedInUser().getDelegatedNotes()) {
-            if (note.getActive()) {
-                if (note.getDueDate().after(Calendar.getInstance()))
-                    myDelegatedNotes.add(note);
-                else
-                    myExpiredNotes.add(note);
-            }
-        }
-        model.addAttribute("myComingNotes", myNotes);
-        model.addAttribute("myDelegatedNotes", myDelegatedNotes);
-        model.addAttribute("myExpiredNotes", myExpiredNotes);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        Calendar now = Calendar.getInstance();
+        model.addAttribute("myComingNotes", annonseNoteService.getUserActiveAnnonseNotesAfterDate(me, now));
+        model.addAttribute("myDelegatedNotes", annonseNoteService.getDelegatedActiveAnnonseNotesAfterDate(me, now));
+        model.addAttribute("myExpiredNotes", annonseNoteService.getUserAndDelegatedActiveAnnonseNotesBeforeDate(me,now));
         return "note/sidebar_notes";
     }
 

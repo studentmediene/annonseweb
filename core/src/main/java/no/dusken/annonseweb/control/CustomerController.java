@@ -37,6 +37,12 @@ public class CustomerController{
         return "customer/all";
     }
 
+    @RequestMapping("/all_active")
+    public String viewActiveCustomerList(Model model){
+        model.addAttribute("customerList", customerService.getActiveCustomers());
+        return "customer/all";
+    }
+
     @RequestMapping("/new")
     public String viewNewCustomer(Model model){
         return viewEdit(new Customer(), model);
