@@ -118,7 +118,7 @@ public class AnnonseNoteController {
 
     @RequestMapping("/edit/{annonseNote}")
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
-        List<AnnonsePerson> uList = (List<AnnonsePerson>) annonsePersonService.findAll();
+        List<AnnonsePerson> uList = annonsePersonService.findAll();
         uList.add(null);
         List<Sale> sList = salesService.findAll();
         sList.add(null);

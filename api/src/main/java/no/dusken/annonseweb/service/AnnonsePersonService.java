@@ -9,9 +9,9 @@ import java.util.List;
 public interface AnnonsePersonService extends GenericService<AnnonsePerson> {
     public AnnonsePerson getByUsername(String username);
 
-    @Query("select ap from AnnonsePerson ap where ap.active = true")
+    @Query("select ap from AnnonsePerson ap where ap.annonseActive = true")
     public List<AnnonsePerson> getActiveAnnonsePersons();
 
-    @Query("select ap from AnnonsePerson ap where ap.active = false")
+    @Query("select ap from AnnonsePerson ap where ap.annonseActive = false")
     public List<AnnonsePerson> getNotActiveAnnonsePersons();
 }
