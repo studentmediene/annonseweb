@@ -1,6 +1,8 @@
 package no.dusken.annonseweb.control;
 
-import no.dusken.annonseweb.models.*;
+import no.dusken.annonseweb.models.Ad;
+import no.dusken.annonseweb.models.Invoice;
+import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.InvoiceService;
 import no.dusken.annonseweb.service.SalesService;
 import no.dusken.common.editor.BindByIdEditor;
@@ -11,8 +13,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.List;
 
 @Controller
 @RequestMapping("/invoice")
@@ -38,6 +40,7 @@ public class InvoiceController {
 
     @RequestMapping("/{invoice}")
     public String viewInvoice(@PathVariable Invoice invoice, Model model){
+        // todo does this work?
         model.addAttribute("invoice", invoice);
         return "invoice/invoice";
     }
@@ -62,6 +65,7 @@ public class InvoiceController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveNewInvoice(@Valid @ModelAttribute Invoice invoice) {
+        // todo get getLoggedInUser, ain't that in commons ?
         invoice.setCreatedUser(annonsePersonController.getLoggedInUser());
         invoice.setLastEditedUser(annonsePersonController.getLoggedInUser());
         invoice.setCreatedDate(Calendar.getInstance());
@@ -70,7 +74,7 @@ public class InvoiceController {
         for(Sale sale: invoice.getSales()){
             salesService.saveAndFlush(sale);
         }
-        return "redirect:/annonse/invoice/" + invoice.getId();
+        return "redirect:/annonseweb/invoice/" + invoice.getId();
     }
 
     @RequestMapping("/save/{pathInvoice}")
@@ -100,7 +104,20 @@ public class InvoiceController {
                 }
             }
         }
-        return "redirect:/annonse/invoice/" + pathInvoice.getId();
+        return "redirect:/annonseweb/invoice/" + pathInvoice.getId();
+    }
+
+    @RequestMapping("/print/blank/{invoice}")
+    public String printInvoice(@PathVariable Invoice invoice, Model model) {
+        BigDecimal tot = new BigDecimal(0);
+        for (Sale s : invoice.getSales()) {
+            for (Ad a: s.getAds()) {
+                tot.add(a.getFinalPrice());
+            }
+        }
+        model.addAttribute("invoice", invoice);
+        model.addAttribute("total", tot.toPlainString());
+        return "invoice/print";
     }
 
     @InitBinder

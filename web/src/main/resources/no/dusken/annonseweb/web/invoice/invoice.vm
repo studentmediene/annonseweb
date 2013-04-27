@@ -5,8 +5,8 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/invoice/$invoice.Id">$invoice.description - $invoice.Id</a>
-        <label class="edit"><a href="/annonse/invoice/edit/$invoice.Id">Edit Invoice</a></label>
+        <a href="#springUrl("/annonseweb/invoice/$invoice.Id")">$invoice.description - $invoice.Id</a>
+        <label class="edit"><a href="#springUrl("/annonseweb/invoice/edit/$invoice.Id")">Endre faktura</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -27,7 +27,7 @@
                 <div>
                     <!-- the list of sale that this invoice contains. -->
                     #foreach($sale in $invoice.sales)
-                        <label class="element text medium"><a href="/annonse/sale/$sale.Id">
+                        <label class="element text medium"><a href="#springUrl("/annonseweb/sale/$sale.Id")">
                             $sale.Id - $sale.description - generert faktura?: $sale.invoiceGenerated
                         </a></label><br>
                     #end
@@ -42,7 +42,8 @@
                     <label class="element text medium">$invoice.invoiceNumber</label>
                 </div>
                 <p class="guidelines">
-                    The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
+                    Fakturanummer. Dette er en identifikator for fakturaene for fakturaer fra det gamle systemet.
+                    Nye faktura får egne identifikatorer.
                 </p>
             </li>
             <li>
@@ -98,6 +99,13 @@
                 <p class="guidelines">
                     Brukeren som sist endret fakturaen
                 </p>
+            </li>
+            <li>
+                <label class="description">Skriv ut</label>
+                <div>
+                    <a onclick="javascript:window.open('#springUrl("/annonseweb/invoice/print/blank/$invoice.Id")')">Skriv ut</a>
+                </div>
+                <p class ="guidelines">Åpner ett nytt vindu med fakturainformasjonen som lett kan printes</p>
             </li>
         </ul>
     </div>

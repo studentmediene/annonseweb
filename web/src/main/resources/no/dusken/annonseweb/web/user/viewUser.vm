@@ -4,13 +4,21 @@
 <div id="content">
     <div class="post">
         <h2 class="title">
-            <a href="/annonse/user/$user.getId()">$user.name:</a><a href="/annonse/user/edit/$user.getId()">Endre</a>
+            <a href="#springUrl("/annonseweb/user/$user.Username")">$user.name:</a>
         </h2>
         <div class="entry">
             <ul>
-                <li>Brukernavn:<br>$user.name</li>
-                <li>Autoritet:<br>$user.authority</li>
-                <li>Aktiv:<br>$user.active</li>
+                <li>Brukernavn:<br>$user.Username</li>
+                <li>Navn:<br>$user.Name</li>
+                <li>Epost:<br />$user.EmailAddress</li>
+                <li>Telefon:<br />$user.PhoneNumber</li>
+                <li>
+                    #if ($user.active)
+                        Aktiv selger
+                    #else
+                        Ikke aktiv selger
+                    #end
+                </li>
             <p></p>
             </ul>
         </div>

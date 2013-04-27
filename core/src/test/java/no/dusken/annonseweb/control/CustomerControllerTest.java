@@ -60,7 +60,7 @@ public class CustomerControllerTest {
         assertEquals(id, customer.getId());
         assertEquals("edited@email", customer.getEmail());
         assertEquals("editedName", customer.getName());
-        assertEquals("redirect:/annonse/customer/"+customer.getId(), s);
+        assertEquals("redirect:/annonseweb/customer/"+customer.getId(), s);
         assertEquals("editedPhoneNumber", customer.getPhoneNumber());
 
         // checks if size is correct

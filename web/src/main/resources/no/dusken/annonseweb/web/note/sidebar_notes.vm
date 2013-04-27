@@ -1,0 +1,79 @@
+<ul class="tasks">Mine påminnere:
+    #foreach($note in $myComingNotes)
+        <li class="task">
+            <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.DueDate)</a>
+            #if($note.Customer)
+                <br />
+                <a href="#springUrl("/annonseweb/customer/$note.Customer.Id")">
+                    Kunde: $note.Customer.Name
+                </a>
+            #end
+            #if($note.ContactPerson)
+                <br /><a href="#springUrl("/annonseweb/contactperson/$note.ContactPerson.Id")">
+                    Kontakt: $note.ContactPerson.PersonName
+                </a>
+            #end
+            #if($note.Sale)
+                <br /><a href="#springUrl("/annonseweb/sale/$note.Sale.Id")">
+                    Salg: $note.Sale.Description
+                </a>
+            #end
+            <p class="guidelines"><a href="#springUrl("/annonseweb/note/$note.Id")">Vis</a>
+                <br /><a href="#springUrl("/annonseweb/note/edit/$note.Id")">Endre</a>
+                <br /><a href="#springUrl("/annonseweb/note/doarchive/$note.Id")">Arkiver</a>
+            </p>
+        </li>
+    #end
+    <br />Tildelte påminnere:
+    #foreach($note in $myDelegatedNotes)
+        <li class="task">
+            <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.DueDate)</a>
+            #if($note.Customer)
+                <br />
+                <a href="#springUrl("/annonseweb/customer/$note.Customer.Id")">
+                    Kunde: $note.Customer.Name
+                </a>
+            #end
+            #if($note.ContactPerson)
+                <br /><a href="#springUrl("/annonseweb/contactperson/$note.ContactPerson.Id")">
+                Kontakt: $note.ContactPerson.PersonName
+            </a>
+            #end
+            #if($note.Sale)
+                <br /><a href="#springUrl("/annonseweb/sale/$note.Sale.Id")">
+                Salg: $note.Sale.Description
+            </a>
+            #end
+            <p class="guidelines"><a href="#springUrl("/annonseweb/note/$note.Id")">Vis</a>
+                <br /><a href="#springUrl("/annonseweb/note/edit/$note.Id")">Endre</a>
+                <br /><a href="#springUrl("/annonseweb/note/doarchive/$note.Id")">Arkiver</a>
+            </p>
+        </li>
+    #end
+    <br />Utgåtte påminnere:
+    #foreach($note in $myExpiredNotes)
+        <li class="task">
+            <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.DueDate)</a>
+            #if($note.Customer)
+                <br />
+                <a href="#springUrl("/annonseweb/customer/$note.Customer.Id")">
+                    Kunde: $note.Customer.Name
+                </a>
+            #end
+            #if($note.ContactPerson)
+                <br /><a href="#springUrl("/annonseweb/contactperson/$note.ContactPerson.Id")">
+                Kontakt: $note.ContactPerson.PersonName
+            </a>
+            #end
+            #if($note.Sale)
+                <br /><a href="#springUrl("/annonseweb/sale/$note.Sale.Id")">
+                Salg: $note.Sale.Description
+            </a>
+            #end
+            <p class="guidelines"><a href="#springUrl("/annonseweb/note/$note.Id")">Vis</a>
+                <br /><a href="#springUrl("/annonseweb/note/edit/$note.Id")">Endre</a>
+                <br /><a href="#springUrl("/annonseweb/note/doarchive/$note.Id")">Arkiver</a>
+            </p>
+        </li>
+    #end
+</ul>

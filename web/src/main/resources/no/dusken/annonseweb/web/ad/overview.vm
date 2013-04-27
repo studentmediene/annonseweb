@@ -80,7 +80,7 @@
             #if($ad.active)
                 #if($ad.fromDay)   //Dumb workaround?
                     if(getWebadsByPeriod($ad.fromDay,$ad.fromMonth,$ad.fromYear,$ad.toDay,$ad.toMonth,$ad.toYear)){
-                        result += "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonse/ad/" + $ad.Id +
+                        result += "<div class=\"entry\"> \n <div class=\"listEntry\"> \n <a href=\"/annonseweb/ad/" + $ad.Id +
                                 "\"> \n <p class=\"meta\">" + "Kunde: $ad.sale.customer.name" + "<\/p> \n <p class=\"info\">" + "AnnonseID: $ad.Id<br \/>" +
                                 "Aktiv fra: $ad.onlineFrom <br \/> Aktiv til: $ad.onlineTo <\/p> \n <\/a> \n <\/div> \n <\/div>";
                     }
@@ -106,7 +106,7 @@
                             <fieldset>
                                 <select id="selectIssueNumber" onchange="refreshPrinted()">
                                     #foreach($number in [1..16])
-                                    <option value="$number">$number</option>
+                                        <option value="$number">$number</option>
                                     #end
                                 </select>
                                 <select id="selectIssueYear" onchange="refreshPrinted()">

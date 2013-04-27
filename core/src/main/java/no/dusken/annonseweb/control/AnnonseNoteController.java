@@ -1,5 +1,6 @@
 package no.dusken.annonseweb.control;
 
+import customeditors.ResolveByUsernameEditor;
 import customeditors.ResolveCalendarEditor;
 import no.dusken.annonseweb.models.*;
 import no.dusken.annonseweb.service.*;
@@ -14,10 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.Writer;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -56,36 +53,16 @@ public class AnnonseNoteController {
     @RequestMapping("/archive")
     public String viewArchivedNotes(Model model) {
         // TODO make comparator, sort list and remove if there are too many entries.
-        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        model.addAttribute("annonseNoteList", aList);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        model.addAttribute("annonseNoteList", annonseNoteService.getUserAndDelegatedNotActiveAnnonseNotes(me));
         model.addAttribute("active", false);
         return "note/list";
     }
 
     @RequestMapping("/archive/all")
     public String viewAllArchivedNotes(Model model) {
-        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && !note.getActive())
-                    aList.add(note);
-        model.addAttribute("annonseNoteList", aList);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        model.addAttribute("annonseNoteList", annonseNoteService.getUserAndDelegatedNotActiveAnnonseNotes(me));
         model.addAttribute("active", false);
         return "note/list";
     }
@@ -94,23 +71,13 @@ public class AnnonseNoteController {
     public String doArchive(@PathVariable AnnonseNote annonseNote) {
         annonseNote.setActive(Boolean.FALSE);
         annonseNoteService.saveAndFlush(annonseNote);
-        return "redirect:/annonse/note/" + annonseNote.getId();
+        return "redirect:/annonseweb/note/" + annonseNote.getId();
     }
 
     @RequestMapping("/active")
     public String viewActiveNotes(Model model) {
-        ArrayList<AnnonseNote> aList = new ArrayList<AnnonseNote>();
-        List<AnnonseNote> list = annonsePersonController.getLoggedInUser().getMyNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && note.getActive())
-                    aList.add(note);
-        list = annonsePersonController.getLoggedInUser().getDelegatedNotes();
-        if (list!=null)
-            for (AnnonseNote note:list)
-                if (note != null && note.getActive())
-                    aList.add(note);
-        model.addAttribute("annonseNoteList", aList);
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        model.addAttribute("annonseNoteList", annonseNoteService.getUserAndDelegatedActiveAnnonseNotes(me));
         model.addAttribute("active", true);
         return "note/list";
     }
@@ -151,7 +118,7 @@ public class AnnonseNoteController {
 
     @RequestMapping("/edit/{annonseNote}")
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
-        List<AnnonsePerson> uList = annonsePersonService.findAll();
+        List<AnnonsePerson> uList = (List<AnnonsePerson>) annonsePersonService.findAll();
         uList.add(null);
         List<Sale> sList = salesService.findAll();
         sList.add(null);
@@ -174,7 +141,7 @@ public class AnnonseNoteController {
         annonseNote.setCreatedUser(annonsePersonController.getLoggedInUser());
         annonseNote.setCreatedDate(Calendar.getInstance());
         annonseNoteService.saveAndFlush(annonseNote);
-        return "redirect:/annonse/note/" + annonseNote.getId();
+        return "redirect:/annonseweb/note/" + annonseNote.getId();
     }
 
     @RequestMapping("/save/{pathAnnonseNote}")
@@ -187,98 +154,17 @@ public class AnnonseNoteController {
         pathAnnonseNote.setSale(annonseNote.getSale());
         pathAnnonseNote.setText(annonseNote.getText());
         annonseNoteService.saveAndFlush(pathAnnonseNote);
-        return "redirect:/annonse/note/" + pathAnnonseNote.getId();
+        return "redirect:/annonseweb/note/" + pathAnnonseNote.getId();
     }
 
-    @RequestMapping("/sidebar_notes")
-    public void viewSidebarNotes(Writer writer) {
-        List<AnnonseNote> expiredNotes = new ArrayList<AnnonseNote>();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MMM.yyyy - HH:mm:");
-        String response = "<ul class=\"tasks\">Mine påminnere:";
-        Calendar yesterday = Calendar.getInstance();
-        yesterday.add(Calendar.DAY_OF_MONTH, -1);
-        for (AnnonseNote note: annonsePersonController.getLoggedInUser().getMyNotes()) {
-            if (note.getActive() && note.getDueDate() != null) {
-                if (note.getDueDate().after(yesterday)) {
-                    response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
-                    response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
-                    if (note.getCustomer() != null) {
-                        response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
-                        response += "Kunde: " + note.getCustomer().getName() + "</a>";
-                    }
-                    if (note.getContactPerson() != null) {
-                        response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
-                        response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
-                    }
-                    if (note.getSale() != null) {
-                        response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
-                        response += "Salg: " + note.getSale().getDescription() + "</a>";
-                    }
-                    response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
-                    response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
-                    response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
-                    response += "\">Arkiver</a></p></li>";
-                } else {
-                    expiredNotes.add(note);
-                }
-            }
-        }
-        response += "<br />Tildelte påminnere:";
-        for (AnnonseNote note: annonsePersonController.getLoggedInUser().getDelegatedNotes()) {
-            if (note.getActive() && note.getDueDate() != null) {
-                if (note.getDueDate().after(yesterday)) {
-                    response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
-                    response += dateFormat.format(note.getDueDate().getTime());
-                    response += "</a><br />Fra: "+note.getCreatedUser().getName();
-                    if (note.getCustomer() != null) {
-                        response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
-                        response += "Kunde: " + note.getCustomer().getName() + "</a>";
-                    }
-                    if (note.getContactPerson() != null) {
-                        response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
-                        response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
-                    }
-                    if (note.getSale() != null) {
-                        response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
-                        response += "Salg: " + note.getSale().getDescription() + "</a>";
-                    }
-                    response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
-                    response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
-                    response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
-                    response += "\">Arkiver</a></p></li>";
-                } else {
-                    expiredNotes.add(note);
-                }
-            }
-        }
-        response += "<br />Utgåtte påminnere:";
-        for (AnnonseNote note: expiredNotes) {
-            response += "<li class=\"task\"><a href=\"/annonse/note/" + note.getId() + "\">";
-            response += dateFormat.format(note.getDueDate().getTime()) + "</a>";
-            if (note.getCustomer() != null) {
-                response += "<br /><a href=\"/annonse/customer/" + note.getCustomer().getId() + "\">";
-                response += "Kunde: " + note.getCustomer().getName() + "</a>";
-            }
-            if (note.getContactPerson() != null) {
-                response += "<br /><a href=\"/annonse/contactperson/" + note.getContactPerson().getId() + "\">";
-                response += "Kontakt: " + note.getContactPerson().getPersonName() + "</a>";
-            }
-            if (note.getSale() != null) {
-                response += "<br /><a href=\"/annonse/sale/" + note.getSale().getId() + "\">";
-                response += "Salg: " + note.getSale().getDescription() + "</a>";
-            }
-            response += "<p class=\"guidelines\"><a href=\"/annonse/note/"+note.getId()+"\">Vis</a>";
-            response += "<br /><a href=\"/annonse/note/edit/" + note.getId() + "\">Endre</a>";
-            response += "<br /><a href=\"/annonse/note/doarchive/" + note.getId();
-            response += "\">Arkiver</a></p></li>";
-        }
-        response += "</ul>";
-        try {
-            writer.write(response);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+    @RequestMapping("/blank/sidebar_notes")
+    public String viewSidebarNotes(Model model) {
+        AnnonsePerson me = annonsePersonController.getLoggedInUser();
+        Calendar now = Calendar.getInstance();
+        model.addAttribute("myComingNotes", annonseNoteService.getUserActiveAnnonseNotesAfterDate(me, now));
+        model.addAttribute("myDelegatedNotes", annonseNoteService.getDelegatedActiveAnnonseNotesAfterDate(me, now));
+        model.addAttribute("myExpiredNotes", annonseNoteService.getUserAndDelegatedActiveAnnonseNotesBeforeDate(me,now));
+        return "note/sidebar_notes";
     }
 
     @InitBinder
@@ -287,7 +173,7 @@ public class AnnonseNoteController {
         binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
         binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));
-        binder.registerCustomEditor(AnnonsePerson.class, new BindByIdEditor(annonsePersonService));
+        binder.registerCustomEditor(AnnonsePerson.class, new ResolveByUsernameEditor(annonsePersonService));
         binder.registerCustomEditor(Calendar.class, new ResolveCalendarEditor());
     }
 }

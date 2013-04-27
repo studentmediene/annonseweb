@@ -3,4 +3,49 @@ Changelog for Annonseweb
 
 Annonseweb-0.1
 ====================================================
+- Do not know where to start-
+====================================================
 
+Annonseweb-1.2.0
+====================================================
+- First release.
+- Most major change: It works. Locally...
+- Other changes are too numerous to count.
+====================================================
+
+Annonseweb-1.2.1
+====================================================
+- Updated location and all links
+====================================================
+
+Annonseweb-1.2.2
+====================================================
+- Downgraded slf4j dependency. Something must be
+    using 1.6.1
+- Attempt at bugfix
+====================================================
+
+Annonseweb-1.2.3
+====================================================
+- Bugfix for velocity global macro problem
+====================================================
+
+Annonseweb-1.2.4
+====================================================
+- Location bugfix
+====================================================
+
+Annonseweb-1.2.5
+====================================================
+- bugfix
+====================================================
+
+Annonseweb-1.2.6
+====================================================
+- Sidebar tasks links fixed
+- Added customer only active list
+- Added sale only active list
+- When changing ads, now only active sales are
+    possible to choose from sale list
+- Spellings in invoice print fixed
+====================================================

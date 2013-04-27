@@ -37,6 +37,12 @@ public class CustomerController{
         return "customer/all";
     }
 
+    @RequestMapping("/all_active")
+    public String viewActiveCustomerList(Model model){
+        model.addAttribute("customerList", customerService.getActiveCustomers());
+        return "customer/all";
+    }
+
     @RequestMapping("/new")
     public String viewNewCustomer(Model model){
         return viewEdit(new Customer(), model);
@@ -70,7 +76,7 @@ public class CustomerController{
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveNew(@Valid @ModelAttribute Customer customer) {
         customerService.saveAndFlush(customer);
-        return "redirect:/annonse/customer/" + customer.getId();
+        return "redirect:/annonseweb/customer/" + customer.getId();
     }
 
     /**
@@ -83,7 +89,7 @@ public class CustomerController{
     public String saveEdit(@PathVariable Customer pathCustomer, @Valid @ModelAttribute Customer customer) {
         pathCustomer.cloneFrom(customer);
         customerService.saveAndFlush(pathCustomer);
-        return "redirect:/annonse/customer/" + pathCustomer.getId();
+        return "redirect:/annonseweb/customer/" + pathCustomer.getId();
     }
 
     @InitBinder

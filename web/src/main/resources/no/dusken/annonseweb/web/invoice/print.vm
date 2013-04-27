@@ -1,0 +1,26 @@
+BigDecimal tot = new BigDecimal(0);
+<html><head><title>Print faktura</title></head>
+<body>
+<h1>Faktura: $invoice.getId() </h1>
+Fakturadato: $invoice.getCreatedDate()
+<br />
+Uløpsdato: $invoice.getInvoiceDate()
+<br /><hr><br />
+Kunde:
+<br />
+$invoice.getSales().get(0).getCustomer().getName()
+<br />
+$invoice.getSales().get(0).getCustomer().getAddress()
+<br /><hr /><br />
+#foreach($sale in $invoice.Sales)
+    $sale.Description
+    <br />
+    #foreach($ad in $sale.Ads)
+        $ad.Title - $ad.FinalPrice
+        <br>
+    #end
+#end
+<br /><hr /><br />
+<h2>Total: $total</h2>
+</body>
+</html>

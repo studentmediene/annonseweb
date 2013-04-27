@@ -49,7 +49,7 @@ public class AdController {
 
     @RequestMapping("overview")
     public String viewAdListActive(Model model){
-        model.addAttribute("adList", adService.findAll());
+        model.addAttribute("adList", adService.getActiveAds());
         return "ad/overview";
     }
 
@@ -76,7 +76,7 @@ public class AdController {
 
     @RequestMapping("edit/{ad}")
     public String viewEdit(@PathVariable Ad ad, Model model){
-        model.addAttribute("salesList", salesService.findAll());
+        model.addAttribute("salesList", salesService.getActiveSales());
         model.addAttribute("ad", ad);
         if (ad instanceof PrintedAd) {
             return "ad/edit/printed";
@@ -93,13 +93,13 @@ public class AdController {
     @RequestMapping(value = "/save/web", method = RequestMethod.POST)
     public String saveNewWeb(@Valid @ModelAttribute WebAd ad) {
         adService.saveAndFlush((WebAd) ad);
-        return "redirect:/annonse/ad/" + ad.getId();
+        return "redirect:/annonseweb/ad/" + ad.getId();
     }
 
     @RequestMapping(value = "/save/printed", method = RequestMethod.POST)
     public String saveNewPrinted(@Valid @ModelAttribute PrintedAd ad) {
         adService.saveAndFlush((PrintedAd) ad);
-        return "redirect:/annonse/ad/" + ad.getId();
+        return "redirect:/annonseweb/ad/" + ad.getId();
     }
 
     @RequestMapping(value = "/save/radio", method = RequestMethod.POST)
@@ -112,14 +112,14 @@ public class AdController {
     public String saveEditWeb(@PathVariable WebAd pathAd, @Valid @ModelAttribute WebAd ad) {
         pathAd.cloneFrom((WebAd) ad);
         adService.saveAndFlush((WebAd) pathAd);
-        return "redirect:/annonse/ad/" + pathAd.getId();
+        return "redirect:/annonseweb/ad/" + pathAd.getId();
     }
 
     @RequestMapping("save/printed/{pathAd}")
     public String saveEditPrinted(@PathVariable PrintedAd pathAd, @Valid @ModelAttribute PrintedAd ad) {
         pathAd.cloneFrom((PrintedAd) ad);
         adService.saveAndFlush((PrintedAd) pathAd);
-        return "redirect:/annonse/ad/" + pathAd.getId();
+        return "redirect:/annonseweb/ad/" + pathAd.getId();
     }
 
     @RequestMapping("save/radio/{pathAd}")

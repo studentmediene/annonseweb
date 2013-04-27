@@ -44,6 +44,9 @@ public class AnnonseNoteControllerTest {
     @Autowired
     private AnnonsePersonService annonsePersonService;
 
+    @Autowired
+    private AnnonsePersonController annonsePersonController;
+
     private AnnonsePerson someone;
     private Model model;
     private AnnonseNote note;
@@ -54,16 +57,9 @@ public class AnnonseNoteControllerTest {
 
     @Before
     public void setup() {
-        if (annonsePersonService.findAll().size() == 0) {
-            someone = new AnnonsePerson();
-            someone.setPrincipal("SuperDuper");
-            someone.setCredentials( "SuperPass");
-            someone.setAuthority(RoleAuth.MASKINIST.toString());
-            annonsePersonService.saveAndFlush(someone);
-        } else {
-            someone = annonsePersonService.findOne(Long.valueOf(1));
-        }
-        SecurityContextHolder.getContext().setAuthentication(someone);
+        String username = "username";
+        SecurityContextHolder.getContext().setAuthentication(new DummyAuthenticationUserDetails(username));
+        someone = annonsePersonController.getLoggedInUser();
         model = new ExtendedModelMap();
         note = new AnnonseNote();
         note.setText("A short note");
@@ -104,7 +100,7 @@ public class AnnonseNoteControllerTest {
     public void testDoArchive() {
         note.setActive(Boolean.TRUE);
         annonseNoteController.saveNew(note);
-        assertEquals("Do active returned wrong view name!", "redirect:/annonse/note/" + note.getId(),
+        assertEquals("Do active returned wrong view name!", "redirect:/annonseweb/note/" + note.getId(),
                 annonseNoteController.doArchive(note));
         assertFalse("Do archive did not make note passive!", note.getActive());
     }
@@ -178,7 +174,7 @@ public class AnnonseNoteControllerTest {
         int noteCount = annonseNoteService.findAll().size();
         assertNull("Annonse note had ID before it should", note.getId());
         String retAdr = annonseNoteController.saveNew(note);
-        assertEquals("Save new did not return correct view adress!", "redirect:/annonse/note/" + note.getId(), retAdr);
+        assertEquals("Save new did not return correct view adress!", "redirect:/annonseweb/note/" + note.getId(), retAdr);
         assertNotNull("Note did not get ID!", note.getId());
         assertEquals("Note was stored 0 or multiple times!", noteCount + 1, annonseNoteService.findAll().size());
         note = annonseNoteService.findOne(note.getId());
@@ -197,7 +193,7 @@ public class AnnonseNoteControllerTest {
         editSrc.setActive(Boolean.FALSE);
         String retAdr = annonseNoteController.saveEdit(note, editSrc);
         assertEquals("Id was changed", id, note.getId());
-        assertEquals("Save Edit returned wrong view address!", "redirect:/annonse/note/" + id, retAdr);
+        assertEquals("Save Edit returned wrong view address!", "redirect:/annonseweb/note/" + id, retAdr);
         assertEquals("Note was stored again or deleted!", noteCount, annonseNoteService.findAll().size());
         note = annonseNoteService.findOne(note.getId());
         assertEquals("Notes text was not properly edited", "edited short note", note.getText());
@@ -205,7 +201,13 @@ public class AnnonseNoteControllerTest {
 
     @Test
     public void testViewSidebarNotes() {
-        // I have no idea how to test how a writer writes correctly to the stream at the moment.
-        assertTrue(true);
+        assertFalse("Model was populated before it should! myComingNotes", model.containsAttribute("myComingNotes"));
+        assertFalse("Model was populated before it should! myDelegatedNotes", model.containsAttribute("myDelegatedNotes"));
+        assertFalse("Model was populated before it should! myExpiredNotes", model.containsAttribute("myExpiredNotes"));
+        assertEquals("View sidebar notes returned wrong view address", "note/sidebar_notes",
+                annonseNoteController.viewSidebarNotes(model));
+        assertTrue("Model was not populated! myComingNotes", model.containsAttribute("myComingNotes"));
+        assertTrue("Model was not populated! myDelegatedNotes", model.containsAttribute("myDelegatedNotes"));
+        assertTrue("Model was not populated! myExpiredNotes", model.containsAttribute("myExpiredNotes"));
     }
 }

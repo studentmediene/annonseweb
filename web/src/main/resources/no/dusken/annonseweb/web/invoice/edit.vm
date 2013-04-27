@@ -5,20 +5,20 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        #set($InvoiceId = false)
         #set($InvoiceId = $invoice.getId())
         #set($pathEnd = "")
         #if (!$InvoiceId)
-            <a href="/annonse/invoice/new/">Ny faktura:</a>
+            <a href="#springUrl("/annonseweb/invoice/new/")">Ny faktura:</a>
         #else
-            <a href="/annonse/invoice/edit/$invoice.getId()">Endre faktura: $invoice.getId()</a>
-            <label class="edit"><a href="/annonse/invoice/$invoice.getId()">Tilbake</a>
+            <a href="#springUrl("/annonseweb/invoice/edit/$invoice.getId()")">Endre faktura: $invoice.getId()</a>
+            <label class="edit"><a href="#springUrl("/annonseweb/invoice/$invoice.getId()")">Tilbake</a>
             #set($pathEnd = "/" + $InvoiceId)
         #end
     </h2>
-    <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonse/invoice/save$pathEnd")">
+    <!-- TODO: There seems to be forms within forms. Should not be like that -->
+    <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonseweb/invoice/save$pathEnd")">
 
-<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/invoice/save")">
+<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/invoice/save")">
     <div class="content">
         <ul>
             <li>
@@ -28,7 +28,7 @@
                     #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
-                    A list of sales, Check the ones you want to add to the new invoice.
+                    Her velger du hvilket salg fakturaen skal kobles opp mot.
                 </p>
             </li>
             <li>
@@ -38,7 +38,7 @@
                     #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
-                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
+                    Dette er beskrivelsen til fakturaen, f.eks. "Uka 11: Samlefaktura"
                 </p>
             </li>
             <li>
@@ -48,7 +48,8 @@
                     #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
-                    The invoice number. This is there to make the invoice unique and accompany the old invoices from the old system. It should not be necessary for the new invoices as we have the Id field in every invoice.
+                    Fakturanummer. Dette er en identifikator for fakturaene for fakturaer fra det gamle systemet.
+                    Nye faktura får egne identifikatorer.
                 </p>
             <li>
                 <label class="description" for="description">Forfallsdato</label>
@@ -57,7 +58,7 @@
                     #springShowErrors("<br>" "error") <br/>
                 </div>
                 <p class="guidelines">
-                    This is the description of the invoice. e.g: "Uka 11: Samlefaktura"
+                    Dette er forfallsdatoen for fakturaen. Det vil si når den skal være betalt.
                 </p>
             </li>
             <li>

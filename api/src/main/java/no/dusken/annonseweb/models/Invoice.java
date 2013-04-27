@@ -4,15 +4,14 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.ArrayList;
-
-import static javax.persistence.CascadeType.ALL;
+import java.util.Calendar;
+import java.util.List;
 
 @Entity
 public class Invoice extends DuskenObject{
+
+    //todo cleanup
 
     @OneToMany
     private List<Sale> sales = new ArrayList<Sale>();
@@ -26,7 +25,7 @@ public class Invoice extends DuskenObject{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdDate;
 
-    @ManyToOne//(cascade = ALL)
+    @ManyToOne
     private AnnonsePerson createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -110,6 +109,7 @@ public class Invoice extends DuskenObject{
     }
 
     public String getCreatedDate() {
+        // todo
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         String strdate = null;
         if (this.createdDate != null) {
@@ -131,6 +131,7 @@ public class Invoice extends DuskenObject{
     }
 
     public String getLastEditedDate() {
+        //todo
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         String strdate = null;
         if (this.lastEditedDate != null) {

@@ -11,8 +11,8 @@
 <div id="content" class="post">
 
     <h2 class="title">
-        <a href="/annonse/customer/$customer.Id">$customer.name - $customer.Id</a>
-        <label class="edit"><a href="/annonse/customer/edit/$customer.Id">Endre kunde</a></label>
+        <a href="#springUrl("/annonseweb/customer/$customer.Id")">$customer.name - $customer.Id</a>
+        <label class="edit"><a href="#springUrl("/annonseweb/customer/edit/$customer.Id")">Endre kunde</a></label>
     </h2>
     <div class="content">
         <div class="content_description">
@@ -26,6 +26,15 @@
                 </div>
                 <p class="guidelines">
                     Automatisk generert identifikator for denne kunden i annonseweb.
+                </p>
+            </li>
+            <li>
+                <label class="description">Opprettet</label>
+                <div>
+                    <label class="element text medium">#formatCalendarObject($customer.TimeCreated)</label>
+                </div>
+                <p class="guidelines">
+                    Når denne kunden ble første gang registrert i annonseweb.
                 </p>
             </li>
             <li>
@@ -79,7 +88,7 @@
             #foreach($contPers in $customer.ContactPersons)
                 <li>
                     <div>
-                        <a href="#springUrl("/annonse/contactperson/$contPers.Id")">$contPers.PersonName</a>
+                        <a href="#springUrl("/annonseweb/contactperson/$contPers.Id")">$contPers.PersonName</a>
                     </div>
                     <p class="guidelines">
                         #if($contPers.active)
@@ -94,7 +103,7 @@
             #end
             <li>
                 <label class ="description">Lag notat tilknyttet denne kunden</label>
-                <div><a href ="/annonse/note/new/customer/$custId">Nytt notat</a></div>
+                <div><a href ="#springUrl("/annonseweb/note/new/customer/$custId")">Nytt notat</a></div>
                 <p class ="guidelines">
                     Oppretter et nytt notat på denne kunden. Kan sees på som å lage et innskudd i en logg over
                     kontakten med kunden.
@@ -110,7 +119,7 @@
                             #else
                                 #set($aktivt = "Arkivert")
                             #end
-                            <a href="/annonse/note/$note.Id">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
+                            <a href="#springUrl("/annonseweb/note/$note.Id")">#formatCalendarObject($note.CreatedDate) - $aktivt</a>
                             <br />
                         #end
                     </div>
@@ -124,13 +133,13 @@
             <li>
                 <label class="description">
                     Siste salg -
-                    <a href="/annonse/sale/new/$customer.Id">
+                    <a href="#springUrl("/annonseweb/sale/new/$customer.Id")">
                         Registrer nytt salg på denne kunden.
                     </a>
                 </label>
                 <div>
                     #foreach( $sale in $customer.sales )
-                        <label class="element text medium"><a href="/annonse/sale/$sale.id">$sale.id - $sale.description</a></label>
+                        <label class="element text medium"><a href="#springUrl("/annonseweb/sale/$sale.id")">$sale.id - $sale.description</a></label>
                     #end
                 </div>
                 <p class="guidelines">
@@ -157,7 +166,7 @@
                     </div>
                     <p class="guidelines">
                         Dette forteller oss at kunden er inaktiv hos oss, det vil si vi har
-                        ikke noe særlig kontakt emd den lenger.
+                        ikke noe særlig kontakt med den lenger.
                     </p>
                 </li>
             #end

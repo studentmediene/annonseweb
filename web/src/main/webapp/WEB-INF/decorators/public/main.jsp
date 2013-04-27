@@ -38,29 +38,32 @@
         <div id="logo">
             <h1><a href="<%=request.getContextPath() %>/">Annonseweb</a></h1>
             <p>
-                <a href="http://www.underdusken.no">Annonser for Under Dusken</a>
+                <a href="http://www.dusken.no">Annonser for studentmediene</a>
             </p>
         </div>
         <div id="search">
+            Søk kommer!
+            <!--
             <form method="get">
                 <fieldset>
                     <input type="text" name="s" placeholder="Søk" id="search-text" size="15" />
                     <input type="submit" id="search-submit" value="GO" />
                 </fieldset>
             </form>
+            -->
         </div>
         <div id="feedback">
             <p>
-                <a href="https://github.com/dusken/annonseweb">Utviklet av Duskens Dataavdeling</a>
+                <a href="https://github.com/mediastud/annonseweb">Utviklet av Duskens Dataavdeling</a>
                 -
-                <a href="https://github.com/dusken/annonseweb/issues">Feedback?(click me)</a>
+                <a href="https://github.com/mediastud/annonseweb/issues">Feedback?(klikk meg)</a>
                 <!-- add some javascript pop out for feedback -->
             </p>
         </div>
     </header>
 
     <nav id="menu">
-        <page:applyDecorator name="blank" page="/annonse/menu"/>
+        <page:applyDecorator name="blank" page="/annonseweb/menu"/>
     </nav>
 
     <div id="page">

@@ -3,15 +3,24 @@
 <!-- content -->
 <div id="content">
     <div class="post">
-        <h2 class="title"><a href="/annonse/user/all">Alle brukere:</a></h2>
+        <h2 class="title"><a href="#springUrl("/annonseweb/user/all")">Alle brukere:</a></h2>
         <div class="entry">
-            #foreach($user in $userList)
-                <p>
-                    <a href="/annonse/user/$user.Id">
-                        $user.Id - $user.name
-                    </a>
-                </p>
-            #end
+            <ul>
+                <li><h2 class="title">Aktive selgere:</h2></li>
+                #foreach($user in $activeUserList)
+                    <li>
+                        <a href="#springUrl("/annonseweb/user/$user.Username")">
+                            $user.Name - $user.Username
+                        </a>
+                        ---- ----
+                        <a href="#springUrl("/annonseweb/user/doArchive/$user.Username")">ARKIVER! ikke lenger aktiv.</a>
+                    </li>
+                #end
+                <li><h2 class="title">Andre:</h2></li>
+                #foreach($user in $nonActiveUserList)
+                    <li><a href="#springUrl("/annonseweb/user/$user.Username")">$user.Name - $user.Username</a></li>
+                #end
+            </ul>
         </div>
     </div>
 </div>

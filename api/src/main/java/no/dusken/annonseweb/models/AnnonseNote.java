@@ -13,6 +13,9 @@ import java.util.Calendar;
 public class AnnonseNote extends DuskenObject implements ActiveAnnonseElement{
 
     @ManyToOne(optional = true)
+    private Ad ad;
+
+    @ManyToOne(optional = true)
     private Customer customer;
 
     @ManyToOne(optional = true)
@@ -45,6 +48,14 @@ public class AnnonseNote extends DuskenObject implements ActiveAnnonseElement{
         this.text = text;
         this.contactPerson = contactPerson;
         this.customer = customer;
+    }
+
+    public Ad getAd() {
+        return ad;
+    }
+
+    public void setAd(Ad ad) {
+        this.ad = ad;
     }
 
     public Customer getCustomer() {

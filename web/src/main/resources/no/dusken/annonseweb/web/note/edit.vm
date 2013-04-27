@@ -4,23 +4,21 @@
 <!-- content -->
 <div id="content" class="post">
     <h2 class="title">
-        #set($conCustomer = false)
         #set($conCustomer = $annonseNote.getCustomer())
-        #set($noteId = false)
         #set($noteId = $annonseNote.getId())
         #set($pathEnd = "")
 
         #if (!$noteId)
             <!-- If new should still be linked with customer etc, this should be changed -->
-            <a href="#springUrl("/annonse/note/new")">Nytt notat:</a>
+            <a href="#springUrl("/annonseweb/note/new")">Nytt notat:</a>
         #else
-            <a href="#springUrl("/annonse/note/edit/$noteId")">Endre notis: $noteId - #formatCalendarObject( $annonseNote.getCreatedDate())</a>
-            <label class="edit"><a href="/annonse/note/$noteId">Tilbake</a></label>
+            <a href="#springUrl("/annonseweb/note/edit/$noteId")">Endre notis: $noteId - #formatCalendarObject( $annonseNote.getCreatedDate())</a>
+            <label class="edit"><a href="#springUrl("/annonseweb/note/$noteId")">Tilbake</a></label>
             #set($pathEnd = "/" + $noteId)
         #end
     </h2>
 
-    <form id="editAnnonseNote" class="content"  method="post" action="#springUrl("/annonse/note/save$pathEnd")" name="annnonseNote" enctype="multipart/form-data">
+    <form id="editAnnonseNote" class="content"  method="post" action="#springUrl("/annonseweb/note/save$pathEnd")" name="annnonseNote" enctype="multipart/form-data">
         <div class="content_description">
             <p>Legg til informasjon om notatet du lager:</p>
         </div>
@@ -86,7 +84,7 @@
             <li>
                 <label class="description">Del dette notatet med en annen bruker</label>
                 <div>
-                    #singleSelectIdName("annonseNote.DelegatedUser" $userList $annonseNote.getDelegatedUser() "")
+                    #singleSelectNameUsername("annonseNote.DelegatedUser" $userList $annonseNote.getDelegatedUser() "")
                     #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">

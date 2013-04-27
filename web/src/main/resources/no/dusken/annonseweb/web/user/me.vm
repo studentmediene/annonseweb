@@ -1,11 +1,71 @@
 #parse('no/dusken/annonseweb/web/user/sidebar.vm')
 
 <!-- content -->
-<div id="content">
-    <div class="post">
-        <h2 class="title"><a href="/annonse/user/me">Mine brukerdata:</a></h2>
-        <div class="entry">
-            Brukernavn: $loggedIn.Name
+<div id="content" class="post">
+    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/user/save")">
+        <div class="content">
+            <ul>
+                <li>
+                    <label class="description">Brukernavn</label>
+                    <div>
+                        $loggedIn.Username
+                        #springFormHiddenInput("loggedIn.Username" "")
+                    </div>
+                    <p class="guidelines">
+                        Dette er brukernavnet ditt. Det kan du ikke endre.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="Firstname">Fornavn</label>
+                    <div>
+                        #springFormInput( "loggedIn.firstname" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er fornavnet ditt.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="Surname">Etternavn</label>
+                    <div>
+                        #springFormInput( "loggedIn.surname" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er etternavnet ditt
+                    </p>
+                <li>
+                    <label class="description" for="EmailAddress">Epost</label>
+                    <div>
+                        #springFormInput( "loggedIn.emailAddress" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er epost addressen din.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="PhoneNumber">Telefonnummer</label>
+                    <div>
+                        #springFormInput( "loggedIn.phoneNumber" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er telefonnummeret ditt.
+                    </p>
+                </li>
+                <li>
+                    <label class ="description">Aktiv</label>
+                    <div>
+                        #singleSelectActive("loggedIn.Active" $loggedIn.Active "")
+                        #springShowErrors("<br>" "error")
+                    </div>
+                    <p class ="guidelines">Velg om du er en aktiv selger!</p>
+                </li>
+                <li>
+                    #saveAndDelete($loggedIn)
+                </li>
+            </ul>
         </div>
-    </div>
+    </form>
 </div>

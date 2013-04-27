@@ -1,8 +1,9 @@
 <nav id="sidebar">
     <h2>Salg</h2>
     <ul>
-        <li><a href="/annonse/sale/new">Nytt salg</a></li>
-        <li><a href="/annonse/sale/all">Salgsliste</a></li>
+        <li><a href="#springUrl("/annonseweb/sale/new")">Nytt salg</a></li>
+        <li><a href="#springUrl("/annonseweb/sale/all_active")">Aktive salg</a></li>
+        <li><a href="#springUrl("/annonseweb/sale/all")">Alle salg</a></li>
         <!-- Should be a direct search box. -->
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')

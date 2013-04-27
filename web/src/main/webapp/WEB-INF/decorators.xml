@@ -23,7 +23,7 @@
     </decorator>
 
     <decorator name="blank" page="public/blank.jsp">
-        <pattern>/blank/*</pattern>
+        <pattern>*/blank/*</pattern>
     </decorator>
 
 </decorators>

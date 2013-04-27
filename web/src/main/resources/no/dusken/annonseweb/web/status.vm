@@ -2,10 +2,12 @@
     <p>
         Logget inn som:
         <br>
-        <a href="/annonse/user/me">
-            $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal()
+        <a href="#springUrl("/annonseweb/user/me")">
+            $session.getAttribute("SPRING_SECURITY_CONTEXT").getAuthentication().getPrincipal().Username
         </a>
     </p>
+    <!-- A hidden input to show sidebar tasks script where to look for tasks -->
+    <input type="hidden" id="sidebar-tasks-fetch-url" value="#springUrl("/annonseweb/note/blank/sidebar_notes")">
     <div id="sidebar-tasks"></div>
 </div>
 

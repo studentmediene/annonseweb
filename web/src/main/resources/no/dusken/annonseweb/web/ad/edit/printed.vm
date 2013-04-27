@@ -9,14 +9,14 @@
         #set($adId = $ad.getId())
         #set($pathEnd = "")
         #if (!$adId)
-            <a href="/annonse/ad/new/printed">Ny annonse for Under Dusken:</a>
+            <a href="#springUrl("/annonseweb/ad/new/printed")">Ny annonse for Under Dusken:</a>
         #else
-            <a href="/annonse/ad/edit/$ad.getId()">Endre annonse for Under Dusken: $ad.getId()</a>
-        <label class="edit"><a href="/annonse/ad/$ad.getId()">Tilbake</a>
+            <a href="#springUrl("/annonseweb/ad/edit/$ad.getId()")">Endre annonse for Under Dusken: $ad.getId()</a>
+        <label class="edit"><a href="#springUrl("/annonse/ad/$ad.getId()")">Tilbake</a>
             #set($pathEnd = "/" + $adId)
         #end
     </h2>
-    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonse/ad/save/printed$pathEnd")">
+    <form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/ad/save/printed$pathEnd")">
         <div class="content">
             <ul>
                 <li>
@@ -36,7 +36,7 @@
                         #springShowErrors("<br>" "error")
                     </div>
                     <p class="guidelines">
-                        Adressen til firmaet, dette er hovedadressen eller besøksadressen.
+                        Dette er hvor stor annonsen er, hvilken type annonse som selges.
                     </p>
                 </li>
                 <li>
@@ -173,7 +173,7 @@
             myArray.push($price)
         #end
         $('input[id="printSize"]').on('change', function() {
-            for(i = 1; i <= 8; i++) {
+            for(i = 1; i <= myArray.length; i++) {
                 if($(this).val() == i){
                     $('input[id="price"]').val(myArray[i-1]);
                 }
