@@ -11,10 +11,10 @@
                 <div class="listEntry">
                     <a href="#springUrl("/annonseweb/ad/$ad.Id")">
                     <p class="meta">
-                        $ad.sale.customer.
+                        $ad.sale.customer.id - $ad.sale.customer.name
                     </p>
                     <p class="info">
-                        $ad.Id
+                        $ad.createdDate - $ad.Id
                     </p>
                     </a>
                 </div>

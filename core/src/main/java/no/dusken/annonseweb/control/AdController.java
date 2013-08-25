@@ -105,7 +105,7 @@ public class AdController {
     @RequestMapping(value = "/save/radio", method = RequestMethod.POST)
     public String saveNewRadio(@Valid @ModelAttribute RadioAd ad) {
         adService.saveAndFlush((RadioAd) ad);
-        return "redirect:/annonse/ad/" + ad.getId();
+        return "redirect:/annonseweb/ad/" + ad.getId();
     }
 
     @RequestMapping("save/web/{pathAd}")
@@ -126,7 +126,7 @@ public class AdController {
     public String saveEditRadio(@PathVariable RadioAd pathAd, @Valid @ModelAttribute RadioAd ad) {
         pathAd.cloneFrom((RadioAd) ad);
         adService.saveAndFlush((RadioAd) pathAd);
-        return "redirect:/annonse/ad/" + pathAd.getId();
+        return "redirect:/annonseweb/ad/" + pathAd.getId();
     }
 
     @InitBinder

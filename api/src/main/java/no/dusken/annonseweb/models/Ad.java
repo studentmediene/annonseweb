@@ -11,6 +11,7 @@ import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@Table(name = "ad")
 public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
 
     private BigDecimal price;
@@ -25,13 +26,13 @@ public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
     private Sale sale;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Calendar createdDate = new GregorianCalendar();
+    private Calendar createdDate = Calendar.getInstance();
 
     @ManyToOne
     private AnnonsePerson createdUser;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Calendar lastEditedDate = new GregorianCalendar();
+    private Calendar lastEditedDate = Calendar.getInstance();
 
     @ManyToOne
     private AnnonsePerson lastEditedUser;
@@ -44,6 +45,8 @@ public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
     public Ad( BigDecimal price, BigDecimal discount) {
         this.price = price;
         this.discount = discount;
+        this.setLastEditedDate();
+        this.setCreatedDate();
     }
 
     public Ad(Sale sale, BigDecimal price, BigDecimal discount, Boolean active, Boolean placedOnProd, AnnonsePerson createdUser) {
