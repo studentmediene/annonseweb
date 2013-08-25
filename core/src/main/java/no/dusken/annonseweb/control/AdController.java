@@ -41,6 +41,9 @@ public class AdController {
         else if (ad instanceof WebAd){
             return "ad/ad/web";
         }
+        else if (ad instanceof RadioAd){
+            return "ad/ad/radio";
+        }
         return "";
     }
 
@@ -66,6 +69,11 @@ public class AdController {
         return viewEdit(new WebAd(), model);
     }
 
+    @RequestMapping("new/radio")
+    public String viewNewRadioAd(Model model){
+        return viewEdit(new RadioAd(), model);
+    }
+
     @RequestMapping("edit/{ad}")
     public String viewEdit(@PathVariable Ad ad, Model model){
         model.addAttribute("salesList", salesService.getActiveSales());
@@ -75,6 +83,9 @@ public class AdController {
         }
         else if (ad instanceof WebAd) {
             return "ad/edit/web";
+        }
+        else if (ad instanceof RadioAd) {
+            return "ad/edit/radio";
         }
         return "";
     }
@@ -91,6 +102,11 @@ public class AdController {
         return "redirect:/annonseweb/ad/" + ad.getId();
     }
 
+    @RequestMapping(value = "/save/radio", method = RequestMethod.POST)
+    public String saveNewRadio(@Valid @ModelAttribute RadioAd ad) {
+        adService.saveAndFlush((RadioAd) ad);
+        return "redirect:/annonse/ad/" + ad.getId();
+    }
 
     @RequestMapping("save/web/{pathAd}")
     public String saveEditWeb(@PathVariable WebAd pathAd, @Valid @ModelAttribute WebAd ad) {
@@ -104,6 +120,13 @@ public class AdController {
         pathAd.cloneFrom((PrintedAd) ad);
         adService.saveAndFlush((PrintedAd) pathAd);
         return "redirect:/annonseweb/ad/" + pathAd.getId();
+    }
+
+    @RequestMapping("save/radio/{pathAd}")
+    public String saveEditRadio(@PathVariable RadioAd pathAd, @Valid @ModelAttribute RadioAd ad) {
+        pathAd.cloneFrom((RadioAd) ad);
+        adService.saveAndFlush((RadioAd) pathAd);
+        return "redirect:/annonse/ad/" + pathAd.getId();
     }
 
     @InitBinder
