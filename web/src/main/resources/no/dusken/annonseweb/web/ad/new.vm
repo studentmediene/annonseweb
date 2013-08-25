@@ -8,9 +8,9 @@
         <div class="entry">
             <p>Velg annonsetype</p>
             <ul>
-                <li><a href="/annonse/ad/new/printed">Under Dusken</a></li>
-                <li><a href="/annonse/ad/new/web">Dusken.no</a></li>
-                <li><a href="/annonse/ad/new/radio">Radio Revolt</a></li>
+                <li><a href="#springUrl("/annonseweb/ad/new/printed")">Under Dusken</a></li>
+                <li><a href="#springUrl("/annonseweb/ad/new/web")">Dusken.no</a></li>
+                <li><a href="#springUrl("/annonseweb/ad/new/radio")">Radio Revolt</a></li>
                 <li>STV(Kommer)</li>
             </ul>
         </div>

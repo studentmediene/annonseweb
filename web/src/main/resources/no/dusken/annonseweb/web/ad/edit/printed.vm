@@ -12,7 +12,7 @@
             <a href="#springUrl("/annonseweb/ad/new/printed")">Ny annonse for Under Dusken:</a>
         #else
             <a href="#springUrl("/annonseweb/ad/edit/$ad.getId()")">Endre annonse for Under Dusken: $ad.getId()</a>
-        <label class="edit"><a href="#springUrl("/annonse/ad/$ad.getId()")">Tilbake</a>
+        <label class="edit"><a href="#springUrl("/annonseweb/ad/$ad.getId()")">Tilbake</a>
             #set($pathEnd = "/" + $adId)
         #end
     </h2>
