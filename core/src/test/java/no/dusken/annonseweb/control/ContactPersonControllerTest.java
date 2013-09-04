@@ -15,6 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
 
 import java.util.Calendar;
 
@@ -42,9 +44,11 @@ public class ContactPersonControllerTest  {
     AnnonsePersonController annonsePersonController;
 
     private AnnonsePerson someone;
+    private Model model;
 
     @Before
     public void setup() {
+        model = model = new ExtendedModelMap();
         String username = "username";
         SecurityContextHolder.getContext().setAuthentication(new DummyAuthenticationUserDetails(username));
         someone = annonsePersonController.getLoggedInUser();
@@ -124,5 +128,14 @@ public class ContactPersonControllerTest  {
     @Test
     public void testViewEmailsForCustomersContactPersons(){
         assertTrue(true);
+    }
+
+    @Test
+    public void testViewOptionListForCustomer() {
+        Customer customer =  new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress");
+        customerService.saveAndFlush(customer);
+        String returnVal = contactPersonController.viewOptionListForCustomer(customer,model);
+        assertTrue("View customer did not populate model", model.containsAttribute("contactPersonList"));
+        assertEquals("View customer did not return correct view name", "contactperson/as_options", returnVal);
     }
 }

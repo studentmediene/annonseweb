@@ -1,7 +1,9 @@
 package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Customer;
+import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.CustomerService;
+import no.dusken.annonseweb.service.SalesService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
 
 import static junit.framework.Assert.*;
 
@@ -28,8 +32,14 @@ public class CustomerControllerTest {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private SalesService salesService;
+
+    private Model model;
+
     @Before
     public void setup(){
+        model = new ExtendedModelMap();
     }
 
     @Test
@@ -67,36 +77,15 @@ public class CustomerControllerTest {
         assertEquals(customerService.findAll().size(), 1);
     }
 
-    /*
     @Test
-    public void testEditMultipleObjects() throws Exception {
-        Customer customer = new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
-        customerController.saveNew(customer);
-        Long id = customer.getId();
-        customer = new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
-        customer.setName("2ndEdit");
-        customer.setEditNumber(id.toString());
-        customerController.edit(customer);
-        customer = customerService.findOne(id);
-        assertEquals("different object: customer name is not edited", "2ndEdit", customer.getName());
-        assertEquals("different object: customer email is wrong", "centralEmail", customer.getEmail());
-        assertEquals("customer list is too long", 1, customerService.findAll().size());
-        assertFalse("Contains id + 1", customerService.exists(id + 1));
-        assertTrue("Does not contain id", customerService.exists(id));
-
-        Customer customer2 = new Customer("customerName", "centralEmail", "centralTlf",
-                "invoiceAddress", "subscriberAddress");
-        customerController.edit(customer2);
-
-        // check if customerlist now has length 2
-        assertEquals("customer list is not 2", 2, customerService.findAll().size());
-
-        customer2.setEditNumber(id.toString());
-        customerController.edit(customer2);
-        // check if customerlist now has length 2
-        assertEquals("customer list is not 2", 2, customerService.findAll().size());
+    public void testViewCustomerIdForSale() {
+        Customer customer =  new Customer("customerName", "centralEmail", "centralTlf", "invoiceAddress");
+        customerService.saveAndFlush(customer);
+        Sale sale =  new Sale("description", null, customer, null, false, false);
+        salesService.saveAndFlush(sale);
+        String returnVal = customerController.viewCustomerIdForSale(sale, model);
+        assertTrue("viewCustomerIdFforSale did not populate model", model.containsAttribute("customer"));
+        assertEquals("viewCustomerIdForSale did not return correct view name", "customer/as_id", returnVal);
     }
-    */
+
 }

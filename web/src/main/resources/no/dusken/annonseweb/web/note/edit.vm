@@ -24,32 +24,31 @@
         </div>
         <ul>
             <li>
+                <input type="hidden" id="update-customer-url" value="#springUrl("/annonseweb/customer/blank/for_sale/")">
                 <label class="description">Notat tilknyttet kunde</label>
                 <div>
-                    #singleSelectIdName("annonseNote.Customer" $customerList $annonseNote.getCustomer() "")
+                    #singleSelectIdName("annonseNote.Customer" $customerList $annonseNote.getCustomer() "onchange='customerChange()'")
                     #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
                     Hvis dette notatet skal være tilknyttet en kunde, velg hvilken kunde
                 </p>
             </li>
-            <!-- TODO: Make customer choice alter choices here. -->
-            #if($conCustomer)
-                <li>
-                    <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
-                    <div>
-                        #singleSelectIdPersonName("annonseNote.ContactPerson" $contactPersonList $annonseNote.getContactPerson() "")
-                        #springShowErrors("<br>" "error")
-                    </div>
-                    <p class="guidelines" id="guide_4">
-                        hvis det skal være kontakt med noen, velg den det har vært eller skal være kontakt med.
-                    </p>
-                </li>
-            #end
+            <li>
+                <input type="hidden" id="fetch-contact-person-url" value="#springUrl("/annonseweb/contactperson/blank/for_customer/")">
+                <label class="description">... Hvis tilknyttet kunde, via kontakt</label>
+                <div>
+                    #singleSelectIdPersonName("annonseNote.ContactPerson" $contactPersonList $annonseNote.getContactPerson() "")
+                    #springShowErrors("<br>" "error")
+                </div>
+                <p class="guidelines" id="guide_4">
+                    hvis det skal være kontakt med noen, velg den det har vært eller skal være kontakt med.
+                </p>
+            </li>
             <li>
                 <label class="description">Notat tilknyttet salg</label>
                 <div>
-                    #singleSelectSale("annonseNote.Sale" $saleList $annonseNote.getSale() "")
+                    #singleSelectSale("annonseNote.Sale" $saleList $annonseNote.getSale() "onchange='saleChange()'")
                     #springShowErrors("<br>" "error")
                 </div>
                 <p class="guidelines">
@@ -116,6 +115,3 @@
         </ul>
 
 </div>
-
-
-

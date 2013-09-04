@@ -104,6 +104,12 @@ public class ContactPersonController {
         return "contactperson/emailList";
     }
 
+    @RequestMapping("/blank/for_customer/{customer}")
+    public String viewOptionListForCustomer(@PathVariable Customer customer, Model model) {
+        model.addAttribute("contactPersonList", contactPersonService.getActiveContactPersonsForCustomer(customer));
+        return "contactperson/as_options";
+    }
+
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(ContactPerson.class, new BindByIdEditor(contactPersonService));

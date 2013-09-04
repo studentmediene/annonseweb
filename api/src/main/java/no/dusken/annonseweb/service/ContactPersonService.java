@@ -1,8 +1,10 @@
 package no.dusken.annonseweb.service;
 
 import no.dusken.annonseweb.models.ContactPerson;
+import no.dusken.annonseweb.models.Customer;
 import no.dusken.common.service.GenericService;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,4 +19,7 @@ public interface ContactPersonService extends GenericService<ContactPerson>{
 
     @Query("select cp from ContactPerson cp where cp.active = false")
     public List<ContactPerson> getNotActiveContactPersons();
+
+    @Query("select  cp from ContactPerson cp where cp.active = true and cp.customer = :customer")
+    public List<ContactPerson> getActiveContactPersonsForCustomer(@Param("customer")Customer customer);
 }

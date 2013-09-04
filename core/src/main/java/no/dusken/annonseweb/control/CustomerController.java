@@ -1,7 +1,9 @@
 package no.dusken.annonseweb.control;
 
 import no.dusken.annonseweb.models.Customer;
+import no.dusken.annonseweb.models.Sale;
 import no.dusken.annonseweb.service.CustomerService;
+import no.dusken.annonseweb.service.SalesService;
 import no.dusken.common.editor.BindByIdEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class CustomerController{
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private SalesService salesService;
 
     @RequestMapping()
     public String viewHome(){
@@ -92,9 +97,16 @@ public class CustomerController{
         return "redirect:/annonseweb/customer/" + pathCustomer.getId();
     }
 
+    @RequestMapping("blank/for_sale/{pathSale}")
+    public String viewCustomerIdForSale(@PathVariable Sale pathSale, Model model) {
+        model.addAttribute("customer", pathSale == null? null:pathSale.getCustomer());
+        return "customer/as_id";
+    }
+
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
+        binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
     }
 }
 

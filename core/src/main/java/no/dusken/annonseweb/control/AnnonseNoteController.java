@@ -120,15 +120,13 @@ public class AnnonseNoteController {
     public String viewEdit(@PathVariable AnnonseNote annonseNote, Model model) {
         List<AnnonsePerson> uList = annonsePersonService.findAll();
         uList.add(null);
-        List<Sale> sList = salesService.findAll();
+        List<Sale> sList = salesService.getActiveSales();
         sList.add(null);
-        List<Customer> cList = customerService.findAll();
+        List<Customer> cList = customerService.getActiveCustomers();
         cList.add(null);
-        if (annonseNote.getCustomer() != null) {
-            List<ContactPerson> pList = annonseNote.getCustomer().getContactPersons();
-            pList.add(null);
-            model.addAttribute("contactPersonList", pList);
-        }
+        List<ContactPerson> pList = contactPersonService.getActiveContactPersonsForCustomer(annonseNote.getCustomer());
+        pList.add(null);
+        model.addAttribute("contactPersonList", pList);
         model.addAttribute("annonseNote", annonseNote);
         model.addAttribute("userList", uList);
         model.addAttribute("saleList", sList);

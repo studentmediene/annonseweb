@@ -1,0 +1,4 @@
+<option value='0' selected="true">_INGEN VALGT_</option>
+#foreach($contact in $contactPersonList)
+    <option value="$contact.ID">$contact.PersonName - $contact.Id</option>
+#end

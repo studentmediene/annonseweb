@@ -1,0 +1,5 @@
+#if ($customer)
+    $customer.id
+#else
+    0
+#end
