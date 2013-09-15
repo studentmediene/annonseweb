@@ -5,4 +5,3 @@ All projects should have a readme file.
 * howto run this thing. 
 * build and release info
 * redeploy info
-
