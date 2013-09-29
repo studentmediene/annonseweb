@@ -179,4 +179,6 @@ public abstract class Ad extends DuskenObject implements ActiveAnnonseElement {
         this.annonseNotes = annonseNotes;
     }
 
+    public abstract String getDescription();
+
 }

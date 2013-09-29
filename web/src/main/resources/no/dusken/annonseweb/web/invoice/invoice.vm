@@ -56,12 +56,30 @@
                 </p>
             </li>
             <li>
+                <label class="description" for="reference">Referanse</label>
+                <div>
+                    <label class="element text medium">$invoice.reference</label>
+                </div>
+                <p class="guidelines">
+                    Dette er referansen til kunden. Dette kan være et referansenummer eller noe annet kunden ønsker
+                </p>
+            </li>
+            <li>
                 <label class="description">Forfaller</label>
                 <div>
                     <label class="element text medium">$invoice.invoiceDate</label>
                 </div>
                 <p class="guidelines">
                     Dette er datoen fakturaen skal være betalt
+                </p>
+            </li>
+            <li>
+                <label class="description">Total pris</label>
+                <div>
+                    <label class="element text medium">$invoice.TotalPrice</label>
+                </div>
+                <p class="guidelines">
+                    Totalt hvor mye kunden skal betale
                 </p>
             </li>
             <li>

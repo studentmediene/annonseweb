@@ -19,6 +19,7 @@ package no.dusken.annonseweb.models;
 import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,6 +34,7 @@ public class Invoice extends DuskenObject{
     private List<Sale> sales = new ArrayList<Sale>();
 
     private String description;
+    private String reference;
     private Long invoiceNumber;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -166,5 +168,23 @@ public class Invoice extends DuskenObject{
 
     public void setLastEditedUser(AnnonsePerson lastEditedUser) {
         this.lastEditedUser = lastEditedUser;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal price = new BigDecimal(0);
+        if (sales != null) {
+            for (Sale sale: sales) {
+                price  = price.add(sale.getTotalPrice());
+            }
+        }
+        return price;
     }
 }

@@ -1,4 +1,3 @@
-BigDecimal tot = new BigDecimal(0);
 <html><head><title>Print faktura</title></head>
 <body>
 <h1>Faktura: $invoice.getId() </h1>
@@ -13,14 +12,14 @@ $invoice.getSales().get(0).getCustomer().getName()
 $invoice.getSales().get(0).getCustomer().getAddress()
 <br /><hr /><br />
 #foreach($sale in $invoice.Sales)
-    $sale.Description
+    <h4>$sale.Description - $sale.TotalPrice</h4>
     <br />
     #foreach($ad in $sale.Ads)
-        $ad.Title - $ad.FinalPrice
-        <br>
+        $ad.Description - $ad.FinalPrice
+        <br />
     #end
 #end
 <br /><hr /><br />
-<h2>Total: $total</h2>
+<h2>Total: $invoice.TotalPrice</h2>
 </body>
 </html>

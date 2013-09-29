@@ -90,6 +90,27 @@ public class AdController {
         return viewEdit(new RadioAd(), model);
     }
 
+    @RequestMapping("new/printed/{sale}")
+    public String viewNewPrintedAdForSale(Model model, @PathVariable Sale sale){
+        PrintedAd ad = new PrintedAd();
+        ad.setSale(sale);
+        return viewEdit(ad, model);
+    }
+
+    @RequestMapping("new/web/{sale}")
+    public String viewNewWebAdForSale(Model model, @PathVariable Sale sale){
+        WebAd ad = new WebAd();
+        ad.setSale(sale);
+        return viewEdit(ad, model);
+    }
+
+    @RequestMapping("new/radio/{sale}")
+    public String viewNewRadioAdForSale(Model model, @PathVariable Sale sale){
+        RadioAd ad = new RadioAd();
+        ad.setSale(sale);
+        return viewEdit(ad, model);
+    }
+
     @RequestMapping("edit/{ad}")
     public String viewEdit(@PathVariable Ad ad, Model model){
         model.addAttribute("salesList", salesService.getActiveSales());

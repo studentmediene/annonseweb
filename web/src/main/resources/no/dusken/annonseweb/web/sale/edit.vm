@@ -56,6 +56,15 @@
             </li>
             #if($saleId)
                 <li>
+                    <label class ="description">Opprett ny annonse</label>
+                    <div>
+                        <label class="element text medium"><a href="#springUrl("/annonseweb/ad/new/printed/$sale.Id")">Legg til ny UnderDusken annonse</a></label><br />
+                        <label class="element text medium"><a href="#springUrl("/annonseweb/ad/new/web/$sale.Id")">Legg til ny Dusken.no annonse</a></label><br />
+                        <label class="element text medium"><a href="#springUrl("/annonseweb/ad/new/radio/$sale.Id")">Legg til ny Radio Revolt annonse</a></label>
+                    </div>
+                    <p class ="guidelines">Opprett en ny annonse tilknyttet dette salget</p>
+                </li>
+                <li>
                     <label class ="description">Lag notat tilknyttet dette salget</label>
                     <div><a href ="#springUrl("/annonseweb/note/new/sale/$saleId")">Nytt notat</a></div>
                     <p class ="guidelines">Oppretter et nytt notat på dette salget</p>

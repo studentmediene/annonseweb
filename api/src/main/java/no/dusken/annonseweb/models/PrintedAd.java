@@ -183,4 +183,9 @@ public class PrintedAd extends Ad {
         return prices;
     }
 
+    @Override
+    public String getDescription() {
+        return "UnderDusken annonse + " + printSize.getDescription() + " - " + issue.getIssueNumber();
+    }
+
 }

@@ -20,9 +20,9 @@ import no.dusken.common.model.DuskenObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -35,8 +35,8 @@ public class Sale extends DuskenObject implements ActiveAnnonseElement{
 
     private String description;
 
-    @OneToMany(fetch = LAZY, cascade = ALL)
-    private List<Ad>  ads = new LinkedList<Ad>();
+    @OneToMany(fetch = LAZY, mappedBy = "sale")
+    private List<Ad>  ads = new ArrayList<Ad>();
 
     @ManyToOne(optional = false)
     @NotNull
@@ -188,5 +188,15 @@ public class Sale extends DuskenObject implements ActiveAnnonseElement{
     @Override
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal price = new BigDecimal(0);
+        if (ads != null) {
+            for (Ad ad: ads) {
+                price = price.add(ad.getFinalPrice());
+            }
+        }
+        return price;
     }
 }

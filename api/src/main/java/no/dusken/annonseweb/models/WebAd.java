@@ -93,6 +93,11 @@ public class WebAd extends Ad {
 
     public void cloneFrom(PrintedAd other) {}
 
+    @Override
+    public String getDescription() {
+        return "annonse for Dusken.no " + webFormat.getDescription() + " - " + onlineFrom.getTime() + " - " + onlineTo.getTime();
+    }
+
 
     public String getOnlineFrom() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");

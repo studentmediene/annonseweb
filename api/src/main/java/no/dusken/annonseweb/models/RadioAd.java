@@ -82,6 +82,12 @@ public class RadioAd extends Ad {
     }
 
     public void cloneFrom(PrintedAd other) {}
+
+    @Override
+    public String getDescription() {
+        return "Radio Revolt annonse " + adFormat.getDescription() + " - " + onlineFrom.getTime() + " - " + onlineTo.getTime();
+    }
+
     public void cloneFrom(WebAd other) {}
 
     public String getOnlineFrom() {

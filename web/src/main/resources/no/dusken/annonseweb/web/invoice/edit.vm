@@ -15,56 +15,63 @@
             #set($pathEnd = "/" + $InvoiceId)
         #end
     </h2>
-    <!-- TODO: There seems to be forms within forms. Should not be like that -->
     <form name="invoice" id="invoice" class="content"  method="post" action="#springUrl("/annonseweb/invoice/save$pathEnd")">
-
-<form name="ad" id="ad" class="content"  method="post" action="#springUrl("/annonseweb/invoice/save")">
-    <div class="content">
-        <ul>
-            <li>
-                <label class="description" for="sales">Salg</label>
-                <div>
-                    #multipleSaleCheckboxes("invoice.sales" $salesList "<br>" '')
-                    #springShowErrors("<br>" "error") <br/>
-                </div>
-                <p class="guidelines">
-                    Her velger du hvilket salg fakturaen skal kobles opp mot.
-                </p>
-            </li>
-            <li>
-                <label class="description" for="description">Fakturabeskrivelse</label>
-                <div>
-                    #springFormInput( "invoice.description" 'size="30"')
-                    #springShowErrors("<br>" "error") <br/>
-                </div>
-                <p class="guidelines">
-                    Dette er beskrivelsen til fakturaen, f.eks. "Uka 11: Samlefaktura"
-                </p>
-            </li>
-            <li>
-                <label class="description" for="invoiceNumber">Fakturanummer</label>
-                <div>
-                    #springFormInput( "invoice.invoiceNumber" 'size="30"')
-                    #springShowErrors("<br>" "error") <br/>
-                </div>
-                <p class="guidelines">
-                    Fakturanummer. Dette er en identifikator for fakturaene for fakturaer fra det gamle systemet.
-                    Nye faktura får egne identifikatorer.
-                </p>
-            <li>
-                <label class="description" for="description">Forfallsdato</label>
-                <div>
-                    #springFormInput( "invoice.invoiceDate" 'size="30"')
-                    #springShowErrors("<br>" "error") <br/>
-                </div>
-                <p class="guidelines">
-                    Dette er forfallsdatoen for fakturaen. Det vil si når den skal være betalt.
-                </p>
-            </li>
-            <li>
-                #saveAndDelete($invoice)
-            </li>
-        </ul>
-    </div>
-</form>
+        <div class="content">
+            <ul>
+                <li>
+                    <label class="description" for="sales">Salg</label>
+                    <div>
+                        #multipleSaleCheckboxes("invoice.sales" $salesList "<br>" '')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Her velger du hvilket salg fakturaen skal kobles opp mot.
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="description">Fakturabeskrivelse</label>
+                    <div>
+                        #springFormInput( "invoice.description" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er beskrivelsen til fakturaen, f.eks. "Uka 11: Samlefaktura"
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="reference">Referanse</label>
+                    <div>
+                        #springFormInput( "invoice.reference" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er referansen til kunden. Dette kan være et referansenummer eller noe annet kunden ønsker
+                    </p>
+                </li>
+                <li>
+                    <label class="description" for="invoiceNumber">Fakturanummer</label>
+                    <div>
+                        #springFormInput( "invoice.invoiceNumber" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Fakturanummer. Dette er en identifikator for fakturaene for fakturaer fra det gamle systemet.
+                        Nye faktura får egne identifikatorer.
+                    </p>
+                <li>
+                    <label class="description" for="description">Forfallsdato</label>
+                    <div>
+                        #springFormInput( "invoice.invoiceDate" 'size="30"')
+                        #springShowErrors("<br>" "error") <br/>
+                    </div>
+                    <p class="guidelines">
+                        Dette er forfallsdatoen for fakturaen. Det vil si når den skal være betalt.
+                    </p>
+                </li>
+                <li>
+                    #saveAndDelete($invoice)
+                </li>
+            </ul>
+        </div>
+    </form>
 </div>

@@ -26,8 +26,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.LinkedList;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -50,6 +48,9 @@ public class ServiceIntegrationTest {
     @Autowired
     private AnnonsePersonService annonsePersonService;
 
+    @Autowired
+    private AdService adService;
+
     @Test
     public void testSave(){
 
@@ -60,13 +61,13 @@ public class ServiceIntegrationTest {
         customerService.saveAndFlush(customer);
         AnnonsePerson createdUser = getPerson();
 
-        Sale s = new Sale("Appointment name", new LinkedList<Ad>(Collections.singleton(ad)),
-                customer, createdUser, true, false);
-
+        Sale s = new Sale("description", null, customer, null, false, false);;
+        ad.setSale(s);
         Sale sale = salesService.saveAndFlush(s);
+
         assertNotNull(sale);
         assertNotNull(sale.getId());
-        assertEquals(ad, sale.getAds().get(0));
+        //assertEquals(ad, sale.getAds().get(0));
         assertEquals(customer, sale.getCustomer());
 
 

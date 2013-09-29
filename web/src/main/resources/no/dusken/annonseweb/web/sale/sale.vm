@@ -29,7 +29,7 @@
         </li>
         <li>
             <label class="description">Kunde</label>
-            <div><label class="element text medium"><a href="/annonseweb/customer/$sale.customer.Id">
+            <div><label class="element text medium"><a href="#springUrl("/annonseweb/customer/$sale.customer.Id")">
                 $sale.customer.Name
             </a></label></div>
             <p class="guidelines">Kunden som er registrert med dette salget. Også kjent som den vi skal få/ har fått penger fra</p>
@@ -43,9 +43,14 @@
             <label class="description">Annonser</label>
             <div><label class="element text medium">
                 #foreach($ad in $sale.ads)
-                    $ad.Id - Noe beskrivende her
+                    $ad.Id - $ad.Description <br />
                 #end$
             </label></div>
+            <div>
+                <label class="element text medium"><a href="#springUrl("/annonseweb/ad/new/printed/$sale.Id")">Legg til ny UnderDusken annonse</a></label><br />
+                <label class="element text medium"><a href="#springUrl("/annonseweb/ad/new/web/$sale.Id")">Legg til ny Dusken.no annonse</a></label><br />
+                <label class="element text medium"><a href="#springUrl("/annonseweb/ad/new/radio/$sale.Id")">Legg til ny Radio Revolt annonse</a></label>
+            </div>
             <p class="guidelines">Liste med alle annonser vi har motatt i forbindelse med dette salget.</p>
         </li>
         <li>
