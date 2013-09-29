@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/**
+ * @author jorhol
+ * @author Inge Edward Halsaunet
+ */
+
 var ball = {
 	"r" : 5,
 	"x" : 400,
