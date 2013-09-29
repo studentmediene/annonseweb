@@ -2,7 +2,6 @@
 #parse('no/dusken/annonseweb/web/customer/sidebar.vm')
 
 <!-- Variables used for notes -->
-#set($custId = false)
 #set($custId = $customer.Id)
 #set($customerNotes = false)
 #set($customerNotes = $customer.getAnnonseNotes())
@@ -101,6 +100,14 @@
                     </p>
                 </li>
             #end
+            <li>
+                <div>
+                    <a href="#springUrl("/annonseweb/contactperson/new/$custId")">Opprett ny kontaktperson for denne kunden</a>
+                </div>
+                <p class="guidelines">
+                    Oppretter en ny kontaktperson tilknyttet denne kunden.
+                </p>
+            </li>
             <li>
                 <label class ="description">Lag notat tilknyttet denne kunden</label>
                 <div><a href ="#springUrl("/annonseweb/note/new/customer/$custId")">Nytt notat</a></div>
