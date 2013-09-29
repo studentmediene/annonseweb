@@ -3,6 +3,7 @@
     <ul>
         <li><a href="#springUrl("/annonseweb/user/me")">Meg</a>
         <li><a href="#springUrl("/annonseweb/user/all")">Vis alle</a></li>
+        <li><a href="#springUrl("/annonseweb/user/game/breakout")">Spill!</a> </li>
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

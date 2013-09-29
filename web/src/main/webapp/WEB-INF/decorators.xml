@@ -26,4 +26,8 @@
         <pattern>*/blank/*</pattern>
     </decorator>
 
+    <decorator name="game" page="public/game.jsp">
+        <pattern>*/game/*</pattern>
+    </decorator>
+
 </decorators>

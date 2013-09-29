@@ -90,6 +90,11 @@ public class AnnonsePersonController {
         return "/user/viewUser";
     }
 
+    @RequestMapping("/game/breakout")
+    public String viewAnnonseWebGame() {
+        return "/user/game";
+    }
+
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(AnnonsePerson.class, new ResolveByUsernameEditor(annonsePersonService));

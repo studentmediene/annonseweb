@@ -1,0 +1,7 @@
+<canvas id="gameBoard" width="800" height="640" style="background: #444444;"></canvas>
+<div>
+    score : <label id="gameScore"></label>
+    <label id="clear_me">
+        <input type="button" onclick="testRun()" value="Start!" />
+    </label>
+</div>
