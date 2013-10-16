@@ -1,0 +1,5 @@
+<a href="#springUrl("/annonseweb/sale/new")">Nytt salg</a>
+<a href="#springUrl("/annonseweb/sale/all_active")">Aktive salg</a>
+<a href="#springUrl("/annonseweb/sale/invoice_not_produced")">Aktive, ufakturerte salg</a>
+<a href="#springUrl("/annonseweb/sale/invoice_produced")">Aktive, fakturerte salg</a>
+<a href="#springUrl("/annonseweb/sale/all")">Alle salg</a>

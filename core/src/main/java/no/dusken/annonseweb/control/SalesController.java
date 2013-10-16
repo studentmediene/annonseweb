@@ -134,4 +134,16 @@ public class SalesController{
         binder.registerCustomEditor(Sale.class, new BindByIdEditor(salesService));
         binder.registerCustomEditor(Customer.class, new BindByIdEditor(customerService));
     }
+
+    @RequestMapping("/invoice_produced")
+    public String viewActiveSaleWithProducedInvoice(Model model) {
+        model.addAttribute("saleList", salesService.getActiveSalesWithProducedInvoice());
+        return "sale/all";
+    }
+
+    @RequestMapping("/invoice_not_produced")
+    public String viewActiveSaleNotWithProducedInvoice(Model model) {
+        model.addAttribute("saleList", salesService.getActiveSalesWithoutProducedInvoice());
+        return "sale/all";
+    }
 }

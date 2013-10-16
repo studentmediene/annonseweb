@@ -29,4 +29,10 @@ public interface SalesService extends GenericService<Sale>{
 
     @Query("select s from Sale s where s.active = false")
     public List<Sale> getNotActiveSales();
+
+    @Query("select s from Sale s where s.invoice <> null and s.active = true")
+    public  List<Sale> getActiveSalesWithProducedInvoice();
+
+    @Query("select s from Sale s where s.invoice = null and s.active = true")
+    public  List<Sale> getActiveSalesWithoutProducedInvoice();
 }

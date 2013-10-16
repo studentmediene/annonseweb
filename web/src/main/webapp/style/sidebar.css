@@ -60,6 +60,11 @@
 	border: none;
 }
 
+#sidebar .menulink a {
+    display: block;
+    float: none;
+}
+
 #sidebar a:hover {
 	text-decoration: underline;
 }
