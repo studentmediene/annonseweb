@@ -2,7 +2,6 @@
     <h2>Salg</h2>
     <ul class="menulink">
         #parse('no/dusken/annonseweb/web/sale/menulink.vm')
-        <!-- Should be a direct search box. -->
     </ul>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
