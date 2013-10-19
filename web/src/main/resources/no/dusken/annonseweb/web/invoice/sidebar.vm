@@ -1,8 +1,7 @@
 <nav id="sidebar">
     <h2>Fakturameny</h2>
-    <ul>
-        <li><a href="#springUrl("/annonseweb/invoice/new")">Ny Faktura</a></li>
-        <li><a href="#springUrl("/annonseweb/invoice/all")">Fakturaliste</a></li>
-    </ul>
+    <div class="menulink">
+        #parse('no/dusken/annonseweb/web/invoice/menulink.vm')
+    </div>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

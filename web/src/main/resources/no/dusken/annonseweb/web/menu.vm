@@ -9,16 +9,9 @@
             <div id="dropmenu1"
                  onmouseover="stayOpen('dropmenu1')"
                  onmouseout="setClosing()">
-                <a href="#springUrl("/annonseweb/customer/new")">Ny kunde</a>
-                <a href="#springUrl("/annonseweb/customer/all_active")">Aktive kunder</a>
-                <a href="#springUrl("/annonseweb/customer/all")">Alle kunder</a>
-                <a href="#springUrl("/annonseweb/customer/emailList")">Email for alle</a>
-                <!-- TODO Remove this styling. Styles in html should not occur!-->
+                #parse('no/dusken/annonseweb/web/customer/menulink.vm')
                 <hr>
-                <a href="#springUrl("/annonseweb/contactperson/new")">Ny kontaktperson</a>
-                <a href="#springUrl("/annonseweb/contactperson/active")">Kontaktpersonliste - aktive</a>
-                <a href="#springUrl("/annonseweb/contactperson/all")">Kontaktpersonliste - alle</a>
-                <a href="#springUrl("/annonseweb/contactperson/emailList")">Epostliste - aktive kontaktpersoner</a>
+                #parse('no/dusken/annonseweb/web/contactperson/menulink.vm')
             </div>
         </li>
         <li><a href="#springUrl("/annonseweb/sale")"
@@ -36,8 +29,7 @@
             <div id="dropmenu5"
                  onmouseover="stayOpen('dropmenu5')"
                  onmouseout="setClosing()">
-                <a href="#springUrl("/annonseweb/invoice/new")">Ny faktura</a>
-                <a href="#springUrl("/annonseweb/invoice/all")">FakturaListe</a>
+                #parse('no/dusken/annonseweb/web/invoice/menulink.vm')
             </div>
         </li>
         <li><a href="#springUrl("/annonseweb/note")"
@@ -55,9 +47,7 @@
             <div id="dropmenu3"
                  onmouseover="stayOpen('dropmenu3')"
                  onmouseout="setClosing()">
-                <a href="#springUrl("/annonseweb/ad/new")">Ny annonse</a>
-                <a href="#springUrl("/annonseweb/ad/overview")">Aktive annonser</a>
-                <a href="#springUrl("/annonseweb/ad/all")">Alle annonser</a>
+                #parse('no/dusken/annonseweb/web/ad/menulink.vm')
             </div>
         </li>
         <li><a href="#springUrl("/annonseweb/statistics")"
@@ -66,10 +56,7 @@
             <div id="dropmenu6"
                  onmouseover="stayOpen('dropmenu6')"
                  onmouseout="setClosing()">
-                <a href="#springUrl("/annonseweb/statistics")">--Kommer--</a>
-                <!--<a href="/annonse/statistics">Omsetning</a>
-                <a href="/annonse/statistics">Antall annonsesider</a>
-                <a href="/annonse/statistics">Aktive nettannonser</a>-->
+                #parse('no/dusken/annonseweb/web/statistics/menulink.vm')
             </div>
         </li>
         <li><a href="#springUrl("/annonseweb_logout")">Logg ut</a>

@@ -1,0 +1,2 @@
+<a href="#springUrl("/annonseweb/invoice/new")">Ny Faktura</a>
+<a href="#springUrl("/annonseweb/invoice/all")">Fakturaliste</a>

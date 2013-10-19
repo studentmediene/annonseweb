@@ -1,11 +1,9 @@
 <!-- fix linking and fit for ad. -->
 <nav id="sidebar">
     <h2>Annonse</h2>
-    <ul>
-        <li><a href="#springUrl("/annonseweb/ad/new")">Ny annonse</a></li>
-        <li><a href="#springUrl("/annonseweb/ad/overview")">Aktive annonser</a></li>
-        <li><a href="#springUrl("/annonseweb/ad/all")">Alle annonser</a></li>
-    </ul>
+    <div class="menulink">
+        #parse('no/dusken/annonseweb/web/ad/menulink.vm')
+    </div>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
 

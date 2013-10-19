@@ -1,0 +1,4 @@
+<a href="#springUrl("/annonseweb/customer/new")">Ny kunde</a>
+<a href="#springUrl("/annonseweb/customer/all_active")">Aktive kunder</a>
+<a href="#springUrl("/annonseweb/customer/all")">Alle kunder</a>
+<a href="#springUrl("/annonseweb/customer/emailList")">Email for alle</a>

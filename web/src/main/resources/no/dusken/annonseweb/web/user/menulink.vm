@@ -1,0 +1,3 @@
+<a href="#springUrl("/annonseweb/user/me")">Meg</a>
+<a href="#springUrl("/annonseweb/user/all")">Vis alle</a>
+<a href="#springUrl("/annonseweb/user/game/breakout")">Spill!</a>

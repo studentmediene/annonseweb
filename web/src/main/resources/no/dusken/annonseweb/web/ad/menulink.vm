@@ -1,0 +1,3 @@
+<a href="#springUrl("/annonseweb/ad/new")">Ny annonse</a>
+<a href="#springUrl("/annonseweb/ad/overview")">Aktive annonser</a>
+<a href="#springUrl("/annonseweb/ad/all")">Alle annonser</a>

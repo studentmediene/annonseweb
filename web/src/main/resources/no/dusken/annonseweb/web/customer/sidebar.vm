@@ -1,9 +1,7 @@
 <nav id="sidebar">
     <h2>Kunder</h2>
-    <ul>
-        <li><a href="#springUrl("/annonseweb/customer/new")">Ny kunde</a></li>
-        <li><a href="#springUrl("/annonseweb/customer/all_active")">Aktive kunder</a></li>
-        <li><a href="#springUrl("/annonseweb/customer/all")">Alle kunder</a></li>
-    </ul>
+    <div class="menulink">
+        #parse('no/dusken/annonseweb/web/customer/menulink.vm')
+    </div>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

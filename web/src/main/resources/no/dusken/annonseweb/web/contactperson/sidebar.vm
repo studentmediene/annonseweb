@@ -1,10 +1,7 @@
 <nav id="sidebar">
     <h2>Kontakter</h2>
-    <ul>
-        <li><a href="#springUrl("/annonseweb/contactperson/new")">Ny KontaktPerson</a></li>
-        <li><a href="#springUrl("/annonseweb/contactperson/active")">KontaktPersonListe - Aktive</a></li>
-        <li><a href="#springUrl("/annonseweb/contactperson/all")">KontaktPersonListe - Alle</a></li>
-        <li><a href="#springUrl("/annonseweb/contactperson/emailList")">Epost liste - Aktive</a></li>
-    </ul>
+    <div class="menulink">
+        #parse('no/dusken/annonseweb/web/contactperson/menulink.vm')
+    </div>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>

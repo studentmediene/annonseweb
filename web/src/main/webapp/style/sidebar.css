@@ -60,7 +60,13 @@
 	border: none;
 }
 
+#sidebar .menulink {
+    padding: 10px 20px 20px 20px;
+    margin-top: 1.5em;
+}
+
 #sidebar .menulink a {
+    margin-bottom: 1ex;
     display: block;
     float: none;
 }

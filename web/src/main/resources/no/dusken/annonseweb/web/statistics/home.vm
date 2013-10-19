@@ -1,3 +1,6 @@
+<!-- the sidebar -->
+#parse('no/dusken/annonseweb/web/statistics/sidebar.vm')
+
 <div id="content">
     <div class="post">
         <h2 class="title"><a href="#">Statistikksiden</a></h2>

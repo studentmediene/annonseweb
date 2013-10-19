@@ -1,0 +1,4 @@
+<a href="#springUrl("/annonseweb/contactperson/new")">Ny kontaktperson</a>
+<a href="#springUrl("/annonseweb/contactperson/active")">Aktive kontaktpersoner</a>
+<a href="#springUrl("/annonseweb/contactperson/all")">Alle kontaktpersoner</a>
+<a href="#springUrl("/annonseweb/contactperson/emailList")">Epostliste - aktive kontaktpersoner</a>

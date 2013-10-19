@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <h2>Notater</h2>
-    <ul class="menulink">
+    <div class="menulink">
         #parse('no/dusken/annonseweb/web/note/menulink.vm')
-    </ul>
+    </div>
     #parse('no/dusken/annonseweb/web/status.vm')
 </nav>
