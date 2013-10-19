@@ -49,6 +49,7 @@ var blockDimension = {
 }
 
 var score = 0;
+var lives = 5;
 
 var blockList = new Array();
 
@@ -93,10 +94,8 @@ function testRun() {
 	c.addEventListener('mousemove', function(evt) {
 		mouse.x = evt.clientX - c.offsetLeft;
 	}, false);
-	for ( var i = 0; i < 5; i++) {
-		new Block(1 + i, 2, "#000000");
-	}
 
+    reset();
 	setInterval(tick, 10);
 }
 
@@ -104,6 +103,11 @@ function tick() {
 	move();
 	draw();
 	movePlate();
+    if (isWon()) {
+        alert("Gratulerer, du vant testversjonen");
+        lives = 5;
+        reset();
+    }
 }
 
 function isWon() {
@@ -154,10 +158,63 @@ function move() {
 		ball.dx = -ball.dx;
 		ball.x += 2 * ball.dx;
 	}
-	if (ball.y < 0 || ball.y > board.height) {
+	if (ball.y < 0 ){
 		ball.dy = -ball.dy;
 		ball.y -= 2 * ball.dy;
 	}
+
+    if (ball.y > board.height) {
+        didDie();
+    }
+}
+
+function didDie() {
+    resetBall()
+    lives--;
+    if (lives < 0) {
+        reset();
+    }
+}
+function resetBall() {
+    ball = {
+        "r" : 5,
+        "x" : 400,
+        "y" : 600,
+        "dx" : 3,
+        "dy" : 3
+    }
+}
+
+function reset() {
+    ball = {
+        "r" : 5,
+        "x" : 400,
+        "y" : 600,
+        "dx" : 3,
+        "dy" : 3
+    }
+    board = {
+        "width" : 800,
+        "height" : 640
+    }
+    plate = {
+        "width" : 250,
+        "height" : 20,
+        "x" : board.width / 2,
+        "y" : board.height - 30
+    }
+    mouse = {
+        "x" : 400
+    }
+    blockDimension = {
+        "width" : 40,
+        "height" : 20
+    }
+    score = 0;
+    lives = 5;
+    for ( var i = 0; i < 5; i++) {
+        new Block(1 + i, 2, "#000000");
+    }
 }
 
 function movePlate() {
@@ -175,6 +232,7 @@ function draw() {
 	context.fill();
 	context.fillStyle = "#00eeee";
 	context.fillRect(plate.x, plate.y, plate.width, plate.height);
+    document.getElementById("lives").innerHTML = lives;
 
 	for ( var i = 0; i < blockList.length; i++) {
 		if (blockList[i] != null) {
