@@ -91,7 +91,7 @@ function testRun() {
 	var c = document.getElementById("gameBoard");
 	context = c.getContext("2d");
 	c.addEventListener('mousemove', function(evt) {
-		mouse.x = evt.clientX;
+		mouse.x = evt.clientX - c.offsetLeft;
 	}, false);
 	for ( var i = 0; i < 5; i++) {
 		new Block(1 + i, 2, "#000000");
